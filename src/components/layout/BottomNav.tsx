@@ -1,12 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, ClipboardList, CalendarDays, Map, MoreHorizontal } from 'lucide-react'
+import { Home, CalendarDays, Map, Ellipsis } from 'lucide-react'
 
 const navItems = [
-  { to: '/', label: 'Inicio', icon: LayoutDashboard },
-  { to: '/pre-travel', label: 'Pre-viaje', icon: ClipboardList },
-  { to: '/schedule', label: 'Schedule', icon: CalendarDays },
-  { to: '/places', label: 'Lugares', icon: Map },
-  { to: '/settings', label: 'Más', icon: MoreHorizontal },
+  { to: '/', label: 'Inicio', icon: Home },
+  { to: '/schedule', label: 'Itinerario', icon: CalendarDays },
+  { to: '/map', label: 'Mapa', icon: Map },
+  { to: '/more', label: 'Más', icon: Ellipsis },
 ]
 
 function BottomNav() {
