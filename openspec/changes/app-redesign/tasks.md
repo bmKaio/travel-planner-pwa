@@ -78,8 +78,8 @@ feature/app-redesign (draft tracker)
 
 ## Phase 5: Más Help Hub (~180 lines)
 
-- [ ] T5.1 Create `src/components/more/InsuranceCard.tsx` — insurance company, policy number, tap-to-call `tel:` link; filter documents by `type='insurance'`
-- [ ] T5.2 Create `src/components/more/EmbassyCard.tsx` — embassy name, address, `tel:` phone link; hardcoded entries for Hanoi + Phnom Penh
-- [ ] T5.3 Create `src/pages/MorePage.tsx` — scrollable hub: Help Section (Pre-viaje → `/pre-travel`, Documentación → `/documents`), InsuranceCard, EmbassyCard, then Settings Section (theme toggle, export/import) migrated from Settings.tsx
-- [ ] T5.4 Delete `src/pages/Settings.tsx` — absorbed into MorePage
-- [ ] T5.5 Verify: Más tab shows all sections; Pre-viaje, Documents, Insurance `tel:` link, Embassy work; theme toggle toggles dark mode; `npm run build` passes
+- [x] T5.1 Create `src/components/more/InsuranceCard.tsx` — insurance company, policy number, tap-to-call `tel:` link; filter documents by `type='insurance'`
+- [x] T5.2 Create `src/components/more/EmbassyCard.tsx` — embassy name, address, `tel:` phone link; hardcoded entries for Hanoi + Phnom Penh
+- [x] T5.3 Create `src/pages/MorePage.tsx` — scrollable hub: Help Section (Pre-viaje → `/pre-travel`, Documentación → `/documents`), InsuranceCard, EmbassyCard, then Settings Section (theme toggle, export/import) migrated from Settings.tsx
+- [x] T5.4 Delete `src/pages/Settings.tsx` — absorbed into MorePage
+- [x] T5.5 Verify: Más tab shows all sections; Pre-viaje, Documents, Insurance `tel:` link, Embassy work; theme toggle toggles dark mode; `npm run build` passes
