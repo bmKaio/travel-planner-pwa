@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" fill="#1e40af" rx="24"/>
+  <circle cx="96" cy="76" r="36" fill="#fbbf24" opacity="0.9"/>
+  <path d="M56 120 Q96 170 136 120" stroke="#fbbf24" stroke-width="10" fill="none" opacity="0.9" stroke-linecap="round"/>
+  <text x="96" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">VN-KH</text>
+</svg>
