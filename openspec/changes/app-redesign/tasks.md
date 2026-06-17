@@ -50,12 +50,12 @@ feature/app-redesign (draft tracker)
 
 ## Phase 2: Dashboard Greeting + NextEvent Enhanced (~180 lines)
 
-- [ ] T2.1 Create `src/hooks/useCurrentCountry.ts` — hook that accepts `ItineraryItem[]`, finds today's items, runs `determineDayLocation()`, maps city→country via `CITY_COUNTRY_MAP`, returns `CountryGreeting`
-- [ ] T2.2 Modify `src/utils/dailyPlan.ts` — add `CITY_COUNTRY_MAP` constant: `{ Hanoi: 'vietnam', 'Siem Reap': 'cambodia', 'Phnom Penh': 'cambodia' }` etc.
-- [ ] T2.3 Create `src/components/dashboard/DynamicGreeting.tsx` — displays country-aware title/subtitle from `useCurrentCountry()`; fallback "Hola" + empty subtitle when no trip active
-- [ ] T2.4 Modify `src/pages/Dashboard.tsx` — replace hardcoded "Vietnam + Camboya 2026" title with `<DynamicGreeting>`; remove wifi online badge
-- [ ] T2.5 Modify `src/components/dashboard/NextEvent.tsx` — navigate to `/schedule/:date` (already works); verify date display and card navigation
-- [ ] T2.6 Verify: dashboard shows "Xin chào / Bienvenido a Vietnam" for Hanoi dates; NextEvent navigates to day detail
+- [x] T2.1 Create `src/hooks/useCurrentCountry.ts` — hook that accepts `ItineraryItem[]`, finds today's items, runs `determineDayLocation()`, maps city→country via `CITY_COUNTRY_MAP`, returns `CountryGreeting`
+- [x] T2.2 Modify `src/utils/dailyPlan.ts` — add `CITY_COUNTRY_MAP` constant: `{ Hanoi: 'vietnam', 'Siem Reap': 'cambodia', 'Phnom Penh': 'cambodia' }` etc.
+- [x] T2.3 Create `src/components/dashboard/DynamicGreeting.tsx` — displays country-aware title/subtitle from `useCurrentCountry()`; fallback "Hola" + empty subtitle when no trip active
+- [x] T2.4 Modify `src/pages/Dashboard.tsx` — replace hardcoded "Vietnam + Camboya 2026" title with `<DynamicGreeting>`; remove wifi online badge
+- [x] T2.5 Modify `src/components/dashboard/NextEvent.tsx` — navigate to `/schedule/:date` (already works); verify date display and card navigation
+- [x] T2.6 Verify: dashboard shows "Xin chào / Bienvenido a Vietnam" for Hanoi dates; NextEvent navigates to day detail
 
 ## Phase 3: Schedule Day Groups + Itinerary (~200 lines)
 
