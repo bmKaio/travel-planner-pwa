@@ -61,8 +61,8 @@ feature/app-redesign (draft tracker)
 
 - [x] T3.1 Modify `src/utils/schedule.ts` — add `groupEventsByDate()` utility: O(n) reduce by date, returns sorted `DayGroup[]` with computed dayNumber, totalDays, status (past/current/future)
 - [x] T3.2 Create `src/components/schedule/DayGroupCard.tsx` — card with day title, formatted date, "Día X de Y" tag, 1-line summary; past=dimmed(60%+gray), current=highlighted(border), future=normal; entire card is tappable → `/schedule/:date`
-- [ ] T3.3 Modify `src/pages/Schedule.tsx` — default `viewMode` to `'list'`; render `DayGroupCard[]` grouped by date in list mode; keep calendar toggle working; update navigation from `/daily/:date` to `/schedule/:date`
-- [ ] T3.4 Verify: Schedule loads in list mode with day groups; past days dimmed but navigable; calendar toggle still works; `npm run build` passes
+- [x] T3.3 Modify `src/pages/Schedule.tsx` — default `viewMode` to `'list'`; render `DayGroupCard[]` grouped by date in list mode; keep calendar toggle working; update navigation from `/daily/:date` to `/schedule/:date`
+- [x] T3.4 Verify: Schedule loads in list mode with day groups; past days dimmed but navigable; calendar toggle still works; `npm run build` passes
 
 ## Phase 4: Day Detail + Accommodation (~300 lines)
 
