@@ -202,10 +202,12 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
   {
     id: uuid(),
     date: '2026-07-05',
-    startTime: '18:00',
+    startTime: '14:00',
+    endTime: '12:00',
     type: 'accommodation',
-    title: 'Check-in Peridot Gallery Classic Hotel',
-    location: { name: 'Peridot Gallery Classic Hotel', lat: 21.0345, lng: 105.852 },
+    title: 'Peridot Gallery Classic Hotel',
+    description: 'Check-in y check-out del hotel en el Old Quarter.',
+    location: { name: 'Peridot Gallery Classic Hotel, Old Quarter, Hanoi', lat: 21.0345, lng: 105.852 },
     tags: ['hanoi', 'alojamiento'],
   },
   {
@@ -222,9 +224,11 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
     id: uuid(),
     date: '2026-07-06',
     startTime: '13:00',
+    endTime: '11:00',
     type: 'accommodation',
-    title: 'Llegada al Homestay Pu Luong',
-    location: { name: 'Pu Luong Homestay', lat: 20.475, lng: 105.2436 },
+    title: 'Homestay Pu Luong',
+    description: 'Llegada al homestay en Ban Hieu.',
+    location: { name: 'Homestay Pu Luong, Ban Hieu / Ban Don', lat: 20.475, lng: 105.2436 },
     tags: ['pu-luong', 'alojamiento'],
   },
   {
@@ -251,9 +255,11 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
     id: uuid(),
     date: '2026-07-08',
     startTime: '14:00',
+    endTime: '12:00',
     type: 'accommodation',
-    title: 'Check-in Tam Coc Family Hotel',
-    location: { name: 'Tam Coc Family Hotel', lat: 20.2465, lng: 105.9356 },
+    title: 'Tam Coc Family Hotel',
+    description: 'Check-in en Tam Coc.',
+    location: { name: 'Tam Coc Family Hotel, Tam Coc, Ninh Binh', lat: 20.2465, lng: 105.9356 },
     tags: ['ninh-binh', 'alojamiento'],
   },
   {
@@ -291,9 +297,11 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
     id: uuid(),
     date: '2026-07-10',
     startTime: '13:00',
+    endTime: '12:00',
     type: 'accommodation',
-    title: 'Check-in Cat Ba Eco Lodge',
-    location: { name: 'Cat Ba Eco Lodge', lat: 20.7692, lng: 107.0456 },
+    title: 'Cat Ba Eco Lodge',
+    description: 'Check-in en Cat Ba.',
+    location: { name: 'Cat Ba Eco Lodge, Cat Ba', lat: 20.7692, lng: 107.0456 },
     tags: ['cat-ba', 'alojamiento'],
   },
   {
@@ -320,9 +328,11 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
     id: uuid(),
     date: '2026-07-12',
     startTime: '16:00',
+    endTime: '12:00',
     type: 'accommodation',
     title: '2ª noche en Peridot Gallery Classic Hotel',
-    location: { name: 'Peridot Gallery Classic Hotel', lat: 21.0345, lng: 105.852 },
+    description: 'Segunda estancia en el Old Quarter de Hanói.',
+    location: { name: 'Peridot Gallery Classic Hotel, Old Quarter, Hanoi', lat: 21.0345, lng: 105.852 },
     tags: ['hanoi', 'alojamiento'],
   },
   {
@@ -366,10 +376,12 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
   {
     id: uuid(),
     date: '2026-07-14',
-    startTime: '18:00',
+    startTime: '15:00',
+    endTime: '12:00',
     type: 'accommodation',
-    title: 'Check-in Meliá Vinpearl Hue',
-    location: { name: 'Meliá Vinpearl Hue', lat: 16.4631, lng: 107.5908 },
+    title: 'Meliá Vinpearl Hue',
+    description: 'Check-in en Hue.',
+    location: { name: 'Meliá Vinpearl Hue, Hue', lat: 16.4631, lng: 107.5908 },
     tags: ['hue', 'alojamiento'],
   },
   {
@@ -404,9 +416,11 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
     id: uuid(),
     date: '2026-07-15',
     startTime: '19:00',
+    endTime: '12:00',
     type: 'accommodation',
-    title: 'Check-in An Bang Beach Town Homestay',
-    location: { name: 'An Bang Beach Town Homestay', lat: 15.9108, lng: 108.3783 },
+    title: 'An Bang Beach Town Homestay',
+    description: 'Check-in en An Bang, Hoi An.',
+    location: { name: 'An Bang Beach Town Homestay, An Bang, Hoi An', lat: 15.9108, lng: 108.3783 },
     tags: ['hoi-an', 'alojamiento'],
   },
   {
@@ -459,9 +473,11 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
     id: uuid(),
     date: '2026-07-17',
     startTime: '20:00',
+    endTime: '12:00',
     type: 'accommodation',
-    title: 'Check-in Khmer Mansion Boutique Hotel',
-    location: { name: 'Khmer Mansion Boutique', lat: 13.3612, lng: 103.8634 },
+    title: 'Khmer Mansion Boutique Hotel',
+    description: 'Check-in en Siem Reap.',
+    location: { name: 'Khmer Mansion Boutique Hotel, Wat Bo, Siem Reap', lat: 13.3612, lng: 103.8634 },
     tags: ['siem-reap', 'alojamiento'],
   },
   {
@@ -1202,6 +1218,7 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: [],
     tips: ['Llegar con tiempo al aeropuerto de Madrid', 'Confirmar asientos con Qatar Airways'],
     culturalNotes: [],
+    summary: 'Día de salida desde Madrid con Qatar Airways. Escala en Doha y llegada a Hanói en la mañana del día siguiente.',
   },
   {
     date: '2026-07-05',
@@ -1214,6 +1231,8 @@ export const dailyPlans: DailyPlan[] = [
     ),
     tips: ['Descansar tras el vuelo largo', 'Usar Grab para desplazamientos'],
     culturalNotes: ['El lago Hoan Kiem es sagrado para los vietnamitas.'],
+    heroImage: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80',
+    summary: 'Llegada a Hanói y primer contacto con Vietnam: paseo por el casco antiguo, el lago Hoan Kiem y el café con huevo en Giang Café.',
   },
   {
     date: '2026-07-06',
@@ -1222,6 +1241,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: recommendations.filter((r) => r.tags.includes('pu-luong')),
     tips: ['El viaje en coche privado suele durar 3,5-4 h', 'Confirmar recogida con el homestay'],
     culturalNotes: ['Las etnias Thai y Muong conservan tradiciones de agricultura en terrazas.'],
+    heroImage: 'https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=80',
+    summary: 'Traslado a Pu Luong, una reserva natural de arrozales en terrazas y montañas kársticas con poco turismo.',
   },
   {
     date: '2026-07-07',
@@ -1230,6 +1251,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: [],
     tips: ['Llevar calzado cómodo para trekking', 'Protector solar y repelente'],
     culturalNotes: [],
+    heroImage: 'https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=80',
+    summary: 'Día de trekking por Pu Luong: cascada Hieu, aldeas Thai y Muong y paisajes de arrozales en terrazas.',
   },
   {
     date: '2026-07-08',
@@ -1238,6 +1261,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: [],
     tips: ['Viaje de ~3 h hasta Tam Coc'],
     culturalNotes: [],
+    heroImage: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=800&q=80',
+    summary: 'Traslado a Ninh Binh y check-in en Tam Coc, punto de partida para explorar el paisaje kárstico de la zona.',
   },
   {
     date: '2026-07-09',
@@ -1246,6 +1271,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: recommendations.filter((r) => r.title === 'Bich Dong'),
     tips: ['Llegar a Trang An a las 7:00', 'La subida a Hang Mua tiene 500 escalones'],
     culturalNotes: ['Trang An es patrimonio UNESCO por su paisaje kárstico.'],
+    heroImage: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=800&q=80',
+    summary: 'Día completo en Ninh Binh: paseo en barca por Trang An, subida a Hang Mua y visita a Bich Dong.',
   },
   {
     date: '2026-07-10',
@@ -1254,6 +1281,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: [],
     tips: ['Salida temprana: coche 2 h + ferry 45 min'],
     culturalNotes: [],
+    heroImage: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80',
+    summary: 'Traslado a Cat Ba: coche hasta el puerto, ferry y llegada a la isla para disfrutar de Lan Ha Bay.',
   },
   {
     date: '2026-07-11',
@@ -1264,6 +1293,8 @@ export const dailyPlans: DailyPlan[] = [
     ),
     tips: ['Excursión en barco desde muelle Beo a las 8:00', 'Mucho menos barcos que Ha Long'],
     culturalNotes: [],
+    heroImage: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80',
+    summary: 'Excursión en barco y kayak por Lan Ha Bay, una alternativa tranquila a la concurrida Ha Long Bay.',
   },
   {
     date: '2026-07-12',
@@ -1272,6 +1303,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: [],
     tips: ['Regreso a Hanói en ferry + coche (~3,5 h)', 'Tarde libre antes del tren nocturno'],
     culturalNotes: [],
+    heroImage: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80',
+    summary: 'Regreso a Hanói desde Cat Ba y segunda estancia en el Old Quarter antes del tren nocturno a Hue.',
   },
   {
     date: '2026-07-13',
@@ -1280,6 +1313,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: [],
     tips: ['Tren nocturno a Hue a las 22:00', 'Reservar camarote VIP con antelación'],
     culturalNotes: ['El mausoleo de Ho Chi Minh requiere vestimenta conservadora.'],
+    heroImage: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80',
+    summary: 'Última mañana en Hanói para visitar el mausoleo de Ho Chi Minh y la Pagoda de un Pilar antes de coger el tren nocturno a Hue.',
   },
   {
     date: '2026-07-14',
@@ -1288,6 +1323,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: recommendations.filter((r) => r.title === 'Bun bo Hue'),
     tips: ['La estación de tren está céntrica', 'La Ciudad Imperial cierra al atardecer'],
     culturalNotes: ['Hue fue capital imperial de la dinastía Nguyen.'],
+    heroImage: 'https://images.unsplash.com/photo-1599708153386-62e6c519a741?auto=format&fit=crop&w=800&q=80',
+    summary: 'Llegada a Hue por la mañana y visita a la Ciudad Imperial, antigua capital de la dinastía Nguyen y patrimonio UNESCO.',
   },
   {
     date: '2026-07-15',
@@ -1298,6 +1335,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: [],
     tips: ['Autobús a Hoi An a las 15:00 (~3 h)', 'Paso de Hai Van con vistas espectaculares'],
     culturalNotes: [],
+    heroImage: 'https://images.unsplash.com/photo-1599708153386-62e6c519a741?auto=format&fit=crop&w=800&q=80',
+    summary: 'Mañana en Hue visitando las tumbas imperiales y la Pagoda Thien Mu antes de viajar a Hoi An por el Paso de Hai Van.',
   },
   {
     date: '2026-07-16',
@@ -1313,6 +1352,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: recommendations.filter((r) => r.tags.includes('hoi-an')),
     tips: ['Entrar al casco antiguo a las 8:00 para evitar aglomeraciones'],
     culturalNotes: ['Hoi An fue puerto comercial entre los siglos XV y XIX.'],
+    heroImage: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80',
+    summary: 'Día completo en Hoi An: casco antiguo UNESCO, puente japonés, playa de An Bang y taller de linternas de seda.',
   },
   {
     date: '2026-07-17',
@@ -1321,6 +1362,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: recommendations.filter((r) => r.title === 'Marble Mountains'),
     tips: ['Taxi a Da Nang ~45 min', 'Vuelo DAD → SAI pendiente de reservar'],
     culturalNotes: [],
+    heroImage: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80',
+    summary: 'Mañana libre en Hoi An, traslado a Da Nang para volar a Siem Reap y primer contacto con Camboya.',
   },
   {
     date: '2026-07-18',
@@ -1329,6 +1372,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: [],
     tips: ['Pase Angkor 3 días: 62 USD/pers', 'Tuk-tuk todo el día ~15-20 USD'],
     culturalNotes: ['Angkor Thom fue la última capital del Imperio Jemer.'],
+    heroImage: 'https://images.unsplash.com/photo-1600520611035-8a297f05bf7e?auto=format&fit=crop&w=800&q=80',
+    summary: 'Primer día en el complejo de Angkor: amanecer en Srah Srang, circuito grande con Bayon y Ta Prohm.',
   },
   {
     date: '2026-07-19',
@@ -1337,6 +1382,8 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: recommendations.filter((r) => r.title === 'Banteay Samre'),
     tips: ['Bus nocturno a Phnom Penh pendiente de reservar', 'Llevar efectivo para pagos'],
     culturalNotes: [],
+    heroImage: 'https://images.unsplash.com/photo-1600520611035-8a297f05bf7e?auto=format&fit=crop&w=800&q=80',
+    summary: 'Segundo día en Angkor: Banteay Srei, Kbal Spean y preparativos para el bus nocturno a Phnom Penh.',
   },
   {
     date: '2026-07-20',
@@ -1345,6 +1392,7 @@ export const dailyPlans: DailyPlan[] = [
     recommendations: [],
     tips: ['Vuelo temprano PNH 08:35', 'Llegada a Madrid el mismo día'],
     culturalNotes: [],
+    summary: 'Día de vuelta: salida temprana desde Phnom Penh con Etihad y llegada a Madrid tras escala en Abu Dhabi.',
   },
 ]
 

@@ -66,8 +66,8 @@ feature/app-redesign (draft tracker)
 
 ## Phase 4: Day Detail + Accommodation (~300 lines)
 
-- [ ] T4.1 Modify `src/types/index.ts` — add optional `heroImage?: string` to `DailyPlan` interface
-- [ ] T4.2 Modify `src/db/seed.ts` — add `heroImage` URLs to key `dailyPlans` entries; add check-in/check-out data to accommodation-type `itineraryItems`
+- [x] T4.1 Modify `src/types/index.ts` — add optional `heroImage?: string` to `DailyPlan` interface
+- [x] T4.2 Modify `src/db/seed.ts` — add `heroImage` URLs to key `dailyPlans` entries; add check-in/check-out data to accommodation-type `itineraryItems`
 - [ ] T4.3 Create `src/components/daily/CollapsibleSection.tsx` — reusable expand/collapse section with title, optional icon, defaultOpen prop, chevron indicator
 - [ ] T4.4 Create `src/components/daily/DayHeroCard.tsx` — full-width hero with background image (or gradient fallback), overlaid date, title, location, "Day X of Y" tag
 - [ ] T4.5 Create `src/components/daily/AccommodationCard.tsx` — hotel info card with icon, name, address, check-in/check-out; hidden when no accommodation data
