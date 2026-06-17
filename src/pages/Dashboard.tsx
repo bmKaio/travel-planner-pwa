@@ -62,9 +62,9 @@ function Dashboard() {
   }, [tripStatus.phase, todayRoute])
 
   const todayLink = useMemo(() => {
-    if (tripStatus.phase === 'before') return `/daily/${TRIP_META.startDate}`
-    if (tripStatus.phase === 'after') return `/daily/${TRIP_META.endDate}`
-    return `/daily/${today}`
+    if (tripStatus.phase === 'before') return `/schedule/${TRIP_META.startDate}`
+    if (tripStatus.phase === 'after') return `/schedule/${TRIP_META.endDate}`
+    return `/schedule/${today}`
   }, [tripStatus.phase, today])
 
   const packingLabel = useMemo(() => {
