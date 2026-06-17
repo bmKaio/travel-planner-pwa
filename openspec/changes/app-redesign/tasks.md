@@ -74,7 +74,7 @@ feature/app-redesign (draft tracker)
 - [x] T4.6 Create `src/pages/DayDetail.tsx` — merged page: hero card → planning description → CollapsibleSection "Actividades" (EventCards) → AccommodationCard → "Tips" → "Consejos culturales" → "Recomendaciones"; nav back to `/schedule`
 - [x] T4.7 Delete `src/pages/DayView.tsx` — consolidated into DayDetail
 - [x] T4.8 Delete `src/pages/DailyPlan.tsx` — consolidated into DayDetail
-- [ ] T4.9 Verify: `/schedule/2026-07-05` shows hero, description, collapsible sections, accommodation; `/daily/2026-07-05` redirects; `npm run build` passes
+- [x] T4.9 Verify: `/schedule/2026-07-05` shows hero, description, collapsible sections, accommodation; `/daily/2026-07-05` redirects; `npm run build` passes
 
 ## Phase 5: Más Help Hub (~180 lines)
 

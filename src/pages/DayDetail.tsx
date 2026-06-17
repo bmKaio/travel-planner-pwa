@@ -2,16 +2,12 @@ import { useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import {
   ArrowLeft,
-  ChevronLeft,
-  ChevronRight,
   Clock,
   Lightbulb,
   BookOpen,
   Star,
   Plus,
   CalendarX,
-  MapPin,
-  AlertCircle,
 } from 'lucide-react'
 import { format, parseISO, isValid, addDays, subDays, differenceInCalendarDays } from 'date-fns'
 import { es } from 'date-fns/locale'
@@ -28,69 +24,14 @@ import { ToastContainer, type Toast } from '../components/common/Toast'
 import { DayHeroCard } from '../components/daily/DayHeroCard'
 import { CollapsibleSection } from '../components/daily/CollapsibleSection'
 import { AccommodationCard } from '../components/daily/AccommodationCard'
-import type { ItineraryItem, Recommendation, RecommendationPriority } from '../types'
+import { DayNavigation } from '../components/daily/DayNavigation'
+import { DayTipsList } from '../components/daily/DayTipsList'
+import { DayCulturalNotes } from '../components/daily/DayCulturalNotes'
+import { DayRecommendationsList } from '../components/daily/DayRecommendationsList'
+import type { ItineraryItem } from '../types'
 import { TRIP_META } from '../types'
 import { determineDayLocation, getPlacesForLocation } from '../utils/dailyPlan'
 import { sortItemsByStartTime, toDateInputValue } from '../utils/schedule'
-
-const PRIORITY_CONFIG: Record<
-  RecommendationPriority,
-  {
-    label: string
-    color: string
-    bg: string
-    border: string
-  }
-> = {
-  'must-see': {
-    label: 'Imprescindible',
-    color: 'text-rose-700 dark:text-rose-300',
-    bg: 'bg-rose-100 dark:bg-rose-900/40',
-    border: 'border-rose-200 dark:border-rose-800',
-  },
-  'if-time': {
-    label: 'Si hay tiempo',
-    color: 'text-blue-700 dark:text-blue-300',
-    bg: 'bg-blue-100 dark:bg-blue-900/40',
-    border: 'border-blue-200 dark:border-blue-800',
-  },
-  optional: {
-    label: 'Opcional',
-    color: 'text-gray-700 dark:text-gray-300',
-    bg: 'bg-gray-100 dark:bg-gray-800',
-    border: 'border-gray-200 dark:border-gray-700',
-  },
-}
-
-const IMPORTANT_KEYWORDS = [
-  'important',
-  'must',
-  "don't forget",
-  'always',
-  'never',
-  'required',
-  'necessary',
-  'essential',
-  'critical',
-  'no olvides',
-  'imprescindible',
-  'obligatorio',
-  'siempre',
-  'nunca',
-]
-
-function isImportantTip(tip: string): boolean {
-  const lower = tip.toLowerCase()
-  return IMPORTANT_KEYWORDS.some((keyword) => lower.includes(keyword))
-}
-
-function EmptySection({ message }: { message: string }) {
-  return (
-    <p className="rounded-xl border border-dashed border-gray-300 bg-gray-50 p-4 text-center text-sm text-gray-600 dark:border-slate-700 dark:bg-slate-900/50 dark:text-gray-300">
-      {message}
-    </p>
-  )
-}
 
 function DayDetail() {
   const { date } = useParams<{ date: string }>()
@@ -212,7 +153,7 @@ function DayDetail() {
     }
   }
 
-  const recommendations: Recommendation[] = dailyPlan?.recommendations ?? []
+  const recommendations = dailyPlan?.recommendations ?? []
   const culturalNotes: string[] = dailyPlan?.culturalNotes ?? []
   const tips: string[] = dailyPlan?.tips ?? []
 
@@ -272,34 +213,18 @@ function DayDetail() {
         summary={dailyPlan?.summary}
       />
 
-      <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white p-2 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <button
-          type="button"
-          onClick={handlePrevDay}
-          className="rounded-xl p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
-          aria-label="Día anterior"
-        >
-          <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-        </button>
-        <div className="text-center">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Navegación</p>
-          <p className="text-sm font-semibold text-gray-900 dark:text-white">
-            Día {dayNumber} de {totalDays}
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={handleNextDay}
-          className="rounded-xl p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
-          aria-label="Día siguiente"
-        >
-          <ChevronRight className="h-5 w-5" aria-hidden="true" />
-        </button>
-      </div>
+      <DayNavigation
+        dayNumber={dayNumber}
+        totalDays={totalDays}
+        onPrevDay={handlePrevDay}
+        onNextDay={handleNextDay}
+      />
 
       <CollapsibleSection title="Actividades del día" icon={Clock} defaultOpen>
         {activities.length === 0 ? (
-          <EmptySection message="No hay actividades programadas para este día." />
+          <p className="rounded-xl border border-dashed border-gray-300 bg-gray-50 p-4 text-center text-sm text-gray-600 dark:border-slate-700 dark:bg-slate-900/50 dark:text-gray-300">
+            No hay actividades programadas para este día.
+          </p>
         ) : (
           <ul className="space-y-3" aria-label="Actividades del día">
             {activities.map((event) => (
@@ -320,99 +245,19 @@ function DayDetail() {
 
       {tips.length > 0 && (
         <CollapsibleSection title="Tips" icon={Lightbulb} defaultOpen={false}>
-          <ul className="space-y-2">
-            {tips.map((tip, index) => {
-              const important = isImportantTip(tip)
-              return (
-                <li
-                  key={index}
-                  className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
-                >
-                  {important ? (
-                    <AlertCircle
-                      className="mt-0.5 h-4 w-4 shrink-0 text-rose-500"
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <Lightbulb
-                      className="mt-0.5 h-4 w-4 shrink-0 text-yellow-500"
-                      aria-hidden="true"
-                    />
-                  )}
-                  <span className={important ? 'font-medium text-gray-900 dark:text-white' : ''}>
-                    {tip}
-                  </span>
-                </li>
-              )
-            })}
-          </ul>
+          <DayTipsList tips={tips} />
         </CollapsibleSection>
       )}
 
       {culturalNotes.length > 0 && (
         <CollapsibleSection title="Consejos culturales" icon={BookOpen} defaultOpen={false}>
-          <div className="whitespace-pre-wrap text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-            {culturalNotes.join('\n\n')}
-          </div>
+          <DayCulturalNotes notes={culturalNotes} />
         </CollapsibleSection>
       )}
 
       {recommendations.length > 0 && (
         <CollapsibleSection title="Recomendaciones" icon={Star} defaultOpen={false}>
-          <ul className="space-y-3">
-            {recommendations.map((recommendation) => {
-              const config = PRIORITY_CONFIG[recommendation.priority]
-              const linkedPlace = recommendation.location?.name
-                ? allPlaces.find((p) =>
-                    p.name.toLowerCase().includes(recommendation.location!.name.toLowerCase())
-                  )
-                : undefined
-
-              const content = (
-                <>
-                  <div className="flex items-start justify-between gap-2">
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white">
-                      {recommendation.title}
-                    </h4>
-                    <span
-                      className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${config.bg} ${config.color} border ${config.border}`}
-                    >
-                      {config.label}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">
-                    {recommendation.description}
-                  </p>
-                  {recommendation.location && (
-                    <div className="mt-2 flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
-                      <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-                      {recommendation.location.name}
-                    </div>
-                  )}
-                </>
-              )
-
-              return (
-                <li
-                  key={recommendation.id}
-                  className={`rounded-xl border ${config.border} ${config.bg} p-3`}
-                >
-                  {linkedPlace ? (
-                    <button
-                      type="button"
-                      onClick={() => navigate(`/places/${linkedPlace.id}`)}
-                      className="w-full text-left"
-                      aria-label={`Ver ${recommendation.title}`}
-                    >
-                      {content}
-                    </button>
-                  ) : (
-                    <div>{content}</div>
-                  )}
-                </li>
-              )
-            })}
-          </ul>
+          <DayRecommendationsList recommendations={recommendations} places={allPlaces} />
         </CollapsibleSection>
       )}
 
