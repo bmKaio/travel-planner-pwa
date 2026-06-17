@@ -1,4 +1,4 @@
-import type { ItineraryItem, Place, Recommendation } from '../types'
+import type { CountryCode, ItineraryItem, Place, Recommendation } from '../types'
 
 export const CITY_KEYWORDS: Record<string, string[]> = {
   Hanoi: [
@@ -36,6 +36,18 @@ export const CITY_KEYWORDS: Record<string, string[]> = {
     'banteay samre',
   ],
   'Phnom Penh': ['phnom penh', 'phnom-penh', 'kampong phluk'],
+}
+
+export const CITY_COUNTRY_MAP: Record<string, CountryCode> = {
+  Hanoi: 'vietnam',
+  'Pu Luong': 'vietnam',
+  'Ninh Binh': 'vietnam',
+  'Cat Ba': 'vietnam',
+  Hue: 'vietnam',
+  'Hoi An': 'vietnam',
+  'Da Nang': 'vietnam',
+  'Siem Reap': 'cambodia',
+  'Phnom Penh': 'cambodia',
 }
 
 export function determineDayLocation(items: ItineraryItem[]): string | null {
