@@ -24,6 +24,7 @@ import type { ItineraryItem } from '../types'
 import { TRIP_META } from '../types'
 import { determineDayLocation, getPlacesForLocation } from '../utils/dailyPlan'
 import { sortItemsByStartTime, toDateInputValue } from '../utils/schedule'
+import { DAILY_HERO_IMAGES } from '../utils/heroImages'
 
 function DayDetail() {
   const { date } = useParams<{ date: string }>()
@@ -74,10 +75,11 @@ function DayDetail() {
   const places = useMemo(() => getPlacesForLocation(allPlaces, location), [allPlaces, location])
 
   const heroImage = useMemo(() => {
+    if (date && DAILY_HERO_IMAGES[date]) return DAILY_HERO_IMAGES[date]
     if (dailyPlan?.heroImage) return dailyPlan.heroImage
     const placeWithImage = places.find((place) => place.images && place.images.length > 0)
     return placeWithImage?.images?.[0]
-  }, [dailyPlan, places])
+  }, [date, dailyPlan, places])
 
   const title = useMemo(() => {
     if (location) return location
