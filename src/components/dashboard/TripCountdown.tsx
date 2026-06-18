@@ -1,4 +1,6 @@
 import { memo } from 'react'
+import { Link } from 'react-router-dom'
+import { CheckSquare, ChevronRight } from 'lucide-react'
 import type { TripMeta } from '../../types'
 import { getTripStatus, formatCountdownDays } from '../../utils/dashboard'
 
@@ -39,6 +41,17 @@ function TripCountdown({ trip }: TripCountdownProps) {
               </span>
             </div>
             <p className="mt-2 text-sm opacity-80">Salida el {trip.startDate}</p>
+            <Link
+              to="/pre-travel"
+              className="mt-4 flex items-center justify-between rounded-xl bg-white/15 px-4 py-3 transition-colors hover:bg-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+              aria-label="Ir a los preparativos del viaje"
+            >
+              <span className="flex items-center gap-2">
+                <CheckSquare className="h-5 w-5" aria-hidden="true" />
+                <span className="text-sm font-medium">Preparar el viaje</span>
+              </span>
+              <ChevronRight className="h-5 w-5 opacity-80" aria-hidden="true" />
+            </Link>
           </>
         )}
 

@@ -1,0 +1,20 @@
+<!-- Quick Access Link for Pre-Travel Section -->
+<div id="quick-access" style="display: none; margin-top: 15px;">
+  <a href="/pre-viaje" class="btn btn-secondary btn-sm">
+    <i class="fas fa-arrow-circle-right"></i> Acceder a Pre-Viaje
+  </a>
+</div>
+
+<script>
+  // Countdown logic with quick access condition
+  const travelDate = new Date('2023-12-25'); // Update with actual travel date
+  const now = new Date();
+  const timeLeft = travelDate - now;
+
+  const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24));
+  const quickAccess = document.getElementById('quick-access');
+
+  if (daysLeft > 0) {
+    quickAccess.style.display = 'block';
+  }
+</script>

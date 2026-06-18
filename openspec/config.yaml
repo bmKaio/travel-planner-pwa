@@ -1,0 +1,32 @@
+schema: spec-driven
+
+context: |
+  Tech stack: React 18.3 + TypeScript 5.6 + Vite 5.4 + Tailwind CSS 3.4
+  Architecture: SPA with lazy-loaded pages, Dexie (IndexedDB) offline-first, React Router v7
+  Testing: No test runner configured (strict_tdd: false)
+  Style: Tailwind utility classes, lucide-react icons, PWA with workbox
+  Data: Dexie.js tables (trips, events, places, recommendations, packingList, documents, dailyPlans)
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Consider offline-first constraints (all data in IndexedDB)
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Document architecture decisions with rationale
+    - Keep components under 300 lines; extract hooks/utils
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    - Follow existing code patterns (lazy routes, Tailwind, lucide icons)
+    tdd: false
+    test_command: ""
+  verify:
+    test_command: ""
+    build_command: "npm run build"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
