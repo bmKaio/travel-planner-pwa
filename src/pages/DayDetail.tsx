@@ -25,6 +25,7 @@ import { TRIP_META } from '../types'
 import { determineDayLocation, getPlacesForLocation } from '../utils/dailyPlan'
 import { sortItemsByStartTime, toDateInputValue } from '../utils/schedule'
 import { DAILY_HERO_IMAGES } from '../utils/heroImages'
+import { DAILY_TIPS, DAILY_CULTURAL_NOTES } from '../utils/dailyContent'
 
 function DayDetail() {
   const { date } = useParams<{ date: string }>()
@@ -157,8 +158,9 @@ function DayDetail() {
   }
 
   const recommendations = dailyPlan?.recommendations ?? []
-  const culturalNotes: string[] = dailyPlan?.culturalNotes ?? []
-  const tips: string[] = dailyPlan?.tips ?? []
+  const culturalNotes: string[] =
+    (date && DAILY_CULTURAL_NOTES[date]) || dailyPlan?.culturalNotes || []
+  const tips: string[] = (date && DAILY_TIPS[date]) || dailyPlan?.tips || []
 
   const loading = itemsLoading || placesLoading
 

@@ -5,20 +5,16 @@ interface DayTipsListProps {
 }
 
 const IMPORTANT_KEYWORDS = [
-  'important',
-  'must',
-  "don't forget",
-  'always',
-  'never',
-  'required',
-  'necessary',
-  'essential',
-  'critical',
   'no olvides',
   'imprescindible',
   'obligatorio',
   'siempre',
   'nunca',
+  'important',
+  'must',
+  'always',
+  'never',
+  'required',
 ]
 
 function isImportantTip(tip: string): boolean {
@@ -28,22 +24,39 @@ function isImportantTip(tip: string): boolean {
 
 export function DayTipsList({ tips }: DayTipsListProps) {
   return (
-    <ul className="space-y-2">
+    <ul className="space-y-3">
       {tips.map((tip, index) => {
         const important = isImportantTip(tip)
         return (
-          <li
-            key={index}
-            className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
-          >
-            {important ? (
-              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-500" aria-hidden="true" />
-            ) : (
-              <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-yellow-500" aria-hidden="true" />
-            )}
-            <span className={important ? 'font-medium text-gray-900 dark:text-white' : ''}>
+          <li key={index} className="flex items-start gap-3">
+            <div
+              className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${
+                important
+                  ? 'bg-rose-100 dark:bg-rose-900/30'
+                  : 'bg-yellow-100 dark:bg-yellow-900/20'
+              }`}
+            >
+              {important ? (
+                <AlertCircle
+                  className="h-3.5 w-3.5 text-rose-500 dark:text-rose-400"
+                  aria-hidden="true"
+                />
+              ) : (
+                <Lightbulb
+                  className="h-3.5 w-3.5 text-yellow-600 dark:text-yellow-400"
+                  aria-hidden="true"
+                />
+              )}
+            </div>
+            <p
+              className={`text-sm leading-relaxed ${
+                important
+                  ? 'font-medium text-gray-900 dark:text-white'
+                  : 'text-gray-700 dark:text-gray-300'
+              }`}
+            >
               {tip}
-            </span>
+            </p>
           </li>
         )
       })}
