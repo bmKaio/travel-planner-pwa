@@ -20,12 +20,13 @@ import { DayNavigation } from '../components/daily/DayNavigation'
 import { DayTipsList } from '../components/daily/DayTipsList'
 import { DayCulturalNotes } from '../components/daily/DayCulturalNotes'
 import { DayRecommendationsList } from '../components/daily/DayRecommendationsList'
+import { DayPlanCard } from '../components/daily/DayPlanCard'
 import type { ItineraryItem } from '../types'
 import { TRIP_META } from '../types'
 import { determineDayLocation, getPlacesForLocation } from '../utils/dailyPlan'
 import { sortItemsByStartTime, toDateInputValue } from '../utils/schedule'
 import { DAILY_HERO_IMAGES } from '../utils/heroImages'
-import { DAILY_TIPS, DAILY_CULTURAL_NOTES } from '../utils/dailyContent'
+import { DAILY_TIPS, DAILY_CULTURAL_NOTES, DAILY_PLAN_DESCRIPTIONS } from '../utils/dailyContent'
 
 function DayDetail() {
   const { date } = useParams<{ date: string }>()
@@ -224,6 +225,10 @@ function DayDetail() {
         onPrevDay={handlePrevDay}
         onNextDay={handleNextDay}
       />
+
+      {date && DAILY_PLAN_DESCRIPTIONS[date] && (
+        <DayPlanCard description={DAILY_PLAN_DESCRIPTIONS[date]} />
+      )}
 
       <CollapsibleSection title="Actividades del día" icon={Clock} defaultOpen>
         {activities.length === 0 ? (
