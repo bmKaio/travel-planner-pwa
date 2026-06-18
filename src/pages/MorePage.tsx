@@ -1,11 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import {
-  FileText,
-  Shield,
-  MapPin,
-  ChevronRight,
-  Backpack,
-} from 'lucide-react'
+import { FileText, Shield, MapPin, ChevronRight, Backpack } from 'lucide-react'
 import InsuranceCard from '../components/more/InsuranceCard'
 import EmbassyCard from '../components/more/EmbassyCard'
 import SettingsSection from '../components/more/SettingsSection'
@@ -54,7 +48,10 @@ function MorePage() {
       </div>
 
       <section aria-labelledby="pretravel-heading">
-        <h2 id="pretravel-heading" className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+        <h2
+          id="pretravel-heading"
+          className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400"
+        >
           Pre-viaje
         </h2>
         <SectionLink
@@ -67,7 +64,10 @@ function MorePage() {
       </section>
 
       <section aria-labelledby="help-heading">
-        <h2 id="help-heading" className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+        <h2
+          id="help-heading"
+          className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400"
+        >
           Ayuda y recursos
         </h2>
         <div className="space-y-3">
@@ -112,7 +112,10 @@ function MorePage() {
       </section>
 
       <section aria-labelledby="settings-heading">
-        <h2 id="settings-heading" className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+        <h2
+          id="settings-heading"
+          className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400"
+        >
           Ajustes
         </h2>
         <SettingsSection />

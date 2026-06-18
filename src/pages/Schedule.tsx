@@ -39,10 +39,7 @@ function Schedule() {
     setToasts((prev) => prev.filter((toast) => toast.id !== id))
   }
 
-  const tripStatus = useMemo(
-    () => getTripStatus(TRIP_META.startDate, TRIP_META.endDate),
-    []
-  )
+  const tripStatus = useMemo(() => getTripStatus(TRIP_META.startDate, TRIP_META.endDate), [])
 
   const dayGroups = useMemo(() => {
     return groupEventsByDate(items, {

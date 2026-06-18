@@ -1,14 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import {
-  ArrowLeft,
-  Clock,
-  Lightbulb,
-  BookOpen,
-  Star,
-  Plus,
-  CalendarX,
-} from 'lucide-react'
+import { ArrowLeft, Clock, Lightbulb, BookOpen, Star, Plus, CalendarX } from 'lucide-react'
 import { format, parseISO, isValid, addDays, subDays, differenceInCalendarDays } from 'date-fns'
 import { es } from 'date-fns/locale'
 import { useLiveQuery } from 'dexie-react-hooks'
@@ -67,9 +59,15 @@ function DayDetail() {
     return sortItemsByStartTime(allItems.filter((item) => item.date === date))
   }, [allItems, date])
 
-  const activities = useMemo(() => dayItems.filter((item) => item.type !== 'accommodation'), [dayItems])
+  const activities = useMemo(
+    () => dayItems.filter((item) => item.type !== 'accommodation'),
+    [dayItems]
+  )
 
-  const accommodation = useMemo(() => dayItems.find((item) => item.type === 'accommodation'), [dayItems])
+  const accommodation = useMemo(
+    () => dayItems.find((item) => item.type === 'accommodation'),
+    [dayItems]
+  )
 
   const location = useMemo(() => determineDayLocation(dayItems), [dayItems])
 
@@ -93,7 +91,10 @@ function DayDetail() {
   }, [dayDate])
 
   const totalDays = useMemo(() => {
-    return Math.max(1, differenceInCalendarDays(parseISO(TRIP_META.endDate), parseISO(TRIP_META.startDate)) + 1)
+    return Math.max(
+      1,
+      differenceInCalendarDays(parseISO(TRIP_META.endDate), parseISO(TRIP_META.startDate)) + 1
+    )
   }, [])
 
   const handleBack = () => navigate('/schedule')

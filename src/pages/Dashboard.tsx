@@ -1,13 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 
-import {
-  FileText,
-  Calendar,
-  CheckSquare,
-  MapPin,
-  Plus,
-  CalendarDays,
-} from 'lucide-react'
+import { FileText, Calendar, CheckSquare, MapPin, Plus, CalendarDays } from 'lucide-react'
 import { format } from 'date-fns'
 import { useDocuments } from '../hooks/useDocuments'
 import { useItinerary } from '../hooks/useItinerary'
@@ -132,7 +125,9 @@ function Dashboard() {
     <div className="space-y-4 pb-20">
       <div className="flex items-start justify-between gap-4">
         <DynamicGreeting greeting={countryGreeting} isLoading={eventsLoading} />
-        <p className="text-right text-sm text-gray-600 dark:text-gray-300">{formatDisplayDate(today)}</p>
+        <p className="text-right text-sm text-gray-600 dark:text-gray-300">
+          {formatDisplayDate(today)}
+        </p>
       </div>
 
       <TripCountdown trip={TRIP_META} />

@@ -107,7 +107,12 @@ function SettingsSection() {
       </div>
 
       <div className="space-y-3 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <Button onClick={handleExport} isFullWidth disabled={isExporting} aria-label="Exportar datos">
+        <Button
+          onClick={handleExport}
+          isFullWidth
+          disabled={isExporting}
+          aria-label="Exportar datos"
+        >
           <Download className="mr-2 h-4 w-4" aria-hidden="true" />
           {isExporting ? 'Exportando...' : 'Exportar datos'}
         </Button>

@@ -47,9 +47,7 @@ function InsuranceCard() {
         </div>
         <div className="min-w-0 flex-1">
           <h3 className="font-semibold text-gray-900 dark:text-white">{company}</h3>
-          <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
-            Póliza {policyNumber}
-          </p>
+          <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">Póliza {policyNumber}</p>
         </div>
       </div>
 

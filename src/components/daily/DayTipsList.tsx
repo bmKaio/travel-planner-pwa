@@ -32,17 +32,14 @@ export function DayTipsList({ tips }: DayTipsListProps) {
       {tips.map((tip, index) => {
         const important = isImportantTip(tip)
         return (
-          <li key={index} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
+          <li
+            key={index}
+            className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
+          >
             {important ? (
-              <AlertCircle
-                className="mt-0.5 h-4 w-4 shrink-0 text-rose-500"
-                aria-hidden="true"
-              />
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-500" aria-hidden="true" />
             ) : (
-              <Lightbulb
-                className="mt-0.5 h-4 w-4 shrink-0 text-yellow-500"
-                aria-hidden="true"
-              />
+              <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-yellow-500" aria-hidden="true" />
             )}
             <span className={important ? 'font-medium text-gray-900 dark:text-white' : ''}>
               {tip}

@@ -22,9 +22,7 @@ export function DayHeroCard({
   summary,
 }: DayHeroCardProps) {
   const parsedDate = isValid(parseISO(date)) ? parseISO(date) : null
-  const formattedDate = parsedDate
-    ? format(parsedDate, "EEEE, d 'de' MMMM", { locale: es })
-    : date
+  const formattedDate = parsedDate ? format(parsedDate, "EEEE, d 'de' MMMM", { locale: es }) : date
 
   return (
     <div className="-mx-4 sm:mx-0">

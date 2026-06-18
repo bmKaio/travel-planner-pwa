@@ -74,7 +74,10 @@ export function DayRecommendationsList({ recommendations, places }: DayRecommend
         )
 
         return (
-          <li key={recommendation.id} className={`rounded-xl border ${config.border} ${config.bg} p-3`}>
+          <li
+            key={recommendation.id}
+            className={`rounded-xl border ${config.border} ${config.bg} p-3`}
+          >
             {linkedPlace ? (
               <button
                 type="button"
