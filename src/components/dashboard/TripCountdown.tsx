@@ -30,8 +30,8 @@ function TripCountdown({ trip }: TripCountdownProps) {
         {status.phase === 'before' && (
           <>
             <p className="text-sm font-medium opacity-90">Faltan para el viaje</p>
-            <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-5xl font-bold tracking-tight sm:text-6xl">
+            <div className="mt-1 flex flex-col items-start">
+              <span className="text-5xl font-bold leading-none tracking-tight sm:text-6xl">
                 {status.daysUntilStart}
               </span>
               <span className="text-lg font-medium opacity-90">

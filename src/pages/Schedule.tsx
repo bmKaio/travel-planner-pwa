@@ -5,12 +5,14 @@ import { useItinerary } from '../hooks/useItinerary'
 import Loading from '../components/common/Loading'
 import Button from '../components/common/Button'
 import { Calendar } from '../components/schedule/Calendar'
-import { EventCard } from '../components/schedule/EventCard'
+import { DayGroupCard } from '../components/schedule/DayGroupCard'
 import { EventForm } from '../components/schedule/EventForm'
 import { ConfirmDialog } from '../components/common/ConfirmDialog'
 import { ToastContainer, type Toast } from '../components/common/Toast'
 import type { ItineraryItem } from '../types'
-import { toDateInputValue } from '../utils/schedule'
+import { TRIP_META } from '../types'
+import { groupEventsByDate, toDateInputValue } from '../utils/schedule'
+import { getTripStatus } from '../utils/dashboard'
 
 type ViewMode = 'calendar' | 'list'
 
@@ -18,7 +20,7 @@ function Schedule() {
   const navigate = useNavigate()
   const { items, loading, create, update, remove } = useItinerary()
 
-  const [viewMode, setViewMode] = useState<ViewMode>('calendar')
+  const [viewMode, setViewMode] = useState<ViewMode>('list')
   const [currentMonth, setCurrentMonth] = useState(new Date(2026, 6, 1))
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [isFormOpen, setIsFormOpen] = useState(false)
@@ -37,15 +39,21 @@ function Schedule() {
     setToasts((prev) => prev.filter((toast) => toast.id !== id))
   }
 
-  const sortedItems = useMemo(() => {
-    return [...items].sort(
-      (a, b) => a.date.localeCompare(b.date) || a.startTime.localeCompare(b.startTime)
-    )
-  }, [items])
+  const tripStatus = useMemo(
+    () => getTripStatus(TRIP_META.startDate, TRIP_META.endDate),
+    []
+  )
+
+  const dayGroups = useMemo(() => {
+    return groupEventsByDate(items, {
+      startDate: TRIP_META.startDate,
+      totalDays: tripStatus.totalDays,
+    })
+  }, [items, tripStatus.totalDays])
 
   const handleSelectDate = (date: Date) => {
     setSelectedDate(date)
-    navigate(`/daily/${toDateInputValue(date)}`)
+    navigate(`/schedule/${toDateInputValue(date)}`)
   }
 
   const handleQuickAdd = (date: Date) => {
@@ -102,6 +110,16 @@ function Schedule() {
     }
   }
 
+  const tripStatusLabel = useMemo(() => {
+    if (tripStatus.phase === 'before') {
+      return `Empieza en ${tripStatus.daysUntilStart} ${tripStatus.daysUntilStart === 1 ? 'día' : 'días'}`
+    }
+    if (tripStatus.phase === 'after') {
+      return 'Viaje finalizado'
+    }
+    return `Día ${tripStatus.currentDay} de ${tripStatus.totalDays}`
+  }, [tripStatus])
+
   if (loading) {
     return (
       <div className="flex min-h-[50vh] flex-col items-center justify-center">
@@ -117,7 +135,10 @@ function Schedule() {
       <ToastContainer toasts={toasts} onDismiss={dismissToast} />
 
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold text-gray-900 dark:text-white">Itinerario</h1>
+        <div>
+          <h1 className="text-lg font-semibold text-gray-900 dark:text-white">Itinerario</h1>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{tripStatusLabel}</p>
+        </div>
         <div className="flex items-center rounded-xl border border-gray-200 bg-white p-1 shadow-sm dark:border-slate-700 dark:bg-slate-900">
           <button
             type="button"
@@ -174,13 +195,18 @@ function Schedule() {
           onQuickAdd={handleQuickAdd}
         />
       ) : (
-        <section aria-label="Lista de eventos" className="space-y-3">
-          {sortedItems.map((event) => (
-            <EventCard
-              key={event.id}
-              event={event}
-              onEdit={() => handleEdit(event)}
-              onDelete={() => setDeletingEvent(event)}
+        <section aria-label="Días del itinerario" className="space-y-4">
+          {dayGroups.map((group) => (
+            <DayGroupCard
+              key={group.date}
+              date={group.date}
+              dayNumber={group.dayNumber}
+              totalDays={group.totalDays}
+              events={group.items}
+              status={group.status}
+              accommodation={group.items.find((item) => item.type === 'accommodation')}
+              onEditEvent={handleEdit}
+              onDeleteEvent={setDeletingEvent}
             />
           ))}
         </section>

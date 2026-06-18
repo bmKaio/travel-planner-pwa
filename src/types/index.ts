@@ -92,6 +92,8 @@ export interface DailyPlan {
   recommendations: Recommendation[]
   tips: string[]
   culturalNotes: string[]
+  heroImage?: string
+  summary?: string
 }
 
 export interface Recommendation {

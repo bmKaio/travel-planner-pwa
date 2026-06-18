@@ -6,8 +6,6 @@ import {
   CheckSquare,
   MapPin,
   Plus,
-  Wifi,
-  WifiOff,
   CalendarDays,
 } from 'lucide-react'
 import { format } from 'date-fns'
@@ -16,12 +14,13 @@ import { useItinerary } from '../hooks/useItinerary'
 import { usePlaces } from '../hooks/usePlaces'
 import { useRecommendations } from '../hooks/useRecommendations'
 import { usePackingList } from '../hooks/usePackingList'
-import { useOfflineStatus } from '../hooks/useOfflineStatus'
+import { useCurrentCountry } from '../hooks/useCurrentCountry'
 import { TRIP_META } from '../types'
 import Loading from '../components/common/Loading'
 import Button from '../components/common/Button'
 import TripCountdown from '../components/dashboard/TripCountdown'
 import NextEvent from '../components/dashboard/NextEvent'
+import DynamicGreeting from '../components/dashboard/DynamicGreeting'
 import QuickAccessCard from '../components/dashboard/QuickAccessCard'
 import RecentActivity from '../components/dashboard/RecentActivity'
 import { DocumentForm } from '../components/documents/DocumentForm'
@@ -35,8 +34,6 @@ import {
 } from '../utils/dashboard'
 
 function Dashboard() {
-  const { isOnline } = useOfflineStatus()
-
   const { documents, loading: documentsLoading, create: createDocument } = useDocuments()
   const { items: events, loading: eventsLoading, create: createEvent } = useItinerary()
   const { places, loading: placesLoading, create: createPlace } = usePlaces()
@@ -50,6 +47,7 @@ function Dashboard() {
 
   const today = useMemo(() => format(new Date(), 'yyyy-MM-dd'), [])
   const tripStatus = useMemo(() => getTripStatus(TRIP_META.startDate, TRIP_META.endDate), [])
+  const countryGreeting = useCurrentCountry(events)
 
   const todayRoute = useMemo(() => getCurrentDayRoute(events, today), [events, today])
 
@@ -64,9 +62,9 @@ function Dashboard() {
   }, [tripStatus.phase, todayRoute])
 
   const todayLink = useMemo(() => {
-    if (tripStatus.phase === 'before') return `/daily/${TRIP_META.startDate}`
-    if (tripStatus.phase === 'after') return `/daily/${TRIP_META.endDate}`
-    return `/daily/${today}`
+    if (tripStatus.phase === 'before') return `/schedule/${TRIP_META.startDate}`
+    if (tripStatus.phase === 'after') return `/schedule/${TRIP_META.endDate}`
+    return `/schedule/${today}`
   }, [tripStatus.phase, today])
 
   const packingLabel = useMemo(() => {
@@ -132,29 +130,9 @@ function Dashboard() {
 
   return (
     <div className="space-y-4 pb-20">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-            Vietnam + Camboya 2026
-          </h1>
-          <p className="text-sm text-gray-600 dark:text-gray-300">{formatDisplayDate(today)}</p>
-        </div>
-        <div
-          className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors ${
-            isOnline
-              ? 'bg-emerald-500/10 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300'
-              : 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300'
-          }`}
-          aria-live="polite"
-          aria-label={isOnline ? 'Conexión disponible' : 'Modo offline'}
-        >
-          {isOnline ? (
-            <Wifi className="h-3.5 w-3.5" aria-hidden="true" />
-          ) : (
-            <WifiOff className="h-3.5 w-3.5" aria-hidden="true" />
-          )}
-          <span>{isOnline ? 'Online' : 'Offline'}</span>
-        </div>
+      <div className="flex items-start justify-between gap-4">
+        <DynamicGreeting greeting={countryGreeting} isLoading={eventsLoading} />
+        <p className="text-right text-sm text-gray-600 dark:text-gray-300">{formatDisplayDate(today)}</p>
       </div>
 
       <TripCountdown trip={TRIP_META} />

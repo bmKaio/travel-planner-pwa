@@ -134,8 +134,8 @@ export function formatTimeAgo(date: Date): string {
 }
 
 export function formatCountdownDays(days: number): string {
-  if (days === 1) return '1 día'
-  return `${days} días`
+  if (days === 1) return 'día'
+  return 'días'
 }
 
 export function findNextEvent(events: ItineraryItem[], now = new Date()): ItineraryItem | null {

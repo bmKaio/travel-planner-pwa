@@ -1,4 +1,6 @@
 import { Plane, Bus, Car, Train, MapPin, BedDouble, Compass, type LucideIcon } from 'lucide-react'
+import { format, parseISO, isBefore, isAfter, isEqual, differenceInCalendarDays } from 'date-fns'
+import { es } from 'date-fns/locale'
 import type { ItineraryItem, ItineraryItemType, Location } from '../types'
 
 export interface EventTypeConfig {
@@ -120,4 +122,85 @@ export function formatMinutesToTime(totalMinutes: number): string {
   const hours = Math.floor(totalMinutes / 60)
   const minutes = totalMinutes % 60
   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`
+}
+
+export type DayGroupStatus = 'past' | 'current' | 'future'
+
+export interface DayGroup {
+  date: string
+  items: ItineraryItem[]
+  dayNumber: number
+  totalDays: number
+  status: DayGroupStatus
+}
+
+export interface GroupEventsByDateOptions {
+  startDate: string
+  totalDays: number
+  today?: Date
+}
+
+export function groupEventsByDate(
+  items: ItineraryItem[],
+  options: GroupEventsByDateOptions
+): DayGroup[] {
+  const { startDate, totalDays, today = new Date() } = options
+  const todayStr = toDateInputValue(today)
+  const start = parseISO(startDate)
+
+  const grouped = new Map<string, ItineraryItem[]>()
+  for (const item of items) {
+    const list = grouped.get(item.date) ?? []
+    list.push(item)
+    grouped.set(item.date, list)
+  }
+
+  const sortedDates = Array.from(grouped.keys()).sort()
+
+  return sortedDates.map((date) => {
+    const dayItems = sortItemsByStartTime(grouped.get(date) ?? [])
+    const dayDate = parseISO(date)
+    const dayNumber = Math.max(1, differenceInCalendarDays(dayDate, start) + 1)
+
+    let status: DayGroupStatus = 'future'
+    if (isBefore(dayDate, parseISO(todayStr))) {
+      status = 'past'
+    } else if (isEqual(dayDate, parseISO(todayStr))) {
+      status = 'current'
+    } else if (isAfter(dayDate, parseISO(todayStr))) {
+      status = 'future'
+    }
+
+    return {
+      date,
+      items: dayItems,
+      dayNumber,
+      totalDays,
+      status,
+    }
+  })
+}
+
+export function formatDayGroupDate(date: string): string {
+  return format(parseISO(date), "EEEE, d 'de' MMMM", { locale: es })
+}
+
+export function generateDaySummary(items: ItineraryItem[]): string {
+  if (items.length === 0) return 'Sin eventos programados'
+
+  const nonAccommodation = items.filter((item) => item.type !== 'accommodation')
+  const highlights = nonAccommodation.length > 0 ? nonAccommodation : items
+
+  if (highlights.length === 1) {
+    return highlights[0].title
+  }
+
+  const firstTwo = highlights.slice(0, 2).map((item) => item.title)
+  const remaining = highlights.length - 2
+
+  if (remaining > 0) {
+    return `${firstTwo.join(' · ')} y ${remaining} más`
+  }
+
+  return firstTwo.join(' · ')
 }
