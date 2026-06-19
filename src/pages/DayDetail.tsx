@@ -230,6 +230,8 @@ function DayDetail() {
         <DayPlanCard description={DAILY_PLAN_DESCRIPTIONS[date]} />
       )}
 
+      {accommodation && <AccommodationCard accommodation={accommodation} />}
+
       <CollapsibleSection title="Actividades del día" icon={Clock} defaultOpen>
         {activities.length === 0 ? (
           <p className="rounded-xl border border-dashed border-gray-300 bg-gray-50 p-4 text-center text-sm text-gray-600 dark:border-slate-700 dark:bg-slate-900/50 dark:text-gray-300">
@@ -250,8 +252,6 @@ function DayDetail() {
           </ul>
         )}
       </CollapsibleSection>
-
-      {accommodation && <AccommodationCard accommodation={accommodation} />}
 
       {tips.length > 0 && (
         <CollapsibleSection title="Tips" icon={Lightbulb} defaultOpen={false}>

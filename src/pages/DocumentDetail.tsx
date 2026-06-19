@@ -310,6 +310,22 @@ function renderFieldValue(key: string, value: unknown): React.ReactNode {
   if (value === undefined || value === null || value === '') return '-'
 
   const lowerKey = key.toLowerCase()
+
+  if (lowerKey.includes('url') && typeof value === 'string' && value.startsWith('http')) {
+    const isBooking = lowerKey.includes('booking')
+    return (
+      <a
+        href={value}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1 text-travel-blue-600 underline hover:text-travel-blue-700 dark:text-travel-blue-400"
+      >
+        <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+        {isBooking ? 'Ver en Booking.com' : 'Abrir en Google Maps'}
+      </a>
+    )
+  }
+
   if (lowerKey.includes('date') || lowerKey.includes('departure') || lowerKey.includes('arrival')) {
     if (typeof value === 'string') {
       return formatDateTime(value)
@@ -331,6 +347,9 @@ function renderFieldValue(key: string, value: unknown): React.ReactNode {
   }
 
   if (Array.isArray(value)) {
+    if (lowerKey === 'nights') {
+      return value.map((v) => (typeof v === 'string' ? formatDate(v) : String(v))).join(' · ')
+    }
     return value.join(', ')
   }
 

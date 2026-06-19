@@ -1,12 +1,11 @@
 import { useCallback, useMemo, useState } from 'react'
 
-import { FileText, Calendar, CheckSquare, MapPin, Plus, CalendarDays } from 'lucide-react'
+import { FileText, Calendar, BedDouble, MapPin, Plus, CalendarDays } from 'lucide-react'
 import { format } from 'date-fns'
 import { useDocuments } from '../hooks/useDocuments'
 import { useItinerary } from '../hooks/useItinerary'
 import { usePlaces } from '../hooks/usePlaces'
 import { useRecommendations } from '../hooks/useRecommendations'
-import { usePackingList } from '../hooks/usePackingList'
 import { useCurrentCountry } from '../hooks/useCurrentCountry'
 import { TRIP_META } from '../types'
 import Loading from '../components/common/Loading'
@@ -31,8 +30,6 @@ function Dashboard() {
   const { items: events, loading: eventsLoading, create: createEvent } = useItinerary()
   const { places, loading: placesLoading, create: createPlace } = usePlaces()
   const { recommendations, loading: recommendationsLoading } = useRecommendations()
-  const { progress: packingProgress, loading: packingLoading } = usePackingList()
-
   const [isDocumentFormOpen, setIsDocumentFormOpen] = useState(false)
   const [isEventFormOpen, setIsEventFormOpen] = useState(false)
   const [isPlaceFormOpen, setIsPlaceFormOpen] = useState(false)
@@ -60,19 +57,17 @@ function Dashboard() {
     return `/schedule/${today}`
   }, [tripStatus.phase, today])
 
-  const packingLabel = useMemo(() => {
-    const { checked, total, percentage } = packingProgress
-    if (total === 0) return 'Sin items'
-    return `${checked}/${total} items (${percentage}%)`
-  }, [packingProgress])
+  const accommodationsCount = useMemo(
+    () => documents.filter((d) => d.type === 'accommodation').length,
+    [documents]
+  )
 
   const recentActivity = useMemo(
     () => buildRecentActivity(documents, events, places, recommendations),
     [documents, events, places, recommendations]
   )
 
-  const isLoading =
-    documentsLoading || eventsLoading || placesLoading || recommendationsLoading || packingLoading
+  const isLoading = documentsLoading || eventsLoading || placesLoading || recommendationsLoading
 
   const handleAddDocument = useCallback(
     async (values: Parameters<typeof createDocument>[0]) => {
@@ -154,10 +149,10 @@ function Dashboard() {
             accent="green"
           />
           <QuickAccessCard
-            icon={CheckSquare}
-            title="Maletas"
-            value={packingLabel}
-            link="/pre-travel"
+            icon={BedDouble}
+            title="Alojamientos"
+            value={`${accommodationsCount} reservas`}
+            link="/accommodations"
             accent="amber"
           />
           <QuickAccessCard

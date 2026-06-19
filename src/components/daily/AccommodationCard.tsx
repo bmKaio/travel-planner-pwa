@@ -1,12 +1,25 @@
-import { BedDouble, Clock, MapPin } from 'lucide-react'
-import type { ItineraryItem } from '../../types'
+import { BedDouble, Clock, MapPin, Navigation } from 'lucide-react'
+import type { ItineraryItem, Location } from '../../types'
 
 export interface AccommodationCardProps {
   accommodation: ItineraryItem
 }
 
+function getMapsUrl(location: Location | undefined): string | null {
+  if (!location) return null
+  if (location.googleMapsUrl) return location.googleMapsUrl
+  if (location.lat !== undefined && location.lng !== undefined) {
+    return `https://www.google.com/maps?q=${location.lat},${location.lng}&z=15`
+  }
+  if (location.address) {
+    return `https://www.google.com/maps/search/${encodeURIComponent(location.address)}`
+  }
+  return null
+}
+
 export function AccommodationCard({ accommodation }: AccommodationCardProps) {
   const address = accommodation.location?.name ?? accommodation.location?.address
+  const mapsUrl = getMapsUrl(accommodation.location)
 
   return (
     <div className="flex items-start gap-3 rounded-2xl border border-orange-200 bg-orange-50 p-4 dark:border-orange-800 dark:bg-orange-900/20">
@@ -33,6 +46,17 @@ export function AccommodationCard({ accommodation }: AccommodationCardProps) {
               <Clock className="h-3.5 w-3.5" aria-hidden="true" />
               Check-out: {accommodation.endTime}
             </span>
+          )}
+          {mapsUrl && (
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 rounded-lg bg-white px-2 py-1 text-travel-blue-600 hover:bg-travel-blue-50 dark:bg-slate-900/40 dark:text-travel-blue-400 dark:hover:bg-travel-blue-900/20"
+            >
+              <Navigation className="h-3.5 w-3.5" aria-hidden="true" />
+              Cómo llegar
+            </a>
           )}
         </div>
       </div>

@@ -191,6 +191,15 @@ export function formatFieldLabel(key: string): string {
     checkOut: 'Check-out',
     confirmation: 'Confirmación',
     text: 'Texto',
+    location: 'Ubicación',
+    nights: 'Noches',
+    night: 'Noche',
+    route: 'Ruta',
+    duration: 'Duración',
+    note: 'Nota',
+    bookingUrl: 'Reserva',
+    googleMapsUrl: 'Mapa',
+    bookingReference: 'Referencia',
   }
   return labels[key] ?? key
 }

@@ -19,6 +19,7 @@ const Recommendations = lazy(() => import('./pages/Recommendations'))
 const RecommendationDetail = lazy(() => import('./pages/RecommendationDetail'))
 const CountryInfo = lazy(() => import('./pages/CountryInfo'))
 const DocumentDetail = lazy(() => import('./pages/DocumentDetail'))
+const Accommodations = lazy(() => import('./pages/Accommodations'))
 const MorePage = lazy(() => import('./pages/MorePage'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
@@ -43,6 +44,7 @@ function App() {
             <Route path="/recommendations" element={<Recommendations />} />
             <Route path="/recommendations/:id" element={<RecommendationDetail />} />
             <Route path="/countries/:id" element={<CountryInfo />} />
+            <Route path="/accommodations" element={<Accommodations />} />
             <Route path="/settings" element={<Navigate to="/more" replace />} />
             <Route path="/more" element={<MorePage />} />
             <Route path="/404" element={<NotFound />} />
