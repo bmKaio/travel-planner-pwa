@@ -37,6 +37,21 @@ const now = new Date()
 export const documents: DocumentItem[] = [
   {
     id: uuid(),
+    type: 'insurance',
+    title: 'Intermundial: Asistencia en viaje',
+    data: {
+      company: 'Intermundial: Asistencia en viaje',
+      policyNumber: 'ESC50-S26-01C1',
+      emergencyPhone: '+34 910 848 794',
+      email: 'assistance@servisegur.com',
+      whatsapp: '+34 633 22 78 39',
+      notes: 'Teléfonos: +34 910 848 794 / +34 917 586 733 (USA). Certificado: T-564342.',
+    },
+    createdAt: now,
+    updatedAt: now,
+  },
+  {
+    id: uuid(),
     type: 'flight',
     title: 'Vuelo IDA: MAD → DOH → HAN',
     data: {

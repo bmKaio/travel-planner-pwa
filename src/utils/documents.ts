@@ -179,6 +179,8 @@ export function formatFieldLabel(key: string): string {
     policyNumber: 'Póliza',
     company: 'Compañía',
     emergencyPhone: 'Teléfono de emergencia',
+    email: 'Correo de asistencia',
+    whatsapp: 'WhatsApp',
     airline: 'Aerolínea',
     flightNumber: 'Número de vuelo',
     departure: 'Salida',
@@ -217,6 +219,8 @@ export const DOCUMENT_FORM_FIELDS: Record<
     { name: 'policyNumber', label: 'Número de póliza', type: 'text', required: true },
     { name: 'company', label: 'Compañía aseguradora', type: 'text', required: true },
     { name: 'emergencyPhone', label: 'Teléfono de emergencia', type: 'tel', required: true },
+    { name: 'email', label: 'Correo de asistencia', type: 'email' },
+    { name: 'whatsapp', label: 'WhatsApp de asistencia', type: 'tel' },
   ],
   flight: [
     { name: 'airline', label: 'Aerolínea', type: 'text', required: true },
