@@ -241,8 +241,56 @@ export function getInitialData(type: DocumentType): Record<string, string> {
   return Object.fromEntries(fields.map((field) => [field.name, '']))
 }
 
+/**
+ * Resolve the chronological event date of a document, when it has one.
+ * - flight: `data.departure` (ISO datetime or date-only string)
+ * - accommodation: check-in date, taken from `data.night` (single string)
+ *   or the earliest entry of `data.nights` (array of strings)
+ * Other types (passport, insurance, other) have no event date.
+ */
+export function getDocumentEventDate(doc: DocumentItem): string | undefined {
+  if (doc.type === 'flight') {
+    const departure = doc.data.departure
+    return typeof departure === 'string' && departure !== '' ? departure : undefined
+  }
+
+  if (doc.type === 'accommodation') {
+    const { night, nights } = doc.data as { night?: unknown; nights?: unknown }
+    if (typeof night === 'string' && night !== '') return night
+    if (Array.isArray(nights)) {
+      const validNights = nights.filter((n): n is string => typeof n === 'string' && n !== '')
+      if (validNights.length > 0) {
+        return [...validNights].sort()[0]
+      }
+    }
+  }
+
+  return undefined
+}
+
+/**
+ * Human-readable event-date label for a document, or null when there is none.
+ * Flights with a time component show date + time; everything else shows the date only.
+ */
+export function formatDocumentEventLabel(doc: DocumentItem): string | null {
+  const eventDate = getDocumentEventDate(doc)
+  if (!eventDate) return null
+  if (doc.type === 'flight' && eventDate.includes('T')) {
+    return formatDateTime(eventDate)
+  }
+  return formatDate(eventDate)
+}
+
+/**
+ * Sort documents chronologically by event date (ascending).
+ * Documents without an event date are pushed to the end.
+ */
 export function sortDocumentsByDate(documents: DocumentItem[]): DocumentItem[] {
-  return [...documents].sort(
-    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-  )
+  const eventTime = (doc: DocumentItem): number => {
+    const eventDate = getDocumentEventDate(doc)
+    if (!eventDate) return Number.POSITIVE_INFINITY
+    const time = new Date(eventDate).getTime()
+    return Number.isNaN(time) ? Number.POSITIVE_INFINITY : time
+  }
+  return [...documents].sort((a, b) => eventTime(a) - eventTime(b))
 }

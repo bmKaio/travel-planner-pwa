@@ -1,7 +1,7 @@
 import { Star, Trash2, FileText } from 'lucide-react'
 import type { DocumentItem } from '../../types'
 import {
-  formatDocumentDate,
+  formatDocumentEventLabel,
   getDocumentTypeConfig,
   isImageFile,
   isPdfFile,
@@ -19,6 +19,7 @@ export function DocumentCard({ document, onClick, onToggleFavorite, onDelete }: 
   const Icon = config.icon
   const hasPreview = isImageFile(document.fileData) || isPdfFile(document.fileData)
   const isImage = isImageFile(document.fileData)
+  const eventLabel = formatDocumentEventLabel(document)
 
   return (
     <article
@@ -47,9 +48,9 @@ export function DocumentCard({ document, onClick, onToggleFavorite, onDelete }: 
               <h3 className="truncate text-base font-semibold text-gray-900 dark:text-white">
                 {document.title}
               </h3>
-              <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                {formatDocumentDate(document.createdAt)}
-              </p>
+              {eventLabel && (
+                <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">{eventLabel}</p>
+              )}
             </div>
 
             <span

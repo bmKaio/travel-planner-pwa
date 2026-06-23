@@ -22,6 +22,7 @@ import {
   buildDocumentShareText,
   formatDate,
   formatDateTime,
+  formatDocumentEventLabel,
   formatFieldLabel,
   formatTime,
   getDocumentTypeConfig,
@@ -137,6 +138,7 @@ function DocumentDetail() {
     ([key, value]) => key !== 'notes' && value !== undefined && value !== ''
   )
   const notes = doc.data.notes as string | undefined
+  const eventLabel = formatDocumentEventLabel(doc)
 
   return (
     <div className="space-y-4 pb-6">
@@ -192,10 +194,12 @@ function DocumentDetail() {
         </div>
 
         <div className="p-4">
-          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-            <Calendar className="h-4 w-4" aria-hidden="true" />
-            <span>Creado {new Date(doc.createdAt).toLocaleDateString('es-ES')}</span>
-          </div>
+          {eventLabel && (
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+              <Calendar className="h-4 w-4" aria-hidden="true" />
+              <span>{eventLabel}</span>
+            </div>
+          )}
 
           {dataEntries.length > 0 && (
             <dl className="mt-5 space-y-3">
