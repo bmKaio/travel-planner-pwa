@@ -938,6 +938,57 @@ export const places = withTimestamps<Place>([
     },
     tips: ['17-19 jul (2 noches)', 'Cerca de la Pub Street y el mercado nocturno'],
   },
+  {
+    id: uuid(),
+    name: 'My Son Sanctuary',
+    description:
+      'Conjunto de templos hindúes de la civilización Cham (siglos IV-XIII), patrimonio UNESCO, en la jungla cerca de Hoi An.',
+    category: 'temple',
+    location: { name: 'My Son Sanctuary', lat: 15.7639, lng: 108.1244 },
+    tips: ['Ir muy temprano por el calor y los grupos', 'Media jornada desde Hoi An'],
+  },
+  {
+    id: uuid(),
+    name: 'Bai Dinh Pagoda',
+    description:
+      'Mayor complejo de templos budistas del Sudeste Asiático, con corredores de cientos de estatuas de Buda.',
+    category: 'temple',
+    location: { name: 'Bai Dinh Pagoda', lat: 20.2729, lng: 105.8636 },
+    tips: ['Usar los carritos eléctricos: el recinto es enorme'],
+  },
+  {
+    id: uuid(),
+    name: 'Beng Mealea',
+    description:
+      'Templo jemer engullido por la jungla, menos restaurado y muy atmosférico, a ~1 h de Siem Reap.',
+    category: 'temple',
+    location: { name: 'Beng Mealea', lat: 13.4744, lng: 104.2386 },
+    tips: ['Combinable con la zona norte (Banteay Srei, Kbal Spean)'],
+  },
+  {
+    id: uuid(),
+    name: 'Train Street Hanoi',
+    description:
+      'Estrecho tramo de vías entre casas del casco antiguo donde pasa el tren a centímetros de los cafés.',
+    category: 'city',
+    location: { name: 'Train Street Hanoi', lat: 21.0245, lng: 105.8412 },
+    tips: ['Consultar el horario del tren localmente', 'Acceso a veces restringido por seguridad'],
+  },
+  {
+    id: uuid(),
+    name: 'Hoa Lo Prison',
+    description:
+      'Antigua prisión colonial ("Hanoi Hilton"), hoy museo sobre el periodo colonial y la guerra.',
+    category: 'museum',
+    location: { name: 'Hoa Lo Prison', lat: 21.0246, lng: 105.8466 },
+  },
+  {
+    id: uuid(),
+    name: 'Dong Ba Market',
+    description: 'Mercado tradicional más grande de Hue, ideal para street food y vida local.',
+    category: 'market',
+    location: { name: 'Dong Ba Market', lat: 16.4708, lng: 107.5836 },
+  },
 ])
 
 export const countryInfo: CountryInfo[] = [
@@ -1358,6 +1409,124 @@ export const recommendations = withTimestamps<Recommendation>([
     tags: ['siem-reap', 'cultura', 'naturaleza'],
     priority: 'optional',
   },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Bún chả Hương Liên (el de Obama)',
+    description: 'Bún chả célebre por la visita de Obama y Bourdain. Cerdo a la brasa con fideos.',
+    location: { name: 'Bún chả Hương Liên', lat: 21.0078, lng: 105.8516 },
+    tags: ['hanoi', 'gastronomía'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Phở Gia Truyền (Bát Đàn)',
+    description: 'Pho de culto en Hanói; suele haber cola, pero merece la pena.',
+    location: { name: 'Phở Gia Truyền', lat: 21.0339, lng: 105.8487 },
+    tags: ['hanoi', 'gastronomía'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Bánh Mì 25',
+    description: 'Bocadillos bánh mì muy populares en el Old Quarter.',
+    location: { name: 'Bánh Mì 25', lat: 21.0356, lng: 105.8503 },
+    tags: ['hanoi', 'gastronomía'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Café con huevo en Café Đinh',
+    description: 'Egg coffee escondido en un primer piso con vistas al lago Hoan Kiem.',
+    location: { name: 'Café Đinh', lat: 21.0288, lng: 105.8525 },
+    tags: ['hanoi', 'café'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Marionetas de agua Thang Long',
+    description: 'Espectáculo tradicional de marionetas sobre agua, ideal en familia.',
+    location: { name: 'Thang Long Water Puppet Theatre', lat: 21.0294, lng: 105.8546 },
+    tags: ['hanoi', 'cultura', 'familia'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Cabra de montaña (dê núi) en Tam Coc',
+    description: 'Especialidad de Ninh Binh: carne de cabra y cơm cháy (arroz crujiente).',
+    location: { name: 'Tam Coc', lat: 20.2186, lng: 105.9264 },
+    tags: ['ninh-binh', 'gastronomía'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Surtido de Hue en Madam Thu',
+    description: 'Menú con bánh khoái, nem lụi y bánh bèo: la cocina imperial de Hue en un sitio.',
+    location: { name: 'Madam Thu', lat: 16.4628, lng: 107.5853 },
+    tags: ['hue', 'gastronomía'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Cao lầu en Morning Glory',
+    description: 'Cocina local de Hoi An (Ms Vy); el cao lầu es el plato emblema de la ciudad.',
+    location: { name: 'Morning Glory', lat: 15.8769, lng: 108.3265 },
+    tags: ['hoi-an', 'gastronomía'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Bánh Mì Phượng',
+    description: 'Bánh mì famoso por la visita de Anthony Bourdain.',
+    location: { name: 'Bánh Mì Phượng', lat: 15.8772, lng: 108.3289 },
+    tags: ['hoi-an', 'gastronomía'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Reaching Out Tea House',
+    description:
+      'Casa de té silenciosa gestionada por personas con discapacidad; experiencia única.',
+    location: { name: 'Reaching Out Tea House', lat: 15.8767, lng: 108.3267 },
+    tags: ['hoi-an', 'café'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Soul Kitchen (An Bang)',
+    description: 'Restaurante frente al mar en la playa de An Bang, perfecto al atardecer.',
+    location: { name: 'Soul Kitchen', lat: 15.9081, lng: 108.3386 },
+    tags: ['hoi-an', 'playa'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Amok en Marum',
+    description: 'Cocina jemer (prueba el amok) en un restaurante-escuela de empresa social.',
+    location: { name: 'Marum', lat: 13.3622, lng: 103.8597 },
+    tags: ['siem-reap', 'gastronomía'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Sister Srey Cafe',
+    description: 'Café junto al río, empresa social que forma a jóvenes camboyanos.',
+    location: { name: 'Sister Srey Cafe', lat: 13.3553, lng: 103.8556 },
+    tags: ['siem-reap', 'café'],
+    priority: 'if-time',
+  },
 ])
 
 export const dailyPlans: DailyPlan[] = [
@@ -1426,7 +1595,9 @@ export const dailyPlans: DailyPlan[] = [
   {
     date: '2026-07-09',
     items: itineraryItems.filter((i) => i.date === '2026-07-09'),
-    places: places.filter((p) => ['Trang An', 'Hang Mua', 'Bich Dong'].includes(p.name)),
+    places: places.filter((p) =>
+      ['Trang An', 'Hang Mua', 'Bich Dong', 'Bai Dinh Pagoda'].includes(p.name)
+    ),
     recommendations: recommendations.filter((r) => r.title === 'Bich Dong'),
     tips: ['Llegar a Trang An a las 7:00', 'La subida a Hang Mua tiene 500 escalones'],
     culturalNotes: ['Trang An es patrimonio UNESCO por su paisaje kárstico.'],
@@ -1476,8 +1647,15 @@ export const dailyPlans: DailyPlan[] = [
   {
     date: '2026-07-13',
     items: itineraryItems.filter((i) => i.date === '2026-07-13'),
-    places: places.filter((p) => ['Ho Chi Minh Mausoleum', 'One Pillar Pagoda'].includes(p.name)),
-    recommendations: [],
+    places: places.filter((p) =>
+      [
+        'Ho Chi Minh Mausoleum',
+        'One Pillar Pagoda',
+        'Train Street Hanoi',
+        'Hoa Lo Prison',
+      ].includes(p.name)
+    ),
+    recommendations: recommendations.filter((r) => r.tags.includes('hanoi')),
     tips: ['Tren nocturno a Hue a las 22:00', 'Reservar camarote VIP con antelación'],
     culturalNotes: ['El mausoleo de Ho Chi Minh requiere vestimenta conservadora.'],
     heroImage:
@@ -1488,8 +1666,10 @@ export const dailyPlans: DailyPlan[] = [
   {
     date: '2026-07-14',
     items: itineraryItems.filter((i) => i.date === '2026-07-14'),
-    places: places.filter((p) => ['Imperial City', 'Perfume River'].includes(p.name)),
-    recommendations: recommendations.filter((r) => r.title === 'Bun bo Hue'),
+    places: places.filter((p) =>
+      ['Imperial City', 'Perfume River', 'Dong Ba Market'].includes(p.name)
+    ),
+    recommendations: recommendations.filter((r) => r.tags.includes('hue')),
     tips: ['La estación de tren está céntrica', 'La Ciudad Imperial cierra al atardecer'],
     culturalNotes: ['Hue fue capital imperial de la dinastía Nguyen.'],
     heroImage:
@@ -1520,6 +1700,7 @@ export const dailyPlans: DailyPlan[] = [
         'Japanese Covered Bridge',
         'An Bang Beach',
         'Tra Que Vegetable Village',
+        'My Son Sanctuary',
       ].includes(p.name)
     ),
     recommendations: recommendations.filter((r) => r.tags.includes('hoi-an')),
@@ -1546,7 +1727,7 @@ export const dailyPlans: DailyPlan[] = [
     date: '2026-07-18',
     items: itineraryItems.filter((i) => i.date === '2026-07-18'),
     places: places.filter((p) => ['Srah Srang', 'Bayon', 'Ta Prohm'].includes(p.name)),
-    recommendations: [],
+    recommendations: recommendations.filter((r) => r.tags.includes('siem-reap')),
     tips: ['Pase Angkor 3 días: 62 USD/pers', 'Tuk-tuk todo el día ~15-20 USD'],
     culturalNotes: ['Angkor Thom fue la última capital del Imperio Jemer.'],
     heroImage:
@@ -1557,7 +1738,7 @@ export const dailyPlans: DailyPlan[] = [
   {
     date: '2026-07-19',
     items: itineraryItems.filter((i) => i.date === '2026-07-19'),
-    places: places.filter((p) => ['Banteay Srei', 'Kbal Spean'].includes(p.name)),
+    places: places.filter((p) => ['Banteay Srei', 'Kbal Spean', 'Beng Mealea'].includes(p.name)),
     recommendations: recommendations.filter((r) => r.title === 'Banteay Samre'),
     tips: ['Bus nocturno a Phnom Penh pendiente de reservar', 'Llevar efectivo para pagos'],
     culturalNotes: [],
