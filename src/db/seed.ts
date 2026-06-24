@@ -1007,6 +1007,97 @@ export const places = withTimestamps<Place>([
     category: 'market',
     location: { name: 'Dong Ba Market', lat: 16.4708, lng: 107.5836 },
   },
+  // --- Cafés ---
+  {
+    id: uuid(),
+    name: 'Cafe Giảng',
+    description:
+      'Emblemático rincón del casco antiguo de Hanói, venerado como el lugar de nacimiento del café de huevo, creado por el chef Nguyen Van Giang en 1946. Conserva una atmósfera nostálgica y bulliciosa perfecta para vivir el ambiente local auténtico.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.03408,
+      lng: 105.85082,
+      address: '39 Nguyen Huu Huan, Hoan Kiem, Hanói',
+    },
+    openingHours: 'Abre a las 07:00',
+    tips: [
+      'Especialidad: café de huevo caliente, servido en un tazón de agua tibia para mantener su temperatura.',
+      'Ambiente: mesas y taburetes diminutos a pie de suelo, llenos de historia.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Loading T Café',
+    description:
+      'Escondida en el primer piso de un precioso edificio de arquitectura colonial francesa, combina el aire retro con bebidas artesanales impecables. El café se saboriza con canela durante el filtrado.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.02861,
+      lng: 105.84153,
+      address: 'Cao Bá Quát, Ba Đình, Hanói',
+    },
+    openingHours: 'Abre a las 08:00',
+    tips: [
+      'Especialidad: café vietnamita saborizado con canela durante el filtrado.',
+      'Ambiente: íntimo, acogedor, con suelos de baldosas antiguas y paredes de ladrillo visto.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'C.O.C Legacy Specialty Coffee',
+    description:
+      'Para quienes buscan una transición entre los sabores hiper-dulces tradicionales y el café de especialidad moderno, en pleno Old Quarter de Hanói. Considerado por muchos viajeros como el mejor balance de café de coco y café de sal de la ciudad.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.03371,
+      lng: 105.84952,
+      address: 'Hàng Bông, Hoan Kiem, Hanói',
+    },
+    openingHours: 'Abre a las 08:30',
+    tips: [
+      'Especialidad: el mejor balance de café de coco y café de sal de Hanói.',
+      'Ambiente: moderno, cuidado y con un enfoque muy artesanal.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'The Workshop Coffee',
+    description:
+      'Situado en la planta alta de un antiguo edificio industrial, es considerado el pionero del movimiento de café de especialidad en Saigón. Ofrece granos locales de Da Lat y métodos de extracción manual.',
+    category: 'cafe',
+    location: {
+      name: 'Ho Chi Minh',
+      lat: 10.77411,
+      lng: 106.70141,
+      address: '27 Ngô Đức Kế, Bén Nghé, Quận 1, Ho Chi Minh',
+    },
+    openingHours: 'Abre a las 08:00',
+    tips: [
+      'Especialidad: métodos de extracción manual (V60, Siphon, Chemex) con granos de Da Lat.',
+      'Ambiente: estilo loft urbano, muy amplio y con una barra central espectacular.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: '96B Cafe & Roastery',
+    description:
+      'Cafetería de diseño contemporáneo que funciona como tostadero propio, dedicada a educar el paladar y experimentar con granos de robusta y arábica producidos de forma sostenible en Vietnam.',
+    category: 'cafe',
+    location: {
+      name: 'Ho Chi Minh',
+      lat: 10.78226,
+      lng: 106.68779,
+      address: '96B Võ Thị Sáu, Quận 3, Ho Chi Minh',
+    },
+    openingHours: 'Abre a las 08:00',
+    tips: [
+      'Especialidad: cafés de filtro con perfiles de tueste ligero y bebidas experimentales de autor.',
+      'Ambiente: minimalista, moderno y muy enfocado en la cultura del café científico.',
+    ],
+  },
 ])
 
 export const countryInfo: CountryInfo[] = [
