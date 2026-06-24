@@ -7,6 +7,7 @@ import {
   MapPin,
   Landmark,
   Hotel,
+  Coffee,
   type LucideIcon,
 } from 'lucide-react'
 import type { Place, PlaceCategory } from '../types'
@@ -76,6 +77,13 @@ export const CATEGORY_CONFIG: Record<PlaceCategory, CategoryConfig> = {
     bgClass: 'bg-indigo-100 dark:bg-indigo-900/40',
     markerColor: '#6366f1',
   },
+  cafe: {
+    label: 'Café',
+    icon: Coffee,
+    textClass: 'text-amber-700 dark:text-amber-300',
+    bgClass: 'bg-amber-100 dark:bg-amber-900/40',
+    markerColor: '#b45309',
+  },
   other: {
     label: 'Other',
     icon: MapPin,
@@ -94,6 +102,7 @@ export const FILTER_CATEGORIES: PlaceCategory[] = [
   'beach',
   'museum',
   'hotel',
+  'cafe',
   'other',
 ]
 

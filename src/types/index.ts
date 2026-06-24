@@ -15,6 +15,7 @@ export type PlaceCategory =
   | 'beach'
   | 'museum'
   | 'hotel'
+  | 'cafe'
   | 'other'
 
 export type RecommendationType = 'restaurant' | 'activity' | 'place'
