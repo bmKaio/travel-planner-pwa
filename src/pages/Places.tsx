@@ -1,4 +1,5 @@
 import { lazy, Suspense, useMemo, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Map, List, Plus, Search, X } from 'lucide-react'
 import { usePlaces } from '../hooks/usePlaces'
 import Loading from '../components/common/Loading'
@@ -16,9 +17,12 @@ type ViewMode = 'map' | 'list'
 
 function Places() {
   const { places, loading, create, update, remove } = usePlaces()
+  const location = useLocation()
   const [view, setView] = useState<ViewMode>('map')
   const [search, setSearch] = useState('')
-  const [categoryFilter, setCategoryFilter] = useState<PlaceCategory | 'all'>('all')
+  const [categoryFilter, setCategoryFilter] = useState<PlaceCategory | 'all'>(
+    (location.state as { category?: PlaceCategory } | null)?.category ?? 'all'
+  )
   const [focusedPlaceId, setFocusedPlaceId] = useState<string | null>(null)
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [editingPlace, setEditingPlace] = useState<Place | null>(null)

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { FileText, Shield, MapPin, ChevronRight, Backpack } from 'lucide-react'
+import { FileText, Shield, MapPin, ChevronRight, Backpack, Coffee } from 'lucide-react'
 import InsuranceCard from '../components/more/InsuranceCard'
 import EmbassyCard from '../components/more/EmbassyCard'
 import SettingsSection from '../components/more/SettingsSection'
@@ -60,6 +60,22 @@ function MorePage() {
           title="Pre-viaje"
           description="Checklist de equipaje, vacunas, dinero, conectividad y consejos."
           onClick={() => navigate('/pre-travel')}
+        />
+      </section>
+
+      <section aria-labelledby="vietnam-heading">
+        <h2
+          id="vietnam-heading"
+          className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400"
+        >
+          Vietnam
+        </h2>
+        <SectionLink
+          to="/coffee"
+          icon={<Coffee className="h-6 w-6" aria-hidden="true" />}
+          title="Guía del Café"
+          description="Tipos de café vietnamita, dónde tomarlo y cómo pedirlo."
+          onClick={() => navigate('/coffee')}
         />
       </section>
 
