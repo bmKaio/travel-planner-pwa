@@ -1012,7 +1012,7 @@ export const places = withTimestamps<Place>([
     id: uuid(),
     name: 'Cafe Giảng',
     description:
-      'Emblemático rincón del casco antiguo de Hanói, venerado como el lugar de nacimiento del café de huevo, creado por el chef Nguyen Van Giang en 1946. Conserva una atmósfera nostálgica y bulliciosa perfecta para vivir el ambiente local auténtico.',
+      'Histórico rincón del casco antiguo de Hanói y lugar de nacimiento del café de huevo (cà phê trứng), creado en 1946 por Nguyen Van Giang durante la escasez de leche. Hoy lo regenta su hijo con la receta original: café negro fuerte coronado por una crema espesa de yemas batidas con azúcar y leche condensada. Sabe a tiramisú líquido.',
     category: 'cafe',
     location: {
       name: 'Hanói',
@@ -1022,8 +1022,134 @@ export const places = withTimestamps<Place>([
     },
     openingHours: 'Abre a las 07:00',
     tips: [
-      'Especialidad: café de huevo caliente, servido en un tazón de agua tibia para mantener su temperatura.',
-      'Ambiente: mesas y taburetes diminutos a pie de suelo, llenos de historia.',
+      'Especialidad: café de huevo caliente (cà phê trứng nóng), servido en tazón de agua tibia. ~35.000 VND.',
+      'Subir al segundo piso para conseguir balcón con vistas. Llegar antes de las 9 h para evitar colas.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Dinh Cafe',
+    description:
+      'Café icónico en un edificio colonial francés del siglo XIX frente al lago Hoan Kiem, regentado por la hija del inventor del café de huevo. Mismo linaje familiar que Cafe Giảng, ambiente más íntimo y con vistas directas al lago desde el balcón del primer piso.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.02873,
+      lng: 105.85214,
+      address: '13 Dinh Tien Hoang, Hang Trong, Hoan Kiem, Hanói',
+    },
+    openingHours: 'Abre a las 08:00',
+    tips: [
+      'Especialidad: café de huevo caliente (mejor que con hielo según los locales). Decoración vintage, mesas de madera pequeñas.',
+      'Ambiente: tranquilo, con música retro y vistas al lago Hoan Kiem desde el balcón.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'The Note Coffee',
+    description:
+      'Café de cuatro plantas frente al lago Hoan Kiem, famoso por sus paredes cubiertas de pies a techo con notas Post-it de visitantes de todo el mundo con mensajes de esperanza e inspiración. Mezcla perfecta de café vietnamita tradicional y ambiente viajero.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.02847,
+      lng: 105.85052,
+      address: '64 Luong Van Can, Hang Trong, Hoan Kiem, Hanói',
+    },
+    openingHours: 'Abre a las 07:30',
+    tips: [
+      'Especialidad: café vietnamita clásico. Los niños disfrutan escribiendo y pegando su propia nota en las paredes.',
+      'Ideal para hacer una pausa desde cualquier piso con vistas al lago Hoan Kiem.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Cong Caphe',
+    description:
+      'Cadena de café temática de la era militar vietnamita con decoración retro de posguerra: muebles de madera, memorabilia vintage y personal uniformado con olivo. Sus múltiples locales en Hanói son punto de encuentro habitual de locales y viajeros. Famosa por su café de coco.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.03271,
+      lng: 105.85175,
+      address: 'Varias ubicaciones en Hoan Kiem, Hanói',
+    },
+    openingHours: 'Abre a las 07:00',
+    tips: [
+      'Especialidad: café de coco (cà phê cốt dừa) — café vietnamita mezclado con granizado de crema de coco y leche condensada. Perfecto para el calor.',
+      'WiFi gratuito, ambiente relajado. Buscar el local más cercano al lago para mejores vistas.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Tranquil Books & Coffee',
+    description:
+      'Joya escondida de varios pisos en el casco antiguo de Hanói: librería, café y refugio del caos urbano todo en uno. Mobiliario de madera, plantas, chimenea, piano y eventos de música en directo. El antídoto perfecto para desconectar a mitad del día.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.03628,
+      lng: 105.84912,
+      address: '5 Nguyen Quang Bich, Cua Dong, Hoan Kiem, Hanói',
+    },
+    openingHours: 'Abre a las 08:00',
+    tips: [
+      'Especialidad: cold brew con crema de sal. Buscar la opción "Fuji" de temporada. ~60.000 VND.',
+      'Ambiente: silencioso y acogedor, con terraza exterior. Ideal para leer o descansar entre visitas.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Maison Marou',
+    description:
+      'Boutique de chocolate artesanal de lujo con cocina abierta donde se puede ver el proceso completo de bean-to-bar con cacao vietnamita de origen ético. Combina tienda, café y pastelería en un espacio elegante y muy fotogénico.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.02341,
+      lng: 105.84591,
+      address: '91a Tho Nhuom, Tran Hung Dao, Hoan Kiem, Hanói',
+    },
+    openingHours: 'Abre a las 08:00',
+    tips: [
+      'Especialidad: tabletas de chocolate artesanal y bebidas de chocolate con cacao vietnamita. Pasteles y tartas de autor.',
+      'Pedir el pastel-taza de chocolate relleno de mousse y nata. También tienen local en Saigón.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: '#HanoiinMe - Floral & Book Cafe',
+    description:
+      'Café-librería en el primer piso de un edificio del Old Quarter con paredes de ladrillo blanco visto y luz natural. Abajo tiene floristería; arriba, una colección de literatura vietnamita y una carta que va del café vietnamita tradicional a los espressos modernos.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.03112,
+      lng: 105.85127,
+      address: '26 Hang Voi, Ly Thai To, Hoan Kiem, Hanói',
+    },
+    openingHours: 'Abre a las 08:00',
+    tips: [
+      'Especialidad: egg cocoa (cacao de huevo) y café vietnamita filtrado. También tés, zumos y smoothies.',
+      'Ambiente sereno, ideal para leer o descansar. Lleva flores y libros integrados en la decoración.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Eastern & Oriental Tea House',
+    description:
+      'Establecimiento de varios pisos junto al lago Tay Ho (Lago del Oeste) que combina culturas del té y el café en un entorno de madera oscura, antigüedades budistas y sillones tapizados. Ofrece desayuno todo el día, pasteles frescos y vistas al lago desde el segundo piso.',
+    category: 'cafe',
+    location: {
+      name: 'Hanói',
+      lat: 21.05329,
+      lng: 105.83341,
+      address: '46 Quang An, Quang An, Tay Ho, Hanói',
+    },
+    openingHours: 'Abre a las 08:00',
+    tips: [
+      "Especialidad: selección de tés finos y cafés de especialidad. Pedir el Bailey's chocolate cake con té de melocotón o hibisco con hielo.",
+      'Vistas al Lago del Oeste desde el segundo piso. Zona Tay Ho, más tranquila que el Old Quarter.',
     ],
   },
   {
