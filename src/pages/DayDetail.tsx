@@ -7,6 +7,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { useItinerary } from '../hooks/useItinerary'
 import { usePlaces } from '../hooks/usePlaces'
+import { useDocuments } from '../hooks/useDocuments'
 import Loading from '../components/common/Loading'
 import Button from '../components/common/Button'
 import { EventCard } from '../components/schedule/EventCard'
@@ -33,6 +34,7 @@ function DayDetail() {
   const navigate = useNavigate()
   const { items: allItems, loading: itemsLoading, create, update, remove } = useItinerary()
   const { places: allPlaces, loading: placesLoading } = usePlaces()
+  const { documents } = useDocuments()
 
   const dailyPlan = useLiveQuery(() => (date ? db.dailyPlans.get(date) : undefined), [date])
 
@@ -73,6 +75,12 @@ function DayDetail() {
   )
 
   const location = useMemo(() => determineDayLocation(dayItems), [dayItems])
+
+  const accommodationDocId = useMemo(() => {
+    if (!accommodation) return null
+    const doc = documents.find((d) => d.type === 'accommodation' && d.title === accommodation.title)
+    return doc?.id ?? null
+  }, [accommodation, documents])
 
   const places = useMemo(() => getPlacesForLocation(allPlaces, location), [allPlaces, location])
 
@@ -230,7 +238,14 @@ function DayDetail() {
         <DayPlanCard description={DAILY_PLAN_DESCRIPTIONS[date]} />
       )}
 
-      {accommodation && <AccommodationCard accommodation={accommodation} />}
+      {accommodation && (
+        <AccommodationCard
+          accommodation={accommodation}
+          onClick={() =>
+            navigate(accommodationDocId ? `/documents/${accommodationDocId}` : '/accommodations')
+          }
+        />
+      )}
 
       <CollapsibleSection title="Actividades del día" icon={Clock} defaultOpen>
         {activities.length === 0 ? (
