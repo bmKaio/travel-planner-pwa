@@ -1207,24 +1207,6 @@ export const places = withTimestamps<Place>([
   },
   {
     id: uuid(),
-    name: 'The Workshop Coffee',
-    description:
-      'Situado en la planta alta de un antiguo edificio industrial, es considerado el pionero del movimiento de café de especialidad en Saigón. Ofrece granos locales de Da Lat y métodos de extracción manual.',
-    category: 'cafe',
-    location: {
-      name: 'Ho Chi Minh',
-      lat: 10.77411,
-      lng: 106.70141,
-      address: '27 Ngô Đức Kế, Bén Nghé, Quận 1, Ho Chi Minh',
-    },
-    openingHours: 'Abre a las 08:00',
-    tips: [
-      'Especialidad: métodos de extracción manual (V60, Siphon, Chemex) con granos de Da Lat.',
-      'Ambiente: estilo loft urbano, muy amplio y con una barra central espectacular.',
-    ],
-  },
-  {
-    id: uuid(),
     name: '96B Cafe & Roastery',
     description:
       'Cafetería de diseño contemporáneo que funciona como tostadero propio, dedicada a educar el paladar y experimentar con granos de robusta y arábica producidos de forma sostenible en Vietnam.',

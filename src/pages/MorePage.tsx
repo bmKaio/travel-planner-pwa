@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { FileText, Shield, MapPin, ChevronRight, Backpack, Coffee } from 'lucide-react'
+import { FileText, Shield, MapPin, ChevronRight, Backpack, Coffee, Map } from 'lucide-react'
 import InsuranceCard from '../components/more/InsuranceCard'
 import EmbassyCard from '../components/more/EmbassyCard'
 import SettingsSection from '../components/more/SettingsSection'
@@ -87,6 +87,20 @@ function MorePage() {
           Ayuda y recursos
         </h2>
         <div className="space-y-3">
+          <SectionLink
+            to=""
+            icon={<Map className="h-6 w-6" aria-hidden="true" />}
+            title="Mapa del viaje"
+            description="Itinerario, alojamientos y lugares en Google Maps."
+            onClick={() =>
+              window.open(
+                'https://www.google.com/maps/d/u/0/edit?mid=1v-DtRDm2D1V9d58TS67soWFho_ALOJA&usp=sharing',
+                '_blank',
+                'noopener,noreferrer'
+              )
+            }
+          />
+
           <SectionLink
             to="/documents"
             icon={<FileText className="h-6 w-6" aria-hidden="true" />}
