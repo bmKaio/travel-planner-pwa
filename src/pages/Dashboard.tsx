@@ -15,6 +15,7 @@ import NextEvent from '../components/dashboard/NextEvent'
 import DynamicGreeting from '../components/dashboard/DynamicGreeting'
 import QuickAccessCard from '../components/dashboard/QuickAccessCard'
 import RecentActivity from '../components/dashboard/RecentActivity'
+import TripTimeline from '../components/dashboard/TripTimeline'
 import { DocumentForm } from '../components/documents/DocumentForm'
 import { EventForm } from '../components/schedule/EventForm'
 import PlaceForm from '../components/places/PlaceForm'
@@ -164,6 +165,8 @@ function Dashboard() {
           />
         </div>
       </section>
+
+      <TripTimeline items={events} />
 
       <section aria-label="Acciones rápidas">
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
