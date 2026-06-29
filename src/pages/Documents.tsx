@@ -1,6 +1,14 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Plus, Search, SlidersHorizontal, X, FileText } from 'lucide-react'
+import {
+  Plus,
+  Search,
+  SlidersHorizontal,
+  X,
+  FileText,
+  FolderOpen,
+  ExternalLink,
+} from 'lucide-react'
 import { useDocuments } from '../hooks/useDocuments'
 import Loading from '../components/common/Loading'
 import Button from '../components/common/Button'
@@ -206,6 +214,32 @@ function Documents() {
           </div>
         )}
       </div>
+
+      <a
+        href="https://drive.google.com/drive/folders/1W79zAhThb2j1wRxASd9tP8q9NoSWpU1R?dmr=1&ec=wgc-drive-globalnav-goto"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 shadow-sm transition-all hover:shadow-md active:scale-[0.99] dark:border-emerald-800/50 dark:bg-emerald-900/20"
+      >
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-emerald-200 bg-white dark:border-emerald-700 dark:bg-slate-800">
+          <FolderOpen
+            className="h-6 w-6 text-emerald-600 dark:text-emerald-400"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-semibold text-emerald-900 dark:text-emerald-200">
+            Carpeta de documentos en Drive
+          </p>
+          <p className="mt-0.5 truncate text-xs text-emerald-700 dark:text-emerald-400">
+            Originales escaneados · pasaportes, seguros, reservas…
+          </p>
+        </div>
+        <ExternalLink
+          className="h-4 w-4 shrink-0 text-emerald-500 dark:text-emerald-400"
+          aria-hidden="true"
+        />
+      </a>
 
       {filteredDocuments.length === 0 ? (
         <div className="flex min-h-[50vh] flex-col items-center justify-center rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center dark:border-slate-700 dark:bg-slate-900/50">

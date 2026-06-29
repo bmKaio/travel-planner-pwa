@@ -68,6 +68,7 @@ export interface ItineraryItem {
   location?: Location
   notes?: string
   tags?: string[]
+  documentId?: string
   createdAt: Date
   updatedAt: Date
 }

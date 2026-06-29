@@ -78,6 +78,8 @@ function DayDetail() {
 
   const accommodationDocId = useMemo(() => {
     if (!accommodation) return null
+    if (accommodation.documentId) return accommodation.documentId
+    // fallback: title-based lookup for items seeded before documentId was introduced
     const doc = documents.find((d) => d.type === 'accommodation' && d.title === accommodation.title)
     return doc?.id ?? null
   }, [accommodation, documents])

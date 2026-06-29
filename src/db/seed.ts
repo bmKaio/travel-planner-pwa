@@ -34,6 +34,15 @@ export const travelers: Traveler[] = [
 
 const now = new Date()
 
+// Pre-defined IDs for accommodation documents so itineraryItems can reference them
+const DOC_GOLDEN_SAIL_ID = uuid()
+const DOC_PULUONG_ID = uuid()
+const DOC_HIDDEN_VALLEY_ID = uuid()
+const DOC_CAT_BA_ID = uuid()
+const DOC_WHITE_LOTUS_ID = uuid()
+const DOC_WINHOUSE_ID = uuid()
+const DOC_URBAN_ID = uuid()
+
 export const documents: DocumentItem[] = [
   {
     id: uuid(),
@@ -96,7 +105,7 @@ export const documents: DocumentItem[] = [
     updatedAt: now,
   },
   {
-    id: uuid(),
+    id: DOC_GOLDEN_SAIL_ID,
     type: 'accommodation',
     title: 'Golden Sail Hotel & Spa',
     data: {
@@ -110,33 +119,33 @@ export const documents: DocumentItem[] = [
     updatedAt: now,
   },
   {
-    id: uuid(),
+    id: DOC_PULUONG_ID,
     type: 'accommodation',
     title: 'Puluong homestay1holiday',
     data: {
       location: 'Pu Luong Nature Reserve, Thanh Hoa',
       nights: ['2026-07-06', '2026-07-07'],
       bookingUrl: 'https://www.booking.com/hotel/vn/puluong-homestays.vi.html',
-      googleMapsUrl: 'https://maps.google.com/?q=Puluong+homestay1holiday',
+      googleMapsUrl: 'https://maps.app.goo.gl/VLJ6XuYwuX34y2Jr6',
     },
     createdAt: now,
     updatedAt: now,
   },
   {
-    id: uuid(),
+    id: DOC_HIDDEN_VALLEY_ID,
     type: 'accommodation',
     title: 'Hidden Valley Eco Retreat Trang An',
     data: {
       location: 'Trang An, Ninh Binh',
       nights: ['2026-07-08', '2026-07-09'],
       bookingUrl: 'https://www.booking.com/hotel/vn/green-land-cabins.vi.html',
-      googleMapsUrl: 'https://maps.google.com/?q=Hidden+Valley+Eco+Retreat+Trang+An+Ninh+Binh',
+      googleMapsUrl: 'https://maps.app.goo.gl/C1si8yerhjLuffPW6',
     },
     createdAt: now,
     updatedAt: now,
   },
   {
-    id: uuid(),
+    id: DOC_CAT_BA_ID,
     type: 'accommodation',
     title: 'Cat Ba Eco Lodge',
     data: {
@@ -149,7 +158,7 @@ export const documents: DocumentItem[] = [
     updatedAt: now,
   },
   {
-    id: uuid(),
+    id: DOC_WHITE_LOTUS_ID,
     type: 'accommodation',
     title: 'White Lotus Hue Hotel',
     data: {
@@ -163,7 +172,7 @@ export const documents: DocumentItem[] = [
     updatedAt: now,
   },
   {
-    id: uuid(),
+    id: DOC_WINHOUSE_ID,
     type: 'accommodation',
     title: 'Winhouse An Bang Boutique Inn & Lounge',
     data: {
@@ -176,7 +185,7 @@ export const documents: DocumentItem[] = [
     updatedAt: now,
   },
   {
-    id: uuid(),
+    id: DOC_URBAN_ID,
     type: 'accommodation',
     title: 'The Urban',
     data: {
@@ -244,6 +253,7 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
       lng: 105.852,
       googleMapsUrl: 'https://maps.google.com/?q=Golden+Sail+Hotel+%26+Spa+Hanoi',
     },
+    documentId: DOC_GOLDEN_SAIL_ID,
     tags: ['hanoi', 'alojamiento'],
   },
   {
@@ -268,8 +278,9 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
       name: 'Puluong homestay1holiday, Pu Luong',
       lat: 20.4836,
       lng: 105.2458,
-      googleMapsUrl: 'https://maps.google.com/?q=Puluong+homestay1holiday',
+      googleMapsUrl: 'https://maps.app.goo.gl/VLJ6XuYwuX34y2Jr6',
     },
+    documentId: DOC_PULUONG_ID,
     tags: ['pu-luong', 'alojamiento'],
   },
   {
@@ -304,8 +315,9 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
       name: 'Hidden Valley Eco Retreat Trang An, Ninh Binh',
       lat: 20.313,
       lng: 105.919,
-      googleMapsUrl: 'https://maps.google.com/?q=Hidden+Valley+Eco+Retreat+Trang+An+Ninh+Binh',
+      googleMapsUrl: 'https://maps.app.goo.gl/C1si8yerhjLuffPW6',
     },
+    documentId: DOC_HIDDEN_VALLEY_ID,
     tags: ['ninh-binh', 'alojamiento'],
   },
   {
@@ -353,6 +365,7 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
       lng: 107.057,
       googleMapsUrl: 'https://maps.google.com/?q=Cat+Ba+Eco+Lodge+Hai+Phong',
     },
+    documentId: DOC_CAT_BA_ID,
     tags: ['cat-ba', 'alojamiento'],
   },
   {
@@ -389,6 +402,7 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
       lng: 105.852,
       googleMapsUrl: 'https://maps.google.com/?q=Golden+Sail+Hotel+%26+Spa+Hanoi',
     },
+    documentId: DOC_GOLDEN_SAIL_ID,
     tags: ['hanoi', 'alojamiento'],
   },
   {
@@ -443,6 +457,7 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
       lng: 107.5897,
       googleMapsUrl: 'https://maps.google.com/?q=White+Lotus+Hue+Hotel',
     },
+    documentId: DOC_WHITE_LOTUS_ID,
     tags: ['hue', 'alojamiento'],
   },
   {
@@ -487,6 +502,7 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
       lng: 108.379,
       googleMapsUrl: 'https://maps.google.com/?q=Winhouse+An+Bang+Boutique+Inn+%26+Lounge+Hoi+An',
     },
+    documentId: DOC_WINHOUSE_ID,
     tags: ['hoi-an', 'alojamiento'],
   },
   {
@@ -549,6 +565,7 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
       lng: 103.856,
       googleMapsUrl: 'https://maps.google.com/?q=The+Urban+Siem+Reap',
     },
+    documentId: DOC_URBAN_ID,
     tags: ['siem-reap', 'alojamiento'],
   },
   {
