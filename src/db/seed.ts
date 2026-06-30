@@ -408,11 +408,14 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
   {
     id: uuid(),
     date: '2026-07-13',
-    startTime: '09:00',
+    startTime: '08:00',
     type: 'visit',
-    title: 'Hanoi extra',
-    description: 'Mañana libre para completar visitas pendientes.',
-    tags: ['hanoi', 'cultura'],
+    title: 'Mausoleo Ho Chi Minh y Pagoda de un Pilar',
+    description:
+      'Visita al mausoleo donde reposa el líder fundador de Vietnam y a la Pagoda de un Pilar, uno de los iconos más reconocibles del país.',
+    location: { name: 'Ho Chi Minh Mausoleum', lat: 21.0369, lng: 105.8346 },
+    notes: 'Abre mar-jue y sáb-dom de 7:30 a 10:30. Vestimenta conservadora obligatoria.',
+    tags: ['hanoi', 'cultura', 'mausoleo'],
   },
   {
     id: uuid(),
@@ -879,7 +882,7 @@ export const places = withTimestamps<Place>([
   {
     id: uuid(),
     name: 'An Bang Beach',
-    description: 'Plaia tranquila en el Mar de China Meridional cerca de Hoi An.',
+    description: 'Playa tranquila en el Mar de China Meridional cerca de Hoi An.',
     category: 'beach',
     location: { name: 'An Bang Beach', lat: 15.9108, lng: 108.3783 },
   },
@@ -1275,24 +1278,6 @@ export const places = withTimestamps<Place>([
     tips: [
       'Especialidad: el mejor balance de café de coco y café de sal de Hanói.',
       'Ambiente: moderno, cuidado y con un enfoque muy artesanal.',
-    ],
-  },
-  {
-    id: uuid(),
-    name: '96B Cafe & Roastery',
-    description:
-      'Cafetería de diseño contemporáneo que funciona como tostadero propio, dedicada a educar el paladar y experimentar con granos de robusta y arábica producidos de forma sostenible en Vietnam.',
-    category: 'cafe',
-    location: {
-      name: 'Ho Chi Minh',
-      lat: 10.78226,
-      lng: 106.68779,
-      address: '96B Võ Thị Sáu, Quận 3, Ho Chi Minh',
-    },
-    openingHours: 'Abre a las 08:00',
-    tips: [
-      'Especialidad: cafés de filtro con perfiles de tueste ligero y bebidas experimentales de autor.',
-      'Ambiente: minimalista, moderno y muy enfocado en la cultura del café científico.',
     ],
   },
 ])
