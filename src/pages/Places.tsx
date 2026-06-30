@@ -1,6 +1,18 @@
 import { lazy, Suspense, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Map, List, Plus, Search, X, ExternalLink, ArrowLeft, LayoutGrid } from 'lucide-react'
+import {
+  Map,
+  List,
+  Plus,
+  Search,
+  X,
+  ExternalLink,
+  ArrowLeft,
+  LayoutGrid,
+  ChevronDown,
+  ChevronUp,
+  Utensils,
+} from 'lucide-react'
 import { usePlaces } from '../hooks/usePlaces'
 import Loading from '../components/common/Loading'
 import Button from '../components/common/Button'
@@ -18,6 +30,8 @@ import {
   nearestCityId,
   type CityGroupId,
 } from '../utils/cities'
+import DishCard from '../components/food/DishCard'
+import { CITY_DISHES } from '../data/food'
 
 const MapView = lazy(() => import('../components/places/MapView'))
 
@@ -42,6 +56,7 @@ function Places() {
   const [editingPlace, setEditingPlace] = useState<Place | null>(null)
   const [deletePlace, setDeletePlace] = useState<Place | null>(null)
   const [toasts, setToasts] = useState<Toast[]>([])
+  const [showCityFood, setShowCityFood] = useState(false)
 
   const cityGroups = useMemo(() => groupPlacesByCity(places), [places])
 
@@ -63,6 +78,11 @@ function Places() {
       return matchesCategory && matchesSearch && matchesCity
     })
   }, [places, search, categoryFilter, selectedCity])
+
+  const cityDishes = useMemo(() => {
+    if (!selectedCity || selectedCity === 'all' || selectedCity === OTHER_CITY_ID) return []
+    return CITY_DISHES[selectedCity] ?? []
+  }, [selectedCity])
 
   const isCityGridView = selectedCity === null
 
@@ -91,6 +111,7 @@ function Places() {
     setSelectedCity(cityId)
     setSearch('')
     setFocusedPlaceId(null)
+    setShowCityFood(false)
   }
 
   const handleBackToCities = () => {
@@ -271,6 +292,34 @@ function Places() {
           </div>
         )}
       </div>
+
+      {!isCityGridView && cityDishes.length > 0 && (
+        <div className="rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-900">
+          <button
+            type="button"
+            onClick={() => setShowCityFood((prev) => !prev)}
+            className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left"
+            aria-expanded={showCityFood}
+          >
+            <span className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white">
+              <Utensils className="h-4 w-4 text-amber-600 dark:text-amber-400" aria-hidden="true" />
+              Comida típica ({cityDishes.length})
+            </span>
+            {showCityFood ? (
+              <ChevronUp className="h-4 w-4 text-gray-400" aria-hidden="true" />
+            ) : (
+              <ChevronDown className="h-4 w-4 text-gray-400" aria-hidden="true" />
+            )}
+          </button>
+          {showCityFood && (
+            <div className="space-y-2.5 border-t border-gray-100 px-4 py-3 dark:border-slate-800">
+              {cityDishes.map((dish) => (
+                <DishCard key={dish.name} dish={dish} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {!isCityGridView && (
         <div className="flex flex-col gap-3 sm:flex-row">
