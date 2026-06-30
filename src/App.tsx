@@ -22,6 +22,7 @@ const DocumentDetail = lazy(() => import('./pages/DocumentDetail'))
 const Accommodations = lazy(() => import('./pages/Accommodations'))
 const MorePage = lazy(() => import('./pages/MorePage'))
 const Coffee = lazy(() => import('./pages/Coffee'))
+const Food = lazy(() => import('./pages/Food'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 const BASE_NAME = import.meta.env.BASE_URL.replace(/\/$/, '')
@@ -49,6 +50,7 @@ function App() {
             <Route path="/settings" element={<Navigate to="/more" replace />} />
             <Route path="/more" element={<MorePage />} />
             <Route path="/coffee" element={<Coffee />} />
+            <Route path="/food" element={<Food />} />
             <Route path="/404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
