@@ -407,6 +407,17 @@ export const itineraryItems = withTimestamps<ItineraryItem>([
   },
   {
     id: uuid(),
+    date: '2026-07-12',
+    startTime: '18:30',
+    type: 'activity',
+    title: 'Paseo por el Barrio Francés de Hanói',
+    description:
+      'Paseo al anochecer por el barrio colonial: Catedral de San José (neogótica) y la Ópera de Hanói, con cafés y arquitectura francesa.',
+    location: { name: 'St Joseph Cathedral, Hanói', lat: 21.0288, lng: 105.8489 },
+    tags: ['hanoi', 'cultura', 'barrio-francés'],
+  },
+  {
+    id: uuid(),
     date: '2026-07-13',
     startTime: '08:00',
     type: 'visit',
@@ -822,7 +833,11 @@ export const places = withTimestamps<Place>([
     description: 'Ciudadela imperial de la dinastía Nguyen, patrimonio UNESCO.',
     category: 'museum',
     location: { name: 'Imperial City', lat: 16.4697, lng: 107.5778 },
-    tips: ['Primera hora de la tarde suele haber menos gente'],
+    tips: [
+      'Primera hora de la tarde suele haber menos gente',
+      'Reservar mínimo 2 h: Puerta Ngo Mon, Palacio Thai Hoa, Teatro Real y Ciudad Púrpura Prohibida.',
+      'Comprar el ticket combinado en la Ciudadela para incluir las tumbas reales. Solo se paga en efectivo.',
+    ],
   },
   {
     id: uuid(),
@@ -830,6 +845,9 @@ export const places = withTimestamps<Place>([
     description: 'Tumba imperial con influencias vietnamitas, china y europea.',
     category: 'temple',
     location: { name: 'Tomb of Khai Dinh', lat: 16.3995, lng: 107.5902 },
+    tips: [
+      'La tumba imperial más recomendada de Hue: interior recubierto de murales y mosaicos, con la cámara funeraria a 18 m bajo tierra.',
+    ],
   },
   {
     id: uuid(),
@@ -837,6 +855,7 @@ export const places = withTimestamps<Place>([
     description: 'Tumba del emperador Tu Duc en un parque arbolado.',
     category: 'temple',
     location: { name: 'Tomb of Tu Duc', lat: 16.43, lng: 107.5658 },
+    tips: ['La tumba más popular: jardines, lagos con peces y pabellones entre la naturaleza.'],
   },
   {
     id: uuid(),
@@ -858,7 +877,10 @@ export const places = withTimestamps<Place>([
     description: 'Casco antiguo UNESCO con arquitectura china, japonesa y francesa.',
     category: 'city',
     location: { name: 'Hoi An Ancient Town', lat: 15.8801, lng: 108.338 },
-    tips: ['Entrar a las 8:00 para disfrutar sin aglomeraciones'],
+    tips: [
+      'Entrar a las 8:00 para disfrutar sin aglomeraciones',
+      'Comprar el bono turístico (~5 €): da acceso a 5 lugares del casco antiguo (casas históricas, salas de congregación y museos).',
+    ],
   },
   {
     id: uuid(),
@@ -1279,6 +1301,143 @@ export const places = withTimestamps<Place>([
       'Especialidad: el mejor balance de café de coco y café de sal de Hanói.',
       'Ambiente: moderno, cuidado y con un enfoque muy artesanal.',
     ],
+  },
+  // --- Da Nang (visitas de la zona Hoi An / Da Nang) ---
+  {
+    id: uuid(),
+    name: 'Puente del Dragón (Dragon Bridge)',
+    description:
+      'Puente de 666 m en forma de dragón dorado sobre el río Han, símbolo moderno de Da Nang. Los fines de semana y festivos el dragón escupe fuego y agua.',
+    category: 'other',
+    location: { name: 'Dragon Bridge, Da Nang', lat: 16.0614, lng: 108.227 },
+    tips: [
+      'Espectáculo de fuego y agua los sábados, domingos y festivos a las 21:00.',
+      'Buen punto para verlo: la orilla este del río o las terrazas cercanas.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'My Khe Beach',
+    description:
+      'Playa de arena fina y aguas cristalinas a las afueras de Da Nang, una de las más famosas de Vietnam.',
+    category: 'beach',
+    location: { name: 'My Khe Beach, Da Nang', lat: 16.0545, lng: 108.247 },
+  },
+  {
+    id: uuid(),
+    name: 'Museo de Escultura Cham',
+    description:
+      'Mayor colección del mundo de arte de la civilización Cham, con esculturas en piedra y terracota de los siglos VII al XV.',
+    category: 'museum',
+    location: { name: 'Museo Cham, Da Nang', lat: 16.0606, lng: 108.2233 },
+    tips: ['Imprescindible para entender la cultura Cham antes de visitar My Son.'],
+  },
+  {
+    id: uuid(),
+    name: 'Mercado Con (Con Market)',
+    description:
+      'Mercado local de Da Nang, ideal para probar comida vietnamita callejera y ver el día a día de la ciudad.',
+    category: 'market',
+    location: { name: 'Con Market, Da Nang', lat: 16.0667, lng: 108.2147 },
+    tips: ['Ir con hambre: es uno de los mejores sitios para street food en Da Nang.'],
+  },
+  {
+    id: uuid(),
+    name: 'Catedral de Da Nang',
+    description:
+      'Catedral colonial francesa de color rosa, conocida como la iglesia del Gallo por la veleta de su campanario. Uno de los edificios más fotografiados de la ciudad.',
+    category: 'other',
+    location: { name: 'Catedral de Da Nang', lat: 16.0664, lng: 108.2222 },
+  },
+  {
+    id: uuid(),
+    name: 'Lady Buddha y Pagoda Linh Ung',
+    description:
+      'Estatua de Buda de 67 m, la más alta de Vietnam, sobre la península de Son Tra, junto a la pagoda Linh Ung. Vistas panorámicas de Da Nang y la bahía.',
+    category: 'temple',
+    location: { name: 'Linh Ung Pagoda, Son Tra, Da Nang', lat: 16.1002, lng: 108.2778 },
+    tips: ['Hay monos en la península de Son Tra: no darles de comer.'],
+  },
+  // --- Hanoi ---
+  {
+    id: uuid(),
+    name: 'Templo Ngoc Son y Puente Huc',
+    description:
+      'Templo del siglo XVIII sobre una pequeña isla del lago Hoan Kiem, al que se accede por el Puente Huc, de madera lacada en rojo. Conserva un ejemplar embalsamado de la tortuga gigante del lago.',
+    category: 'temple',
+    location: { name: 'Ngoc Son Temple, Hoan Kiem, Hanói', lat: 21.0309, lng: 105.8525 },
+    tips: ['Combinar con un paseo alrededor del lago Hoan Kiem y la Torre de la Tortuga.'],
+  },
+  {
+    id: uuid(),
+    name: 'Templo Kim Ngan (Calle Hang Bac)',
+    description:
+      'Templo gremial en la calle Hang Bac, la calle de los plateros del Old Quarter, dedicado al oficio de la orfebrería.',
+    category: 'temple',
+    location: { name: 'Kim Ngan Temple, Hang Bac, Hanói', lat: 21.0339, lng: 105.8516 },
+    tips: ['Entrada gratuita. Pasear Hang Bac para ver a los artesanos de la plata.'],
+  },
+  {
+    id: uuid(),
+    name: 'Catedral de San José',
+    description:
+      'Catedral neogótica de finales del siglo XIX en el Barrio Francés de Hanói, inspirada en Notre-Dame de París. Corazón del barrio colonial.',
+    category: 'other',
+    location: { name: 'St Joseph Cathedral, Hanói', lat: 21.0288, lng: 105.8489 },
+  },
+  {
+    id: uuid(),
+    name: 'Ópera de Hanói',
+    description:
+      'Teatro de la ópera de estilo colonial francés (1911), modelado sobre la Ópera Garnier de París. Emblema del Barrio Francés.',
+    category: 'other',
+    location: { name: 'Hanoi Opera House', lat: 21.0245, lng: 105.8576 },
+  },
+  // --- Hue ---
+  {
+    id: uuid(),
+    name: 'Puente Trang Tien',
+    description:
+      'Puente metálico sobre el río Perfume diseñado por la firma de Gustave Eiffel. De noche se ilumina con colores cambiantes y a su alrededor abren bares flotantes.',
+    category: 'other',
+    location: { name: 'Trang Tien Bridge, Hue', lat: 16.469, lng: 107.591 },
+    tips: ['Verlo iluminado al anochecer; los bares flotantes abren por la noche.'],
+  },
+  // --- Hoi An ---
+  {
+    id: uuid(),
+    name: 'Casa Tan Ky',
+    description:
+      'Casa-comercio de finales del siglo XVIII con dos siglos de antigüedad y una mezcla de influencias chinas, japonesas y vietnamitas. Una de las mejor conservadas del casco antiguo.',
+    category: 'other',
+    location: { name: 'Tan Ky Ancient House, Hoi An', lat: 15.8772, lng: 108.3275 },
+    tips: ['Incluida en el bono turístico del casco antiguo.'],
+  },
+  {
+    id: uuid(),
+    name: 'Casa Phung Hung',
+    description:
+      'Casa tradicional del siglo XVIII, antigua residencia de comerciantes, con una estructura de madera que combina estilos vietnamita, japonés y chino.',
+    category: 'other',
+    location: { name: 'Phung Hung Ancient House, Hoi An', lat: 15.8767, lng: 108.3253 },
+    tips: ['Incluida en el bono turístico del casco antiguo.'],
+  },
+  {
+    id: uuid(),
+    name: 'Casa Quan Thang',
+    description:
+      'Una de las casas más antiguas de Hoi An, de estilo chino, donde aún se elaboran dumplings a mano de forma tradicional.',
+    category: 'other',
+    location: { name: 'Quan Thang Ancient House, Hoi An', lat: 15.8775, lng: 108.329 },
+    tips: ['Se puede ver a los artesanos preparando dumplings a mano.'],
+  },
+  {
+    id: uuid(),
+    name: 'Cua Dai Beach',
+    description:
+      'Playa abierta al este de Hoi An, a unos 5 km del casco antiguo, con palmeras y restaurantes de marisco. Complementa a An Bang para un día de playa.',
+    category: 'beach',
+    location: { name: 'Cua Dai Beach, Hoi An', lat: 15.895, lng: 108.37 },
   },
 ])
 
@@ -1816,6 +1975,26 @@ export const recommendations = withTimestamps<Recommendation>([
     description: 'Café junto al río, empresa social que forma a jóvenes camboyanos.',
     location: { name: 'Sister Srey Cafe', lat: 13.3553, lng: 103.8556 },
     tags: ['siem-reap', 'café'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Paseo en barca al atardecer por Tam Coc',
+    description:
+      'Recorrido en sampán entre arrozales y acantilados kársticos, donde los remeros maniobran con los pies. Al atardecer es uno de los paseos más bonitos de Ninh Binh.',
+    location: { name: 'Tam Coc', lat: 20.2186, lng: 105.9293 },
+    tags: ['ninh-binh', 'tam-coc', 'naturaleza', 'barca'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Mercado nocturno An Hoi en Hoi An',
+    description:
+      'Mercado nocturno en la isla de An Hoi, frente al casco antiguo: farolillos de colores, artesanía, souvenirs y puestos de gastronomía. Abre de 19:00 a 24:00.',
+    location: { name: 'An Hoi Night Market, Hoi An', lat: 15.8765, lng: 108.327 },
+    tags: ['hoi-an', 'mercado', 'noche', 'gastronomía'],
     priority: 'if-time',
   },
 ])
