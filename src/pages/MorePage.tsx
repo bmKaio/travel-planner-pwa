@@ -1,5 +1,14 @@
 import { useNavigate } from 'react-router-dom'
-import { FileText, Shield, MapPin, ChevronRight, Backpack, Coffee, Map } from 'lucide-react'
+import {
+  FileText,
+  Shield,
+  MapPin,
+  ChevronRight,
+  Backpack,
+  Coffee,
+  Map,
+  Utensils,
+} from 'lucide-react'
 import InsuranceCard from '../components/more/InsuranceCard'
 import EmbassyCard from '../components/more/EmbassyCard'
 import SettingsSection from '../components/more/SettingsSection'
@@ -70,13 +79,22 @@ function MorePage() {
         >
           Vietnam
         </h2>
-        <SectionLink
-          to="/coffee"
-          icon={<Coffee className="h-6 w-6" aria-hidden="true" />}
-          title="Guía del Café"
-          description="Tipos de café vietnamita, dónde tomarlo y cómo pedirlo."
-          onClick={() => navigate('/coffee')}
-        />
+        <div className="space-y-3">
+          <SectionLink
+            to="/coffee"
+            icon={<Coffee className="h-6 w-6" aria-hidden="true" />}
+            title="Guía del Café"
+            description="Tipos de café vietnamita, dónde tomarlo y cómo pedirlo."
+            onClick={() => navigate('/coffee')}
+          />
+          <SectionLink
+            to="/food"
+            icon={<Utensils className="h-6 w-6" aria-hidden="true" />}
+            title="Guía de Comida"
+            description="Platos típicos de Vietnam y especialidades por ciudad."
+            onClick={() => navigate('/food')}
+          />
+        </div>
       </section>
 
       <section aria-labelledby="help-heading">
