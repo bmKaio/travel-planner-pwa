@@ -1,6 +1,6 @@
 import { lazy, Suspense, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Map, List, Plus, Search, X } from 'lucide-react'
+import { Map, List, Plus, Search, X, ExternalLink } from 'lucide-react'
 import { usePlaces } from '../hooks/usePlaces'
 import Loading from '../components/common/Loading'
 import Button from '../components/common/Button'
@@ -203,7 +203,7 @@ function Places() {
       </div>
 
       {view === 'map' ? (
-        <div className="h-[calc(100vh-120px)] w-full">
+        <div className="relative h-[calc(100vh-120px)] w-full">
           {filteredPlaces.length === 0 ? (
             emptyState
           ) : (
@@ -211,6 +211,16 @@ function Places() {
               <MapView places={filteredPlaces} focusedPlaceId={focusedPlaceId} />
             </Suspense>
           )}
+          <a
+            href="https://www.google.com/maps/d/u/0/edit?mid=1v-DtRDm2D1V9d58TS67soWFho_ALOJA&usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute right-3 top-3 z-[1000] flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-md transition-colors hover:bg-gray-50 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+            aria-label="Ver mapa del viaje en Google Maps"
+          >
+            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+            Mapa del viaje
+          </a>
         </div>
       ) : (
         <div className="space-y-3">

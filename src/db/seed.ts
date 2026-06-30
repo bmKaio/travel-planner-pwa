@@ -673,6 +673,30 @@ export const places = withTimestamps<Place>([
   },
   {
     id: uuid(),
+    name: 'Dong Xuan Market',
+    description:
+      'Mercado cubierto más grande de Hanói, con varios pisos de productos locales, ropa, especias y street food. Centro neurálgico del comercio del casco antiguo.',
+    category: 'market',
+    location: { name: 'Dong Xuan Market', lat: 21.0383, lng: 105.8494 },
+    tips: [
+      'Regatear con amabilidad: los precios iniciales suelen doblar el real.',
+      'Mejor por las mañanas para ver la mayor actividad local.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Tran Quoc Pagoda',
+    description:
+      'Pagoda budista más antigua de Hanói (siglo VI), situada en una pequeña isla del lago Tay Ho (Lago del Oeste). Uno de los rincones más tranquilos y fotogénicos de la ciudad.',
+    category: 'temple',
+    location: { name: 'Tran Quoc Pagoda', lat: 21.0478, lng: 105.8372 },
+    tips: [
+      'Vestimenta conservadora obligatoria.',
+      'Combinar con el Eastern & Oriental Tea House, a pocos metros.',
+    ],
+  },
+  {
+    id: uuid(),
     name: 'Giang Café',
     description: 'Café histórico famoso por el café con huevo de Hanói.',
     category: 'restaurant',
@@ -700,6 +724,18 @@ export const places = withTimestamps<Place>([
     description: 'Aldeas de las etnias Thai y Muong con casas sobre pilotes.',
     category: 'city',
     location: { name: 'Ban Hieu / Ban Don', lat: 20.456, lng: 105.255 },
+  },
+  {
+    id: uuid(),
+    name: 'Hoa Lu',
+    description:
+      'Antigua capital del primer estado unificado de Vietnam (siglos X-XI). Sus templos y ruinas se alzan entre formaciones kársticas imponentes, a pocos kilómetros del embarcadero de Trang An.',
+    category: 'museum',
+    location: { name: 'Hoa Lu', lat: 20.2864, lng: 105.9083 },
+    tips: [
+      'Combinar con Trang An en el mismo día: están a 2 km de distancia.',
+      'Los templos Dinh Tien Hoang y Le Dai Hanh son los principales.',
+    ],
   },
   {
     id: uuid(),
@@ -755,6 +791,30 @@ export const places = withTimestamps<Place>([
   },
   {
     id: uuid(),
+    name: 'Cat Ba National Park',
+    description:
+      'Parque nacional que cubre el 50 % de la isla de Cat Ba, con selva tropical, grutas y avistamiento del langur de cabeza dorada, uno de los primates más amenazados del mundo.',
+    category: 'nature',
+    location: { name: 'Cat Ba National Park', lat: 20.7914, lng: 106.9925 },
+    tips: [
+      'Contratar guía para la ruta al pico Ngu Lam (vistas 360°).',
+      'Salir a primera hora para avistar fauna.',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Lan Ha Bay',
+    description:
+      'Bahía de más de 300 islotes al sur de Cat Ba, con menos turismo que Ha Long y perfecta para kayak y snorkel. Solo accesible desde Cat Ba.',
+    category: 'nature',
+    location: { name: 'Lan Ha Bay', lat: 20.7589, lng: 107.0122 },
+    tips: [
+      'Alquilar kayak independiente para explorar lagunas escondidas.',
+      'Mucho menos barcos que Ha Long: el silencio es uno de sus atractivos.',
+    ],
+  },
+  {
+    id: uuid(),
     name: 'Imperial City',
     description: 'Ciudadela imperial de la dinastía Nguyen, patrimonio UNESCO.',
     category: 'museum',
@@ -803,6 +863,18 @@ export const places = withTimestamps<Place>([
     description: 'Puente japonés del siglo XVII con pagoda.',
     category: 'temple',
     location: { name: 'Japanese Covered Bridge', lat: 15.8777, lng: 108.3346 },
+  },
+  {
+    id: uuid(),
+    name: 'Cam Thanh Coconut Village',
+    description:
+      'Aldea rodeada de bosques de palmeras de nipa a las afueras de Hoi An. Famosa por los paseos en cesta de bambú (basket boat) entre los canales y la demostración de pesca tradicional.',
+    category: 'nature',
+    location: { name: 'Cam Thanh', lat: 15.8764, lng: 108.3683 },
+    tips: [
+      'Elegir operadores locales del pueblo, no agencias del casco antiguo.',
+      'Combinar con la visita a la playa de An Bang en la misma tarde.',
+    ],
   },
   {
     id: uuid(),
