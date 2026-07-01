@@ -1,5 +1,5 @@
 import { lazy, Suspense, useMemo, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import {
   Map,
   List,
@@ -19,6 +19,7 @@ import Button from '../components/common/Button'
 import PlaceCard from '../components/places/PlaceCard'
 import PlaceForm from '../components/places/PlaceForm'
 import CitiesGrid from '../components/places/CitiesGrid'
+import AllPlacesList from '../components/places/AllPlacesList'
 import { ConfirmDialog } from '../components/common/ConfirmDialog'
 import { ToastContainer, type Toast } from '../components/common/Toast'
 import type { Place, PlaceCategory } from '../types'
@@ -41,6 +42,7 @@ type HomeView = 'cards' | 'map'
 function Places() {
   const { places, loading, create, update, remove } = usePlaces()
   const location = useLocation()
+  const navigate = useNavigate()
   const initialCategory = (location.state as { category?: PlaceCategory } | null)?.category ?? 'all'
   const [view, setView] = useState<ViewMode>('map')
   const [homeView, setHomeView] = useState<HomeView>('cards')
@@ -370,7 +372,10 @@ function Places() {
 
       {isCityGridView ? (
         homeView === 'cards' ? (
-          <CitiesGrid groups={cityGroups} onSelect={handleSelectCity} />
+          <div className="space-y-6">
+            <CitiesGrid groups={cityGroups} onSelect={handleSelectCity} />
+            <AllPlacesList places={places} onSelect={(place) => navigate(`/places/${place.id}`)} />
+          </div>
         ) : (
           renderMapPanel(places, null)
         )
