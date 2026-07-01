@@ -30,6 +30,11 @@ export const NATIONAL_DISHES: Dish[] = [
     name: 'Nước mắm',
     description: 'Salsa de pescado fermentada que acompaña a casi todos los platos vietnamitas.',
   },
+  {
+    name: 'Bánh phu thê',
+    description:
+      'Pastel de tapioca y judía mung envuelto en hoja de plátano, tradicional en bodas; en Hue se sirve en su variante verde.',
+  },
 ]
 
 export const CITY_DISHES: Partial<Record<CityId, Dish[]>> = {

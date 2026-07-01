@@ -2001,6 +2001,107 @@ export const recommendations = withTimestamps<Recommendation>([
     tags: ['hoi-an', 'mercado', 'noche', 'gastronomía'],
     priority: 'if-time',
   },
+  {
+    id: uuid(),
+    type: 'place',
+    title: 'Ciudadela Imperial de Thang Long',
+    description:
+      'Recinto imperial UNESCO con más de mil años de historia, sede del poder político vietnamita durante siglos.',
+    location: { name: 'Hoàng Thành Thăng Long', lat: 21.0356, lng: 105.8402 },
+    tags: ['hanoi', 'historia', 'unesco', 'recomendación-angela'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Ruta en bici por los arrozales de Hoi An',
+    description: 'Pedalear entre los arrozales cerca de Tra Que, a poca distancia de la playa.',
+    location: { name: 'Tra Que Vegetable Village', lat: 15.9057, lng: 108.3204 },
+    tags: ['hoi-an', 'naturaleza', 'bici', 'recomendación-angela'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Bánh Mì Phố',
+    description: 'Bocadillo bánh mì en el Old Quarter; pedir el número 11 de la carta.',
+    location: {
+      name: 'Bánh Mì Phố',
+      lat: 21.0334,
+      lng: 105.8517,
+      address: '98 Hàng Bạc, Hoàn Kiếm, Hà Nội',
+    },
+    tags: ['hanoi', 'gastronomía', 'recomendación-angela'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Bún chả Đắc Kim',
+    description:
+      'Bún chả clásico del Old Quarter, reconocido en la guía Michelin; unos 3 € por persona.',
+    location: {
+      name: 'Bún chả Đắc Kim',
+      lat: 21.0324,
+      lng: 105.8494,
+      address: '1 Hàng Mành, Hoàn Kiếm, Hà Nội',
+    },
+    tags: ['hanoi', 'gastronomía', 'recomendación-angela'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Phở Cuốn 31 Ngũ Xã',
+    description: 'Phở cuốn (rollitos de phở) típico de la zona de Trúc Bạch.',
+    location: {
+      name: 'Phở Cuốn 31 Ngũ Xã',
+      lat: 21.0433,
+      lng: 105.8362,
+      address: '31 Ngũ Xã, Trúc Bạch, Ba Đình, Hà Nội',
+    },
+    tags: ['hanoi', 'gastronomía', 'recomendación-angela'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Miss Ly',
+    description:
+      'Restaurante familiar desde 1993 famoso por la rosa blanca (bánh bao vạc) y los wonton fritos.',
+    location: { name: 'Miss Ly', lat: 15.8785, lng: 108.3275, address: '22 Nguyễn Huệ, Hội An' },
+    tags: ['hoi-an', 'gastronomía', 'recomendación-angela'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Nhà Gỗ Việt',
+    description:
+      'Restaurante en Đà Nẵng junto al río, con vistas al puente del Dragón; probar el arroz con piña.',
+    location: {
+      name: 'Nhà Gỗ Việt',
+      lat: 16.0678,
+      lng: 108.2237,
+      address: '182 Bạch Đằng, Hải Châu, Đà Nẵng',
+    },
+    tags: ['da-nang', 'gastronomía', 'recomendación-angela'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Silk Soirée: TSS Juniors',
+    description: 'Tienda de vestidos de seda a medida en el Old Quarter.',
+    location: {
+      name: 'Silk Soirée: TSS Juniors',
+      lat: 21.0313,
+      lng: 105.8489,
+      address: '16 Hàng Bông, Hoàn Kiếm, Hà Nội',
+    },
+    tags: ['hanoi', 'compras', 'recomendación-angela'],
+    priority: 'optional',
+  },
 ])
 
 export const dailyPlans: DailyPlan[] = [
