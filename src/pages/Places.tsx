@@ -117,6 +117,7 @@ function Places() {
   const handleBackToCities = () => {
     setSelectedCity(null)
     setSearch('')
+    setShowCityFood(false)
   }
 
   const handleEdit = (place: Place) => {
