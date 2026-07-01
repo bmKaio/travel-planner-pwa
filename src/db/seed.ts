@@ -880,6 +880,10 @@ export const places = withTimestamps<Place>([
     tips: [
       'Entrar a las 8:00 para disfrutar sin aglomeraciones',
       'Comprar el bono turístico (~5 €): da acceso a 5 lugares del casco antiguo (casas históricas, salas de congregación y museos).',
+      'Hoi An es una ciudad muy distinta de día y de noche — merece la pena verla en ambos momentos.',
+      'En el atardecer, quedarse junto al puente y el canal (farolillos) antes de que anochezca y se llene de gente.',
+      'Probar los batidos de mango.',
+      'Probar la maracuyá (fruta de la pasión).',
     ],
   },
   {
