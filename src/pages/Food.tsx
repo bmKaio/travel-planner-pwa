@@ -66,11 +66,14 @@ function FoodPage() {
           </h2>
           <div className="space-y-4">
             {cityDishGroups.map((city) => (
-              <div key={city.id}>
-                <h3 className="mb-2 text-xs font-semibold text-gray-700 dark:text-gray-300">
-                  {city.name}
-                </h3>
-                <div className="space-y-2.5">
+              <div
+                key={city.id}
+                className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900"
+              >
+                <div className="border-b border-gray-100 bg-amber-50/60 px-4 py-3 dark:border-slate-800 dark:bg-amber-900/10">
+                  <h3 className="text-base font-bold text-gray-900 dark:text-white">{city.name}</h3>
+                </div>
+                <div className="space-y-2.5 p-4">
                   {(CITY_DISHES[city.id] ?? []).map((dish) => (
                     <DishCard key={dish.name} dish={dish} />
                   ))}
