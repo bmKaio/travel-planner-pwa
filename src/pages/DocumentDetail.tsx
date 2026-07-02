@@ -134,8 +134,12 @@ function DocumentDetail() {
 
   const config = getDocumentTypeConfig(doc.type)
   const TypeIcon = config.icon
+  const bookingUrl =
+    typeof doc.data.bookingUrl === 'string' && doc.data.bookingUrl.startsWith('http')
+      ? doc.data.bookingUrl
+      : null
   const dataEntries = Object.entries(doc.data).filter(
-    ([key, value]) => key !== 'notes' && value !== undefined && value !== ''
+    ([key, value]) => key !== 'notes' && key !== 'bookingUrl' && value !== undefined && value !== ''
   )
   const notes = doc.data.notes as string | undefined
   const eventLabel = formatDocumentEventLabel(doc)
@@ -194,6 +198,18 @@ function DocumentDetail() {
         </div>
 
         <div className="p-4">
+          {bookingUrl && (
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-4 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
+            >
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              Reservar en Booking
+            </a>
+          )}
+
           {eventLabel && (
             <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
               <Calendar className="h-4 w-4" aria-hidden="true" />
