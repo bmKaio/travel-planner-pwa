@@ -186,7 +186,7 @@ function Places() {
         </Suspense>
       )}
       <a
-        href="https://www.google.com/maps/d/u/0/edit?mid=1v-DtRDm2D1V9d58TS67soWFho_ALOJA&usp=sharing"
+        href="https://www.google.com/maps/d/u/0/viewer?mid=1ckFrpfkTl-A6IQQk2G8bapzE5I4xaAc"
         target="_blank"
         rel="noopener noreferrer"
         className="absolute right-3 top-3 z-[1000] flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-md transition-colors hover:bg-gray-50 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"

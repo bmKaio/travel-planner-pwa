@@ -112,7 +112,7 @@ function MorePage() {
             description="Itinerario, alojamientos y lugares en Google Maps."
             onClick={() =>
               window.open(
-                'https://www.google.com/maps/d/u/0/edit?mid=1v-DtRDm2D1V9d58TS67soWFho_ALOJA&usp=sharing',
+                'https://www.google.com/maps/d/u/0/viewer?mid=1ckFrpfkTl-A6IQQk2G8bapzE5I4xaAc',
                 '_blank',
                 'noopener,noreferrer'
               )
