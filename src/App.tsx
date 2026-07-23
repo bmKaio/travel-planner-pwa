@@ -24,6 +24,7 @@ const MorePage = lazy(() => import('./pages/MorePage'))
 const Coffee = lazy(() => import('./pages/Coffee'))
 const Food = lazy(() => import('./pages/Food'))
 const Diary = lazy(() => import('./pages/Diary'))
+const DiaryDetail = lazy(() => import('./pages/DiaryDetail'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 const BASE_NAME = import.meta.env.BASE_URL.replace(/\/$/, '')
@@ -53,6 +54,7 @@ function App() {
             <Route path="/coffee" element={<Coffee />} />
             <Route path="/food" element={<Food />} />
             <Route path="/diary" element={<Diary />} />
+            <Route path="/diary/:date" element={<DiaryDetail />} />
             <Route path="/404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
