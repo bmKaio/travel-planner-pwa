@@ -1443,6 +1443,54 @@ export const places = withTimestamps<Place>([
     category: 'beach',
     location: { name: 'Cua Dai Beach, Hoi An', lat: 15.895, lng: 108.37 },
   },
+  {
+    id: uuid(),
+    name: 'Thang Long Water Puppet Theatre',
+    description:
+      'Espectáculo tradicional de marionetas sobre el agua, con música en directo, en el casco antiguo de Hanói. Una de las formas de teatro popular más representativas del norte de Vietnam.',
+    category: 'other',
+    location: { name: 'Thang Long Water Puppet Theatre, Hanói' },
+    tips: ['Conviene reservar entrada con antelación, sobre todo en fin de semana'],
+  },
+  {
+    id: uuid(),
+    name: 'Gau Coffee & Bakery',
+    description:
+      'Cafetería del Old Quarter de Hanói conocida por su Egg Coffee: café con crema de huevo batido, textura dulce y densa, casi de postre.',
+    category: 'cafe',
+    location: {
+      name: 'Gau Coffee & Bakery, Hanói',
+      googleMapsUrl: 'https://maps.app.goo.gl/Mp69tk5z3RwUH6zs5',
+    },
+    tips: ['Buena opción para un desayuno-postre nada más llegar al Old Quarter'],
+  },
+  {
+    id: uuid(),
+    name: 'Dam Khe Specialty Coffee',
+    description:
+      'Cafetería de especialidad estilo occidental en Tam Coc, muy tranquila, con tostador propio de café robusta local y preparación Phi (cafetera vietnamita por goteo).',
+    category: 'cafe',
+    location: {
+      name: 'Dam Khe Specialty Coffee, Tam Coc',
+      googleMapsUrl: 'https://maps.app.goo.gl/S9iGJC8BcrhWx2Ze7',
+    },
+    tips: [
+      'El Phi drip con robusta local merece la pena',
+      'Se puede comprar café robusta del tostador como souvenir',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Sun Mountain Bar & Restaurant',
+    description:
+      'Restaurante sin grandes pretensiones en Ninh Binh con bocadillos vietnamitas y fideos pho de buena calidad.',
+    category: 'restaurant',
+    location: {
+      name: 'Sun Mountain Bar & Restaurant, Ninh Binh',
+      googleMapsUrl: 'https://maps.app.goo.gl/jZFT6syhiyg3rx7b8',
+    },
+    tips: ['Buena opción para cenar tras un día largo en Trang An o Hang Mua'],
+  },
 ])
 
 export const countryInfo: CountryInfo[] = [
