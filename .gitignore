@@ -31,3 +31,6 @@ dev-dist
 
 # Cache
 *.tsbuildinfo
+
+# Private, non-public content (personal travel diary — never commit/deploy)
+/private/
