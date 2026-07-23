@@ -2056,7 +2056,7 @@ export const recommendations = withTimestamps<Recommendation>([
     description:
       'Recinto imperial UNESCO con más de mil años de historia, sede del poder político vietnamita durante siglos.',
     location: { name: 'Hoàng Thành Thăng Long', lat: 21.0356, lng: 105.8402 },
-    tags: ['hanoi', 'historia', 'unesco', 'recomendación-angela'],
+    tags: ['hanoi', 'historia', 'unesco', 'recomendado-por-amigos'],
     priority: 'if-time',
   },
   {
@@ -2065,7 +2065,7 @@ export const recommendations = withTimestamps<Recommendation>([
     title: 'Ruta en bici por los arrozales de Hoi An',
     description: 'Pedalear entre los arrozales cerca de Tra Que, a poca distancia de la playa.',
     location: { name: 'Tra Que Vegetable Village', lat: 15.9057, lng: 108.3204 },
-    tags: ['hoi-an', 'naturaleza', 'bici', 'recomendación-angela'],
+    tags: ['hoi-an', 'naturaleza', 'bici', 'recomendado-por-amigos'],
     priority: 'optional',
   },
   {
@@ -2079,7 +2079,7 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 105.8517,
       address: '98 Hàng Bạc, Hoàn Kiếm, Hà Nội',
     },
-    tags: ['hanoi', 'gastronomía', 'recomendación-angela'],
+    tags: ['hanoi', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'must-see',
   },
   {
@@ -2094,7 +2094,7 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 105.8494,
       address: '1 Hàng Mành, Hoàn Kiếm, Hà Nội',
     },
-    tags: ['hanoi', 'gastronomía', 'recomendación-angela'],
+    tags: ['hanoi', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'must-see',
   },
   {
@@ -2108,7 +2108,7 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 105.8362,
       address: '31 Ngũ Xã, Trúc Bạch, Ba Đình, Hà Nội',
     },
-    tags: ['hanoi', 'gastronomía', 'recomendación-angela'],
+    tags: ['hanoi', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'if-time',
   },
   {
@@ -2118,7 +2118,7 @@ export const recommendations = withTimestamps<Recommendation>([
     description:
       'Restaurante familiar desde 1993 famoso por la rosa blanca (bánh bao vạc) y los wonton fritos.',
     location: { name: 'Miss Ly', lat: 15.8785, lng: 108.3275, address: '22 Nguyễn Huệ, Hội An' },
-    tags: ['hoi-an', 'gastronomía', 'recomendación-angela'],
+    tags: ['hoi-an', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'must-see',
   },
   {
@@ -2133,7 +2133,7 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 108.2237,
       address: '182 Bạch Đằng, Hải Châu, Đà Nẵng',
     },
-    tags: ['da-nang', 'gastronomía', 'recomendación-angela'],
+    tags: ['da-nang', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'if-time',
   },
   {
@@ -2147,7 +2147,7 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 105.8489,
       address: '16 Hàng Bông, Hoàn Kiếm, Hà Nội',
     },
-    tags: ['hanoi', 'compras', 'recomendación-angela'],
+    tags: ['hanoi', 'compras', 'recomendado-por-amigos'],
     priority: 'optional',
   },
   {
