@@ -8,6 +8,7 @@ import type {
   PackingItem,
   PreTravelSection,
   Traveler,
+  DiaryEntry,
 } from '../types'
 
 export interface DatabaseSchema {
@@ -20,10 +21,11 @@ export interface DatabaseSchema {
   packingItems: PackingItem
   preTravelSections: PreTravelSection
   travelers: Traveler
+  diaryEntries: DiaryEntry
 }
 
 export const DB_NAME = 'TravelPlannerDB'
-export const DB_VERSION = 1
+export const DB_VERSION = 2
 
 export const TABLE_SCHEMAS = {
   documents: 'id, type, title, createdAt, updatedAt',
@@ -35,6 +37,7 @@ export const TABLE_SCHEMAS = {
   packingItems: 'id, category, name, checked, essential',
   preTravelSections: 'id, category, title',
   travelers: 'id, name, passportNumber',
+  diaryEntries: 'date, dayNumber',
 } as const
 
 export type TableName = keyof DatabaseSchema
