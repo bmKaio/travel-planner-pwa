@@ -8,6 +8,7 @@ import {
   Coffee,
   Map,
   Utensils,
+  BookOpen,
 } from 'lucide-react'
 import InsuranceCard from '../components/more/InsuranceCard'
 import EmbassyCard from '../components/more/EmbassyCard'
@@ -93,6 +94,13 @@ function MorePage() {
             title="Guía de Comida"
             description="Platos típicos de Vietnam y especialidades por ciudad."
             onClick={() => navigate('/food')}
+          />
+          <SectionLink
+            to="/diary"
+            icon={<BookOpen className="h-6 w-6" aria-hidden="true" />}
+            title="Diario de viaje"
+            description="Recuerdos, comidas y momentos día a día (privado, requiere importar)."
+            onClick={() => navigate('/diary')}
           />
         </div>
       </section>
