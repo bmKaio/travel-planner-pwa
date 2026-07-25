@@ -2,6 +2,7 @@ import Dexie, { type EntityTable } from 'dexie'
 import type {
   CountryInfo,
   DailyPlan,
+  DiaryEntry,
   DocumentItem,
   ItineraryItem,
   PackingItem,
@@ -25,6 +26,7 @@ export class TravelPlannerDatabase extends Dexie {
   packingItems!: EntityTable<PackingItem, 'id'>
   preTravelSections!: EntityTable<PreTravelSection, 'id'>
   travelers!: EntityTable<Traveler, 'id'>
+  diaryEntries!: EntityTable<DiaryEntry, 'date'>
 
   constructor() {
     super(DB_NAME)

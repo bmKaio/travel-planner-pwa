@@ -99,6 +99,23 @@ export interface DailyPlan {
   summary?: string
 }
 
+export interface DiaryEntry {
+  date: string // YYYY-MM-DD — primary key, one entry per day
+  dayNumber: number // 1..17
+  title: string // e.g. "Día 6 — Ninh Binh"
+  mood?: string
+  weather?: string
+  places: Location[] // "Dónde estuve" — reuses Location (name + optional googleMapsUrl)
+  did?: string // "Qué hice" — free text, line breaks preserved
+  ate?: string // "Qué comí"
+  highlight?: string // "Momento destacado del día"
+  recommendation?: string // "Recomendación del día"
+  notes?: string // "Notas / Reflexiones"
+  photos?: string[]
+  createdAt: Date
+  updatedAt: Date
+}
+
 export interface Recommendation {
   id: string
   type: RecommendationType
@@ -183,3 +200,4 @@ export type DatabaseTableName =
   | 'packingItems'
   | 'preTravelSections'
   | 'travelers'
+  | 'diaryEntries'

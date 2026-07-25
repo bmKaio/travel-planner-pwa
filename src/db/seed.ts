@@ -1443,6 +1443,54 @@ export const places = withTimestamps<Place>([
     category: 'beach',
     location: { name: 'Cua Dai Beach, Hoi An', lat: 15.895, lng: 108.37 },
   },
+  {
+    id: uuid(),
+    name: 'Thang Long Water Puppet Theatre',
+    description:
+      'Espectáculo tradicional de marionetas sobre el agua, con música en directo, en el casco antiguo de Hanói. Una de las formas de teatro popular más representativas del norte de Vietnam.',
+    category: 'other',
+    location: { name: 'Thang Long Water Puppet Theatre, Hanói' },
+    tips: ['Conviene reservar entrada con antelación, sobre todo en fin de semana'],
+  },
+  {
+    id: uuid(),
+    name: 'Gau Coffee & Bakery',
+    description:
+      'Cafetería del Old Quarter de Hanói conocida por su Egg Coffee: café con crema de huevo batido, textura dulce y densa, casi de postre.',
+    category: 'cafe',
+    location: {
+      name: 'Gau Coffee & Bakery, Hanói',
+      googleMapsUrl: 'https://maps.app.goo.gl/Mp69tk5z3RwUH6zs5',
+    },
+    tips: ['Buena opción para un desayuno-postre nada más llegar al Old Quarter'],
+  },
+  {
+    id: uuid(),
+    name: 'Dam Khe Specialty Coffee',
+    description:
+      'Cafetería de especialidad estilo occidental en Tam Coc, muy tranquila, con tostador propio de café robusta local y preparación Phi (cafetera vietnamita por goteo).',
+    category: 'cafe',
+    location: {
+      name: 'Dam Khe Specialty Coffee, Tam Coc',
+      googleMapsUrl: 'https://maps.app.goo.gl/S9iGJC8BcrhWx2Ze7',
+    },
+    tips: [
+      'El Phi drip con robusta local merece la pena',
+      'Se puede comprar café robusta del tostador como souvenir',
+    ],
+  },
+  {
+    id: uuid(),
+    name: 'Sun Mountain Bar & Restaurant',
+    description:
+      'Restaurante sin grandes pretensiones en Ninh Binh con bocadillos vietnamitas y fideos pho de buena calidad.',
+    category: 'restaurant',
+    location: {
+      name: 'Sun Mountain Bar & Restaurant, Ninh Binh',
+      googleMapsUrl: 'https://maps.app.goo.gl/jZFT6syhiyg3rx7b8',
+    },
+    tips: ['Buena opción para cenar tras un día largo en Trang An o Hang Mua'],
+  },
 ])
 
 export const countryInfo: CountryInfo[] = [
@@ -2008,7 +2056,7 @@ export const recommendations = withTimestamps<Recommendation>([
     description:
       'Recinto imperial UNESCO con más de mil años de historia, sede del poder político vietnamita durante siglos.',
     location: { name: 'Hoàng Thành Thăng Long', lat: 21.0356, lng: 105.8402 },
-    tags: ['hanoi', 'historia', 'unesco', 'recomendación-angela'],
+    tags: ['hanoi', 'historia', 'unesco', 'recomendado-por-amigos'],
     priority: 'if-time',
   },
   {
@@ -2017,7 +2065,7 @@ export const recommendations = withTimestamps<Recommendation>([
     title: 'Ruta en bici por los arrozales de Hoi An',
     description: 'Pedalear entre los arrozales cerca de Tra Que, a poca distancia de la playa.',
     location: { name: 'Tra Que Vegetable Village', lat: 15.9057, lng: 108.3204 },
-    tags: ['hoi-an', 'naturaleza', 'bici', 'recomendación-angela'],
+    tags: ['hoi-an', 'naturaleza', 'bici', 'recomendado-por-amigos'],
     priority: 'optional',
   },
   {
@@ -2031,7 +2079,7 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 105.8517,
       address: '98 Hàng Bạc, Hoàn Kiếm, Hà Nội',
     },
-    tags: ['hanoi', 'gastronomía', 'recomendación-angela'],
+    tags: ['hanoi', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'must-see',
   },
   {
@@ -2046,7 +2094,7 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 105.8494,
       address: '1 Hàng Mành, Hoàn Kiếm, Hà Nội',
     },
-    tags: ['hanoi', 'gastronomía', 'recomendación-angela'],
+    tags: ['hanoi', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'must-see',
   },
   {
@@ -2060,7 +2108,7 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 105.8362,
       address: '31 Ngũ Xã, Trúc Bạch, Ba Đình, Hà Nội',
     },
-    tags: ['hanoi', 'gastronomía', 'recomendación-angela'],
+    tags: ['hanoi', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'if-time',
   },
   {
@@ -2070,7 +2118,7 @@ export const recommendations = withTimestamps<Recommendation>([
     description:
       'Restaurante familiar desde 1993 famoso por la rosa blanca (bánh bao vạc) y los wonton fritos.',
     location: { name: 'Miss Ly', lat: 15.8785, lng: 108.3275, address: '22 Nguyễn Huệ, Hội An' },
-    tags: ['hoi-an', 'gastronomía', 'recomendación-angela'],
+    tags: ['hoi-an', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'must-see',
   },
   {
@@ -2085,7 +2133,7 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 108.2237,
       address: '182 Bạch Đằng, Hải Châu, Đà Nẵng',
     },
-    tags: ['da-nang', 'gastronomía', 'recomendación-angela'],
+    tags: ['da-nang', 'gastronomía', 'recomendado-por-amigos'],
     priority: 'if-time',
   },
   {
@@ -2099,8 +2147,348 @@ export const recommendations = withTimestamps<Recommendation>([
       lng: 105.8489,
       address: '16 Hàng Bông, Hoàn Kiếm, Hà Nội',
     },
-    tags: ['hanoi', 'compras', 'recomendación-angela'],
+    tags: ['hanoi', 'compras', 'recomendado-por-amigos'],
     priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Cambiar efectivo al llegar',
+    description:
+      'Cambiar dinero en efectivo nada más aterrizar para pagar en moneda local; muchos restaurantes y mercados no aceptan tarjeta. Llevar billetes pequeños en VND.',
+    tags: ['hanoi', 'dinero', 'consejo'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Comprar tarjeta SIM al llegar',
+    description:
+      'Comprar la tarjeta SIM local en el aeropuerto o en la ciudad nada más llegar; se paga en efectivo, así que conviene tener ya moneda local a mano.',
+    tags: ['hanoi', 'consejo', 'conectividad'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Espectáculo de luces del templo Ngoc Son',
+    description:
+      'El templo Ngoc Son, en el lago Hoan Kiem, organiza espectáculos de luces los sábados por la noche. Requiere reservar ticket con antelación.',
+    tags: ['hanoi', 'consejo', 'cultura'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'place',
+    title: 'Mercado nocturno del Old Quarter, solo domingos',
+    description:
+      'El mercado nocturno del casco antiguo de Hanói solo abre los domingos; conviene planificar la visita a la ciudad para coincidir con ese día.',
+    tags: ['hanoi', 'mercado', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Sacar efectivo antes de ir a Pu Luong',
+    description:
+      'Pu Luong es una zona muy rural sin cajeros automáticos. Sacar el efectivo necesario en Hanói antes de salir hacia la reserva natural.',
+    tags: ['pu-luong', 'dinero', 'consejo'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Tour en moto por Pu Luong con el homestay',
+    description:
+      'Contratar el tour en moto directamente con el homestay: los conductores locales conocen las mejores rutas, paradas y sitios para comer por el camino.',
+    tags: ['pu-luong', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Instalar Grab desde el primer día',
+    description:
+      'La app Grab funciona muy bien en Vietnam y da libertad para moverse sin depender de tours organizados. Instalarla nada más llegar.',
+    tags: ['hanoi', 'ninh-binh', 'transporte', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'place',
+    title: 'Old Town de Hoa Lu de noche, si llueve',
+    description:
+      'Si la lluvia interrumpe los planes en Ninh Binh, el Old Town de Hoa Lu tiene un encanto especial de noche, con la lluvia y las luces del recinto.',
+    tags: ['ninh-binh', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'place',
+    title: 'Museo de Tam Coc',
+    description:
+      'El pequeño museo de Tam Coc merece una visita rápida; los guías locales son muy cercanos y explican bien el contexto de la zona.',
+    tags: ['ninh-binh', 'cultura'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Trang An: ir preparado para la lluvia',
+    description:
+      'En el tour en barca (~3h) la tormenta puede caer en cualquier momento. Llevar funda impermeable para el móvil y bolsas para la mochila.',
+    tags: ['ninh-binh', 'naturaleza', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'place',
+    title: 'Bai Dinh al atardecer',
+    description:
+      'Reservar la tarde para Bai Dinh: la iluminación del recinto al anochecer merece la pena. Hay ascensor hasta la pagoda de 100 m.',
+    tags: ['ninh-binh', 'templo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'El tour N3 de Trang An es largo',
+    description:
+      'El recorrido en barca por Trang An (tour N3) dura unas 3 horas; tenerlo en cuenta al planificar el resto del día. Imprescindible, pero agotador.',
+    tags: ['ninh-binh', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Café de especialidad en Tam Coc',
+    description:
+      'Para un café de especialidad estilo occidental en Tam Coc, el Phi drip con robusta local es una parada recomendable.',
+    tags: ['ninh-binh', 'café'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Taxi desde el hotel en Cat Ba',
+    description:
+      'Para moverse en grupo por la isla de Cat Ba, pedir el taxi desde el hotel es mucho más sencillo que intentar coger uno en el puerto.',
+    tags: ['cat-ba', 'transporte', 'consejo'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'place',
+    title: 'Ambiente nocturno en Cat Ba los viernes',
+    description:
+      'La isla de Cat Ba tiene un ambiente festivo los viernes por la noche, bien distinto de la calma habitual del resto de la semana.',
+    tags: ['cat-ba'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'place',
+    title: 'Lan Ha Bay como alternativa a Halong Bay',
+    description:
+      'Lan Ha Bay ofrece un paisaje tan espectacular como Halong Bay pero con mucho menos turismo y tráfico de barcos.',
+    tags: ['cat-ba', 'lan-ha-bay', 'naturaleza'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Protección solar para el tour de barco en Lan Ha Bay',
+    description:
+      'El tour en barco por Lan Ha Bay ocupa el día completo: llevar protector solar, gorro y agua suficiente. Aprovechar para nadar o hacer kayak cuando el tiempo acompañe.',
+    tags: ['cat-ba', 'lan-ha-bay', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Bún Chả Hàng Quạt',
+    description:
+      'Restaurante de Hanói centrado únicamente en el bún chả; no juzgar por la entrada, la sencillez del sitio contrasta con lo bien que lo preparan.',
+    tags: ['hanoi', 'gastronomía'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Masaje vietnamita como descanso',
+    description:
+      'Un masaje en un spa de hotel (por ejemplo, masaje corporal + facial) es una buena forma de recuperarse tras varios días intensos de viaje.',
+    tags: ['hanoi', 'consejo'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Telecabina de SunWorld para salir de Cat Ba',
+    description:
+      'La telecabina de SunWorld en Cat Ba es una alternativa más rápida y con mejores vistas al trayecto habitual de bus más ferry.',
+    tags: ['cat-ba', 'transporte'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Free tour en español por el Barrio Antiguo de Hanói',
+    description:
+      'Un free tour en español de unas 3,5 horas por el Barrio Antiguo es una buena forma de cerrar la estancia en Hanói con contexto histórico.',
+    tags: ['hanoi', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Combo de entrada a las tumbas imperiales de Hue',
+    description:
+      'El ticket combinado que incluye la tumba de Khai Dinh, la de Tu Duc y la Ciudad Imperial permite repartir la visita en dos días sin agotarse.',
+    tags: ['hue', 'consejo'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Quán Hạnh, comida típica de Hue',
+    description: 'Restaurante recomendable para probar la variedad de la cocina típica de Hue.',
+    tags: ['hue', 'gastronomía'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Paseo en barco por el Río de los Perfumes: prescindible',
+    description:
+      'El paseo turístico en barco por el Río de los Perfumes en Hue no aporta gran cosa; se puede saltar sin perderse nada relevante.',
+    tags: ['hue', 'consejo'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Ciudad Imperial de Hue: usar audioguía móvil',
+    description:
+      'El recinto de la Ciudad Imperial es grande y no está bien señalizado; la audioguía en app móvil ayuda mucho a orientarse.',
+    tags: ['hue', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Paso de Hai Van por la ruta larga',
+    description:
+      'El Paso de Hai Van entre Hue y Hoi An/Da Nang merece hacerse por la ruta larga y con vistas; en moto es todavía mejor.',
+    tags: ['hue', 'hoi-an', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Visitar el casco antiguo de Hoi An a primera hora',
+    description:
+      'Entrar al casco antiguo de Hoi An a primera hora marca una diferencia enorme respecto a las horas de mayor afluencia.',
+    tags: ['hoi-an', 'consejo'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Ticket de los 5 lugares de Hoi An: qué priorizar',
+    description:
+      'Del ticket que da acceso a 5 monumentos del casco antiguo, el Puente Japonés, la Casa de Tan Ky y la Capilla Tran merecen la visita; el Museo de Sa Huynh se puede saltar sin perderse nada.',
+    tags: ['hoi-an', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Dudu Cafe y FeFe Roastery en Hoi An',
+    description:
+      'Buenas paradas para un café de calidad entre visitas al casco antiguo, y una alternativa a la comida a base de arroz y fideos.',
+    tags: ['hoi-an', 'café'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'restaurant',
+    title: 'Chè Bà Thọ, más experiencia que dulce',
+    description:
+      'Puesto tradicional de chè en Hoi An: el valor está en la casa, la señora que lo prepara y el trato cercano. El dulce en sí es pesado; una ración para probar es suficiente.',
+    tags: ['hoi-an', 'gastronomía'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Comprar souvenirs en Hoi An antes de salir',
+    description:
+      'Comprar los souvenirs por la mañana en Hoi An antes de continuar viaje: los precios son mejores que en el aeropuerto y hay más variedad.',
+    tags: ['hoi-an', 'compras', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Llegada de noche a Siem Reap: cenar en el hotel',
+    description:
+      'Si se llega de noche a Siem Reap tras un vuelo y al día siguiente toca madrugar para Angkor, no suele merecer la pena salir a cenar fuera del hotel.',
+    tags: ['siem-reap', 'consejo'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Guía y tuk-tuk para Angkor, contratados con el hotel',
+    description:
+      'Contratar guía y tuk-tuk directamente con el hotel funciona muy bien; las distancias entre templos son enormes y no son viables a pie. Salir temprano (alrededor de las 5:00) evita el calor y las aglomeraciones.',
+    tags: ['siem-reap', 'consejo'],
+    priority: 'must-see',
+  },
+  {
+    id: uuid(),
+    type: 'place',
+    title: 'Street 08, vida nocturna en Siem Reap',
+    description: 'Zona con mucho ambiente nocturno en Siem Reap, buena opción para la noche.',
+    tags: ['siem-reap'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Un día de ticket de Angkor Wat suele ser suficiente',
+    description:
+      'El recinto de Angkor es enorme, pero un segundo día de ticket suele ser más de lo mismo entre templos y ruinas; un día bien planificado suele bastar.',
+    tags: ['siem-reap', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Evitar Siem Reap a mediodía',
+    description:
+      'El calor de mediodía en Siem Reap es difícil de llevar; conviene reservar esas horas para la piscina o el hotel y salir de nuevo solo al atardecer.',
+    tags: ['siem-reap', 'consejo'],
+    priority: 'if-time',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Pedir extensión de checkout en Siem Reap',
+    description:
+      'Muchos hoteles de Siem Reap permiten extender el checkout si se pide con antelación; útil para aprovechar mejor el último día.',
+    tags: ['siem-reap', 'consejo'],
+    priority: 'optional',
+  },
+  {
+    id: uuid(),
+    type: 'activity',
+    title: 'Bus nocturno Siem Reap–Phnom Penh como alternativa al vuelo',
+    description:
+      'El bus nocturno entre Siem Reap y Phnom Penh permite ahorrar una noche de hotel y llegar listo para el aeropuerto a la mañana siguiente.',
+    tags: ['siem-reap', 'transporte', 'consejo'],
+    priority: 'if-time',
   },
 ])
 
