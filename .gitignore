@@ -34,3 +34,6 @@ dev-dist
 
 # Private, non-public content (personal travel diary — never commit/deploy)
 /private/
+
+# Local agent tooling (auto-generated, machine-specific paths)
+.atl/
