@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, master]
+    # feat/viaje-peru: temporary preview deploy; remove when merged into main
+    branches: [main, master, feat/viaje-peru]
   workflow_dispatch:
 
 permissions:
