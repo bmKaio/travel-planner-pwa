@@ -30,6 +30,9 @@ const Diary = lazy(() => import('./pages/Diary'))
 const DiaryDetail = lazy(() => import('./pages/DiaryDetail'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const TripSwitcher = lazy(() => import('./trips/pages/TripSwitcher'))
+const TripShell = lazy(() => import('./trips/pages/TripShell'))
+const TripHomeRedirect = lazy(() => import('./trips/pages/TripHomeRedirect'))
+const TodayPage = lazy(() => import('./trips/pages/TodayPage'))
 
 const BASE_NAME = import.meta.env.BASE_URL.replace(/\/$/, '')
 
@@ -40,6 +43,13 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingRedirect />} />
           <Route path="/trips" element={<TripSwitcher />} />
+
+          {/* v2 trips (new engine). /trips/vietnam-2026 is matched by the static legacy route. */}
+          <Route path="/trips/:tripId" element={<TripShell />}>
+            <Route index element={<TripHomeRedirect />} />
+            <Route path="today" element={<TodayPage />} />
+            <Route path="*" element={<TripHomeRedirect />} />
+          </Route>
 
           {/* Legacy Vietnam trip: frozen pages, paths unchanged except its home. */}
           <Route element={<LegacyTripLayout tripId="vietnam-2026" />}>
