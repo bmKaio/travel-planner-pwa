@@ -1,8 +1,8 @@
-import { BedDouble, Phone } from 'lucide-react'
+import { BedDouble } from 'lucide-react'
 import type { Stay } from '../types'
 import { directionsUrl } from '../domain/mapsUrl'
 import MapsLink from './MapsLink'
-import { tripButtonClass } from './buttonStyles'
+import PhoneLink from './PhoneLink'
 
 function StayCard({ stay }: { stay: Stay }) {
   return (
@@ -20,10 +20,9 @@ function StayCard({ stay }: { stay: Stay }) {
         Cómo llegar al alojamiento
       </MapsLink>
       {stay.phone && (
-        <a href={`tel:${stay.phone}`} className={tripButtonClass('ghost', 'w-full')}>
-          <Phone className="h-[18px] w-[18px]" aria-hidden="true" />
+        <PhoneLink number={stay.phone} variant="ghost" className="w-full">
           Llamar
-        </a>
+        </PhoneLink>
       )}
     </div>
   )
