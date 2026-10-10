@@ -7,7 +7,7 @@ import type { TripContent } from '../types'
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 2,
+  seedVersion: 3,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -53,7 +53,22 @@ const content: TripContent = {
           q: 'Aeropuerto Internacional Jorge Chávez',
         },
       ],
-      eat: [],
+      eat: [
+        {
+          when: 'Qué probar',
+          name: 'Platos típicos de Lima',
+          kind: 'Ceviche, tiradito, causa limeña, anticuchos, ají de gallina, picarones',
+          tip: 'Ceviche: pescado curado en limón. Causa: papa amarilla rellena. Anticuchos: brochetas de corazón de res. Picarones: buñuelos de camote con miel.',
+          q: 'cevicherías Lima',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Panchita',
+          kind: 'Criolla y parrilla · €€ · Miraflores',
+          tip: 'Pide anticuchos y el plato criollo del día. Reserva recomendada; confirma el horario de cena porque llegas tarde.',
+          q: 'Panchita Miraflores Lima',
+        },
+      ],
       see: [],
     },
     {
@@ -93,11 +108,32 @@ const content: TripContent = {
           q: 'Miraflores, Lima',
         },
         {
+          when: 'Comida libre',
+          name: 'Isolina Taberna Peruana',
+          kind: 'Taberna criolla · €€–€€€ · Barranco',
+          tip: 'Pide cau cau, lomo saltado o causa limeña (raciones grandes para compartir). En domingo cierra a las 19:00; conviene reservar.',
+          q: 'Isolina Taberna Peruana Barranco Lima',
+        },
+        {
+          when: 'Comida libre',
+          name: 'Canta Rana',
+          kind: 'Cevichería popular · €€ · Barranco',
+          tip: 'Pide el ceviche con alcaparras y aguacate, o la parihuela. En domingo el horario puede ser reducido: confírmalo.',
+          q: 'Canta Rana Barranco Lima',
+        },
+        {
           when: 'Cena',
           name: 'Cena libre en Miraflores',
           kind: 'Por tu cuenta',
           tip: 'Prueba el ceviche o la causa limeña.',
           q: 'restaurantes Miraflores Lima',
+        },
+        {
+          when: 'Comida o cena libre',
+          name: 'La Mar Cebichería',
+          kind: 'Cevichería · €€€ · Miraflores',
+          tip: 'Pide el ceviche clásico, el mixto o el tiradito. A mediodía suele haber cola: ve a las 12:00 o pasadas las 14:30. Confirma el horario de cena.',
+          q: 'La Mar Cebichería Miraflores Lima',
         },
       ],
       see: [
@@ -198,11 +234,46 @@ const content: TripContent = {
           q: 'Miraflores, Lima',
         },
         {
+          when: 'Qué probar',
+          name: 'Platos típicos de Arequipa',
+          kind: 'Rocoto relleno, chupe de camarones, ocopa, solterito, cuy chactado, queso helado',
+          tip: 'Rocoto relleno: ají picante con carne y queso. Chupe: sopa espesa de camarones de río. Ocopa: papas con salsa de maní. Queso helado: postre de leche con canela.',
+          q: 'picanterías Arequipa',
+        },
+        {
+          when: 'Comida libre',
+          name: 'La Nueva Palomino',
+          kind: 'Picantería tradicional · €€ · Yanahuara',
+          tip: 'Pide chupe de camarones, cuy frito o el almuerzo del día. Sin reservas: llega antes de las 12:00. Solo abre a mediodía.',
+          q: 'La Nueva Palomino Picantería Arequipa',
+        },
+        {
+          when: 'Comida libre',
+          name: 'La Cau Cau II',
+          kind: 'Picantería · €€ · Yanahuara',
+          tip: 'Pide rocoto relleno, torrejitas o ají de calabaza. No acepta reservas y suele llenarse; las picanterías abren a mediodía.',
+          q: 'La Cau Cau II Picantería Arequipa',
+        },
+        {
           when: 'Cena',
           name: 'Cena libre en Arequipa',
           kind: 'Por tu cuenta',
           tip: 'Plato típico de la zona: cuy chactado.',
           q: 'restaurantes centro histórico Arequipa',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Chicha por Gastón Acurio',
+          kind: 'Cocina arequipeña moderna · €€€ · Centro histórico',
+          tip: 'Pide rocoto relleno, ocopa o locro de pecho. Reserva recomendada.',
+          q: 'Chicha por Gastón Acurio Arequipa',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Zig Zag Restaurant',
+          kind: 'Carnes a la piedra volcánica · €€€ · Centro',
+          tip: 'Pide la trilogía de carnes sobre piedra volcánica o el chupe de camarones. Reserva recomendada.',
+          q: 'Zig Zag Restaurant Arequipa',
         },
       ],
       see: [
@@ -281,6 +352,27 @@ const content: TripContent = {
           tip: 'Come ligero: estás por encima de 3.500 m.',
           q: 'Chivay',
         },
+        {
+          when: 'Qué probar',
+          name: 'Platos típicos del Colca',
+          kind: 'Alpaca, trucha, chupe de camarones, cuy, sopa de quinua, Colca Sour',
+          tip: 'Según guías y reseñas; la carta varía. La alpaca es carne magra, a veces servida sobre piedra caliente. El Colca Sour lleva sancayo (fruto de cactus) en vez de limón.',
+          q: 'restaurantes Chivay Colca',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Sama Restaurante Café',
+          kind: 'Cocina peruana · €€ · Chivay',
+          tip: 'Pregunta por el plato regional o de alpaca del día. Está en Chivay: necesitarás taxi desde el alojamiento y confirmar que abre para cenar.',
+          q: 'Sama Restaurante Café Chivay',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Restaurante Maray',
+          kind: 'Parrilla y cervecería · € · Chivay',
+          tip: 'Pide el filete de alpaca servido sobre piedra volcánica (según reseñas). Pregunta el horario antes de ir.',
+          q: 'Restaurante Maray Chivay',
+        },
       ],
       see: [
         {
@@ -357,6 +449,27 @@ const content: TripContent = {
           kind: 'Incluido',
           tip: 'Día largo de carretera: lleva agua y algo de picar.',
           q: 'Chivay',
+        },
+        {
+          when: 'Qué probar',
+          name: 'Platos típicos de Puno',
+          kind: 'Trucha, ceviche de trucha, chairo, pesque de quinua, chicharrón de alpaca, kankacho',
+          tip: 'Trucha del lago Titicaca, frita o a la parrilla. Chairo: sopa espesa de cordero o res con chuño. Pesque: puré de quinua con queso. Kankacho: cordero o lechón al horno.',
+          q: 'restaurantes Puno',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Mojsa Restaurante',
+          kind: 'Cocina andina contemporánea · €€ · Centro',
+          tip: 'Pide trucha (en ceviche o estofada) o lomo fino de alpaca. Reserva recomendada y confirma el horario de cena.',
+          q: 'Mojsa Restaurante Puno',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Balcones de Puno',
+          kind: 'Peruana · €€ · Centro',
+          tip: 'Carta sin verificar: úsalo como alternativa y pregunta por el plato del día.',
+          q: 'Balcones de Puno Restaurante',
         },
       ],
       see: [
@@ -441,6 +554,20 @@ const content: TripContent = {
           tip: 'Tiempo con la comunidad después de comer.',
           q: 'Isla Taquile',
         },
+        {
+          when: 'Cena libre',
+          name: 'La Casona Restaurant',
+          kind: 'Peruana · €€ · Centro',
+          tip: 'Pide la trucha al ajillo o el chicharrón de trucha.',
+          q: 'La Casona Restaurante Puno Calle Lima',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Alma Bar Restaurante',
+          kind: 'Cocina peruana de autor · €€€ · Fuera del centro',
+          tip: 'Trucha y alpaca (platos concretos sin verificar). Ve en taxi; reserva recomendada.',
+          q: 'Alma Bar Restaurante Puno',
+        },
       ],
       see: [
         {
@@ -510,6 +637,20 @@ const content: TripContent = {
           tip: 'Lleva efectivo para la tasa del bus.',
           q: 'Raqchi',
         },
+        {
+          when: 'Qué probar',
+          name: 'Platos típicos de Cusco',
+          kind: 'Cuy al horno, adobo cusqueño, chicharrón con mote, kapchi de setas, sopa de quinua',
+          tip: 'Cuy: en muchos locales hay que encargarlo con antelación. Adobo: cerdo macerado en chicha de jora. Kapchi: guiso cremoso de setas y habas, apto para vegetarianos.',
+          q: 'restaurantes comida cusqueña Cusco',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Chicha por Gastón Acurio',
+          kind: 'Cocina cusqueña moderna · €€€ · Centro',
+          tip: 'Pide cuy a la naranja, trucha o alpaca. Reserva con antelación en temporada alta.',
+          q: 'Chicha por Gastón Acurio Cusco',
+        },
       ],
       see: [
         {
@@ -571,11 +712,25 @@ const content: TripContent = {
           q: 'Cusco',
         },
         {
+          when: 'Comida libre',
+          name: 'Morena Peruvian Kitchen',
+          kind: 'Cocina peruana · €€ · Plaza de Armas',
+          tip: 'Pide alpaca, ceviche o el ossobuco braseado. Reserva recomendada; búscalo por nombre en el mapa.',
+          q: 'Morena Peruvian Kitchen Cusco',
+        },
+        {
           when: 'Cena',
           name: 'Cena libre en Cusco',
           kind: 'Por tu cuenta',
           tip: 'Prueba el lomo saltado o el ají de gallina.',
           q: 'restaurantes centro Cusco',
+        },
+        {
+          when: 'Cena libre',
+          name: 'Pachapapa',
+          kind: 'Cocina cusqueña al horno de leña · €€ · San Blas',
+          tip: 'Pide cuy (encárgalo con 24 h de antelación), kankacho o ají de gallina. Reserva recomendada.',
+          q: 'Pachapapa Cusco San Blas',
         },
       ],
       see: [
@@ -857,6 +1012,13 @@ const content: TripContent = {
           kind: 'Incluido',
           tip: 'Lleva las dos tarjetas de embarque para la conexión en Lima.',
           q: 'Cusco',
+        },
+        {
+          when: 'Comida libre',
+          name: 'MAP Café',
+          kind: 'Peruana creativa · €€€ · Centro',
+          tip: 'Pide el kapchi de setas o el cuy. Reserva recomendada; ten en cuenta la hora del traslado al aeropuerto.',
+          q: 'MAP Café Cusco',
         },
       ],
       see: [],
