@@ -25,24 +25,26 @@ function ChecklistPage() {
     <div className="flex flex-col gap-[18px]">
       <PageHeader title="Checklist" subtitle={trip.name} />
 
-      <div className="flex flex-col gap-2">
-        <p className="text-xl font-bold">
-          {summary.done} de {summary.total} hechas
-        </p>
-        <div
-          role="progressbar"
-          aria-label="Progreso del checklist"
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-valuenow={summary.percent}
-          className="h-2.5 overflow-hidden rounded-full bg-trip-soft"
-        >
+      {summary.total > 0 && (
+        <div className="flex flex-col gap-2">
+          <p className="text-xl font-bold">
+            {summary.done} de {summary.total} hechas
+          </p>
           <div
-            className="h-2.5 rounded-full bg-trip-done"
-            style={{ width: `${summary.percent}%` }}
-          />
+            role="progressbar"
+            aria-label="Progreso del checklist"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={summary.percent}
+            className="h-2.5 overflow-hidden rounded-full bg-trip-soft"
+          >
+            <div
+              className="h-2.5 rounded-full bg-trip-done"
+              style={{ width: `${summary.percent}%` }}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {error && (
         <TripStatusMessage

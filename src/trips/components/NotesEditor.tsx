@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Lock } from 'lucide-react'
 
 interface NotesEditorProps {
@@ -6,27 +6,66 @@ interface NotesEditorProps {
   onSave: (text: string) => Promise<void>
 }
 
-/** Saves on blur. Mount it once the notes have loaded (initial state comes from props). */
+type SaveStatus = 'idle' | 'saved' | 'error'
+
+/**
+ * Saves on blur, and also when the page is hidden/closed or the editor unmounts: React does not
+ * fire onBlur for a focused textarea that unmounts, so those paths would lose typed text.
+ * Mount it once the notes have loaded (initial state comes from props).
+ */
 function NotesEditor({ initialText, onSave }: NotesEditorProps) {
   const [text, setText] = useState(initialText)
-  const [saved, setSaved] = useState(initialText)
-  const [status, setStatus] = useState<'idle' | 'saved' | 'error'>('idle')
+  const [status, setStatus] = useState<SaveStatus>('idle')
+  const textRef = useRef(initialText)
+  const savedRef = useRef(initialText)
+  const onSaveRef = useRef(onSave)
+
+  useEffect(() => {
+    onSaveRef.current = onSave
+  }, [onSave])
+
+  /** Saves the latest text if it differs from the last saved one. Resolves false if nothing to do. */
+  const flush = useCallback(async (): Promise<boolean> => {
+    const toSave = textRef.current
+    const previous = savedRef.current
+    if (toSave === previous) return false
+    savedRef.current = toSave // mark in flight so overlapping triggers do not save twice
+    try {
+      await onSaveRef.current(toSave)
+      return true
+    } catch (error) {
+      if (savedRef.current === toSave) savedRef.current = previous // allow a retry
+      throw error
+    }
+  }, [])
+
+  const flushWithStatus = useCallback(() => {
+    flush()
+      .then((didSave) => {
+        if (didSave) setStatus('saved')
+      })
+      .catch(() => setStatus('error'))
+  }, [flush])
+
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === 'hidden') flushWithStatus()
+    }
+    window.addEventListener('pagehide', flushWithStatus)
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => {
+      window.removeEventListener('pagehide', flushWithStatus)
+      document.removeEventListener('visibilitychange', handleVisibility)
+      // Unmounting: there is no UI left to report a failure on.
+      flush().catch(() => undefined)
+    }
+  }, [flush, flushWithStatus])
 
   const handleChange = (next: string) => {
+    textRef.current = next
     setText(next)
     // The old "saved" confirmation no longer describes what is on screen.
     setStatus('idle')
-  }
-
-  const handleBlur = () => {
-    if (text === saved) return
-    const toSave = text
-    onSave(toSave)
-      .then(() => {
-        setSaved(toSave)
-        setStatus('saved')
-      })
-      .catch(() => setStatus('error'))
   }
 
   return (
@@ -43,7 +82,7 @@ function NotesEditor({ initialText, onSave }: NotesEditorProps) {
         rows={4}
         value={text}
         onChange={(event) => handleChange(event.target.value)}
-        onBlur={handleBlur}
+        onBlur={flushWithStatus}
         placeholder="Escribe aquí lo que no quieras olvidar"
         className="resize-y rounded-2xl border-[1.5px] border-trip-line bg-trip-card p-3.5 text-base text-trip-ink"
       />
