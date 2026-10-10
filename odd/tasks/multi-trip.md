@@ -5656,27 +5656,34 @@ Report the results and remind the user of the following:
 
 ## Progress
 
-| ID  | Task                                               | Status  |
-| --- | -------------------------------------------------- | ------- |
-| T01 | Test infrastructure, types, registry, trip status  | pending |
-| T02 | Landing, trip route resolution, last-opened trip   | pending |
-| T03 | Today view logic and date labels                   | pending |
-| T04 | Google Maps URL helpers                            | pending |
-| T05 | TripsDB and versioned content sync                 | pending |
-| T06 | Peru content, loader, offline-safe loading         | pending |
-| T07 | Private trip data import                           | pending |
-| T08 | Checklist summary and data hooks                   | pending |
-| T09 | Switcher, landing, per-trip URLs, Pages deep links | pending |
-| T10 | v2 shell and "Hoy" screen                          | pending |
-| T11 | "Itinerario" screen                                | pending |
-| T12 | "Checklist" screen with notes                      | pending |
-| T13 | "Ayuda" screen with private import                 | pending |
-| T14 | Documentation and close-out                        | pending |
+| ID  | Task                                               | Status                    |
+| --- | -------------------------------------------------- | ------------------------- |
+| T01 | Test infrastructure, types, registry, trip status  | done (8a9371e2)           |
+| T02 | Landing, trip route resolution, last-opened trip   | done (f4618c4c)           |
+| T03 | Today view logic and date labels                   | done (efa61950)           |
+| T04 | Google Maps URL helpers                            | done (d5ed485e)           |
+| T05 | TripsDB and versioned content sync                 | done (8315fabf)           |
+| T06 | Peru content, loader, offline-safe loading         | done (a1f42112)           |
+| T07 | Private trip data import                           | done (cae32a2f)           |
+| T08 | Checklist summary and data hooks                   | done (c0086b8d)           |
+| T09 | Switcher, landing, per-trip URLs, Pages deep links | done (8fd5837f)           |
+| T10 | v2 shell and "Hoy" screen                          | done (a6cc7df6)           |
+| T11 | "Itinerario" screen                                | done (fc0d9aa4, 65b381c1) |
+| T12 | "Checklist" screen with notes                      | done (10a6ab2d, 420fb27d) |
+| T13 | "Ayuda" screen with private import                 | done (244396a3)           |
+| T14 | Documentation and close-out                        | done (d49b055b, 9d085a14) |
 
 ## Verification evidence
 
-_(empty — fill in per task: command, observed result, date)_
+Summary (per-task reports were kept in a temporary, git-ignored SDD workspace and removed after the final review):
+
+- `npm test`: 106 passed (15 files) at 9d085a14 (2026-10-10/11).
+- `npm run lint`, `npm run format:check`, `npm run build`: clean at each task commit (reported by implementers, reviewed per task).
+- Every task passed an independent spec + quality review; T11, T12, T14 needed one fix round each (empty-stay copy shared; notes flush on unmount/pagehide; stale CLAUDE.md sentences).
+- Final whole-branch review (most capable model): "with fixes" → one fix wave (reload-based error recovery + top-level boundary, StayCard PhoneLink, useNow refresh on resume, error role=alert, label-in-name) at 1d21f6e6..89dcb7ad, re-reviewed clean.
+- `vite preview` + curl: app HTML served for `/`, `/trips`, all four Peru screens, Vietnam home and diary.
+- **Not verified:** real browser checks (landing redirect behaviour, screens rendering, offline reload with Geist, GitHub Pages cold deep link). Pending on the user's device after a push.
 
 ## Next step
 
-The user reviews this plan and chooses an execution method (subagent-driven or native). Before T06, ask the open content decision: may hotel names appear in public content? The default is no. The Peru trip starts on **17 Oct 2026**, so T01–T10 (data plus the Hoy screen) are the minimum useful slice. Push to preview only when the user asks.
+All tasks T01–T14 implemented and reviewed (subagent-driven). Hotel names kept out of public content (controller ruling; user can revisit). Final review passed after one fix wave. Remaining: the user decides on push (redeploys the live preview), verifies on a phone, imports `private/peru-2026-private.json` on each device, and on merge to `main` removes the `feat/viaje-peru` deploy trigger and environment branch policy. Open user decisions: app name/title still say Vietnam (manifest, index.html); `/404` renders inside the Vietnam layout; `docs/peru/` not gitignored; `public/icon-192.png` missing (pre-existing).
