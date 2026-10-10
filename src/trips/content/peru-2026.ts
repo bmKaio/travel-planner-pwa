@@ -1,0 +1,864 @@
+import type { TripContent } from '../types'
+
+// Public content for the Peru trip (17–28 Oct 2026), from docs/peru/itinerario-peru.md.
+// Times: flights are exact (local time); every other time is an approximate slot because the
+// dossier gives none. Hotel names, phones and agency contacts are private (JSON import only).
+// Bump seedVersion on every change so installed devices resync.
+
+const content: TripContent = {
+  tripId: 'peru-2026',
+  seedVersion: 1,
+  // Verify these numbers before travelling.
+  emergency: {
+    label: 'Emergencias en Perú',
+    number: '105',
+    description: 'Policía: 105 · Ambulancia (SAMU): 106 · Bomberos: 116.',
+  },
+  days: [
+    {
+      date: '2026-10-17',
+      title: 'Madrid → Lima',
+      cities: ['Madrid', 'Lima'],
+      stay: {
+        name: 'Hotel en Lima',
+        meta: 'Miraflores · check-in desde 15:00',
+        q: 'Miraflores, Lima',
+      },
+      legs: [
+        {
+          mode: 'plane',
+          title: 'Vuelo Madrid → Lima',
+          meta: 'Sale 13:20 · llega 18:20 (hora local)',
+          q: 'Aeropuerto Internacional Jorge Chávez',
+        },
+        {
+          mode: 'car',
+          title: 'Traslado al hotel',
+          meta: 'Incluido en el circuito',
+          from: 'Aeropuerto Internacional Jorge Chávez',
+          to: 'Miraflores, Lima',
+        },
+      ],
+      plan: [
+        {
+          t: '13:20',
+          title: 'Vuelo a Lima',
+          place: 'Aeropuerto de Madrid-Barajas',
+          q: 'Aeropuerto Adolfo Suárez Madrid-Barajas',
+        },
+        {
+          t: '18:20',
+          title: 'Llegada a Lima y traslado al hotel',
+          place: 'Aeropuerto Jorge Chávez',
+          q: 'Aeropuerto Internacional Jorge Chávez',
+        },
+      ],
+      eat: [],
+      see: [],
+    },
+    {
+      date: '2026-10-18',
+      title: 'Lima: Barranco, centro histórico y Museo Larco',
+      cities: ['Lima'],
+      stay: { name: 'Hotel en Lima', meta: 'Miraflores · segunda noche', q: 'Miraflores, Lima' },
+      legs: [],
+      plan: [
+        {
+          t: '09:00',
+          title: 'Barranco y Puente de los Suspiros',
+          place: 'Barranco',
+          q: 'Puente de los Suspiros, Barranco, Lima',
+        },
+        {
+          t: '11:00',
+          title: 'Centro histórico: Plaza de Armas, Catedral y Casa Aliaga',
+          place: 'Plaza de Armas de Lima',
+          q: 'Plaza de Armas de Lima',
+        },
+        {
+          t: '13:00',
+          title: 'Clase express de pisco sour con mini causitas',
+          place: 'Lima',
+          q: 'Centro de Lima',
+        },
+        { t: '15:00', title: 'Museo Larco', place: 'Pueblo Libre', q: 'Museo Larco, Lima' },
+        { t: '17:00', title: 'Tarde libre', place: 'Miraflores', q: 'Miraflores, Lima' },
+      ],
+      eat: [
+        {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Es la única comida incluida hoy.',
+          q: 'Miraflores, Lima',
+        },
+        {
+          when: 'Cena',
+          name: 'Cena libre en Miraflores',
+          kind: 'Por tu cuenta',
+          tip: 'Prueba el ceviche o la causa limeña.',
+          q: 'restaurantes Miraflores Lima',
+        },
+      ],
+      see: [
+        {
+          name: 'Puente de los Suspiros',
+          desc: 'Barrio bohemio de Barranco y arte urbano.',
+          dur: 'Visita guiada',
+          q: 'Puente de los Suspiros, Barranco, Lima',
+        },
+        {
+          name: 'Plaza de Armas y Catedral',
+          desc: 'La Catedral cierra los domingos por la mañana: confirmar el orden de la visita.',
+          dur: 'Visita guiada',
+          q: 'Catedral de Lima',
+        },
+        {
+          name: 'Casa Aliaga',
+          desc: 'Casona colonial en el centro histórico.',
+          dur: 'Visita guiada',
+          q: 'Casa Aliaga, Lima',
+        },
+        {
+          name: 'Museo Larco',
+          desc: 'Colección de arte precolombino.',
+          dur: 'Visita guiada',
+          q: 'Museo Larco, Lima',
+        },
+      ],
+    },
+    {
+      date: '2026-10-19',
+      title: 'Lima → Arequipa, la Ciudad Blanca',
+      cities: ['Lima', 'Arequipa'],
+      stay: {
+        name: 'Hotel en Arequipa',
+        meta: 'Centro histórico · check-in desde 15:00',
+        q: 'Centro histórico de Arequipa',
+      },
+      legs: [
+        {
+          mode: 'plane',
+          title: 'Vuelo Lima → Arequipa',
+          meta: 'Sale 10:30 · llega 12:00',
+          q: 'Aeropuerto Internacional Alfredo Rodríguez Ballón',
+        },
+      ],
+      plan: [
+        {
+          t: '07:30',
+          title: 'Traslado al aeropuerto',
+          place: 'Aeropuerto Jorge Chávez',
+          q: 'Aeropuerto Internacional Jorge Chávez',
+        },
+        {
+          t: '10:30',
+          title: 'Vuelo a Arequipa',
+          place: 'Aeropuerto Jorge Chávez',
+          q: 'Aeropuerto Internacional Jorge Chávez',
+        },
+        {
+          t: '15:00',
+          title: 'Miradores de Carmen Alto y Yanahuara',
+          place: 'Yanahuara',
+          q: 'Mirador de Yanahuara, Arequipa',
+        },
+        {
+          t: '16:30',
+          title: 'Plaza de Armas de Arequipa',
+          place: 'Centro histórico',
+          q: 'Plaza de Armas de Arequipa',
+        },
+        {
+          t: '17:30',
+          title: 'Monasterio de Santa Catalina',
+          place: 'Centro histórico',
+          q: 'Monasterio de Santa Catalina, Arequipa',
+        },
+      ],
+      eat: [
+        {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Sal con tiempo hacia el aeropuerto.',
+          q: 'Miraflores, Lima',
+        },
+        {
+          when: 'Cena',
+          name: 'Cena libre en Arequipa',
+          kind: 'Por tu cuenta',
+          tip: 'Plato típico de la zona: cuy chactado.',
+          q: 'restaurantes centro histórico Arequipa',
+        },
+      ],
+      see: [
+        {
+          name: 'Mirador de Yanahuara',
+          desc: 'Arcos de sillar con vistas al Misti.',
+          dur: 'Visita guiada',
+          q: 'Mirador de Yanahuara, Arequipa',
+        },
+        {
+          name: 'Mirador de Carmen Alto',
+          desc: 'Andenes y vistas de los volcanes.',
+          dur: 'Visita guiada',
+          q: 'Mirador de Carmen Alto, Arequipa',
+        },
+        {
+          name: 'Monasterio de Santa Catalina',
+          desc: 'Ciudadela colonial dentro de la ciudad.',
+          dur: 'Visita guiada',
+          q: 'Monasterio de Santa Catalina, Arequipa',
+        },
+      ],
+    },
+    {
+      date: '2026-10-20',
+      title: 'Arequipa → Cañón del Colca',
+      cities: ['Arequipa', 'Patapampa', 'Chivay', 'Yanque'],
+      stay: {
+        name: 'Hotel en el valle del Colca',
+        meta: 'Yanque · check-in desde 15:00',
+        q: 'Yanque, Caylloma',
+      },
+      legs: [
+        {
+          mode: 'bus',
+          title: 'Arequipa → Chivay',
+          meta: 'Bus del circuito · carretera de alta montaña',
+          from: 'Arequipa',
+          to: 'Chivay',
+        },
+      ],
+      plan: [
+        { t: '08:00', title: 'Salida hacia el Colca', place: 'Arequipa', q: 'Arequipa' },
+        {
+          t: '09:30',
+          title: 'Reserva Nacional de Salinas y Aguada Blanca',
+          place: 'Pampa de Toccra',
+          q: 'Reserva Nacional de Salinas y Aguada Blanca',
+        },
+        {
+          t: '11:30',
+          title: 'Mirador de Patapampa (4.910 m)',
+          place: 'Patapampa',
+          q: 'Mirador de los Volcanes Patapampa',
+        },
+        { t: '13:30', title: 'Llegada a Chivay y almuerzo', place: 'Chivay', q: 'Chivay' },
+      ],
+      eat: [
+        {
+          when: 'Almuerzo',
+          name: 'Almuerzo en Chivay',
+          kind: 'Incluido',
+          tip: 'Come ligero: estás por encima de 3.500 m.',
+          q: 'Chivay',
+        },
+      ],
+      see: [
+        {
+          name: 'Salinas y Aguada Blanca',
+          desc: 'Alpacas y vistas del Misti, Pichu Pichu y Chachani.',
+          dur: 'Parada en ruta',
+          q: 'Reserva Nacional de Salinas y Aguada Blanca',
+        },
+        {
+          name: 'Mirador de Patapampa',
+          desc: 'El punto más alto del viaje (4.910 m). Camina despacio.',
+          dur: 'Parada en ruta',
+          q: 'Mirador de los Volcanes Patapampa',
+        },
+      ],
+    },
+    {
+      date: '2026-10-21',
+      title: 'Cañón del Colca → Puno',
+      cities: ['Cruz del Cóndor', 'Maca', 'Lagunillas', 'Puno'],
+      stay: {
+        name: 'Hotel en Puno',
+        meta: 'Hotel pendiente de confirmar · check-in desde 15:00',
+        q: 'Puno',
+      },
+      legs: [
+        {
+          mode: 'bus',
+          title: 'Colca → Puno',
+          meta: 'Bus del circuito · parada en Lagunillas',
+          from: 'Chivay',
+          to: 'Puno',
+        },
+      ],
+      plan: [
+        {
+          t: '07:00',
+          title: 'Cruz del Cóndor',
+          place: 'Cañón del Colca',
+          q: 'Mirador Cruz del Cóndor',
+        },
+        {
+          t: '09:30',
+          title: 'Pueblos de Pinchollo, Wayra Punku y Maca',
+          place: 'Valle del Colca',
+          q: 'Maca, Caylloma',
+        },
+        { t: '12:30', title: 'Almuerzo', place: 'Valle del Colca', q: 'Chivay' },
+        {
+          t: '15:00',
+          title: 'Laguna de Lagunillas',
+          place: 'Ruta a Puno',
+          q: 'Laguna Lagunillas, Puno',
+        },
+        { t: '18:00', title: 'Llegada a Puno', place: 'Puno', q: 'Puno' },
+      ],
+      eat: [
+        {
+          when: 'Almuerzo',
+          name: 'Almuerzo en el valle del Colca',
+          kind: 'Incluido',
+          tip: 'Día largo de carretera: lleva agua y algo de picar.',
+          q: 'Chivay',
+        },
+      ],
+      see: [
+        {
+          name: 'Cruz del Cóndor',
+          desc: 'Observación de cóndores y vistas del cañón.',
+          dur: 'Visita guiada',
+          q: 'Mirador Cruz del Cóndor',
+        },
+        {
+          name: 'Maca',
+          desc: 'Pueblo del valle con iglesia colonial.',
+          dur: 'Parada en ruta',
+          q: 'Maca, Caylloma',
+        },
+        {
+          name: 'Laguna de Lagunillas',
+          desc: 'Laguna del altiplano camino de Puno.',
+          dur: 'Parada en ruta',
+          q: 'Laguna Lagunillas, Puno',
+        },
+      ],
+    },
+    {
+      date: '2026-10-22',
+      title: 'Lago Titicaca: Uros y Taquile',
+      cities: ['Puno', 'Uros', 'Taquile'],
+      stay: {
+        name: 'Hotel en Puno',
+        meta: 'Hotel pendiente de confirmar · segunda noche',
+        q: 'Puno',
+      },
+      legs: [
+        {
+          mode: 'boat',
+          title: 'Puno → Uros y Taquile',
+          meta: 'Barco del circuito',
+          q: 'Islas flotantes de los Uros',
+        },
+      ],
+      plan: [
+        {
+          t: '08:00',
+          title: 'Islas flotantes de los Uros',
+          place: 'Lago Titicaca',
+          q: 'Islas flotantes de los Uros',
+        },
+        {
+          t: '09:30',
+          title: 'Paseo en balsa de totora',
+          place: 'Uros',
+          q: 'Islas flotantes de los Uros',
+        },
+        { t: '11:30', title: 'Isla de Taquile', place: 'Lago Titicaca', q: 'Isla Taquile' },
+        { t: '13:00', title: 'Almuerzo en la isla', place: 'Taquile', q: 'Isla Taquile' },
+        { t: '17:00', title: 'Regreso al hotel', place: 'Puno', q: 'Puno' },
+      ],
+      eat: [
+        {
+          when: 'Almuerzo',
+          name: 'Almuerzo en Taquile',
+          kind: 'Incluido',
+          tip: 'Tiempo con la comunidad después de comer.',
+          q: 'Isla Taquile',
+        },
+      ],
+      see: [
+        {
+          name: 'Islas de los Uros',
+          desc: 'Islas hechas de totora, con paseo en balsa.',
+          dur: 'Visita guiada',
+          q: 'Islas flotantes de los Uros',
+        },
+        {
+          name: 'Isla de Taquile',
+          desc: 'Técnica textil declarada Patrimonio de la Humanidad por la UNESCO.',
+          dur: 'Visita guiada',
+          q: 'Isla Taquile',
+        },
+      ],
+    },
+    {
+      date: '2026-10-23',
+      title: 'Puno → Cusco por la Ruta del Sur',
+      cities: ['Puno', 'Pucará', 'La Raya', 'Raqchi', 'Andahuaylillas', 'Cusco'],
+      stay: { name: 'Hotel en Cusco', meta: 'Centro · check-in desde 15:00', q: 'Cusco' },
+      legs: [
+        {
+          mode: 'bus',
+          title: 'Puno → Cusco',
+          meta: 'Bus turístico · tasa de 0,5 $ por persona (pago directo)',
+          from: 'Puno',
+          to: 'Cusco',
+        },
+      ],
+      plan: [
+        { t: '07:00', title: 'Salida de Puno', place: 'Puno', q: 'Puno' },
+        {
+          t: '08:30',
+          title: 'Pucará: museo, tradición y cultura',
+          place: 'Pucará',
+          q: 'Pucará, Puno',
+        },
+        { t: '11:00', title: 'Paso de La Raya (4.335 m)', place: 'La Raya', q: 'Abra La Raya' },
+        {
+          t: '13:00',
+          title: 'Raqchi y Templo de Wiracocha',
+          place: 'Raqchi',
+          q: 'Complejo arqueológico de Raqchi',
+        },
+        { t: '14:00', title: 'Almuerzo', place: 'Ruta del Sur', q: 'Raqchi' },
+        {
+          t: '15:30',
+          title: 'Iglesia de Andahuaylillas',
+          place: 'Andahuaylillas',
+          q: 'Iglesia de San Pedro Apóstol de Andahuaylillas',
+        },
+        { t: '17:30', title: 'Llegada a Cusco', place: 'Cusco', q: 'Cusco' },
+      ],
+      eat: [
+        {
+          when: 'Almuerzo',
+          name: 'Almuerzo en la Ruta del Sur',
+          kind: 'Incluido',
+          tip: 'Lleva efectivo para la tasa del bus.',
+          q: 'Raqchi',
+        },
+      ],
+      see: [
+        {
+          name: 'Pucará',
+          desc: 'Museo y tradición alfarera.',
+          dur: 'Parada en ruta',
+          q: 'Pucará, Puno',
+        },
+        {
+          name: 'Paso de La Raya',
+          desc: 'Nevado Chimboya y los Andes a 4.335 m.',
+          dur: 'Parada en ruta',
+          q: 'Abra La Raya',
+        },
+        {
+          name: 'Raqchi',
+          desc: 'Templo de Wiracocha.',
+          dur: 'Visita guiada',
+          q: 'Complejo arqueológico de Raqchi',
+        },
+        {
+          name: 'Andahuaylillas',
+          desc: 'Iglesia barroca, la "Capilla Sixtina de América".',
+          dur: 'Visita guiada',
+          q: 'Iglesia de San Pedro Apóstol de Andahuaylillas',
+        },
+      ],
+    },
+    {
+      date: '2026-10-24',
+      title: 'Cusco',
+      cities: ['Cusco'],
+      stay: { name: 'Hotel en Cusco', meta: 'Centro · segunda noche', q: 'Cusco' },
+      legs: [],
+      plan: [
+        {
+          t: '09:00',
+          title: 'Mercado de San Pedro',
+          place: 'Cusco',
+          q: 'Mercado de San Pedro, Cusco',
+        },
+        { t: '10:00', title: 'Koricancha', place: 'Cusco', q: 'Qorikancha, Cusco' },
+        { t: '11:30', title: 'Fortaleza de Sacsayhuamán', place: 'Cusco', q: 'Sacsayhuamán' },
+        { t: '12:30', title: 'Centro ceremonial de Kenko', place: 'Cusco', q: 'Qenqo, Cusco' },
+        {
+          t: '13:30',
+          title: 'Catedral de Cusco',
+          place: 'Plaza de Armas',
+          q: 'Catedral del Cusco',
+        },
+        { t: '15:00', title: 'Tarde libre', place: 'Cusco', q: 'Plaza de Armas del Cusco' },
+      ],
+      eat: [
+        {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Tour de medio día: la tarde es libre.',
+          q: 'Cusco',
+        },
+        {
+          when: 'Cena',
+          name: 'Cena libre en Cusco',
+          kind: 'Por tu cuenta',
+          tip: 'Prueba el lomo saltado o el ají de gallina.',
+          q: 'restaurantes centro Cusco',
+        },
+      ],
+      see: [
+        {
+          name: 'Mercado de San Pedro',
+          desc: 'Mercado central de la ciudad.',
+          dur: 'Visita guiada',
+          q: 'Mercado de San Pedro, Cusco',
+        },
+        {
+          name: 'Koricancha',
+          desc: 'Sincretismo inca y español.',
+          dur: 'Visita guiada',
+          q: 'Qorikancha, Cusco',
+        },
+        {
+          name: 'Sacsayhuamán',
+          desc: 'Fortaleza inca sobre la ciudad.',
+          dur: 'Visita guiada',
+          q: 'Sacsayhuamán',
+        },
+        {
+          name: 'Catedral de Cusco',
+          desc: 'Arte colonial y orfebrería.',
+          dur: 'Visita guiada',
+          q: 'Catedral del Cusco',
+        },
+      ],
+    },
+    {
+      date: '2026-10-25',
+      title: 'Valle Sagrado → Aguas Calientes',
+      cities: ['Cusco', 'Chinchero', 'Moray', 'Ollantaytambo', 'Aguas Calientes'],
+      stay: {
+        name: 'Hotel en Aguas Calientes',
+        meta: 'Hotel pendiente de confirmar · solo equipaje de mano',
+        q: 'Aguas Calientes',
+      },
+      legs: [
+        {
+          mode: 'bus',
+          title: 'Cusco → Ollantaytambo',
+          meta: 'Bus del circuito por el Valle Sagrado',
+          from: 'Cusco',
+          to: 'Ollantaytambo',
+        },
+        {
+          mode: 'train',
+          title: 'Ollantaytambo → Aguas Calientes',
+          meta: 'Tren · máximo 5 kg de equipaje de mano por persona',
+          from: 'Estación de tren de Ollantaytambo',
+          to: 'Aguas Calientes',
+          travel: 'transit',
+        },
+      ],
+      plan: [
+        {
+          t: '08:00',
+          title: 'Chinchero: tejidos y complejo arqueológico',
+          place: 'Chinchero',
+          q: 'Chinchero',
+        },
+        { t: '10:30', title: 'Terrazas de Moray', place: 'Moray', q: 'Moray, Maras' },
+        {
+          t: '13:00',
+          title: 'Almuerzo en el Valle Sagrado',
+          place: 'Valle Sagrado',
+          q: 'Urubamba',
+        },
+        {
+          t: '15:00',
+          title: 'Fortaleza de Ollantaytambo',
+          place: 'Ollantaytambo',
+          q: 'Ollantaytambo',
+        },
+        {
+          t: '17:30',
+          title: 'Tren a Aguas Calientes',
+          place: 'Estación de Ollantaytambo',
+          q: 'Estación de tren de Ollantaytambo',
+        },
+        {
+          t: '20:00',
+          title: 'Cena en Aguas Calientes',
+          place: 'Aguas Calientes',
+          q: 'Aguas Calientes',
+        },
+      ],
+      eat: [
+        {
+          when: 'Almuerzo',
+          name: 'Almuerzo en el Valle Sagrado',
+          kind: 'Incluido',
+          tip: 'Deja la maleta grande en el hotel de Cusco.',
+          q: 'Urubamba',
+        },
+        {
+          when: 'Cena',
+          name: 'Cena en Aguas Calientes',
+          kind: 'Incluida',
+          tip: 'Acuéstate pronto: mañana toca Machu Picchu.',
+          q: 'Aguas Calientes',
+        },
+      ],
+      see: [
+        {
+          name: 'Chinchero',
+          desc: 'Tejidos tradicionales y complejo arqueológico.',
+          dur: 'Visita guiada',
+          q: 'Chinchero',
+        },
+        {
+          name: 'Moray',
+          desc: 'Terrazas agrícolas incas.',
+          dur: 'Visita guiada',
+          q: 'Moray, Maras',
+        },
+        {
+          name: 'Ollantaytambo',
+          desc: 'Fortaleza inca con templos y calles originales.',
+          dur: 'Visita guiada',
+          q: 'Ollantaytambo',
+        },
+      ],
+    },
+    {
+      date: '2026-10-26',
+      title: 'Machu Picchu → Cusco',
+      cities: ['Aguas Calientes', 'Machu Picchu', 'Ollantaytambo', 'Cusco'],
+      stay: {
+        name: 'Hotel en Cusco',
+        meta: 'Centro · última noche · check-in desde 15:00',
+        q: 'Cusco',
+      },
+      legs: [
+        {
+          mode: 'bus',
+          title: 'Aguas Calientes → Machu Picchu',
+          meta: 'Bus de subida',
+          q: 'Machu Picchu',
+        },
+        {
+          mode: 'train',
+          title: 'Aguas Calientes → Ollantaytambo',
+          meta: 'Tren de regreso',
+          from: 'Aguas Calientes',
+          to: 'Estación de tren de Ollantaytambo',
+          travel: 'transit',
+        },
+        {
+          mode: 'car',
+          title: 'Ollantaytambo → Cusco',
+          meta: 'Traslado por carretera',
+          from: 'Ollantaytambo',
+          to: 'Cusco',
+        },
+      ],
+      plan: [
+        {
+          t: '07:00',
+          title: 'Bus de subida a Machu Picchu',
+          place: 'Aguas Calientes',
+          q: 'Aguas Calientes',
+        },
+        {
+          t: '08:00',
+          title: 'Visita guiada a Machu Picchu',
+          place: 'Machu Picchu',
+          q: 'Machu Picchu',
+        },
+        {
+          t: '12:30',
+          title: 'Almuerzo en Aguas Calientes',
+          place: 'Aguas Calientes',
+          q: 'Aguas Calientes',
+        },
+        {
+          t: '15:00',
+          title: 'Tren de regreso y traslado a Cusco',
+          place: 'Aguas Calientes',
+          q: 'Estación de tren de Machu Picchu',
+        },
+        { t: '20:30', title: 'Cena de despedida', place: 'Cusco', q: 'Cusco' },
+      ],
+      eat: [
+        {
+          when: 'Almuerzo',
+          name: 'Almuerzo en Aguas Calientes',
+          kind: 'Incluido',
+          tip: 'No se puede subir comida a Machu Picchu.',
+          q: 'Aguas Calientes',
+        },
+        {
+          when: 'Cena',
+          name: 'Cena de despedida',
+          kind: 'Incluida',
+          tip: 'Última noche del circuito.',
+          q: 'Cusco',
+        },
+      ],
+      see: [
+        {
+          name: 'Machu Picchu',
+          desc: 'Prohibido: trípodes, palos selfie, mochilas de más de 5 kg, comida y drones.',
+          dur: 'Visita guiada',
+          q: 'Machu Picchu',
+        },
+      ],
+    },
+    {
+      date: '2026-10-27',
+      title: 'Cusco → Lima → Madrid',
+      cities: ['Cusco', 'Lima', 'Madrid'],
+      stay: null,
+      legs: [
+        {
+          mode: 'plane',
+          title: 'Vuelo Cusco → Lima',
+          meta: 'Sale 18:00 · llega 19:35',
+          q: 'Aeropuerto Internacional Alejandro Velasco Astete',
+        },
+        {
+          mode: 'plane',
+          title: 'Vuelo Lima → Madrid',
+          meta: 'Sale 21:05 · noche a bordo · conexión de 1 h 30 min',
+          q: 'Aeropuerto Internacional Jorge Chávez',
+        },
+      ],
+      plan: [
+        {
+          t: '09:00',
+          title: 'Mañana libre en Cusco',
+          place: 'Cusco',
+          q: 'Plaza de Armas del Cusco',
+        },
+        {
+          t: '15:00',
+          title: 'Traslado al aeropuerto',
+          place: 'Aeropuerto de Cusco',
+          q: 'Aeropuerto Internacional Alejandro Velasco Astete',
+        },
+        {
+          t: '18:00',
+          title: 'Vuelo a Lima',
+          place: 'Aeropuerto de Cusco',
+          q: 'Aeropuerto Internacional Alejandro Velasco Astete',
+        },
+        {
+          t: '21:05',
+          title: 'Vuelo a Madrid',
+          place: 'Aeropuerto Jorge Chávez',
+          q: 'Aeropuerto Internacional Jorge Chávez',
+        },
+      ],
+      eat: [
+        {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Lleva las dos tarjetas de embarque para la conexión en Lima.',
+          q: 'Cusco',
+        },
+      ],
+      see: [],
+    },
+    {
+      date: '2026-10-28',
+      title: 'Llegada a Madrid',
+      cities: ['Madrid'],
+      stay: null,
+      legs: [],
+      plan: [
+        {
+          t: '14:20',
+          title: 'Llegada a Madrid',
+          place: 'Aeropuerto de Madrid-Barajas',
+          q: 'Aeropuerto Adolfo Suárez Madrid-Barajas',
+        },
+      ],
+      eat: [],
+      see: [],
+    },
+  ],
+  checklist: [
+    {
+      key: 'g-hotel-puno',
+      group: 'shared',
+      label: 'Confirmar el hotel de Puno con la agencia',
+      order: 1,
+    },
+    {
+      key: 'g-hotel-aguas',
+      group: 'shared',
+      label: 'Confirmar el hotel de Aguas Calientes',
+      order: 2,
+    },
+    {
+      key: 'g-trenes',
+      group: 'shared',
+      label: 'Confirmar horarios de tren y hora de entrada a Machu Picchu',
+      order: 3,
+    },
+    {
+      key: 'g-catedral',
+      group: 'shared',
+      label: 'Confirmar la visita a la Catedral de Lima (domingo 18)',
+      order: 4,
+    },
+    {
+      key: 'g-conexion',
+      group: 'shared',
+      label: 'Confirmar si la facturación es directa hasta Madrid el 27',
+      order: 5,
+    },
+    {
+      key: 'g-checkin',
+      group: 'shared',
+      label: 'Check-in online de los vuelos (entre 48 h y 4 h antes)',
+      order: 6,
+    },
+    {
+      key: 'g-adaptador',
+      group: 'shared',
+      label: 'Adaptador de enchufe (tipos A, B y C)',
+      order: 7,
+    },
+    {
+      key: 'p-pasaporte',
+      group: 'private',
+      label: 'Pasaporte con al menos 6 meses de validez',
+      order: 8,
+    },
+    {
+      key: 'p-embarque',
+      group: 'private',
+      label: 'Las dos tarjetas de embarque para la conexión en Lima',
+      order: 9,
+    },
+    {
+      key: 'p-mochila',
+      group: 'private',
+      label: 'Mochila de mano de máximo 5 kg para el tren',
+      order: 10,
+    },
+    { key: 'p-ropa', group: 'private', label: 'Ropa de abrigo por capas e impermeable', order: 11 },
+    { key: 'p-calzado', group: 'private', label: 'Calzado de montaña', order: 12 },
+    { key: 'p-sol', group: 'private', label: 'Protector solar y repelente', order: 13 },
+  ],
+}
+
+export default content
