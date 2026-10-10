@@ -4,7 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Offline-first PWA to plan a family trip to Vietnam & Cambodia (4–20 July 2026). **No backend** — all
+Offline-first PWA to plan family trips: the legacy Vietnam & Cambodia 2026 trip (4–20 July) plus v2
+trips (Peru 2026 onwards), see "Multi-trip". **No backend** — all
 data lives in the browser via IndexedDB (Dexie). Cross-device sync is manual JSON export/import.
 Deployed to GitHub Pages under the base path `/travel-planner-pwa/`.
 
@@ -31,7 +32,8 @@ A Husky pre-commit hook runs `lint-staged` (eslint --fix + prettier) on staged f
 
 ## Architecture
 
-**Data layer (the core).** Everything flows through one Dexie database (`src/db/index.ts`):
+**Data layer (the core).** The legacy trip flows through one Dexie database (`TravelPlannerDB`,
+`src/db/index.ts`); v2 trips use a separate `TripsDB` (see "Multi-trip"):
 
 - `src/db/schema.ts` — table definitions and `DB_VERSION`. The exported `db` singleton (`src/db/index.ts`)
   extends `Dexie` with typed `EntityTable`s.
