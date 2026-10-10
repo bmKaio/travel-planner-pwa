@@ -14,3 +14,40 @@ function isoToUtcMs(iso: string): number {
 export function daysBetween(from: string, to: string): number {
   return Math.round((isoToUtcMs(to) - isoToUtcMs(from)) / 86_400_000)
 }
+
+const WEEKDAYS = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb']
+
+export const MONTHS = [
+  'ene',
+  'feb',
+  'mar',
+  'abr',
+  'may',
+  'jun',
+  'jul',
+  'ago',
+  'sep',
+  'oct',
+  'nov',
+  'dic',
+]
+
+/** Parses an ISO date at local noon so the weekday never shifts with the time zone. */
+export function parseIsoDate(iso: string): Date {
+  return new Date(`${iso}T12:00:00`)
+}
+
+export function weekdayShort(iso: string): string {
+  return WEEKDAYS[parseIsoDate(iso).getDay()]
+}
+
+/** 'sáb 17 oct' */
+export function formatDayLabel(iso: string): string {
+  const date = parseIsoDate(iso)
+  return `${WEEKDAYS[date.getDay()]} ${date.getDate()} ${MONTHS[date.getMonth()]}`
+}
+
+/** 'Día 1 de 12 · sáb 17 oct' (index is zero-based) */
+export function formatDayHeading(index: number, total: number, iso: string): string {
+  return `Día ${index + 1} de ${total} · ${formatDayLabel(iso)}`
+}

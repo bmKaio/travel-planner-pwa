@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { daysBetween, toLocalIsoDate } from './dates'
+import {
+  daysBetween,
+  formatDayHeading,
+  formatDayLabel,
+  toLocalIsoDate,
+  weekdayShort,
+} from './dates'
 
 describe('test environment', () => {
   it('runs in the America/Lima time zone (UTC-5)', () => {
@@ -29,5 +35,20 @@ describe('daysBetween', () => {
 
   it('is negative when the target is earlier', () => {
     expect(daysBetween('2026-10-28', '2026-10-26')).toBe(-2)
+  })
+})
+
+describe('day labels', () => {
+  it('formats a short Spanish day label', () => {
+    expect(formatDayLabel('2026-10-17')).toBe('sáb 17 oct')
+    expect(formatDayLabel('2026-12-01')).toBe('mar 1 dic')
+  })
+
+  it('returns the short weekday', () => {
+    expect(weekdayShort('2026-10-18')).toBe('dom')
+  })
+
+  it('formats the day heading', () => {
+    expect(formatDayHeading(7, 12, '2026-10-24')).toBe('Día 8 de 12 · sáb 24 oct')
   })
 })
