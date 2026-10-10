@@ -3,7 +3,7 @@ schema: spec-driven
 context: |
   Tech stack: React 18.3 + TypeScript 5.6 + Vite 5.4 + Tailwind CSS 3.4
   Architecture: SPA with lazy-loaded pages, Dexie (IndexedDB) offline-first, React Router v7
-  Testing: No test runner configured (strict_tdd: false)
+  Testing: Vitest (npm test) for src/trips; legacy code untested
   Style: Tailwind utility classes, lucide-react icons, PWA with workbox
   Data: Dexie.js tables (trips, events, places, recommendations, packingList, documents, dailyPlans)
 
@@ -22,10 +22,11 @@ rules:
     - Keep tasks completable in one session
   apply:
     - Follow existing code patterns (lazy routes, Tailwind, lucide icons)
+    # TDD applies to src/trips (user decision 2026-10-10)
     tdd: false
-    test_command: ""
+    test_command: "npm test"
   verify:
-    test_command: ""
+    test_command: "npm test"
     build_command: "npm run build"
     coverage_threshold: 0
   archive:
