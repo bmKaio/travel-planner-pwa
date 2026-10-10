@@ -51,3 +51,13 @@ export function formatDayLabel(iso: string): string {
 export function formatDayHeading(index: number, total: number, iso: string): string {
   return `Día ${index + 1} de ${total} · ${formatDayLabel(iso)}`
 }
+
+/** '17–28 oct 2026' · '28 nov – 3 dic 2026' · '28 dic 2026 – 3 ene 2027' */
+export function formatDateRange(start: string, end: string): string {
+  const [sy, sm, sd] = start.split('-').map(Number)
+  const [ey, em, ed] = end.split('-').map(Number)
+  if (start === end) return `${sd} ${MONTHS[sm - 1]} ${sy}`
+  if (sy === ey && sm === em) return `${sd}–${ed} ${MONTHS[sm - 1]} ${sy}`
+  if (sy === ey) return `${sd} ${MONTHS[sm - 1]} – ${ed} ${MONTHS[em - 1]} ${sy}`
+  return `${sd} ${MONTHS[sm - 1]} ${sy} – ${ed} ${MONTHS[em - 1]} ${ey}`
+}

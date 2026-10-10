@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   daysBetween,
+  formatDateRange,
   formatDayHeading,
   formatDayLabel,
   toLocalIsoDate,
@@ -50,5 +51,23 @@ describe('day labels', () => {
 
   it('formats the day heading', () => {
     expect(formatDayHeading(7, 12, '2026-10-24')).toBe('Día 8 de 12 · sáb 24 oct')
+  })
+})
+
+describe('formatDateRange', () => {
+  it('collapses a range inside one month', () => {
+    expect(formatDateRange('2026-10-17', '2026-10-28')).toBe('17–28 oct 2026')
+  })
+
+  it('shows both months inside one year', () => {
+    expect(formatDateRange('2026-11-28', '2026-12-03')).toBe('28 nov – 3 dic 2026')
+  })
+
+  it('shows both years across New Year', () => {
+    expect(formatDateRange('2026-12-28', '2027-01-03')).toBe('28 dic 2026 – 3 ene 2027')
+  })
+
+  it('shows a single day once', () => {
+    expect(formatDateRange('2026-10-17', '2026-10-17')).toBe('17 oct 2026')
   })
 })

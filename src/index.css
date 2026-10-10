@@ -72,3 +72,42 @@
     padding-top: env(safe-area-inset-top, 0px);
   }
 }
+
+/* v2 trip engine palette (mockup "App de viaje"); dark mode via the existing .dark class */
+@layer base {
+  .trip-app {
+    --trip-bg: #f6f6f3;
+    --trip-card: #ffffff;
+    --trip-ink: #121417;
+    --trip-ink2: #33373d;
+    --trip-muted: #5a5e66;
+    --trip-line: #dcddd8;
+    --trip-soft: #ecede8;
+    --trip-action: #1f4fd1;
+    --trip-action-ink: #ffffff;
+    --trip-action-soft: #e5ebfa;
+    --trip-done: #1b7543;
+    --trip-done-ink: #ffffff;
+    --trip-urgent: #c42525;
+    --trip-urgent-ink: #ffffff;
+    --trip-urgent-soft: #fbeaea;
+  }
+
+  .dark .trip-app {
+    --trip-bg: #0e1013;
+    --trip-card: #1a1d21;
+    --trip-ink: #f2f3f5;
+    --trip-ink2: #d3d6db;
+    --trip-muted: #a6abb3;
+    --trip-line: #30343a;
+    --trip-soft: #24282d;
+    --trip-action: #86a8ff;
+    --trip-action-ink: #0e1013;
+    --trip-action-soft: #1f2a45;
+    --trip-done: #5fcb8c;
+    --trip-done-ink: #0e1013;
+    --trip-urgent: #ff7a7a;
+    --trip-urgent-ink: #1a0b0b;
+    --trip-urgent-soft: #3a1c1c;
+  }
+}

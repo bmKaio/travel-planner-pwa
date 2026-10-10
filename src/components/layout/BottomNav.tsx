@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import { Home, CalendarDays, Map, Ellipsis } from 'lucide-react'
+import { VIETNAM_HOME_PATH } from '../../trips/registry'
 
 const navItems = [
-  { to: '/', label: 'Inicio', icon: Home },
+  { to: VIETNAM_HOME_PATH, label: 'Inicio', icon: Home },
   { to: '/schedule', label: 'Itinerario', icon: CalendarDays },
   { to: '/map', label: 'Mapa', icon: Map },
   { to: '/more', label: 'Más', icon: Ellipsis },
@@ -19,7 +20,7 @@ function BottomNav() {
           <li key={to} className="flex-1">
             <NavLink
               to={to}
-              end={to === '/'}
+              end={to === VIETNAM_HOME_PATH}
               className={({ isActive }) =>
                 `flex flex-col items-center justify-center gap-0.5 py-2 text-[10px] font-medium transition-colors sm:py-3 sm:text-xs ${
                   isActive

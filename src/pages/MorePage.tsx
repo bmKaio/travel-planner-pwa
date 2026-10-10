@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import {
+  ArrowLeftRight,
   FileText,
   Shield,
   MapPin,
@@ -56,6 +57,22 @@ function MorePage() {
           Centro de ayuda, recursos y ajustes.
         </p>
       </div>
+
+      <section aria-labelledby="trips-heading">
+        <h2
+          id="trips-heading"
+          className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400"
+        >
+          Viajes
+        </h2>
+        <SectionLink
+          to="/trips"
+          icon={<ArrowLeftRight className="h-6 w-6" aria-hidden="true" />}
+          title="Cambiar de viaje"
+          description="Abre otro viaje o consulta el historial."
+          onClick={() => navigate('/trips')}
+        />
+      </section>
 
       <section aria-labelledby="pretravel-heading">
         <h2

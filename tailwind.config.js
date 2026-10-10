@@ -67,6 +67,24 @@ export default {
           800: '#554d41',
           900: '#4a443b',
         },
+        // v2 trip engine palette (values in src/index.css, light + .dark)
+        trip: {
+          bg: 'var(--trip-bg)',
+          card: 'var(--trip-card)',
+          ink: 'var(--trip-ink)',
+          ink2: 'var(--trip-ink2)',
+          muted: 'var(--trip-muted)',
+          line: 'var(--trip-line)',
+          soft: 'var(--trip-soft)',
+          action: 'var(--trip-action)',
+          'action-ink': 'var(--trip-action-ink)',
+          'action-soft': 'var(--trip-action-soft)',
+          done: 'var(--trip-done)',
+          'done-ink': 'var(--trip-done-ink)',
+          urgent: 'var(--trip-urgent)',
+          'urgent-ink': 'var(--trip-urgent-ink)',
+          'urgent-soft': 'var(--trip-urgent-soft)',
+        },
       },
       fontFamily: {
         sans: [
@@ -79,6 +97,8 @@ export default {
           'Arial',
           'sans-serif',
         ],
+        trip: ['"Geist Variable"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        'trip-mono': ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       spacing: {
         18: '4.5rem',

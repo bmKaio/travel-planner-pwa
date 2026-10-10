@@ -2,6 +2,9 @@ import { Suspense, lazy } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import Loading from './components/common/Loading'
+import LegacyTripLayout from './trips/components/LegacyTripLayout'
+import LandingRedirect from './trips/pages/LandingRedirect'
+import { VIETNAM_HOME_PATH } from './trips/registry'
 
 function DailyPlanRedirect() {
   const { date } = useParams<{ date: string }>()
@@ -26,16 +29,21 @@ const Food = lazy(() => import('./pages/Food'))
 const Diary = lazy(() => import('./pages/Diary'))
 const DiaryDetail = lazy(() => import('./pages/DiaryDetail'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const TripSwitcher = lazy(() => import('./trips/pages/TripSwitcher'))
 
 const BASE_NAME = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 function App() {
   return (
     <BrowserRouter basename={BASE_NAME}>
-      <Layout>
-        <Suspense fallback={<Loading fullScreen label="Cargando..." />}>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
+      <Suspense fallback={<Loading fullScreen label="Cargando..." />}>
+        <Routes>
+          <Route path="/" element={<LandingRedirect />} />
+          <Route path="/trips" element={<TripSwitcher />} />
+
+          {/* Legacy Vietnam trip: frozen pages, paths unchanged except its home. */}
+          <Route element={<LegacyTripLayout tripId="vietnam-2026" />}>
+            <Route path={VIETNAM_HOME_PATH} element={<Dashboard />} />
             <Route path="/pre-travel" element={<PreTravel />} />
             <Route path="/documents" element={<Documents />} />
             <Route path="/documents/:id" element={<DocumentDetail />} />
@@ -55,11 +63,19 @@ function App() {
             <Route path="/food" element={<Food />} />
             <Route path="/diary" element={<Diary />} />
             <Route path="/diary/:date" element={<DiaryDetail />} />
-            <Route path="/404" element={<NotFound />} />
-            <Route path="*" element={<Navigate to="/404" replace />} />
-          </Routes>
-        </Suspense>
-      </Layout>
+          </Route>
+
+          <Route
+            path="/404"
+            element={
+              <Layout>
+                <NotFound />
+              </Layout>
+            }
+          />
+          <Route path="*" element={<Navigate to="/404" replace />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   )
 }
