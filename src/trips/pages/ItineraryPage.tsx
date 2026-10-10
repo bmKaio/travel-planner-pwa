@@ -42,7 +42,11 @@ function ItineraryPage() {
 
   const base = `/trips/${trip.id}/itinerary`
   const selectedDate = resolveSelectedDate(dates, requestedDate, todayView.dayIndex)
-  if (selectedDate === null) return <Navigate to={base} replace />
+  if (selectedDate === null) {
+    // Unknown date: go to the default day, keeping a valid ?tab.
+    const keepTab = searchParams.get('tab') === tab
+    return <Navigate to={keepTab ? `${base}?tab=${tab}` : base} replace />
+  }
 
   const index = dates.indexOf(selectedDate)
   const day = days[index]

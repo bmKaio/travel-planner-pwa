@@ -6,6 +6,7 @@ import { useNow } from '../hooks/useNow'
 import { computeNow, formatBanner, resolveTodayView } from '../domain/today'
 import { formatDayHeading } from '../domain/dates'
 import { directionsUrl } from '../domain/mapsUrl'
+import { NO_STAY_TEXT } from '../domain/stayCopy'
 import PageHeader from '../components/PageHeader'
 import NowCard from '../components/NowCard'
 import PlanList from '../components/PlanList'
@@ -80,7 +81,7 @@ function TodayPage() {
         {day.stay ? (
           <StayCard stay={day.stay} />
         ) : (
-          <p className="text-base text-trip-muted">Sin alojamiento · vuelta a casa</p>
+          <p className="text-base text-trip-muted">{NO_STAY_TEXT}</p>
         )}
       </section>
 
