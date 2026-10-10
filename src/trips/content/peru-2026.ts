@@ -7,7 +7,7 @@ import type { TripContent } from '../types'
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 1,
+  seedVersion: 2,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -143,6 +143,13 @@ const content: TripContent = {
           meta: 'Sale 10:30 · llega 12:00',
           q: 'Aeropuerto Internacional Alfredo Rodríguez Ballón',
         },
+        {
+          mode: 'car',
+          title: 'Traslado al hotel',
+          meta: 'Llegada 12:00 · incluido en el circuito',
+          from: 'Aeropuerto Internacional Alfredo Rodríguez Ballón',
+          to: 'Centro histórico de Arequipa',
+        },
       ],
       plan: [
         {
@@ -156,6 +163,12 @@ const content: TripContent = {
           title: 'Vuelo a Arequipa',
           place: 'Aeropuerto Jorge Chávez',
           q: 'Aeropuerto Internacional Jorge Chávez',
+        },
+        {
+          t: '12:00',
+          title: 'Llegada a Arequipa y traslado al hotel',
+          place: 'Aeropuerto de Arequipa',
+          q: 'Aeropuerto Internacional Alfredo Rodríguez Ballón',
         },
         {
           t: '15:00',
@@ -206,6 +219,12 @@ const content: TripContent = {
           q: 'Mirador de Carmen Alto, Arequipa',
         },
         {
+          name: 'Plaza de Armas de Arequipa',
+          desc: 'Plaza principal del centro histórico de la Ciudad Blanca.',
+          dur: 'Visita guiada',
+          q: 'Plaza de Armas de Arequipa',
+        },
+        {
           name: 'Monasterio de Santa Catalina',
           desc: 'Ciudadela colonial dentro de la ciudad.',
           dur: 'Visita guiada',
@@ -249,6 +268,13 @@ const content: TripContent = {
       ],
       eat: [
         {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Sal temprano hacia el Colca.',
+          q: 'Arequipa',
+        },
+        {
           when: 'Almuerzo',
           name: 'Almuerzo en Chivay',
           kind: 'Incluido',
@@ -262,6 +288,12 @@ const content: TripContent = {
           desc: 'Alpacas y vistas del Misti, Pichu Pichu y Chachani.',
           dur: 'Parada en ruta',
           q: 'Reserva Nacional de Salinas y Aguada Blanca',
+        },
+        {
+          name: 'Pampa de Toccra',
+          desc: 'Parada junto a la reserva para admirar alpacas y volcanes.',
+          dur: 'Parada en ruta',
+          q: 'Pampa de Toccra, Arequipa',
         },
         {
           name: 'Mirador de Patapampa',
@@ -313,6 +345,13 @@ const content: TripContent = {
       ],
       eat: [
         {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Salida temprano hacia la Cruz del Cóndor.',
+          q: 'Yanque, Caylloma',
+        },
+        {
           when: 'Almuerzo',
           name: 'Almuerzo en el valle del Colca',
           kind: 'Incluido',
@@ -326,6 +365,18 @@ const content: TripContent = {
           desc: 'Observación de cóndores y vistas del cañón.',
           dur: 'Visita guiada',
           q: 'Mirador Cruz del Cóndor',
+        },
+        {
+          name: 'Pinchollo',
+          desc: 'Pueblo del valle del Colca en el recorrido hacia Maca.',
+          dur: 'Parada en ruta',
+          q: 'Pinchollo, Caylloma',
+        },
+        {
+          name: 'Wayra Punku',
+          desc: 'Pueblo del valle del Colca en el recorrido hacia Maca.',
+          dur: 'Parada en ruta',
+          q: 'Wayra Punku, Caylloma',
         },
         {
           name: 'Maca',
@@ -376,6 +427,13 @@ const content: TripContent = {
         { t: '17:00', title: 'Regreso al hotel', place: 'Puno', q: 'Puno' },
       ],
       eat: [
+        {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Salida temprano hacia los Uros.',
+          q: 'Puno',
+        },
         {
           when: 'Almuerzo',
           name: 'Almuerzo en Taquile',
@@ -438,6 +496,13 @@ const content: TripContent = {
         { t: '17:30', title: 'Llegada a Cusco', place: 'Cusco', q: 'Cusco' },
       ],
       eat: [
+        {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Salida temprano de Puno: deja el equipaje listo.',
+          q: 'Puno',
+        },
         {
           when: 'Almuerzo',
           name: 'Almuerzo en la Ruta del Sur',
@@ -533,6 +598,12 @@ const content: TripContent = {
           q: 'Sacsayhuamán',
         },
         {
+          name: 'Kenko',
+          desc: 'Centro ceremonial dentro del tour de medio día.',
+          dur: 'Visita guiada',
+          q: 'Qenqo, Cusco',
+        },
+        {
           name: 'Catedral de Cusco',
           desc: 'Arte colonial y orfebrería.',
           dur: 'Visita guiada',
@@ -600,6 +671,13 @@ const content: TripContent = {
         },
       ],
       eat: [
+        {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Prepara solo el equipaje de mano para el tren.',
+          q: 'Cusco',
+        },
         {
           when: 'Almuerzo',
           name: 'Almuerzo en el Valle Sagrado',
@@ -696,6 +774,13 @@ const content: TripContent = {
         { t: '20:30', title: 'Cena de despedida', place: 'Cusco', q: 'Cusco' },
       ],
       eat: [
+        {
+          when: 'Desayuno',
+          name: 'Desayuno en el hotel',
+          kind: 'Incluido',
+          tip: 'Madruga: el bus a Machu Picchu sale a primera hora.',
+          q: 'Aguas Calientes',
+        },
         {
           when: 'Almuerzo',
           name: 'Almuerzo en Aguas Calientes',
@@ -826,38 +911,72 @@ const content: TripContent = {
       order: 5,
     },
     {
+      key: 'g-traslados',
+      group: 'shared',
+      label: 'Confirmar con la agencia la hora de los traslados del 19 y del 27 oct',
+      order: 6,
+    },
+    {
       key: 'g-checkin',
       group: 'shared',
       label: 'Check-in online de los vuelos (entre 48 h y 4 h antes)',
-      order: 6,
+      order: 7,
     },
     {
       key: 'g-adaptador',
       group: 'shared',
       label: 'Adaptador de enchufe (tipos A, B y C)',
-      order: 7,
+      order: 8,
+    },
+    {
+      key: 'g-propinas',
+      group: 'shared',
+      label:
+        'Dólares en efectivo para las propinas obligatorias (guías 3-4 USD y chófer 1-2 USD por persona y día)',
+      order: 9,
     },
     {
       key: 'p-pasaporte',
       group: 'private',
       label: 'Pasaporte con al menos 6 meses de validez',
-      order: 8,
+      order: 10,
+    },
+    { key: 'p-paginas', group: 'private', label: 'Pasaporte con páginas en blanco', order: 11 },
+    {
+      key: 'p-vacunas',
+      group: 'private',
+      label:
+        'Libro de vacunación (certificado de fiebre amarilla solo si hay sello de un país endémico)',
+      order: 12,
+    },
+    {
+      key: 'p-billete-salida',
+      group: 'private',
+      label: 'Justificante de billete de regreso por si lo piden',
+      order: 13,
     },
     {
       key: 'p-embarque',
       group: 'private',
       label: 'Las dos tarjetas de embarque para la conexión en Lima',
-      order: 9,
+      order: 14,
+    },
+    {
+      key: 'p-tuua',
+      group: 'private',
+      label:
+        '12 US$ en efectivo por si cobran la tasa TUUA (si no se muestran las dos tarjetas de embarque)',
+      order: 15,
     },
     {
       key: 'p-mochila',
       group: 'private',
       label: 'Mochila de mano de máximo 5 kg para el tren',
-      order: 10,
+      order: 16,
     },
-    { key: 'p-ropa', group: 'private', label: 'Ropa de abrigo por capas e impermeable', order: 11 },
-    { key: 'p-calzado', group: 'private', label: 'Calzado de montaña', order: 12 },
-    { key: 'p-sol', group: 'private', label: 'Protector solar y repelente', order: 13 },
+    { key: 'p-ropa', group: 'private', label: 'Ropa de abrigo por capas e impermeable', order: 17 },
+    { key: 'p-calzado', group: 'private', label: 'Calzado de montaña', order: 18 },
+    { key: 'p-sol', group: 'private', label: 'Protector solar y repelente', order: 19 },
   ],
 }
 
