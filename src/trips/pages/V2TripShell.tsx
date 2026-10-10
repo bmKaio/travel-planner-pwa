@@ -16,6 +16,7 @@ function V2TripShell({ trip }: { trip: TripMeta }) {
     <TripLayout tripName={trip.name}>
       {error ? (
         <TripStatusMessage
+          tone="error"
           message="No se pudieron cargar los datos del viaje."
           actionLabel="Reintentar"
           onAction={retry}

@@ -28,7 +28,8 @@ function TodayPage() {
     [days, now]
   )
 
-  if (error) return <TripStatusMessage message="No se pudieron cargar los datos del viaje." />
+  if (error)
+    return <TripStatusMessage tone="error" message="No se pudieron cargar los datos del viaje." />
   if (loading) return <TripStatusMessage message="Cargando el viaje…" />
   const day = days[view.dayIndex]
   if (!day) return <TripStatusMessage message="Este viaje todavía no tiene días planificados." />

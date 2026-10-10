@@ -48,6 +48,7 @@ function ChecklistPage() {
 
       {error && (
         <TripStatusMessage
+          tone="error"
           message={
             items.length === 0
               ? 'No se pudieron cargar los datos del viaje.'
@@ -68,7 +69,7 @@ function ChecklistPage() {
 
       {notesReady && <NotesEditor key={trip.id} initialText={notes.text} onSave={notes.save} />}
       {!notesReady && notes.error && (
-        <TripStatusMessage message="No se pudieron cargar las notas." />
+        <TripStatusMessage tone="error" message="No se pudieron cargar las notas." />
       )}
     </div>
   )

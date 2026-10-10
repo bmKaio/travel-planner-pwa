@@ -62,7 +62,9 @@ function HelpPage() {
     <div className="flex flex-col gap-[18px]">
       <PageHeader title="Ayuda" subtitle={trip.name} />
 
-      {showHookError && <TripStatusMessage message="No se pudieron cargar los datos de ayuda." />}
+      {showHookError && (
+        <TripStatusMessage tone="error" message="No se pudieron cargar los datos de ayuda." />
+      )}
 
       {helpInfo?.emergency ? (
         <EmergencyCard emergency={helpInfo.emergency} />

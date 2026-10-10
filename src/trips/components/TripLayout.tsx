@@ -17,7 +17,6 @@ function TripLayout({ tripName, children }: TripLayoutProps) {
           <p className="truncate text-base font-semibold">{tripName}</p>
           <Link
             to="/trips"
-            aria-label="Cambiar de viaje"
             className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-3 text-sm font-semibold text-trip-action no-underline hover:bg-trip-action-soft"
           >
             <ArrowLeftRight className="h-4 w-4" aria-hidden="true" />

@@ -34,7 +34,8 @@ function ItineraryPage() {
   const todayView = useMemo(() => resolveTodayView(dates, now), [dates, now])
   const tab = parseItineraryTab(searchParams.get('tab'))
 
-  if (error) return <TripStatusMessage message="No se pudieron cargar los datos del viaje." />
+  if (error)
+    return <TripStatusMessage tone="error" message="No se pudieron cargar los datos del viaje." />
   if (loading) return <TripStatusMessage message="Cargando el viaje…" />
   if (days.length === 0) {
     return <TripStatusMessage message="Este viaje todavía no tiene días planificados." />
