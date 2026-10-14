@@ -1,0 +1,121 @@
+import { describe, expect, it } from 'vitest'
+import type { GuideCategory, GuideEntry } from '../types'
+import {
+  GUIDE_SECTIONS,
+  groupGuide,
+  guideCategoryLabel,
+  guideDayLinks,
+  guideForDay,
+  sourceLabel,
+} from './guide'
+
+let order = 0
+function entry(key: string, category: GuideCategory, dates?: string[]): GuideEntry {
+  return {
+    tripId: 'peru-2026',
+    order: order++,
+    key,
+    category,
+    title: key,
+    summary: `${key} summary`,
+    body: [`${key} body`],
+    dates,
+    sources: ['https://example.org'],
+  }
+}
+
+const keys = (entries: GuideEntry[]) => entries.map((e) => e.key)
+
+describe('GUIDE_SECTIONS', () => {
+  it('lists every category once, in reading order', () => {
+    expect(GUIDE_SECTIONS.map((s) => s.label)).toEqual([
+      'Historia',
+      'Ciudades',
+      'Gastronomía',
+      'Bebidas',
+      'Curiosidades',
+      'Consejos',
+    ])
+  })
+
+  it('labels a category', () => {
+    expect(guideCategoryLabel('food')).toBe('Gastronomía')
+  })
+})
+
+describe('groupGuide', () => {
+  it('returns sections in fixed order and drops empty ones', () => {
+    const sections = groupGuide([
+      entry('pisco', 'drink'),
+      entry('incas', 'history'),
+      entry('ceviche', 'food'),
+    ])
+    expect(sections.map((s) => s.category)).toEqual(['history', 'food', 'drink'])
+  })
+
+  it('keeps authored order within a non-city section', () => {
+    const sections = groupGuide([entry('lomo', 'food'), entry('ceviche', 'food')])
+    expect(keys(sections[0].entries)).toEqual(['lomo', 'ceviche'])
+  })
+
+  it('sorts cities by their earliest date and puts undated cities last in authored order', () => {
+    const sections = groupGuide([
+      entry('cusco', 'city', ['2026-10-24', '2026-10-23']),
+      entry('peru-andino', 'city'),
+      entry('lima', 'city', ['2026-10-18']),
+      entry('selva', 'city'),
+      entry('arequipa', 'city', ['2026-10-19']),
+    ])
+    expect(keys(sections[0].entries)).toEqual(['lima', 'arequipa', 'cusco', 'peru-andino', 'selva'])
+  })
+
+  it('returns no sections for no entries', () => {
+    expect(groupGuide([])).toEqual([])
+  })
+})
+
+describe('guideForDay', () => {
+  const all = [
+    entry('pisco', 'drink', ['2026-10-18']),
+    entry('lima', 'city', ['2026-10-18', '2026-10-19']),
+    entry('incas', 'history'),
+    entry('uros', 'curiosity', ['2026-10-22']),
+  ]
+
+  it('returns the entries dated on that day, in section order', () => {
+    expect(keys(guideForDay(all, '2026-10-18'))).toEqual(['lima', 'pisco'])
+  })
+
+  it('returns nothing for a day without entries', () => {
+    expect(guideForDay(all, '2026-10-28')).toEqual([])
+  })
+})
+
+describe('guideDayLinks', () => {
+  const days = [
+    { date: '2026-10-21', title: 'Cañón del Colca → Puno' },
+    { date: '2026-10-22', title: 'Lago Titicaca: Uros y Taquile' },
+  ]
+
+  it('labels each trip day with its date and title, in trip order', () => {
+    expect(guideDayLinks(['2026-10-22', '2026-10-21'], days)).toEqual([
+      { date: '2026-10-21', label: 'mié 21 oct · Cañón del Colca → Puno' },
+      { date: '2026-10-22', label: 'jue 22 oct · Lago Titicaca: Uros y Taquile' },
+    ])
+  })
+
+  it('skips dates that are not trip days and handles no dates', () => {
+    expect(guideDayLinks(['2026-12-01'], days)).toEqual([])
+    expect(guideDayLinks(undefined, days)).toEqual([])
+  })
+})
+
+describe('sourceLabel', () => {
+  it('shows the host without www', () => {
+    expect(sourceLabel('https://www.peru.travel/es/gastronomia')).toBe('peru.travel')
+  })
+
+  it('falls back to the raw text when it is not a URL', () => {
+    expect(sourceLabel('no es una url')).toBe('no es una url')
+  })
+})
