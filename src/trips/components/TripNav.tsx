@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom'
-import { BookOpen, CalendarDays, LifeBuoy, ListOrdered } from 'lucide-react'
+import { BookOpen, CalendarDays, LifeBuoy, ListOrdered, type LucideIcon } from 'lucide-react'
+import { NAV_STYLE, type NavKey } from './sectionStyle'
 
 // Relative links: TripNav renders inside the /trips/:tripId route.
-const ITEMS = [
+const ITEMS: { to: NavKey; label: string; icon: LucideIcon }[] = [
   { to: 'today', label: 'Hoy', icon: CalendarDays },
   { to: 'itinerary', label: 'Itinerario', icon: ListOrdered },
   { to: 'guide', label: 'Guía', icon: BookOpen },
@@ -16,23 +17,30 @@ function TripNav() {
       className="safe-bottom fixed inset-x-0 bottom-0 z-20 border-t border-trip-line bg-trip-card"
     >
       <ul className="mx-auto flex max-w-md px-2 md:max-w-3xl">
-        {ITEMS.map(({ to, label, icon: Icon }) => (
-          <li key={to} className="flex-1">
-            <NavLink
-              to={to}
-              className={({ isActive }) =>
-                `relative flex min-h-[62px] flex-col items-center justify-center gap-1 text-sm no-underline ${
-                  isActive
-                    ? 'font-bold text-trip-ink before:absolute before:inset-x-[22%] before:top-0 before:h-[3px] before:rounded-b before:bg-trip-ink'
-                    : 'font-medium text-trip-muted'
-                }`
-              }
-            >
-              <Icon className="h-6 w-6" aria-hidden="true" />
-              {label}
-            </NavLink>
-          </li>
-        ))}
+        {ITEMS.map(({ to, label, icon: Icon }) => {
+          const { bar, ink } = NAV_STYLE[to]
+          return (
+            <li key={to} className="flex-1">
+              <NavLink
+                to={to}
+                className={({ isActive }) =>
+                  `relative flex min-h-[62px] flex-col items-center justify-center gap-1 text-sm no-underline ${
+                    isActive
+                      ? `font-bold text-trip-ink before:absolute before:inset-x-[22%] before:top-0 before:h-[3px] before:rounded-b ${bar}`
+                      : 'font-medium text-trip-muted'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    <Icon className={`h-6 w-6 ${isActive ? ink : ''}`} aria-hidden="true" />
+                    {label}
+                  </>
+                )}
+              </NavLink>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )

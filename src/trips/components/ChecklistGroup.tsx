@@ -1,5 +1,8 @@
 import { Check, Lock, Users } from 'lucide-react'
 import type { ChecklistGroupView } from '../domain/checklist'
+import { SECTION_STYLE } from './sectionStyle'
+
+const { edge } = SECTION_STYLE.checklist
 
 interface ChecklistGroupProps {
   group: ChecklistGroupView
@@ -20,7 +23,9 @@ function ChecklistGroup({ group, onToggle }: ChecklistGroupProps) {
           {group.done} de {group.total}
         </p>
       </div>
-      <ul className="overflow-hidden rounded-[20px] border border-trip-line bg-trip-card">
+      <ul
+        className={`overflow-hidden rounded-[20px] border border-l-4 border-trip-line ${edge} bg-trip-card`}
+      >
         {group.items.map((item) => (
           <li key={item.id} className="border-t border-trip-line first:border-t-0">
             <button

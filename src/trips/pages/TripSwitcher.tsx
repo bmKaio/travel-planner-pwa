@@ -24,7 +24,12 @@ function TripSwitcher() {
             </h2>
             <div className="flex flex-col gap-3 md:grid md:grid-cols-2">
               {active.map((trip) => (
-                <TripCard key={trip.id} trip={trip} today={today} />
+                <TripCard
+                  key={trip.id}
+                  trip={trip}
+                  today={today}
+                  accentIndex={TRIPS.findIndex((candidate) => candidate.id === trip.id)}
+                />
               ))}
             </div>
           </section>
@@ -37,7 +42,12 @@ function TripSwitcher() {
             </h2>
             <div className="flex flex-col gap-3 md:grid md:grid-cols-2">
               {past.map((trip) => (
-                <TripCard key={trip.id} trip={trip} today={today} />
+                <TripCard
+                  key={trip.id}
+                  trip={trip}
+                  today={today}
+                  accentIndex={TRIPS.findIndex((candidate) => candidate.id === trip.id)}
+                />
               ))}
             </div>
           </section>

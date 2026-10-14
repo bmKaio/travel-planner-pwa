@@ -14,6 +14,7 @@ import PlanList from '../components/PlanList'
 import StayCard from '../components/StayCard'
 import LegList from '../components/LegList'
 import TripStatusMessage from '../components/TripStatusMessage'
+import SectionHeading from '../components/SectionHeading'
 import { tripButtonClass } from '../components/buttonStyles'
 
 function TodayPage() {
@@ -66,7 +67,7 @@ function TodayPage() {
             ideas={current.item.free ? ideas : undefined}
           />
           <section className="flex flex-col gap-2.5">
-            <h2 className="text-xl font-bold">Resto del día</h2>
+            <SectionHeading section="plan">Resto del día</SectionHeading>
             <PlanList items={current.rest} emptyText="No hay más actividades hoy." ideas={ideas} />
             <Link
               to={`/trips/${trip.id}/itinerary/${day.date}?tab=eat`}
@@ -78,13 +79,13 @@ function TodayPage() {
         </>
       ) : (
         <section className="flex flex-col gap-2.5">
-          <h2 className="text-xl font-bold">Plan del día</h2>
+          <SectionHeading section="plan">Plan del día</SectionHeading>
           <PlanList items={day.plan} emptyText="No hay actividades planificadas." ideas={ideas} />
         </section>
       )}
 
       <section className="flex flex-col gap-2.5">
-        <h2 className="text-xl font-bold">Esta noche duermes en</h2>
+        <SectionHeading section="stay">Esta noche duermes en</SectionHeading>
         {day.stay ? (
           <StayCard stay={day.stay} />
         ) : (
@@ -94,7 +95,7 @@ function TodayPage() {
 
       {day.legs.length > 0 && (
         <section className="flex flex-col gap-2.5">
-          <h2 className="text-xl font-bold">Transporte de hoy</h2>
+          <SectionHeading section="leg">Transporte de hoy</SectionHeading>
           <LegList legs={day.legs} />
         </section>
       )}

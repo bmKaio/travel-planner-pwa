@@ -11,6 +11,7 @@ import HelpCard from '../components/HelpCard'
 import ContactList from '../components/ContactList'
 import DocList from '../components/DocList'
 import GuideCardList from '../components/GuideCardList'
+import SectionHeading from '../components/SectionHeading'
 import ChecklistSection from './ChecklistSection'
 import TripStatusMessage from '../components/TripStatusMessage'
 import { tripButtonClass } from '../components/buttonStyles'
@@ -82,20 +83,20 @@ function HelpPage() {
 
       {helpInfo?.consular && helpInfo.consular.length > 0 && (
         <section aria-labelledby="help-consular-heading" className="flex flex-col gap-[18px]">
-          <h2 id="help-consular-heading" className="text-2xl font-bold">
+          <SectionHeading section="consular" id="help-consular-heading" size="lg">
             Embajada y consulados de España
-          </h2>
+          </SectionHeading>
           {helpInfo.consular.map((card) => (
-            <HelpCard key={`${card.title}-${card.phone}`} card={card} />
+            <HelpCard key={`${card.title}-${card.phone}`} card={card} section="consular" />
           ))}
         </section>
       )}
 
       {helpGuide.length > 0 && (
         <section aria-labelledby="help-guide-heading" className="flex flex-col gap-[18px]">
-          <h2 id="help-guide-heading" className="text-2xl font-bold">
+          <SectionHeading section="health" id="help-guide-heading" size="lg">
             Salud y precauciones
-          </h2>
+          </SectionHeading>
           <GuideCardList entries={helpGuide} tripId={trip.id} origin={HELP_ORIGIN} />
         </section>
       )}
@@ -103,7 +104,7 @@ function HelpPage() {
       {helpInfo && helpInfo.cards.length > 0 && (
         <div className="flex flex-col gap-[18px] md:grid md:grid-cols-2 md:gap-3">
           {helpInfo.cards.map((card) => (
-            <HelpCard key={`${card.title}-${card.phone}`} card={card} />
+            <HelpCard key={`${card.title}-${card.phone}`} card={card} section="private" />
           ))}
         </div>
       )}

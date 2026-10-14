@@ -1,11 +1,18 @@
+import { Users } from 'lucide-react'
 import type { Contact } from '../types'
 import PhoneLink from './PhoneLink'
+import SectionHeading from './SectionHeading'
+import { SECTION_STYLE } from './sectionStyle'
+
+const { edge } = SECTION_STYLE.private
 
 function ContactList({ contacts }: { contacts: Contact[] }) {
   return (
     <section className="flex flex-col gap-2.5">
-      <h2 className="text-xl font-bold">Contactos del grupo</h2>
-      <ul className="rounded-[20px] border border-trip-line bg-trip-card px-4">
+      <SectionHeading section="private" icon={Users}>
+        Contactos del grupo
+      </SectionHeading>
+      <ul className={`rounded-[20px] border border-l-4 border-trip-line ${edge} bg-trip-card px-4`}>
         {contacts.map((contact) => (
           <li
             key={`${contact.name}-${contact.role}`}

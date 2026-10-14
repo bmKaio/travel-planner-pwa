@@ -4,18 +4,21 @@ import type { TripMeta } from '../types'
 import { getTripStatus, TRIP_STATUS_LABEL } from '../domain/tripStatus'
 import { tripHomePath } from '../domain/landing'
 import { formatDateRange } from '../domain/dates'
+import { tripStripe } from './sectionStyle'
 
 interface TripCardProps {
   trip: TripMeta
   today: string
+  /** Position of the trip in the registry; picks the colour of the top stripe. */
+  accentIndex: number
 }
 
-function TripCard({ trip, today }: TripCardProps) {
+function TripCard({ trip, today, accentIndex }: TripCardProps) {
   const status = getTripStatus(trip, today)
   return (
     <Link
       to={tripHomePath(trip)}
-      className="flex items-center gap-4 rounded-[20px] border border-trip-line bg-trip-card p-[18px] text-trip-ink no-underline hover:border-trip-ink"
+      className={`flex items-center gap-4 rounded-[20px] border border-t-[6px] border-trip-line ${tripStripe(accentIndex)} bg-trip-card p-[18px] text-trip-ink no-underline active:bg-trip-soft`}
     >
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <span
