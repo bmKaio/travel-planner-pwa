@@ -8,7 +8,7 @@ import type { TripContent } from '../types'
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 4,
+  seedVersion: 5,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -51,7 +51,6 @@ const content: TripContent = {
           t: '18:20',
           title: 'Llegada a Lima y traslado al hotel',
           place: 'Aeropuerto Jorge Chávez',
-          q: 'Aeropuerto Internacional Jorge Chávez',
         },
       ],
       eat: [
@@ -102,7 +101,7 @@ const content: TripContent = {
           q: 'Centro de Lima',
         },
         { t: '15:00', title: 'Museo Larco', place: 'Pueblo Libre', q: 'Museo Larco, Lima' },
-        { t: '17:00', title: 'Tarde libre', place: 'Miraflores', q: 'Miraflores, Lima' },
+        { t: '17:00', title: 'Tarde libre', place: 'Miraflores · ideas en Visitar' },
       ],
       eat: [
         {
@@ -166,6 +165,41 @@ const content: TripContent = {
           dur: 'Visita guiada',
           q: 'Museo Larco, Lima',
         },
+        {
+          name: 'Malecón y Parque del Amor',
+          desc: 'Paseo por el acantilado sobre el Pacífico, con mosaicos y la escultura «El Beso». Ideal al atardecer.',
+          dur: '1–1,5 h',
+          q: 'Parque del Amor, Miraflores, Lima',
+          alternative: true,
+        },
+        {
+          name: 'Larcomar',
+          desc: 'Centro comercial en el acantilado con terrazas frente al mar, tiendas de artesanía y sitios para cenar con vista.',
+          dur: '1–2 h',
+          q: 'Larcomar, Miraflores, Lima',
+          alternative: true,
+        },
+        {
+          name: 'Huaca Pucllana de noche',
+          desc: 'Pirámide de adobe preinca en pleno Miraflores. Visita nocturna guiada de miércoles a domingo desde las 18:45: reservad antes.',
+          dur: '1–1,5 h · con reserva',
+          q: 'Huaca Pucllana, Miraflores, Lima',
+          alternative: true,
+        },
+        {
+          name: 'Parque Kennedy',
+          desc: 'Plaza central de Miraflores, con gatos y pintores, a pocas cuadras del hotel. Buen punto de partida para cenar.',
+          dur: '45 min',
+          q: 'Parque Kennedy, Miraflores, Lima',
+          alternative: true,
+        },
+        {
+          name: 'Mercado Indio',
+          desc: 'Mercado de artesanía en la avenida Petit Thouars: alpaca, cerámica y recuerdos, con regateo. Confirmad el horario.',
+          dur: '1 h',
+          q: 'Mercado Indio, Av. Petit Thouars, Miraflores, Lima',
+          alternative: true,
+        },
       ],
     },
     {
@@ -193,12 +227,7 @@ const content: TripContent = {
         },
       ],
       plan: [
-        {
-          t: '07:30',
-          title: 'Traslado al aeropuerto',
-          place: 'Aeropuerto Jorge Chávez',
-          q: 'Aeropuerto Internacional Jorge Chávez',
-        },
+        { t: '07:30', title: 'Traslado al aeropuerto', place: 'Aeropuerto Jorge Chávez' },
         {
           t: '10:30',
           title: 'Vuelo LA 2109 a Arequipa',
@@ -209,7 +238,6 @@ const content: TripContent = {
           t: '12:00',
           title: 'Llegada a Arequipa y traslado al hotel',
           place: 'Aeropuerto de Arequipa',
-          q: 'Aeropuerto Internacional Alfredo Rodríguez Ballón',
         },
         {
           t: '15:00',
@@ -229,6 +257,7 @@ const content: TripContent = {
           place: 'Centro histórico',
           q: 'Monasterio de Santa Catalina, Arequipa',
         },
+        { t: '19:00', title: 'Noche libre', place: 'Arequipa · ideas en Visitar' },
       ],
       eat: [
         {
@@ -306,6 +335,34 @@ const content: TripContent = {
           dur: 'Visita guiada',
           q: 'Monasterio de Santa Catalina, Arequipa',
         },
+        {
+          name: 'Barrio de San Lázaro',
+          desc: 'El barrio más antiguo de la ciudad: callejones de sillar y plazuelas, a cinco cuadras de la Plaza de Armas. De noche, por calles iluminadas.',
+          dur: '1 h',
+          q: 'Barrio de San Lázaro, Arequipa',
+          alternative: true,
+        },
+        {
+          name: 'Puente Grau',
+          desc: 'Puente de sillar sobre el río Chili con vistas al Misti y a la ciudad. Se combina con San Lázaro.',
+          dur: '20–30 min',
+          q: 'Puente Grau, Arequipa',
+          alternative: true,
+        },
+        {
+          name: 'Claustros de la Compañía',
+          desc: 'Patios jesuitas de sillar junto a la iglesia de la Compañía, con tiendas de artesanía y restaurantes. Confirmad la hora de cierre.',
+          dur: '45 min–1 h',
+          q: 'Claustros de la Compañía, Arequipa',
+          alternative: true,
+        },
+        {
+          name: 'Mercado San Camilo',
+          desc: 'Mercado central con frutas, quesos y zumos bajo una estructura de hierro del siglo XIX. Entre semana cierra hacia las 19:00.',
+          dur: '45 min',
+          q: 'Mercado San Camilo, Arequipa',
+          alternative: true,
+        },
       ],
     },
     {
@@ -327,7 +384,7 @@ const content: TripContent = {
         },
       ],
       plan: [
-        { t: '08:00', title: 'Salida hacia el Colca', place: 'Arequipa', q: 'Arequipa' },
+        { t: '08:00', title: 'Salida hacia el Colca', place: 'Arequipa' },
         {
           t: '09:30',
           title: 'Reserva Nacional de Salinas y Aguada Blanca',
@@ -340,7 +397,8 @@ const content: TripContent = {
           place: 'Patapampa',
           q: 'Mirador de los Volcanes Patapampa',
         },
-        { t: '13:30', title: 'Llegada a Chivay y almuerzo', place: 'Chivay', q: 'Chivay' },
+        { t: '13:30', title: 'Llegada a Chivay y almuerzo', place: 'Chivay' },
+        { t: '15:00', title: 'Tarde libre', place: 'Chivay y Yanque · ideas en Visitar' },
       ],
       eat: [
         {
@@ -398,6 +456,34 @@ const content: TripContent = {
           dur: 'Parada en ruta',
           q: 'Mirador de los Volcanes Patapampa',
         },
+        {
+          name: 'Baños termales La Calera',
+          desc: 'Piscinas termales a 38–40 °C a las afueras de Chivay. Abren hasta las 19:00 aprox.; entrada solo en efectivo.',
+          dur: '1,5–2 h',
+          q: 'Baños Termales La Calera, Chivay',
+          alternative: true,
+        },
+        {
+          name: 'Plaza y mercado de Chivay',
+          desc: 'Plaza con la iglesia colonial y mercado local de textiles; los martes es día de mercado.',
+          dur: '1 h',
+          q: 'Plaza de Armas de Chivay',
+          alternative: true,
+        },
+        {
+          name: 'Ruinas de Uyo Uyo',
+          desc: 'Sitio preinca en terrazas sobre el valle, con subida a pie desde Yanque. Abre hasta las 17:00; llevad agua y subid despacio.',
+          dur: '2 h ida y vuelta',
+          q: 'Uyo Uyo, Yanque, Caylloma',
+          alternative: true,
+        },
+        {
+          name: 'Plaza e iglesia de Yanque',
+          desc: 'Iglesia franciscana del siglo XVII con portada tallada, a pie desde el hotel. Suele abrir solo en misa.',
+          dur: '30–45 min',
+          q: 'Iglesia de Yanque, Yanque, Caylloma',
+          alternative: true,
+        },
       ],
     },
     {
@@ -431,14 +517,14 @@ const content: TripContent = {
           place: 'Valle del Colca',
           q: 'Maca, Caylloma',
         },
-        { t: '12:30', title: 'Almuerzo', place: 'Valle del Colca', q: 'Chivay' },
+        { t: '12:30', title: 'Almuerzo', place: 'Valle del Colca' },
         {
           t: '15:00',
           title: 'Laguna de Lagunillas',
           place: 'Ruta a Puno',
           q: 'Laguna Lagunillas, Puno',
         },
-        { t: '18:00', title: 'Llegada a Puno', place: 'Puno', q: 'Puno' },
+        { t: '18:00', title: 'Llegada a Puno', place: 'Puno' },
       ],
       eat: [
         {
@@ -541,8 +627,8 @@ const content: TripContent = {
           q: 'Islas flotantes de los Uros',
         },
         { t: '11:30', title: 'Isla de Taquile', place: 'Lago Titicaca', q: 'Isla Taquile' },
-        { t: '13:00', title: 'Almuerzo en la isla', place: 'Taquile', q: 'Isla Taquile' },
-        { t: '17:00', title: 'Regreso al hotel', place: 'Puno', q: 'Puno' },
+        { t: '13:00', title: 'Almuerzo en la isla', place: 'Taquile' },
+        { t: '17:00', title: 'Regreso al hotel y tarde libre', place: 'Puno · ideas en Visitar' },
       ],
       eat: [
         {
@@ -587,6 +673,34 @@ const content: TripContent = {
           dur: 'Visita guiada',
           q: 'Isla Taquile',
         },
+        {
+          name: 'Jirón Lima',
+          desc: 'Calle peatonal entre el Parque Pino y la Plaza de Armas, con cafés, tiendas y restaurantes.',
+          dur: '1–1,5 h',
+          q: 'Jirón Lima, Puno',
+          alternative: true,
+        },
+        {
+          name: 'Catedral de Puno',
+          desc: 'Catedral barroca de 1757 con fachada de piedra tallada y altar de plata, en la Plaza de Armas. Entrada libre; confirmad el horario.',
+          dur: '30 min',
+          q: 'Catedral de Puno, Puno',
+          alternative: true,
+        },
+        {
+          name: 'Cerrito Huajsapata',
+          desc: 'Colina a cuatro cuadras de la plaza con el monumento a Manco Cápac y vistas a la bahía. Subid con luz y despacio.',
+          dur: '30–45 min',
+          q: 'Cerrito Huajsapata, Puno',
+          alternative: true,
+        },
+        {
+          name: 'Museo Carlos Dreyer',
+          desc: 'Cerámica, textiles y piezas de las culturas del Titicaca en una casona del centro. Entre semana abre hasta las 19:30.',
+          dur: '45 min–1 h',
+          q: 'Museo Municipal Carlos Dreyer, Puno',
+          alternative: true,
+        },
       ],
     },
     {
@@ -608,7 +722,7 @@ const content: TripContent = {
         },
       ],
       plan: [
-        { t: '07:00', title: 'Salida de Puno', place: 'Puno', q: 'Puno' },
+        { t: '07:00', title: 'Salida de Puno', place: 'Puno' },
         {
           t: '08:30',
           title: 'Pucará: museo, tradición y cultura',
@@ -622,14 +736,14 @@ const content: TripContent = {
           place: 'Raqchi',
           q: 'Complejo arqueológico de Raqchi',
         },
-        { t: '14:00', title: 'Almuerzo', place: 'Ruta del Sur', q: 'Raqchi' },
+        { t: '14:00', title: 'Almuerzo', place: 'Ruta del Sur' },
         {
           t: '15:30',
           title: 'Iglesia de Andahuaylillas',
           place: 'Andahuaylillas',
           q: 'Iglesia de San Pedro Apóstol de Andahuaylillas',
         },
-        { t: '17:30', title: 'Llegada a Cusco', place: 'Cusco', q: 'Cusco' },
+        { t: '17:30', title: 'Llegada a Cusco', place: 'Cusco' },
       ],
       eat: [
         {
@@ -714,7 +828,7 @@ const content: TripContent = {
           place: 'Plaza de Armas',
           q: 'Catedral del Cusco',
         },
-        { t: '15:00', title: 'Tarde libre', place: 'Cusco', q: 'Plaza de Armas del Cusco' },
+        { t: '15:00', title: 'Tarde libre', place: 'Cusco · ideas en Visitar' },
       ],
       eat: [
         {
@@ -777,6 +891,41 @@ const content: TripContent = {
           dur: 'Visita guiada',
           q: 'Catedral del Cusco',
         },
+        {
+          name: 'Barrio de San Blas',
+          desc: 'Barrio de artesanos con calles empinadas y el templo de San Blas. Los sábados hay feria de artesanía en la plaza.',
+          dur: '1,5–2 h',
+          q: 'Plazoleta San Blas, Cusco',
+          alternative: true,
+        },
+        {
+          name: 'Piedra de los Doce Ángulos',
+          desc: 'Muro inca de la calle Hatunrumiyoc con la piedra de doce ángulos encajada sin argamasa, de camino a San Blas.',
+          dur: '20–30 min',
+          q: 'Piedra de los Doce Ángulos, Cusco',
+          alternative: true,
+        },
+        {
+          name: 'Museo de Arte Precolombino',
+          desc: 'Unas 450 piezas de oro, plata y cerámica de la colección del Museo Larco, en la plaza Nazarenas. Abre hasta las 22:00.',
+          dur: '1–1,5 h',
+          q: 'Museo de Arte Precolombino MAP, Cusco',
+          alternative: true,
+        },
+        {
+          name: 'Centro de Textiles Tradicionales',
+          desc: 'Tejedoras que muestran la técnica andina, museo gratuito del tejido y tienda de comercio justo. Los sábados cierra a las 17:00.',
+          dur: '45 min–1 h',
+          q: 'Centro de Textiles Tradicionales del Cusco, Av. El Sol 603, Cusco',
+          alternative: true,
+        },
+        {
+          name: 'Cristo Blanco',
+          desc: 'Mirador en el cerro Pukamoqo con vista de toda la ciudad. Id y volved en taxi, mejor con luz.',
+          dur: '1 h con taxi',
+          q: 'Cristo Blanco, Cusco',
+          alternative: true,
+        },
       ],
     },
     {
@@ -813,12 +962,7 @@ const content: TripContent = {
           q: 'Chinchero',
         },
         { t: '10:30', title: 'Terrazas de Moray', place: 'Moray', q: 'Moray, Maras' },
-        {
-          t: '13:00',
-          title: 'Almuerzo en el Valle Sagrado',
-          place: 'Valle Sagrado',
-          q: 'Urubamba',
-        },
+        { t: '13:00', title: 'Almuerzo en el Valle Sagrado', place: 'Valle Sagrado' },
         {
           t: '15:00',
           title: 'Fortaleza de Ollantaytambo',
@@ -831,12 +975,7 @@ const content: TripContent = {
           place: 'Estación de Ollantaytambo',
           q: 'Estación de tren de Ollantaytambo',
         },
-        {
-          t: '20:00',
-          title: 'Cena en Aguas Calientes',
-          place: 'Aguas Calientes',
-          q: 'Aguas Calientes',
-        },
+        { t: '20:00', title: 'Cena en Aguas Calientes', place: 'Aguas Calientes' },
       ],
       eat: [
         {
@@ -880,6 +1019,27 @@ const content: TripContent = {
           dur: 'Visita guiada',
           q: 'Ollantaytambo',
         },
+        {
+          name: 'Plaza Manco Cápac',
+          desc: 'Plaza principal con la estatua de Pachacútec y calles llenas de restaurantes. Paseo corto antes de cenar.',
+          dur: '30 min',
+          q: 'Plaza Manco Cápac, Aguas Calientes',
+          alternative: true,
+        },
+        {
+          name: 'Mercado Artesanal',
+          desc: 'Puestos de alpaca, textiles y recuerdos junto a la estación. Suele ser más caro que en Cusco.',
+          dur: '30–45 min',
+          q: 'Mercado Artesanal, Aguas Calientes',
+          alternative: true,
+        },
+        {
+          name: 'Aguas termales',
+          desc: 'Piscinas termales en la parte alta del pueblo. Cierran hacia las 20:00: solo si llegáis con tiempo.',
+          dur: '1 h',
+          q: 'Aguas Termales de Machu Picchu, Aguas Calientes',
+          alternative: true,
+        },
       ],
     },
     {
@@ -918,8 +1078,8 @@ const content: TripContent = {
         {
           t: '07:00',
           title: 'Bus de subida a Machu Picchu',
-          place: 'Aguas Calientes',
-          q: 'Aguas Calientes',
+          place: 'Av. Hermanos Ayar, junto al puente Ruinas',
+          q: 'Consettur Machu Picchu Bus Aguas Calientes',
         },
         {
           t: '08:00',
@@ -927,19 +1087,14 @@ const content: TripContent = {
           place: 'Machu Picchu',
           q: 'Machu Picchu',
         },
-        {
-          t: '12:30',
-          title: 'Almuerzo en Aguas Calientes',
-          place: 'Aguas Calientes',
-          q: 'Aguas Calientes',
-        },
+        { t: '12:30', title: 'Almuerzo en Aguas Calientes', place: 'Aguas Calientes' },
         {
           t: '15:00',
           title: 'Tren de regreso y traslado a Cusco',
           place: 'Aguas Calientes',
           q: 'Estación de tren de Machu Picchu',
         },
-        { t: '20:30', title: 'Cena de despedida', place: 'Cusco', q: 'Cusco' },
+        { t: '20:30', title: 'Cena de despedida', place: 'Cusco' },
       ],
       eat: [
         {
@@ -993,18 +1148,8 @@ const content: TripContent = {
         },
       ],
       plan: [
-        {
-          t: '09:00',
-          title: 'Mañana libre en Cusco',
-          place: 'Cusco',
-          q: 'Plaza de Armas del Cusco',
-        },
-        {
-          t: '15:00',
-          title: 'Traslado al aeropuerto',
-          place: 'Aeropuerto de Cusco',
-          q: 'Aeropuerto Internacional Alejandro Velasco Astete',
-        },
+        { t: '09:00', title: 'Mañana libre en Cusco', place: 'Cusco · ideas en Visitar' },
+        { t: '15:00', title: 'Traslado al aeropuerto', place: 'Aeropuerto de Cusco' },
         {
           t: '18:00',
           title: 'Vuelo LA 2121 a Lima',
@@ -1034,7 +1179,43 @@ const content: TripContent = {
           q: 'MAP Café Cusco',
         },
       ],
-      see: [],
+      see: [
+        {
+          name: 'Museo Machupicchu – Casa Concha',
+          desc: 'Piezas originales de Machu Picchu devueltas por la Universidad de Yale, en una casona colonial. De lunes a sábado, de 9:00 a 17:00.',
+          dur: '1–1,5 h',
+          q: 'Museo Machupicchu Casa Concha, Santa Catalina Ancha 320, Cusco',
+          alternative: true,
+        },
+        {
+          name: 'Mirador de San Cristóbal',
+          desc: 'Plazuela junto a una de las iglesias más antiguas de Cusco, con vista panorámica del centro histórico.',
+          dur: '45 min–1 h',
+          q: 'Mirador de San Cristóbal, Cusco',
+          alternative: true,
+        },
+        {
+          name: 'ChocoMuseo',
+          desc: 'Taller de chocolate del grano a la tableta, con sesiones a las 8:30, 11:00 y 13:30. Reservad antes.',
+          dur: '2–2,5 h',
+          q: 'ChocoMuseo Cusco, Calle Garcilaso 210',
+          alternative: true,
+        },
+        {
+          name: 'Mercado de Wanchaq',
+          desc: 'Mercado de barrio con frutas, zumos y sopas, sin apenas turistas. Confirmad el horario.',
+          dur: '45 min–1 h',
+          q: 'Mercado de Wanchaq, Cusco',
+          alternative: true,
+        },
+        {
+          name: 'Iglesia de la Compañía de Jesús',
+          desc: 'Templo barroco jesuita en la Plaza de Armas, con subida al campanario. Cierra de 11:00 a 13:00.',
+          dur: '30–45 min',
+          q: 'Iglesia de la Compañía de Jesús, Cusco',
+          alternative: true,
+        },
+      ],
     },
     {
       date: '2026-10-28',
@@ -1042,14 +1223,7 @@ const content: TripContent = {
       cities: ['Madrid'],
       stay: null,
       legs: [],
-      plan: [
-        {
-          t: '14:20',
-          title: 'Llegada a Madrid',
-          place: 'Aeropuerto de Madrid-Barajas',
-          q: 'Aeropuerto Adolfo Suárez Madrid-Barajas',
-        },
-      ],
+      plan: [{ t: '14:20', title: 'Llegada a Madrid', place: 'Aeropuerto de Madrid-Barajas' }],
       eat: [],
       see: [],
     },
