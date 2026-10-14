@@ -57,6 +57,8 @@ export interface ContentGuideEntry {
 
 export interface GuideEntry extends ContentGuideEntry {
   tripId: string
+  /** Index in the authored `guide` array; Dexie returns rows by primary key, not authored order. */
+  order: number
 }
 
 export interface TripContent {
@@ -120,7 +122,7 @@ UNESCO, museums, reputable references). Planned set:
 | Consejos (~3)     | User's food tips (spice level, ceviche at lunch, chifa/nikkei, busy street stalls) + altitude                                                                                                                                           |
 
 Process: research → draft in `docs/peru/guia-borrador.md` (Spanish, with sources and proposed
-`dates`) → user review → content moved to `peru-2026.ts` with `seedVersion: 6`. Before adding an
+`dates`) → user review → content moved to `peru-2026.ts` with `seedVersion` bumped by one (6 → 7 at the time of writing). Before adding an
 entry, check it against each day's `see`/`eat` so the guide does not repeat places.
 
 ## 7. Testing
@@ -142,4 +144,4 @@ TDD with Vitest (`npm test`), `fake-indexeddb` via `setupTestTripsDb`:
 1. Research and write the content draft (user review is the slow step).
 2. While the user reviews: types + DB v2 + sync, domain functions, hook, Guide pages, day block,
    checklist move + redirect, nav — with 2–3 placeholder-free sample entries taken from the draft.
-3. After the user approves the draft: full content into `peru-2026.ts`, `seedVersion: 6`.
+3. After the user approves the draft: full content into `peru-2026.ts`, `seedVersion` +1.
