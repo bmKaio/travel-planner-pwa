@@ -37,6 +37,7 @@ const TodayPage = lazy(() => import('./trips/pages/TodayPage'))
 const ItineraryPage = lazy(() => import('./trips/pages/ItineraryPage'))
 const HelpPage = lazy(() => import('./trips/pages/HelpPage'))
 const GuidePage = lazy(() => import('./trips/pages/GuidePage'))
+const GuideTopicPage = lazy(() => import('./trips/pages/GuideTopicPage'))
 const GuideEntryPage = lazy(() => import('./trips/pages/GuideEntryPage'))
 
 const BASE_NAME = import.meta.env.BASE_URL.replace(/\/$/, '')
@@ -57,6 +58,7 @@ function App() {
               <Route path="itinerary" element={<ItineraryPage />} />
               <Route path="itinerary/:date" element={<ItineraryPage />} />
               <Route path="guide" element={<GuidePage />} />
+              <Route path="guide/topic/:category" element={<GuideTopicPage />} />
               <Route path="guide/:entryKey" element={<GuideEntryPage />} />
               {/* Kept for old links: the checklist now lives at the end of "Ayuda". */}
               <Route path="checklist" element={<Navigate to="../help#checklist" replace />} />
