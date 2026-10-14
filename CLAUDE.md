@@ -73,11 +73,12 @@ per-domain helpers live in `src/utils/`; shared domain types in `src/types/index
   separate Dexie DB `TripsDB` (`db.ts`), pure logic in `domain/` (tested), hooks in `hooks/`,
   container pages in `pages/`, presentational components in `components/`.
 - **Routes:** `/` → landing redirect (last opened trip → current → next → `/trips`); `/trips` →
-  switcher; `/trips/:tripId/{today,itinerary[/:date],checklist,help}`.
+  switcher; `/trips/:tripId/{today,itinerary[/:date],guide[/:entryKey],help}`
+  (`/checklist` redirects to `help#checklist`: checklist and notes live at the end of "Ayuda").
 - **Adding a trip:** add an entry to `TRIPS` and a lazy content file in `src/trips/content/`
   (register it in `content/index.ts`). No schema change.
 - **Content updates:** bump `seedVersion` in the content file; devices resync days and checklist
-  labels keeping ticks. Notes and imported private data are never overwritten.
+  labels keeping ticks, and replace the guide entries. Notes and imported private data are never overwritten.
 - **Private data** (hotels, agency, insurance, contacts, documents): JSON import from the Ayuda
   screen, kept in `private/` (gitignored, never committed). Never put it in the content files or
   in docs. Shape (`src/trips/import/privateImport.ts` validates it; import replaces

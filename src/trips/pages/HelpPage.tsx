@@ -8,6 +8,7 @@ import EmergencyCard from '../components/EmergencyCard'
 import HelpCard from '../components/HelpCard'
 import ContactList from '../components/ContactList'
 import DocList from '../components/DocList'
+import ChecklistSection from './ChecklistSection'
 import TripStatusMessage from '../components/TripStatusMessage'
 import { tripButtonClass } from '../components/buttonStyles'
 
@@ -113,6 +114,8 @@ function HelpPage() {
           </p>
         )}
       </div>
+
+      <ChecklistSection tripId={trip.id} />
     </div>
   )
 }

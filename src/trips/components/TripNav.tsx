@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import { CalendarDays, LifeBuoy, ListChecks, ListOrdered } from 'lucide-react'
+import { BookOpen, CalendarDays, LifeBuoy, ListOrdered } from 'lucide-react'
 
 // Relative links: TripNav renders inside the /trips/:tripId route.
 const ITEMS = [
   { to: 'today', label: 'Hoy', icon: CalendarDays },
   { to: 'itinerary', label: 'Itinerario', icon: ListOrdered },
-  { to: 'checklist', label: 'Checklist', icon: ListChecks },
+  { to: 'guide', label: 'Guía', icon: BookOpen },
   { to: 'help', label: 'Ayuda', icon: LifeBuoy },
 ]
 

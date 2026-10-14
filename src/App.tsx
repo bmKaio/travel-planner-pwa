@@ -35,7 +35,6 @@ const TripShell = lazy(() => import('./trips/pages/TripShell'))
 const TripHomeRedirect = lazy(() => import('./trips/pages/TripHomeRedirect'))
 const TodayPage = lazy(() => import('./trips/pages/TodayPage'))
 const ItineraryPage = lazy(() => import('./trips/pages/ItineraryPage'))
-const ChecklistPage = lazy(() => import('./trips/pages/ChecklistPage'))
 const HelpPage = lazy(() => import('./trips/pages/HelpPage'))
 const GuidePage = lazy(() => import('./trips/pages/GuidePage'))
 const GuideEntryPage = lazy(() => import('./trips/pages/GuideEntryPage'))
@@ -59,7 +58,8 @@ function App() {
               <Route path="itinerary/:date" element={<ItineraryPage />} />
               <Route path="guide" element={<GuidePage />} />
               <Route path="guide/:entryKey" element={<GuideEntryPage />} />
-              <Route path="checklist" element={<ChecklistPage />} />
+              {/* Kept for old links: the checklist now lives at the end of "Ayuda". */}
+              <Route path="checklist" element={<Navigate to="../help#checklist" replace />} />
               <Route path="help" element={<HelpPage />} />
               <Route path="*" element={<TripHomeRedirect />} />
             </Route>
