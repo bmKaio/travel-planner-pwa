@@ -8,7 +8,7 @@ import type { TripContent } from '../types'
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 5,
+  seedVersion: 6,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -101,7 +101,7 @@ const content: TripContent = {
           q: 'Centro de Lima',
         },
         { t: '15:00', title: 'Museo Larco', place: 'Pueblo Libre', q: 'Museo Larco, Lima' },
-        { t: '17:00', title: 'Tarde libre', place: 'Miraflores · ideas en Visitar' },
+        { t: '17:00', title: 'Tarde libre', place: 'Miraflores', free: true },
       ],
       eat: [
         {
@@ -257,7 +257,7 @@ const content: TripContent = {
           place: 'Centro histórico',
           q: 'Monasterio de Santa Catalina, Arequipa',
         },
-        { t: '19:00', title: 'Noche libre', place: 'Arequipa · ideas en Visitar' },
+        { t: '19:00', title: 'Noche libre', place: 'Arequipa', free: true },
       ],
       eat: [
         {
@@ -398,7 +398,7 @@ const content: TripContent = {
           q: 'Mirador de los Volcanes Patapampa',
         },
         { t: '13:30', title: 'Llegada a Chivay y almuerzo', place: 'Chivay' },
-        { t: '15:00', title: 'Tarde libre', place: 'Chivay y Yanque · ideas en Visitar' },
+        { t: '15:00', title: 'Tarde libre', place: 'Chivay y Yanque', free: true },
       ],
       eat: [
         {
@@ -628,7 +628,7 @@ const content: TripContent = {
         },
         { t: '11:30', title: 'Isla de Taquile', place: 'Lago Titicaca', q: 'Isla Taquile' },
         { t: '13:00', title: 'Almuerzo en la isla', place: 'Taquile' },
-        { t: '17:00', title: 'Regreso al hotel y tarde libre', place: 'Puno · ideas en Visitar' },
+        { t: '17:00', title: 'Regreso al hotel y tarde libre', place: 'Puno', free: true },
       ],
       eat: [
         {
@@ -828,7 +828,7 @@ const content: TripContent = {
           place: 'Plaza de Armas',
           q: 'Catedral del Cusco',
         },
-        { t: '15:00', title: 'Tarde libre', place: 'Cusco · ideas en Visitar' },
+        { t: '15:00', title: 'Tarde libre', place: 'Cusco', free: true },
       ],
       eat: [
         {
@@ -1148,7 +1148,7 @@ const content: TripContent = {
         },
       ],
       plan: [
-        { t: '09:00', title: 'Mañana libre en Cusco', place: 'Cusco · ideas en Visitar' },
+        { t: '09:00', title: 'Mañana libre en Cusco', place: 'Cusco', free: true },
         { t: '15:00', title: 'Traslado al aeropuerto', place: 'Aeropuerto de Cusco' },
         {
           t: '18:00',

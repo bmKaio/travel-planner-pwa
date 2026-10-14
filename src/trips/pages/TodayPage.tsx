@@ -5,6 +5,7 @@ import { useTripDays } from '../hooks/useTripDays'
 import { useNow } from '../hooks/useNow'
 import { computeNow, formatBanner, resolveTodayView } from '../domain/today'
 import { formatDayHeading } from '../domain/dates'
+import { freeTimeIdeas } from '../domain/itinerary'
 import { planItemUrl } from '../domain/mapsUrl'
 import { NO_STAY_TEXT } from '../domain/stayCopy'
 import PageHeader from '../components/PageHeader'
@@ -36,6 +37,10 @@ function TodayPage() {
 
   const banner = formatBanner(view.banner)
   const current = view.nowMinutes === null ? null : computeNow(day.plan, view.nowMinutes)
+  const ideas = {
+    names: freeTimeIdeas(day.see),
+    to: `/trips/${trip.id}/itinerary/${day.date}?tab=see`,
+  }
 
   return (
     <div className="flex flex-col gap-[18px]">
@@ -58,10 +63,11 @@ function TodayPage() {
             title={current.item.title}
             place={current.item.place}
             url={planItemUrl(current.item)}
+            ideas={current.item.free ? ideas : undefined}
           />
           <section className="flex flex-col gap-2.5">
             <h2 className="text-xl font-bold">Resto del día</h2>
-            <PlanList items={current.rest} emptyText="No hay más actividades hoy." />
+            <PlanList items={current.rest} emptyText="No hay más actividades hoy." ideas={ideas} />
             <Link
               to={`/trips/${trip.id}/itinerary/${day.date}?tab=eat`}
               className={tripButtonClass('ghost', 'self-start')}
@@ -73,7 +79,7 @@ function TodayPage() {
       ) : (
         <section className="flex flex-col gap-2.5">
           <h2 className="text-xl font-bold">Plan del día</h2>
-          <PlanList items={day.plan} emptyText="No hay actividades planificadas." />
+          <PlanList items={day.plan} emptyText="No hay actividades planificadas." ideas={ideas} />
         </section>
       )}
 

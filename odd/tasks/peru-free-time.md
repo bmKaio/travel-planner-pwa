@@ -31,6 +31,8 @@ day's plan.
 - [x] T3 Research alternatives (sourced, weekday-checked)
 - [x] T4 Content update in `src/trips/content/peru-2026.ts`, seedVersion 5
 
+- [x] T5 Free-time items show the day's ideas inline + "Ver ideas" link (user feedback: "Tarde libre" had no info)
+
 ## Checks
 
 `npm test`, `npm run lint`, `npm run format:check`, `npm run build`.
@@ -41,6 +43,8 @@ day's plan.
 - T1+T2 done in c4bf76d5: RED observed (`planItemUrl is not a function`), GREEN 110/110 tests, lint and typecheck clean.
 - T3: sourced research (session scratchpad); excluded Mercado de Surquillo (closed since 2023), Museo Santuarios Andinos (closed Mondays), Yavari (closes 17:00), Museo Inka (Saturday 16:00), Aguas Calientes museums (closed at night). Weak-hours items say "Confirmad el horario".
 - T4: `q` removed from 18 non-destination items; free-time items on 18, 19, 20, 22, 24, 27 point to "Visitar"; 30 alternatives on 18, 19, 20, 22, 24, 25, 27; Consettur bus stop query (name on Maps not verified); seedVersion 5. Checks: 110 tests, lint, format, build OK.
+
+- T5: `PlanItem.free`, `freeTimeIdeas` (TDD: RED `freeTimeIdeas is not a function`, GREEN 112/112), `FreeTimeIdeas` component in PlanList and NowCard; 6 free items; seedVersion 6. Verified with a Playwright screenshot of 18 Oct.
 
 ## Next step
 

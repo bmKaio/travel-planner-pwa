@@ -59,3 +59,8 @@ export function splitSeeItems(items: SeeItem[]): { planned: SeeItem[]; alternati
     alternatives: items.filter((item) => item.alternative),
   }
 }
+
+/** Names of the day's alternative sights, shown as ideas on its free-time plan items. */
+export function freeTimeIdeas(items: SeeItem[]): string[] {
+  return splitSeeItems(items).alternatives.map((item) => item.name)
+}

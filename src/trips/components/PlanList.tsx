@@ -1,13 +1,16 @@
 import type { PlanItem } from '../types'
 import { planItemUrl } from '../domain/mapsUrl'
 import MapsLink from './MapsLink'
+import FreeTimeIdeas, { type FreeTimeIdeasData } from './FreeTimeIdeas'
 
 interface PlanListProps {
   items: PlanItem[]
   emptyText?: string
+  /** Shown under free-time items. */
+  ideas?: FreeTimeIdeasData
 }
 
-function PlanList({ items, emptyText }: PlanListProps) {
+function PlanList({ items, emptyText, ideas }: PlanListProps) {
   if (items.length === 0) {
     return emptyText ? <p className="text-base text-trip-muted">{emptyText}</p> : null
   }
@@ -31,6 +34,7 @@ function PlanList({ items, emptyText }: PlanListProps) {
                   Cómo llegar
                 </MapsLink>
               )}
+              {item.free && ideas && <FreeTimeIdeas {...ideas} />}
             </div>
           </li>
         )

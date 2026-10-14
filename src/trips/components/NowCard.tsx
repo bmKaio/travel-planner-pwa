@@ -1,5 +1,6 @@
 import { MapPin } from 'lucide-react'
 import MapsLink from './MapsLink'
+import FreeTimeIdeas, { type FreeTimeIdeasData } from './FreeTimeIdeas'
 
 interface NowCardProps {
   label: string
@@ -8,9 +9,11 @@ interface NowCardProps {
   place: string
   /** Directions link; null when the item is not a place to go. */
   url: string | null
+  /** Ideas for a free-time item. */
+  ideas?: FreeTimeIdeasData
 }
 
-function NowCard({ label, range, title, place, url }: NowCardProps) {
+function NowCard({ label, range, title, place, url, ideas }: NowCardProps) {
   return (
     <section className="flex flex-col gap-3 rounded-[22px] border-[1.5px] border-trip-ink bg-trip-card p-5">
       <div className="flex items-center gap-2.5">
@@ -29,6 +32,7 @@ function NowCard({ label, range, title, place, url }: NowCardProps) {
           Cómo llegar
         </MapsLink>
       )}
+      {ideas && <FreeTimeIdeas {...ideas} />}
     </section>
   )
 }

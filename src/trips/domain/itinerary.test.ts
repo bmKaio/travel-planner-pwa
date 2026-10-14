@@ -4,6 +4,7 @@ import {
   parseItineraryTab,
   resolveSelectedDate,
   splitSeeItems,
+  freeTimeIdeas,
   tabId,
   tabPanelId,
 } from './itinerary'
@@ -94,5 +95,25 @@ describe('splitSeeItems', () => {
 
   it('returns empty groups for an empty list', () => {
     expect(splitSeeItems([])).toEqual({ planned: [], alternatives: [] })
+  })
+})
+
+describe('freeTimeIdeas', () => {
+  const see = (name: string, alternative?: boolean) => ({
+    name,
+    desc: '',
+    dur: '',
+    q: name,
+    alternative,
+  })
+
+  it('lists the names of the alternative sights, in order', () => {
+    expect(
+      freeTimeIdeas([see('Plan'), see('Larcomar', true), see('Parque Kennedy', true)])
+    ).toEqual(['Larcomar', 'Parque Kennedy'])
+  })
+
+  it('is empty when the day has no alternatives', () => {
+    expect(freeTimeIdeas([see('Plan')])).toEqual([])
   })
 })

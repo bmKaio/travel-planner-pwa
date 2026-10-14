@@ -7,6 +7,7 @@ import { resolveTodayView } from '../domain/today'
 import { formatDayHeading, toLocalIsoDate } from '../domain/dates'
 import {
   buildDayStrip,
+  freeTimeIdeas,
   ITINERARY_TABS,
   parseItineraryTab,
   resolveSelectedDate,
@@ -81,7 +82,11 @@ function ItineraryPage() {
       />
       <div role="tabpanel" id={tabPanelId(tab)} aria-labelledby={tabId(tab)}>
         {tab === 'plan' && (
-          <PlanList items={day.plan} emptyText="No hay actividades planificadas." />
+          <PlanList
+            items={day.plan}
+            emptyText="No hay actividades planificadas."
+            ideas={{ names: freeTimeIdeas(day.see), to: `${base}/${day.date}?tab=see` }}
+          />
         )}
         {tab === 'eat' && <EatList items={day.eat} />}
         {tab === 'see' && <SeeList items={day.see} />}

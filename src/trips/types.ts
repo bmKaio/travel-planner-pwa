@@ -24,6 +24,8 @@ export interface PlanItem {
   place: string
   /** Google Maps query. Omit when the item is not a place to go (free time, included transfers). */
   q?: string
+  /** Free time: the plan shows the day's alternative sights as ideas. */
+  free?: boolean
 }
 
 export interface EatItem {
