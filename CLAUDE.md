@@ -80,7 +80,7 @@ per-domain helpers live in `src/utils/`; shared domain types in `src/types/index
 - **Private data** (hotels, agency, insurance, contacts, documents): JSON import from the Ayuda
   screen, kept in `private/` (gitignored, never committed). Never put it in the content files or
   in docs. Shape (`src/trips/import/privateImport.ts` validates it; import replaces
-  cards/contacts/docs, the public `emergency` entry is preserved):
+  cards/contacts/docs, the public `emergency` entry and `consular` cards are preserved):
 
   ```json
   {

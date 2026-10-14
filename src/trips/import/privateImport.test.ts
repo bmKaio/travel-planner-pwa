@@ -116,6 +116,25 @@ describe('importTripPrivate', () => {
     expect(help?.contacts[0].name).toBe('Ana')
   })
 
+  it('keeps the synced consular cards', async () => {
+    const db = getDb()
+    const consular = [
+      { title: 'Embajada de España', sub: 'Lima', cta: 'Llamar', phone: '+5112125155' },
+    ]
+    await db.helpInfo.put({
+      tripId: 'peru-2026',
+      emergency: null,
+      consular,
+      cards: [],
+      contacts: [],
+      docs: [],
+    })
+
+    await importTripPrivate(db, validFile(), 'peru-2026', trips)
+
+    expect((await db.helpInfo.get('peru-2026'))?.consular).toEqual(consular)
+  })
+
   it('works before the first content sync (no emergency yet)', async () => {
     const db = getDb()
     await importTripPrivate(db, validFile(), 'peru-2026', trips)
