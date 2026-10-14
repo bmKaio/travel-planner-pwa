@@ -1,15 +1,15 @@
 import { useMemo } from 'react'
 import { useTrip } from '../hooks/useTrip'
 import { useGuide } from '../hooks/useGuide'
-import { groupGuide } from '../domain/guide'
+import { guideTopics } from '../domain/guide'
 import PageHeader from '../components/PageHeader'
-import GuideCardList from '../components/GuideCardList'
+import GuideTopicCard from '../components/GuideTopicCard'
 import TripStatusMessage from '../components/TripStatusMessage'
 
 function GuidePage() {
   const trip = useTrip()
   const { entries, loading, error } = useGuide(trip.id)
-  const sections = useMemo(() => groupGuide(entries), [entries])
+  const topics = useMemo(() => guideTopics(entries), [entries])
 
   if (error) return <TripStatusMessage tone="error" message="No se pudo cargar la guía." />
   if (loading) return <TripStatusMessage message="Cargando la guía…" />
@@ -17,13 +17,17 @@ function GuidePage() {
   return (
     <div className="flex flex-col gap-[18px]">
       <PageHeader title="Guía" subtitle={trip.name} />
-      {sections.length === 0 && <TripStatusMessage message="Este viaje todavía no tiene guía." />}
-      {sections.map((section) => (
-        <section key={section.category} className="flex flex-col gap-2.5">
-          <h2 className="text-xl font-bold">{section.label}</h2>
-          <GuideCardList entries={section.entries} tripId={trip.id} />
-        </section>
-      ))}
+      {topics.length === 0 ? (
+        <TripStatusMessage message="Este viaje todavía no tiene guía." />
+      ) : (
+        <ul className="grid grid-cols-2 gap-3 md:grid-cols-3">
+          {topics.map((topic) => (
+            <li key={topic.category}>
+              <GuideTopicCard topic={topic} tripId={trip.id} />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

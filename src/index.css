@@ -91,6 +91,19 @@
     --trip-urgent: #c42525;
     --trip-urgent-ink: #ffffff;
     --trip-urgent-soft: #fbeaea;
+    /* Guide topic tones: strong (stripe, icon) / soft (icon circle). Contrast ≥ 3:1 vs soft and card. */
+    --trip-topic-history: #9a5b00;
+    --trip-topic-history-soft: #fbeed6;
+    --trip-topic-city: #0f766e;
+    --trip-topic-city-soft: #dcf3f0;
+    --trip-topic-food: #b3431c;
+    --trip-topic-food-soft: #fbe6dc;
+    --trip-topic-drink: #7a3fd0;
+    --trip-topic-drink-soft: #efe7fc;
+    --trip-topic-curiosity: #b8326f;
+    --trip-topic-curiosity-soft: #fbe4ee;
+    --trip-topic-tip: #3f46b8;
+    --trip-topic-tip-soft: #e6e7fa;
   }
 
   .dark .trip-app {
@@ -109,5 +122,17 @@
     --trip-urgent: #ff7a7a;
     --trip-urgent-ink: #1a0b0b;
     --trip-urgent-soft: #3a1c1c;
+    --trip-topic-history: #f0b85a;
+    --trip-topic-history-soft: #3a2c14;
+    --trip-topic-city: #5fd3c4;
+    --trip-topic-city-soft: #143430;
+    --trip-topic-food: #ff9b73;
+    --trip-topic-food-soft: #3d2117;
+    --trip-topic-drink: #c4a3ff;
+    --trip-topic-drink-soft: #2c2245;
+    --trip-topic-curiosity: #ff8fbf;
+    --trip-topic-curiosity-soft: #3d1a2a;
+    --trip-topic-tip: #a3a9ff;
+    --trip-topic-tip-soft: #22254a;
   }
 }
