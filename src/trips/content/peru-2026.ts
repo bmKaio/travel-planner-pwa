@@ -9,13 +9,45 @@ import type { TripContent } from '../types'
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 12,
+  seedVersion: 13,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
     number: '105',
     description: 'Policía: 105 · Ambulancia (SAMU): 106 · Bomberos: 116.',
   },
+  // From exteriores.gob.es (Embajada and Consulado General in Lima, honorary consulates), checked
+  // 2026-10-14. Puno has no Spanish consulate: the Lima consulate covers it.
+  consular: [
+    {
+      title: 'Embajada de España en Lima',
+      sub: 'Teléfono de emergencia consular, solo para urgencias graves (accidente, detención, robo de pasaporte). Av. Jorge Basadre 498, San Isidro. Centralita: 01 212 5155, de lunes a viernes de 9:00 a 13:00.',
+      cta: 'Emergencia consular · 995 655 898',
+      phone: '+51 995 655 898',
+      mapQuery: 'Embajada de España, Av. Jorge Basadre 498, San Isidro, Lima',
+    },
+    {
+      title: 'Consulado General de España en Lima',
+      sub: 'Pasaportes y trámites; atiende también Puno, que no tiene consulado. Calle Los Pinos 490, San Isidro. Atención al público de lunes a viernes, de 8:30 a 13:00.',
+      cta: 'Llamar al Consulado · 01 513 7930',
+      phone: '+51 1 513 7930',
+      mapQuery: 'Consulado General de España, Calle Los Pinos 490, San Isidro, Lima',
+    },
+    {
+      title: 'Consulado honorario de España en Arequipa',
+      sub: 'Av. Parra 235, Cercado. Correo: ch.arequipa@maec.es. La web oficial da dos teléfonos distintos; si no contestan en este, prueba el 991 134 515.',
+      cta: 'Llamar · 961 261 257',
+      phone: '+51 961 261 257',
+      mapQuery: 'Av. Parra 235, Cercado, Arequipa',
+    },
+    {
+      title: 'Consulado honorario de España en Cusco',
+      sub: 'Calle Belén 307. Otro teléfono: (084) 221944.',
+      cta: 'Llamar · (084) 242224',
+      phone: '+51 84 242224',
+      mapQuery: 'Calle Belén 307, Cusco',
+    },
+  ],
   days: [
     {
       date: '2026-10-17',

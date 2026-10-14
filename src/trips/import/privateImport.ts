@@ -75,7 +75,7 @@ export function validatePrivateImport(
   }
 }
 
-/** Replaces the private help data of a trip. Keeps the emergency info from public content. */
+/** Replaces the private help data of a trip. Keeps the emergency info and consular cards from public content. */
 export async function importTripPrivate(
   db: TripsDatabase,
   json: unknown,
@@ -88,6 +88,7 @@ export async function importTripPrivate(
     await db.helpInfo.put({
       tripId: file.tripId,
       emergency: existing?.emergency ?? null,
+      consular: existing?.consular ?? [],
       ...file.helpInfo,
     })
   })
