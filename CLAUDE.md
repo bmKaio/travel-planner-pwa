@@ -75,7 +75,7 @@ per-domain helpers live in `src/utils/`; shared domain types in `src/types/index
 - **Routes:** `/` → landing redirect (last opened trip → current → next → `/trips`); `/trips` →
   switcher; `/trips/:tripId/{today,itinerary[/:date],guide[/topic/:category|/:entryKey],help}`
   (`/checklist` redirects to `help#checklist`: checklist and notes live at the end of "Ayuda").
-  The guide opens as a hub of topics; an entry opened from a day goes back to that day.
+  The guide opens as a hub of topics; an entry opened from a day or from Ayuda goes back there.
 - **Adding a trip:** add an entry to `TRIPS` and a lazy content file in `src/trips/content/`
   (register it in `content/index.ts`). No schema change.
 - **Content updates:** bump `seedVersion` in the content file; devices resync days and checklist

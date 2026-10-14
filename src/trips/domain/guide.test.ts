@@ -12,7 +12,7 @@ import {
   guideTopicEntries,
   guideTopics,
   isGuideCategory,
-  readFromDay,
+  readGuideOrigin,
   sourceLabel,
 } from './guide'
 
@@ -203,18 +203,23 @@ describe('formatReadingCount', () => {
   })
 })
 
-describe('readFromDay', () => {
-  it('reads an ISO date from router state', () => {
-    expect(readFromDay({ fromDay: '2026-10-22' })).toBe('2026-10-22')
+describe('readGuideOrigin', () => {
+  it('reads the day an entry was opened from', () => {
+    expect(readGuideOrigin({ fromDay: '2026-10-22' })).toEqual({ fromDay: '2026-10-22' })
+  })
+
+  it('reads an entry opened from Help', () => {
+    expect(readGuideOrigin({ fromHelp: true })).toEqual({ fromHelp: true })
   })
 
   it('ignores missing, malformed or non-object state', () => {
-    expect(readFromDay(undefined)).toBeUndefined()
-    expect(readFromDay(null)).toBeUndefined()
-    expect(readFromDay('2026-10-22')).toBeUndefined()
-    expect(readFromDay({})).toBeUndefined()
-    expect(readFromDay({ fromDay: 22 })).toBeUndefined()
-    expect(readFromDay({ fromDay: '22/10/2026' })).toBeUndefined()
+    expect(readGuideOrigin(undefined)).toBeUndefined()
+    expect(readGuideOrigin(null)).toBeUndefined()
+    expect(readGuideOrigin('2026-10-22')).toBeUndefined()
+    expect(readGuideOrigin({})).toBeUndefined()
+    expect(readGuideOrigin({ fromDay: 22 })).toBeUndefined()
+    expect(readGuideOrigin({ fromDay: '22/10/2026' })).toBeUndefined()
+    expect(readGuideOrigin({ fromHelp: 'yes' })).toBeUndefined()
   })
 })
 
@@ -222,13 +227,20 @@ describe('guideBackTarget', () => {
   const dayDates = ['2026-10-21', '2026-10-22']
 
   it('goes back to the day the entry was opened from', () => {
-    expect(guideBackTarget('food', '2026-10-22', dayDates)).toEqual({
+    expect(guideBackTarget('food', { fromDay: '2026-10-22' }, dayDates)).toEqual({
       path: 'itinerary/2026-10-22',
       label: 'Volver al día',
     })
   })
 
-  it('goes back to the topic when there is no day', () => {
+  it('goes back to Help when the entry was opened from Help', () => {
+    expect(guideBackTarget('tip', { fromHelp: true }, dayDates)).toEqual({
+      path: 'help',
+      label: 'Volver a Ayuda',
+    })
+  })
+
+  it('goes back to the topic when there is no origin', () => {
     expect(guideBackTarget('food', undefined, dayDates)).toEqual({
       path: 'guide/topic/food',
       label: 'Gastronomía',
@@ -236,7 +248,7 @@ describe('guideBackTarget', () => {
   })
 
   it('goes back to the topic when the day is not part of this trip', () => {
-    expect(guideBackTarget('city', '2030-01-01', dayDates)).toEqual({
+    expect(guideBackTarget('city', { fromDay: '2030-01-01' }, dayDates)).toEqual({
       path: 'guide/topic/city',
       label: 'Ciudades',
     })

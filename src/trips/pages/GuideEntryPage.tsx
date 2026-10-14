@@ -8,7 +8,7 @@ import {
   guideBackTarget,
   guideCategoryLabel,
   guideDayLinks,
-  readFromDay,
+  readGuideOrigin,
   sourceLabel,
 } from '../domain/guide'
 import BackLink from '../components/BackLink'
@@ -33,7 +33,7 @@ function GuideEntryPage() {
   // Unknown key (typo, or removed in a later content version): back to the list.
   if (!entry) return <Navigate to={guidePath} replace />
 
-  const back = guideBackTarget(entry.category, readFromDay(location.state), dayDates)
+  const back = guideBackTarget(entry.category, readGuideOrigin(location.state), dayDates)
   const topic = GUIDE_TOPIC_STYLE[entry.category]
   const TopicIcon = topic.icon
 
@@ -44,7 +44,7 @@ function GuideEntryPage() {
       <header className="flex flex-col gap-2">
         <Link
           to={`${guidePath}/topic/${entry.category}`}
-          className={`inline-flex min-h-[40px] items-center gap-2 self-start rounded-full px-3 text-sm font-bold uppercase tracking-wider text-trip-ink no-underline ${topic.soft}`}
+          className={`inline-flex min-h-[48px] items-center gap-2 self-start rounded-full px-3 text-sm font-bold uppercase tracking-wider text-trip-ink no-underline ${topic.soft}`}
         >
           <TopicIcon className={`h-4 w-4 ${topic.ink}`} aria-hidden="true" />
           {guideCategoryLabel(entry.category)}

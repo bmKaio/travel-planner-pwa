@@ -3,7 +3,7 @@ import { Upload } from 'lucide-react'
 import { useTrip } from '../hooks/useTrip'
 import { useHelpInfo } from '../hooks/useHelpInfo'
 import { useGuide } from '../hooks/useGuide'
-import { guideForHelp } from '../domain/guide'
+import { guideForHelp, type GuideOrigin } from '../domain/guide'
 import type { HelpInfo } from '../types'
 import PageHeader from '../components/PageHeader'
 import EmergencyCard from '../components/EmergencyCard'
@@ -24,6 +24,8 @@ function describeImport(help: HelpInfo | null): string {
   if (!help) return 'Datos privados importados en este dispositivo.'
   return `Datos privados importados en este dispositivo: ${plural(help.cards.length, 'tarjeta', 'tarjetas')}, ${plural(help.contacts.length, 'contacto', 'contactos')} y ${plural(help.docs.length, 'documento', 'documentos')}.`
 }
+
+const HELP_ORIGIN: GuideOrigin = { fromHelp: true }
 
 function HelpPage() {
   const trip = useTrip()
@@ -83,7 +85,7 @@ function HelpPage() {
           <h2 id="help-guide-heading" className="text-2xl font-bold">
             Salud y precauciones
           </h2>
-          <GuideCardList entries={helpGuide} tripId={trip.id} />
+          <GuideCardList entries={helpGuide} tripId={trip.id} origin={HELP_ORIGIN} />
         </section>
       )}
 

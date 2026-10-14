@@ -76,11 +76,17 @@ export function formatReadingCount(count: number): string {
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
 
-/** The day an entry was opened from, carried as router state `{ fromDay }`; anything else → undefined. */
-export function readFromDay(state: unknown): string | undefined {
-  if (typeof state !== 'object' || state === null || !('fromDay' in state)) return undefined
-  const { fromDay } = state
-  return typeof fromDay === 'string' && ISO_DATE.test(fromDay) ? fromDay : undefined
+/** Where a guide entry was opened from, carried as router state. */
+export type GuideOrigin = { fromDay: string } | { fromHelp: true }
+
+/** Router state → origin; anything missing or malformed → undefined. */
+export function readGuideOrigin(state: unknown): GuideOrigin | undefined {
+  if (typeof state !== 'object' || state === null) return undefined
+  if ('fromHelp' in state && state.fromHelp === true) return { fromHelp: true }
+  if ('fromDay' in state && typeof state.fromDay === 'string' && ISO_DATE.test(state.fromDay)) {
+    return { fromDay: state.fromDay }
+  }
+  return undefined
 }
 
 export interface GuideBackTarget {
@@ -89,14 +95,15 @@ export interface GuideBackTarget {
   label: string
 }
 
-/** The entry page's single back button: the day it came from if it is a trip day, else its topic. */
+/** The entry page's single back button: where it was opened from (a trip day or Help), else its topic. */
 export function guideBackTarget(
   category: GuideCategory,
-  fromDay: string | undefined,
+  origin: GuideOrigin | undefined,
   dayDates: string[]
 ): GuideBackTarget {
-  if (fromDay !== undefined && dayDates.includes(fromDay)) {
-    return { path: `itinerary/${fromDay}`, label: 'Volver al día' }
+  if (origin && 'fromHelp' in origin) return { path: 'help', label: 'Volver a Ayuda' }
+  if (origin && dayDates.includes(origin.fromDay)) {
+    return { path: `itinerary/${origin.fromDay}`, label: 'Volver al día' }
   }
   return { path: `guide/topic/${category}`, label: guideCategoryLabel(category) }
 }

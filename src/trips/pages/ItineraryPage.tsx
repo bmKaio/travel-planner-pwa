@@ -41,7 +41,7 @@ function DayGuide({
   return (
     <section className="flex flex-col gap-2.5">
       <h2 className="text-xl font-bold">Para saber más</h2>
-      <GuideCardList entries={entries} tripId={tripId} fromDay={date} />
+      <GuideCardList entries={entries} tripId={tripId} origin={{ fromDay: date }} />
     </section>
   )
 }
