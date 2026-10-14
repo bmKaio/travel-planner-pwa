@@ -4,11 +4,12 @@ import type { TripContent } from '../types'
 // Times: flights are exact (local time); every other time is an approximate slot because the
 // dossier gives none. Hotel names and map queries are public by the owner's decision; phones and
 // agency contacts stay private (JSON import only).
+// Guide: docs/peru/guia-borrador.md (reviewed by the owner).
 // Bump seedVersion on every change so installed devices resync.
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 6,
+  seedVersion: 7,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -1326,6 +1327,651 @@ const content: TripContent = {
     { key: 'p-ropa', group: 'private', label: 'Ropa de abrigo por capas e impermeable', order: 17 },
     { key: 'p-calzado', group: 'private', label: 'Calzado de montaña', order: 18 },
     { key: 'p-sol', group: 'private', label: 'Protector solar y repelente', order: 19 },
+  ],
+  guide: [
+    {
+      key: 'culturas-preincas',
+      category: 'history',
+      title: 'Antes de los incas',
+      summary:
+        'Miles de años de culturas andinas antes del Imperio inca, desde Caral hasta los wari.',
+      body: [
+        'Los incas llegaron tarde. Mucho antes, en la costa norte, la ciudad sagrada de Caral ya tenía pirámides y plazas circulares hundidas. La UNESCO la describe como un centro de unos 5.000 años de antigüedad.',
+        'Después fueron surgiendo otras culturas, cada una con su estilo. Chavín, en la sierra de Áncash (hacia 900–250 a. C.), difundió su arte por buena parte de los Andes. Paracas, en la costa sur, es famosa por sus textiles.',
+        'Nasca (hacia 100 a. C.–800 d. C.) dibujó figuras gigantes en el desierto y construyó acueductos subterráneos. Los moche (hacia 100–800 d. C.), en el norte, levantaron pirámides de adobe y modelaron vasijas con retratos. Los wari (hacia 500–1000 d. C.) crearon una red de centros desde Ayacucho.',
+        'Muchas de estas culturas dejaron cerámica, textiles y objetos de oro que hoy se conservan en museos. Los incas heredaron de ellas técnicas como las terrazas de cultivo.',
+      ],
+      dates: ['2026-10-18'],
+      sources: [
+        'https://whc.unesco.org/en/list/1269/',
+        'https://whc.unesco.org/en/list/700',
+        'https://en.wikipedia.org/wiki/Chav%C3%ADn_culture',
+        'https://en.wikipedia.org/wiki/Moche_culture',
+        'https://en.wikipedia.org/wiki/Wari_culture',
+        'https://www.museolarco.org/en/?p=8168',
+      ],
+    },
+    {
+      key: 'imperio-inca',
+      category: 'history',
+      title: 'El Imperio inca',
+      summary:
+        'En menos de un siglo, los incas pasaron de un señorío en Cusco a un imperio de unos 12 millones de personas.',
+      body: [
+        'El Imperio inca duró de 1438 a 1533. Su nombre oficial era Tawantinsuyu, que en quechua significa "las cuatro partes", porque cuatro regiones se unían en Cusco, la capital. La gran expansión empezó con Pachacútec, el noveno Sapa Inca.',
+        "Se calcula que en su apogeo vivían en el imperio unos 12 millones de personas. No había moneda ni mercado: cada familia debía trabajo al Estado, la mit'a, y el Estado devolvía alimentos, bienes y fiestas.",
+        'No tenían escritura alfabética. Llevaban cuentas y censos con cuerdas anudadas, los quipus, y comunicaban el imperio con una gran red de caminos.',
+        'Cusco era el centro político, administrativo y militar. La UNESCO destaca su plano urbano inca, sobre el que luego se levantó la ciudad colonial.',
+      ],
+      dates: ['2026-10-24'],
+      sources: ['https://en.wikipedia.org/wiki/Inca_Empire', 'https://whc.unesco.org/en/list/273/'],
+    },
+    {
+      key: 'conquista-virreinato',
+      category: 'history',
+      title: 'La conquista y el Virreinato',
+      summary:
+        'Del golpe de Pizarro en Cajamarca (1532) a Lima como capital del Virreinato del Perú.',
+      body: [
+        'Cuando llegó Francisco Pizarro en 1532, el imperio salía de una guerra de sucesión entre dos hermanos, Huáscar y Atahualpa. El 16 de noviembre de 1532, en Cajamarca, los españoles capturaron a Atahualpa. Murió ejecutado en 1533.',
+        'Pizarro fundó Lima en enero de 1535 como "Ciudad de los Reyes". En 1542 la Corona creó el Virreinato del Perú, con capital en Lima. Llegó a abarcar casi toda la América del Sur española.',
+        'Las minas, sobre todo la de plata de Potosí, hicieron rico al virreinato. La capital fue el centro político, religioso y económico durante siglos. En el siglo XVIII se crearon otros virreinatos y Lima perdió peso.',
+        'Hubo resistencia. Túpac Amaru II se alzó en 1780 contra los abusos coloniales y fue ejecutado en Cusco en 1781. Hoy sigue siendo un símbolo en Perú.',
+      ],
+      dates: ['2026-10-18'],
+      sources: [
+        'https://en.wikipedia.org/wiki/Inca_Empire',
+        'https://en.wikipedia.org/wiki/Viceroyalty_of_Peru',
+        'https://whc.unesco.org/en/list/500',
+        'https://history.com/this-day-in-history/pizarro-traps-incan-emperor-atahualpa',
+        'https://en.wikipedia.org/wiki/T%C3%BApac_Amaru_II',
+      ],
+    },
+    {
+      key: 'independencia-republica',
+      category: 'history',
+      title: 'Independencia y República',
+      summary:
+        'Perú proclamó su independencia el 28 de julio de 1821, pero la guerra no terminó hasta 1824.',
+      body: [
+        'José de San Martín desembarcó en 1820 y obligó al virrey a abandonar Lima. El 28 de julio de 1821 se proclamó la independencia. Por eso el 28 de julio es la fiesta nacional.',
+        'La guerra continuó. Simón Bolívar llegó desde el norte y las victorias de Junín y Ayacucho (9 de diciembre de 1824) pusieron fin al dominio español. Los últimos reductos realistas, en Callao, cayeron en 1826.',
+        'Con la República llegaron nuevos habitantes. Desde mediados del siglo XIX llegaron trabajadores chinos y, desde 1899, japoneses. Su cocina cambió la mesa peruana: de ahí vienen la comida chifa y la nikkei.',
+      ],
+      sources: [
+        'https://en.wikipedia.org/wiki/Peruvian_War_of_Independence',
+        'https://en.wikipedia.org/wiki/Viceroyalty_of_Peru',
+      ],
+    },
+    {
+      key: 'lima',
+      category: 'city',
+      title: 'Lima',
+      summary:
+        'Capital fundada por Pizarro en 1535, en un desierto costero cubierto de nubes bajas.',
+      body: [
+        'Lima nació en enero de 1535, fundada por Francisco Pizarro en el valle del Rímac, con el nombre de Ciudad de los Reyes. Fue la capital del Virreinato del Perú y la ciudad más importante de la América del Sur española.',
+        'Está en un desierto junto al Pacífico. La corriente fría de Humboldt enfría el mar y el aire, y forma una neblina baja llamada garúa. No suele llover: es una niebla que da cielos grises, sobre todo en los meses frescos.',
+        'Esa misma corriente fría llena el mar de peces. Es una de las razones por las que la cocina limeña gira en torno al pescado fresco.',
+      ],
+      dates: ['2026-10-17', '2026-10-18'],
+      sources: [
+        'https://whc.unesco.org/en/list/500',
+        'https://en.wikipedia.org/wiki/Climate_of_Peru',
+        'https://en.wikipedia.org/wiki/Gar%C3%BAa',
+      ],
+    },
+    {
+      key: 'arequipa',
+      category: 'city',
+      title: 'Arequipa',
+      summary: 'La "Ciudad Blanca", construida con piedra volcánica y rodeada de volcanes.',
+      body: [
+        'Arequipa se fundó el 15 de agosto de 1540. La UNESCO inscribió su centro histórico en el año 2000. Está construido en sillar, una roca volcánica clara, y mezcla técnicas europeas e indígenas.',
+        'Se la llama la Ciudad Blanca por el color de esa piedra. El sillar es blando, ligero y resiste bien los temblores, algo clave en una zona sísmica. Un gran terremoto en 1582 llevó a los constructores a usarlo de forma sistemática.',
+        'El clima es seco, de desierto frío. Arequipa es hoy la segunda ciudad más poblada del país, con más de un millón de habitantes.',
+      ],
+      dates: ['2026-10-19'],
+      sources: ['https://whc.unesco.org/en/list/1016', 'https://en.wikipedia.org/wiki/Arequipa'],
+    },
+    {
+      key: 'canon-del-colca',
+      category: 'city',
+      title: 'El Cañón del Colca',
+      summary:
+        'Uno de los cañones más profundos del mundo, con valles cultivados en terrazas desde antes de los incas.',
+      body: [
+        'El cañón del Colca se encuentra a unos 160 km al noroeste de Arequipa. Se suele citar una profundidad de unos 3.270 m, aunque las fuentes no coinciden del todo. Es uno de los más profundos del planeta.',
+        'Antes de los incas vivían allí dos pueblos: los collaguas (de lengua aimara) y los cabanas (de lengua quechua). Sus descendientes aún cultivan las terrazas escalonadas, llamadas andenes, que construyeron hace siglos.',
+        'Chivay es la localidad más grande y está en el punto medio del valle. Es una zona de pueblos pequeños y agricultura de terrazas.',
+      ],
+      dates: ['2026-10-20', '2026-10-21'],
+      sources: ['https://en.wikipedia.org/wiki/Colca_Canyon'],
+    },
+    {
+      key: 'puno-titicaca',
+      category: 'city',
+      title: 'Puno y el lago Titicaca',
+      summary:
+        'Un lago a unos 3.800 m de altitud, compartido con Bolivia, y una ciudad conocida por su música y sus danzas.',
+      body: [
+        'El Titicaca está a 3.812 m de altitud, en la frontera entre Perú y Bolivia. Cerca del 60 % del lago pertenece a Perú y el 40 % a Bolivia. Se le considera el mayor lago navegable comercialmente situado a mayor altura.',
+        'Puno se fundó en 1668 y está a unos 3.830 m. Aquí se habla quechua y aimara, y la ciudad es famosa por su música y sus danzas.',
+        'La fiesta de la Virgen de la Candelaria, cada febrero, está en la lista de la UNESCO desde 2014. Reúne a miles de bailarines y músicos y mezcla tradiciones quechuas y aimaras.',
+        'Las noches de invierno suelen bajar de cero.',
+      ],
+      dates: ['2026-10-21', '2026-10-22'],
+      sources: [
+        'https://en.wikipedia.org/wiki/Lake_Titicaca',
+        'https://en.wikipedia.org/wiki/Puno,_Peru',
+        'https://peru.info/en-us/tourism/news/3/17/virgen-de-la-candelaria-in-puno-everything-you-need-to-know',
+      ],
+    },
+    {
+      key: 'cusco',
+      category: 'city',
+      title: 'Cusco',
+      summary: 'La antigua capital inca, con cimientos incas bajo edificios coloniales.',
+      body: [
+        'Cusco fue la capital del Imperio inca hasta la conquista española. En quechua se escribe Qusqu. La UNESCO la inscribió en 1983 por su plano urbano inca y por la arquitectura barroca colonial levantada encima.',
+        'Los españoles no arrasaron la ciudad. Conservaron su trazado y construyeron templos, conventos y casonas sobre las construcciones incas. Por eso muchos muros incas siguen sirviendo de cimiento a edificios coloniales.',
+        'Está a unos 3.350 m de altitud, según el CDC. La Constitución peruana la reconoce como la "Capital Histórica del Perú".',
+      ],
+      dates: ['2026-10-23', '2026-10-24', '2026-10-26', '2026-10-27'],
+      sources: [
+        'https://whc.unesco.org/en/list/273/',
+        'https://www.wikipedia.org/wiki/Qusqu',
+        'https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/high-altitude-travel-and-altitude-illness.html',
+      ],
+    },
+    {
+      key: 'valle-sagrado',
+      category: 'city',
+      title: 'El Valle Sagrado',
+      summary:
+        'El valle del Urubamba, más bajo y cálido que Cusco, fue el granero de maíz del Imperio inca.',
+      body: [
+        'El Valle Sagrado sigue el río Urubamba, de Pisac a Ollantaytambo (unos 60 km). Es más bajo y cálido que Cusco, y allí se daba el maíz, un cultivo de prestigio con el que se elaboraba chicha para las fiestas ceremoniales.',
+        'Desde el valle se accedía además a zonas tropicales que abastecían a Cusco de hoja de coca y ajíes. Los incas construyeron grandes obras de riego para compensar la falta de lluvias en algunas épocas.',
+        'En el siglo XV el valle se convirtió en una región de fincas reales. Pachacútec tuvo allí una de ellas.',
+        'En 1537 Manco Inca derrotó a un ejército español en la batalla de Ollantaytambo, aunque poco después se retiró y los españoles tomaron el control.',
+      ],
+      dates: ['2026-10-25'],
+      sources: ['https://en.wikipedia.org/wiki/Sacred_Valley'],
+    },
+    {
+      key: 'machu-picchu',
+      category: 'city',
+      title: 'Machu Picchu',
+      summary:
+        'Una finca del emperador Pachacútec, construida hacia 1450 y abandonada un siglo después.',
+      body: [
+        'Se levantó hacia 1450, durante el reinado de Pachacútec. La mayoría de los arqueólogos cree que fue su finca real, aunque no hay documentos de la época que lo confirmen.',
+        'Vivían allí unas 750 personas, sobre todo personal de servicio. Se abandonó aproximadamente un siglo después, hacia la época de la conquista española.',
+        'Está a unos 2.430 m, más bajo que Cusco, así que muchos viajeros notan menos la altura. La UNESCO lo inscribió en 1983 y en 2007 fue elegido una de las Nuevas Siete Maravillas del Mundo.',
+      ],
+      dates: ['2026-10-25', '2026-10-26'],
+      sources: [
+        'https://en.wikipedia.org/wiki/Machu_Picchu',
+        'https://andina.pe/ingles/noticia-perus-machu-picchu-why-is-july-7-a-key-date-for-this-formidable-inca-legacy-1082607.aspx',
+      ],
+    },
+    {
+      key: 'ceviche',
+      category: 'food',
+      title: 'Ceviche',
+      summary: 'El plato bandera de Perú: pescado fresco marinado en limón.',
+      body: [
+        'Pescado fresco cortado en cubos y marinado en jugo de limón recién exprimido, con cebolla morada, ají limo, choclo y camote.',
+        'La UNESCO inscribió en 2023 las prácticas asociadas a su preparación y consumo como Patrimonio Cultural Inmaterial. Se come a diario y en celebraciones, y se vincula con la fiesta de San Pedro, patrón de los pescadores artesanales.',
+        'Se come a mediodía: el pescado es del día y en Lima muchas cevicherías cierran por la tarde.',
+      ],
+      dates: ['2026-10-18'],
+      sources: [
+        'https://ich.unesco.org/en/RL/01952',
+        'https://andina.pe/ingles/noticia-peruvian-ceviche-inscribed-on-unescos-intangible-cultural-heritage-of-humanity-list-965651.aspx',
+      ],
+    },
+    {
+      key: 'lomo-saltado',
+      category: 'food',
+      title: 'Lomo saltado',
+      summary: 'Carne salteada al wok con papas fritas y arroz: fusión peruano-china.',
+      body: [
+        'Trozos de res salteados a fuego fuerte con cebolla, tomate, ají amarillo y salsa de soja. Se sirven con papas fritas y arroz blanco.',
+        'Es un plato de la cocina chifa, la fusión de la cocina cantonesa con ingredientes peruanos. El wok, el salteado rápido y la salsa de soja vienen de los inmigrantes chinos.',
+        'Las papas fritas y el arroz lo hacen un plato contundente, bueno para compartir.',
+      ],
+      dates: ['2026-10-18'],
+      sources: ['https://en.wikipedia.org/wiki/Lomo_saltado', 'https://food52.com/blog/23106'],
+    },
+    {
+      key: 'causa-limena',
+      category: 'food',
+      title: 'Causa limeña',
+      summary: 'Un pastel frío de papa amarilla, limón y ají, relleno de pollo o atún.',
+      body: [
+        'Puré de papa amarilla sazonado con limón y pasta de ají amarillo, relleno de pollo o atún con mayonesa y palta (aguacate). Se sirve frío, en capas.',
+        'Tiene raíces andinas: antes había puré de papa amarilla con ají. El limón llegó en época virreinal. La primera receta impresa que se cita es de 1903, en un libro de cocina criolla de Lima.',
+        'El nombre tiene varias explicaciones y ninguna está confirmada. Una dice que viene del quechua kausay ("vida"). Otra cuenta que en la época de la independencia se vendía para reunir fondos, "por la causa".',
+      ],
+      dates: ['2026-10-18'],
+      sources: [
+        'https://en.wikipedia.org/wiki/Causa_lime%C3%B1a',
+        'https://en.comida-peruana.com/articulos/limena-causa-a-typically-peruvian-dish',
+      ],
+    },
+    {
+      key: 'aji-de-gallina',
+      category: 'food',
+      title: 'Ají de gallina',
+      summary: 'Un guiso cremoso de gallina desmenuzada en salsa de ají amarillo.',
+      body: [
+        'Pechuga de gallina desmenuzada en una crema de ají amarillo, leche y pan. Se acompaña de papas sancochadas, huevo duro y aceitunas negras.',
+        'Es un plato suave y reconfortante, con el ají amarillo en versión cremosa.',
+        'Se cree que desciende de un plato español de almendras, leche y pollo, y que se adaptó con ingredientes peruanos. Hay leyendas sobre su origen, pero no están documentadas.',
+      ],
+      dates: ['2026-10-17'],
+      sources: ['https://en.wikipedia.org/wiki/Aj%C3%AD_de_gallina'],
+    },
+    {
+      key: 'anticuchos',
+      category: 'food',
+      title: 'Anticuchos',
+      summary: 'Brochetas de corazón de res marinadas en ají panca y asadas a la parrilla.',
+      body: [
+        'Brochetas de corazón de res marinadas en adobo de ají panca, vinagre y especias, asadas a la parrilla. Se sirven con papas y choclo.',
+        'La versión actual se asocia a la población afroperuana de la época colonial, que aprovechaba las vísceras del ganado. Se añadieron ingredientes traídos por los españoles, como el vinagre y el ajo.',
+        'En los Andes ya se asaba carne en brocheta desde antes. Con el tiempo la res sustituyó a la llama. Si el corazón no te convence, prueba un bocado pequeño: sabe a carne a la parrilla.',
+      ],
+      dates: ['2026-10-17'],
+      sources: [
+        'https://en.wikipedia.org/wiki/Anticucho',
+        'https://spark.asu.edu/anticuchos-the-heart-of-peruvian-cuisine',
+      ],
+    },
+    {
+      key: 'papa-huancaina',
+      category: 'food',
+      title: 'Papa a la huancaína',
+      summary: 'Papa cocida con una salsa cremosa de queso fresco y ají amarillo.',
+      body: [
+        'Rodajas de papa sancochada cubiertas con una salsa cremosa de queso fresco, ají amarillo, galletas y leche. Se adorna con huevo duro y aceitunas.',
+        'Según PromPerú, el plato habría aparecido en el siglo XIX en Junín. Su nombre se relaciona con Huancayo, en los Andes centrales.',
+        'Es un entrante frío y suave. Suele ser una buena opción para los niños y para quien no quiere picante.',
+      ],
+      sources: [
+        'https://peru.info/en-us/gastronomy/news/2/13/5-peruvian-recipes-you-can-make-anytime',
+        'https://en.wikipedia.org/wiki/Papa_a_la_huanca%C3%ADna',
+      ],
+    },
+    {
+      key: 'papa-rellena',
+      category: 'food',
+      title: 'Papa rellena',
+      summary: 'Una croqueta de masa de papa, rellena de carne y frita.',
+      body: [
+        'Masa de papa sazonada, rellena de un pino de carne picada con cebolla, huevo duro y aceitunas, que se empaniza o se fríe. Se sirve con salsa criolla o ají.',
+        'Su origen no está claro. La versión más repetida dice que nació durante la guerra del Pacífico (1879–1884), pero no hay una prueba definitiva.',
+        'Es una comida de calle fácil de comer con la mano, tibia y sin demasiado picante.',
+      ],
+      sources: ['https://en.wikipedia.org/wiki/Papa_rellena'],
+    },
+    {
+      key: 'comida-callejera',
+      category: 'food',
+      title: 'Antojos de la calle',
+      summary:
+        'Pan con chicharrón, picarones, salchipapa y tamales: los sabores de las calles peruanas.',
+      body: [
+        'El pan con chicharrón es un desayuno clásico. Lleva trozos de cerdo dorados dentro de un pan francés, con camote frito y sarsa criolla (cebolla, ají limo, perejil y limón). Hay un Día del Chicharrón el tercer sábado de junio.',
+        'Los picarones son anillos fritos de masa de zapallo y camote, con miel de chancaca. Nacieron en la Lima colonial, como alternativa a los buñuelos, que eran más caros de hacer. Ricardo Palma ya los menciona en 1872. A menudo se sirven junto a los anticuchos.',
+        'La salchipapa son papas fritas con rodajas de salchicha y salsas. El tamal peruano es masa de maíz rellena de pollo o cerdo, envuelta en hoja y cocida al vapor.',
+      ],
+      dates: ['2026-10-18'],
+      sources: [
+        'https://www.eatperu.com/pan-con-chicharron/',
+        'https://en.wikipedia.org/wiki/Picarones',
+        'https://caretas.pe/?p=765255',
+      ],
+    },
+    {
+      key: 'rocoto-relleno',
+      category: 'food',
+      title: 'Rocoto relleno',
+      summary: 'El plato más emblemático de Arequipa: un ají rocoto relleno y gratinado.',
+      body: [
+        'PromPerú lo llama el plato más emblemático de Arequipa. Un rocoto se rellena con carne, cacahuete, huevo, aceitunas y especias, se cubre con queso y se hornea. Suele acompañarse de un pastel de papa.',
+        'El rocoto es un ají rojo originario de Perú y Bolivia. Para bajar el picante se cuece con vinagre antes de rellenarlo. Aun así pica más que el ají amarillo.',
+        'Pregunta por el nivel de picante antes de pedirlo, sobre todo si hay niños en la mesa.',
+      ],
+      dates: ['2026-10-19'],
+      sources: [
+        'https://peru.info/en-us/gastronomy/news/2/45/five-traditional-dishes-from-arequipa-that-truly-stand-out',
+        'https://en.wikipedia.org/wiki/Rocoto_relleno',
+        'https://pepperscale.com/?p=17785',
+      ],
+    },
+    {
+      key: 'chupe-de-camarones',
+      category: 'food',
+      title: 'Chupe de camarones',
+      summary: 'Un espeso caldo de camarones de río, originario de Arequipa.',
+      body: [
+        'El chupe de camarones es una sopa espesa que se asocia a la costa sur y se considera originaria de Arequipa. Se hace con camarones de río.',
+        'La receta original usaba crustáceos de río y más tarde se popularizó con camarones. PromPerú lo considera uno de los platos emblemáticos de Arequipa.',
+        'Es un plato contundente. Conviene tomarlo con calma si estás a gran altura.',
+      ],
+      dates: ['2026-10-19', '2026-10-20'],
+      sources: ['https://en.wikipedia.org/wiki/Chupe', 'https://elbuho.pe/?p=226836'],
+    },
+    {
+      key: 'adobo-arequipeno',
+      category: 'food',
+      title: 'Adobo arequipeño',
+      summary: 'Un estofado de cerdo macerado en chicha, típico del desayuno dominical arequipeño.',
+      body: [
+        'El adobo arequipeño es un estofado lento de cerdo, macerado en chicha de güiñapo con ají panca, ajo, cebolla y especias. Se sirve como un caldo espeso con pan de tres puntas.',
+        'Según PromPerú, es tradicional tomarlo en el desayuno de los domingos. Es una comida pensada para entrar en calor en un clima de altura.',
+        'La chicha usada en el adobo es de maíz fermentado. Conviene preguntar cómo se prepara si no quieres que los niños lo tomen.',
+      ],
+      dates: ['2026-10-19'],
+      sources: [
+        'https://peru.info/en-us/gastronomy/news/2/45/five-traditional-dishes-from-arequipa-that-truly-stand-out',
+      ],
+    },
+    {
+      key: 'trucha-titicaca',
+      category: 'food',
+      title: 'Trucha del Titicaca',
+      summary: 'La trucha del lago no es nativa: llegó en el siglo XX y hoy es el pescado de Puno.',
+      body: [
+        'La trucha arcoíris no es originaria de los Andes. Según un artículo periodístico, en 1930 se regalaron cincuenta truchas a un criador en Junín. En 1941 salieron huevos desde allí hacia una estación piscícola de Puno.',
+        'Hoy Puno es el principal productor. Se come frita, a la parrilla o en ceviche.',
+        'Es una especie introducida y se considera invasora, porque compite con peces nativos del lago.',
+      ],
+      dates: ['2026-10-21', '2026-10-22'],
+      sources: [
+        'https://proactivo.com.pe/la-trucha-el-pez-que-fue-traido-al-peru-y-criado-por-mineros/',
+      ],
+    },
+    {
+      key: 'cuy',
+      category: 'food',
+      title: 'Cuy',
+      summary: 'El conejillo de Indias andino, un plato festivo muy antiguo en la sierra.',
+      body: [
+        'El cuy es un roedor doméstico que se cría en los Andes desde hace mucho tiempo. Se come en fiestas y ocasiones especiales, y tiene un papel ritual desde la época inca.',
+        'Se prepara de dos formas muy conocidas. El cuy al horno va macerado con especias y se asa hasta que la piel queda crujiente. El cuy chactado se fríe aplastado y se asocia con Arequipa.',
+        'En muchos locales hay que encargarlo con antelación. Es un plato cultural más que cotidiano, y no hace falta probarlo si no apetece.',
+      ],
+      dates: ['2026-10-19', '2026-10-24'],
+      sources: [
+        'https://trexperienceperu.com/blog/what-cuy-guinea-pig-unexpected-star-peruvian-cuisine',
+        'https://www.valenciatravelcusco.com/passion-passport/cuy-the-best-preparations',
+      ],
+    },
+    {
+      key: 'quinua',
+      category: 'food',
+      title: 'Quinua',
+      summary: 'El grano andino que los incas llamaban "madre de todos los granos".',
+      body: [
+        'La quinua se cultiva desde hace miles de años en los Andes, cerca del lago Titicaca. Los incas la llamaban chisaya mama, "madre de todos los granos".',
+        'La FAO destaca que contiene todos los aminoácidos esenciales y no tiene gluten. En 2013 se celebró el Año Internacional de la Quinua.',
+        'Perú es el mayor productor y exportador del mundo, y Puno es una de las regiones que más cultiva. Se come en sopa, en puré (pesque) o en guisos.',
+      ],
+      dates: ['2026-10-21'],
+      sources: [
+        'https://news.un.org/en/node/453242',
+        'https://andina.pe/ingles/noticia-andean-grains-are-superfoods-and-peru-is-world-leader-in-quinoa-945738.aspx',
+        'https://spark.asu.edu/journeying-from-stable-to-superfood-quinoa',
+      ],
+    },
+    {
+      key: 'pisco-sour',
+      category: 'drink',
+      title: 'Pisco sour',
+      summary: 'El cóctel nacional: pisco, limón, jarabe, clara de huevo y amargo de angostura.',
+      body: [
+        'Se prepara con pisco (un aguardiente de uva), jugo de limón, jarabe de goma, clara de huevo y unas gotas de amargo de angostura. Es el cóctel nacional de Perú.',
+        'Se suele atribuir al estadounidense Victor Morris, que tuvo un bar en Lima en la década de 1920. Las primeras menciones impresas son de principios de esa década. El origen se discute: Chile también reclama la invención.',
+        'El Día Nacional del Pisco Sour es el primer sábado de febrero. Lleva alcohol: para los niños, mejor la chicha morada.',
+      ],
+      dates: ['2026-10-18'],
+      sources: [
+        'https://peru.info/en-us/GASTRONOMY/News/2/12/pisco-sour-day--one-hundred-years-bringing-honor-to-peru',
+        'https://chilledmagazine.com/?p=25112',
+      ],
+    },
+    {
+      key: 'chicha-morada',
+      category: 'drink',
+      title: 'Chicha morada',
+      summary: 'Refresco sin alcohol de maíz morado, piña, canela y clavo.',
+      body: [
+        'Se prepara hirviendo maíz morado (culli) con cáscaras de piña y manzana, canela y clavo. Se endulza y se sirve helada, con un toque de limón.',
+        'Es una bebida de las zonas andinas del Perú, ya extendida en época anterior a los incas. Hoy se sirve en casi cualquier restaurante.',
+        'El color violeta viene de las antocianinas, un pigmento del maíz. No tiene alcohol, así que es la opción para toda la familia.',
+      ],
+      sources: ['https://en.wikipedia.org/wiki/Chicha_morada'],
+    },
+    {
+      key: 'emoliente',
+      category: 'drink',
+      title: 'Emoliente',
+      summary: 'Una infusión caliente de cebada, linaza y hierbas, vendida desde carritos.',
+      body: [
+        'Es una bebida caliente, tradicional de Lima, hecha con cebada tostada, linaza y distintas hierbas. Lleva azúcar y limón. Cada vendedor tiene su receta.',
+        'Se introdujo en época colonial como bebida medicinal. En Lima, los emolienteros la venden en carritos callejeros y es más popular en los días fríos.',
+        'Se le atribuyen efectos digestivos, pero no están demostrados clínicamente. Es mejor tomarla como una infusión reconfortante.',
+      ],
+      sources: [
+        'https://en.wikipedia.org/wiki/Emoliente',
+        'https://punchdrink.com/articles/emoliente-piteado-pisco-cocktail-lima-peru/',
+      ],
+    },
+    {
+      key: 'mate-de-coca',
+      category: 'drink',
+      title: 'Mate de coca',
+      summary: 'La infusión de hoja de coca, tradicional en la altura y legal en Perú.',
+      body: [
+        'El mate de coca es una infusión de hoja de coca. En los Andes se toma desde hace siglos y es legal en Perú. Se ofrece en muchos hoteles.',
+        'Es el remedio tradicional contra el soroche, el mal de altura. Un estudio con viajeros en Cusco no encontró que reduzca el riesgo, así que no sustituye a otras precauciones.',
+        'La hoja de coca no es cocaína, pero su estatus legal fuera de Perú varía. Infórmate antes de llevar bolsitas a casa.',
+      ],
+      dates: ['2026-10-20'],
+      sources: [
+        'https://www.gonomad.com/5298-peru-a-tea-drinker-s-dilemma',
+        'https://researchexperts.utmb.edu/en/publications/risk-factors-for-acute-mountain-sickness-in-travellers-to-cusco-p/',
+      ],
+    },
+    {
+      key: 'chicha-de-jora',
+      category: 'drink',
+      title: 'Chicha de jora',
+      summary: 'La cerveza de maíz fermentado, con una larga tradición ceremonial en los Andes.',
+      body: [
+        'La chicha de jora es una bebida de baja graduación hecha con maíz amarillo germinado y fermentado durante varios días. Al germinar, parte del almidón se convierte en azúcares.',
+        'En el mundo inca tuvo un papel ceremonial. Se ofrecía al Sol durante el Inti Raymi y a la Pachamama. Ya existían bebidas de maíz fermentado antes del imperio.',
+        'Hoy sigue siendo popular en los alrededores de Cusco. Es alcohólica, así que no es para niños. No la confundas con la chicha morada.',
+      ],
+      dates: ['2026-10-24'],
+      sources: [
+        'https://trexperienceperu.com/blog/chicha-de-jora',
+        'https://www.kuodatravel.com/blog/chicha-andean-beverage/',
+      ],
+    },
+    {
+      key: 'papas-nativas',
+      category: 'curiosity',
+      title: 'Las papas andinas',
+      summary: 'En los Andes existen más de 4.000 variedades nativas de papa.',
+      body: [
+        'El Centro Internacional de la Papa (CIP), con sede en La Molina, Lima, cuenta más de 4.000 variedades nativas en las tierras altas de Perú, Bolivia y Ecuador.',
+        'Se cultivan entre unos 3.500 y 4.200 m de altura. Los agricultores las han ido seleccionando durante siglos por su sabor, textura, forma y color.',
+        'Verás papas amarillas, moradas, rojizas y de formas muy distintas. La papa amarilla es la base de la causa limeña.',
+      ],
+      sources: [
+        'https://cipotato.org/potato/native-potato-varieties/',
+        'https://cipotato.org/?p=176836',
+      ],
+    },
+    {
+      key: 'uros-totora',
+      category: 'curiosity',
+      title: 'Los uros y la totora',
+      summary: 'Islas, casas y barcas hechas con una sola planta: la totora.',
+      body: [
+        'Los uros viven en islas artificiales hechas de totora, una planta del lago Titicaca. Sobre una base de raíces flotantes se colocan capas de cañas y se amarran al fondo con cuerdas y estacas.',
+        'Las cañas se pudren por debajo, así que se añaden capas nuevas encima de forma constante. Con la misma totora se hacen las casas y las barcas, llamadas balsas.',
+        'Según algunas fuentes, las islas surgieron para defenderse y conservar la independencia. Las fuentes no coinciden en cuántas islas hay.',
+      ],
+      dates: ['2026-10-22'],
+      sources: [
+        'https://www.smithsonianmag.com/travel/people-peru-live-manmade-islands-constructed-plants-180956218/',
+      ],
+    },
+    {
+      key: 'taquile-tejido',
+      category: 'curiosity',
+      title: 'Los hombres que tejen en Taquile',
+      summary: 'En Taquile el tejido es una seña de identidad reconocida por la UNESCO.',
+      body: [
+        'El arte textil de Taquile fue proclamado por la UNESCO en 2005 y entró en la Lista Representativa en 2008. La UNESCO subraya que hombres y mujeres, de todas las edades, practican el textil a diario.',
+        'Según varias fuentes, tejer a punto, como los gorros, es tradicionalmente cosa de los hombres. El chullo, el gorro con orejeras, indicaría el estado civil: blanco para los solteros y rojo para los casados, aunque las fuentes no coinciden del todo.',
+        'Otra prenda típica es la faja calendario, un cinturón tejido que muestra los ciclos del año, rituales y agrícolas. Los tejidos se hacen en telares de cuatro estacas, de origen prehispánico.',
+        'La isla estuvo bastante aislada hasta los años cincuenta. Eso ayudó a conservar la tradición.',
+      ],
+      dates: ['2026-10-22'],
+      sources: [
+        'https://ich.unesco.org/en/RL/taquile-and-its-textile-art-00166',
+        'https://andeantextilearts.org/knitting-weaving-and-courtship-on-the-isle-of-taquile/',
+      ],
+    },
+    {
+      key: 'condor-andino',
+      category: 'curiosity',
+      title: 'El cóndor andino',
+      summary: 'Una de las aves voladoras más grandes del mundo, que casi no aletea.',
+      body: [
+        'El cóndor andino puede alcanzar unos 3 m de envergadura y pesar más de 11 kg de media. Solo unas pocas aves voladoras lo superan.',
+        'Planea sobre las corrientes de aire caliente que suben por las paredes de los cañones. Estudios con sensores indican que solo bate las alas alrededor del 1 % del tiempo de vuelo.',
+        'Es un carroñero. Puede vivir más de 50 años y la UICN lo considera una especie vulnerable, con unos 10.000 ejemplares. En la tradición andina se asociaba al dios Sol.',
+      ],
+      dates: ['2026-10-21'],
+      sources: [
+        'https://en.wikipedia.org/wiki/Andean_condor',
+        'https://en.wikipedia.org/wiki/Colca_Canyon',
+      ],
+    },
+    {
+      key: 'palabras-quechua',
+      category: 'curiosity',
+      title: 'Palabras quechuas',
+      summary:
+        'El quechua, "la lengua de la gente", sigue vivo y nos ha dado palabras como cóndor, puma o quinua.',
+      body: [
+        'Quechua en quechua se dice runa simi, "lengua de la gente". Perú fue el primer país en reconocerlo como lengua oficial, en 1975. El censo de 2017 contó 3,8 millones de hablantes en Perú.',
+        'Muchas palabras llegaron al español y a otras lenguas: cóndor, coca, llama, puma, quinua, pampa, poncho, vicuña y guano.',
+        'Para contar: huk (uno), iskay (dos), kimsa (tres), chunka (diez). Y para responder: arí (sí) y mana (no). Una casa es wasi.',
+      ],
+      sources: ['https://en.wikipedia.org/wiki/Quechua_languages'],
+    },
+    {
+      key: 'quipus',
+      category: 'curiosity',
+      title: 'Los quipus',
+      summary: 'Cuerdas con nudos que servían para contar y llevar las cuentas del imperio.',
+      body: [
+        'Los incas no tenían escritura alfabética. Para las cuentas usaban quipus: cuerdas de algodón o de fibra de camélido con nudos. El color, el orden y el tipo de nudo codificaban la información.',
+        'La mayoría de los quipus estudiados registran números en base diez. Los especialistas que los hacían y los leían se llamaban quipucamayocs. Se usaban para impuestos, censos y trabajo.',
+        'Se conservan unos 1.400. Algunos expertos creen que podrían guardar algo más que números, pero eso sigue sin descifrarse. En Caral se informó del hallazgo de un quipu mucho más antiguo que el imperio.',
+      ],
+      sources: [
+        'https://en.wikipedia.org/wiki/Khipu',
+        'https://www.nationalgeographic.com/history/article/inca-khipus-code-discovery-peru',
+      ],
+    },
+    {
+      key: 'machu-picchu-1911',
+      category: 'curiosity',
+      title: 'Machu Picchu y el "redescubrimiento" de 1911',
+      summary:
+        'Bingham dio a conocer Machu Picchu al mundo en 1911, pero ya lo conocían los vecinos.',
+      body: [
+        'En julio de 1911, el explorador estadounidense Hiram Bingham llegó a las ruinas guiado por un campesino de la zona, Melchor Arteaga. La expedición dio a conocer el sitio al mundo.',
+        'Pero el lugar no estaba perdido. En 1911 había familias quechuas cultivando algunas terrazas. Wikipedia cita además una visita anterior, la de Agustín Lizárraga, en 1902. Por eso hoy muchos prefieren hablar de "redescubrimiento".',
+        'Machu Picchu significa "montaña vieja" en quechua. Bingham, de la Universidad de Yale, sacó piezas del sitio entre 1911 y 1916. Tras un litigio, Yale las devolvió a Perú entre 2011 y 2012.',
+      ],
+      dates: ['2026-10-26'],
+      sources: [
+        'https://www.historytoday.com/archive/months-past/discovery-machu-picchu',
+        'https://en.wikipedia.org/wiki/Machu_Picchu',
+        'https://news.yale.edu/2015/06/04/peru-yale-partnership-future-machu-picchu-artifacts',
+      ],
+    },
+    {
+      key: 'qhapaq-nan',
+      category: 'curiosity',
+      title: 'El Qhapaq Ñan, el camino inca',
+      summary: 'Una red de caminos de unos 30.000 km que unía el imperio, hoy Patrimonio Mundial.',
+      body: [
+        'Los caminos incas conectaban Cusco con las cuatro regiones del imperio. La UNESCO habla de una red de unos 30.000 km. Los cálculos varían según la fuente.',
+        'A lo largo del camino había tambos (posadas) y colcas (almacenes). Para salvar los obstáculos de los Andes se construyeron puentes colgantes, escaleras y túneles.',
+        'En 2014 la UNESCO inscribió una parte del sistema como Patrimonio Mundial. Fue la primera candidatura conjunta de seis países: Argentina, Bolivia, Chile, Colombia, Ecuador y Perú.',
+      ],
+      sources: [
+        'https://whc.unesco.org/es/list/1459',
+        'https://www.prnewswire.co.uk/news-releases/the-qhapaq-nan-andean-road-system-declared-a-unesco-world-heritage-site-264405991.html',
+      ],
+    },
+    {
+      key: 'consejo-comer-bien',
+      category: 'tip',
+      title: 'Comer bien y con cabeza',
+      summary: 'Pide el picante aparte, el ceviche a mediodía y fíate de los puestos con cola.',
+      body: [
+        'Gradúa el picante. Pregunta siempre cuánto pica el ají antes de pedir. El ají amarillo es moderado, pero el rocoto pica bastante más.',
+        'Toma el ceviche a la hora del almuerzo. Es cuando el pescado está en su punto de frescura, y muchas cevicherías cierran por la tarde.',
+        'En la comida callejera, elige puestos con mucha gente. Una buena rotación de clientes es señal de que lo que sirven es fresco.',
+      ],
+      dates: ['2026-10-18'],
+      sources: ['https://ich.unesco.org/en/RL/01952', 'https://pepperscale.com/?p=17785'],
+    },
+    {
+      key: 'consejo-chifa-nikkei',
+      category: 'tip',
+      title: 'Chifa y nikkei: no solo comida criolla',
+      summary: 'Prueba la fusión chino-peruana (chifa) y la japonesa-peruana (nikkei).',
+      body: [
+        'La cocina peruana no es solo criolla. La chifa mezcla la cocina cantonesa con ingredientes peruanos, y de ella vienen el lomo saltado y el arroz chaufa.',
+        'La cocina nikkei combina técnicas japonesas con ingredientes peruanos, como el limón, el ají y el pescado local. Se asocia a los inmigrantes japoneses, que llegaron desde 1899.',
+        'Son buenas opciones si alguien de la familia no se decide por los platos más típicos.',
+      ],
+      sources: [
+        'https://www.foodnetwork.com/recipes/packages/global-flavors/nikkei-peruvian-japanese-cuisine',
+        'https://en.wikipedia.org/wiki/Lomo_saltado',
+      ],
+    },
+    {
+      key: 'consejo-soroche',
+      category: 'tip',
+      title: 'Altura y soroche',
+      summary: 'Sube despacio, descansa y consulta a tu médico antes de viajar.',
+      body: [
+        'El soroche es el mal de altura. Cusco está a unos 3.350 m y esta ruta incluye pasos mucho más altos, como Patapampa (4.910 m) y La Raya (4.335 m). El CDC recomienda aclimatarse poco a poco.',
+        'Camina despacio, descansa al llegar y come ligero. Evita el alcohol las primeras 48 horas y bebe según la sed.',
+        'Antes del viaje, consulta con un médico (y con el pediatra si hay niños) sobre la medicación preventiva. Un estudio en Cusco asoció la acetazolamida con menos riesgo de mal de altura. Los síntomas se vigilan: dolor de cabeza, náuseas o mareo.',
+        'Machu Picchu está más bajo que Cusco, a unos 2.430 m, así que allí suele notarse menos.',
+      ],
+      dates: ['2026-10-20', '2026-10-23'],
+      sources: [
+        'https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/high-altitude-travel-and-altitude-illness.html',
+        'https://researchexperts.utmb.edu/en/publications/risk-factors-for-acute-mountain-sickness-in-travellers-to-cusco-p/',
+      ],
+    },
   ],
 }
 

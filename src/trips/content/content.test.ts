@@ -32,6 +32,31 @@ describe('trip content', () => {
     }
   })
 
+  it.each(v2Trips)('$id guide entries are well-formed', async (trip) => {
+    const content = await loadTripContent(trip.id)
+    const guide = content.guide ?? []
+    const keys = guide.map((entry) => entry.key)
+    expect(new Set(keys).size).toBe(keys.length)
+
+    const tripDates = new Set(content.days.map((day) => day.date))
+    for (const entry of guide) {
+      expect(entry.key).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/)
+      expect(entry.title.trim()).not.toBe('')
+      expect(entry.summary.trim()).not.toBe('')
+      expect(entry.body.length).toBeGreaterThan(0)
+      for (const paragraph of entry.body) expect(paragraph.trim()).not.toBe('')
+      expect(entry.sources.length).toBeGreaterThan(0)
+      expect(new Set(entry.sources).size).toBe(entry.sources.length)
+      for (const url of entry.sources) expect(url).toMatch(/^https:\/\/\S+$/)
+      for (const date of entry.dates ?? []) expect(tripDates.has(date)).toBe(true)
+    }
+  })
+
+  it('Peru has a guide', async () => {
+    const content = await loadTripContent('peru-2026')
+    expect(content.guide?.length ?? 0).toBeGreaterThan(0)
+  })
+
   it('rejects unknown trips', async () => {
     await expect(loadTripContent('japon-2025')).rejects.toThrow('No hay contenido')
   })
