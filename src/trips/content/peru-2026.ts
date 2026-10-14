@@ -9,7 +9,7 @@ import type { TripContent } from '../types'
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 11,
+  seedVersion: 12,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -1322,9 +1322,78 @@ const content: TripContent = {
       label: 'Mochila de mano de máximo 5 kg para el tren',
       order: 11,
     },
-    { key: 'p-ropa', group: 'private', label: 'Ropa de abrigo por capas e impermeable', order: 12 },
-    { key: 'p-calzado', group: 'private', label: 'Calzado de montaña', order: 13 },
-    { key: 'p-sol', group: 'private', label: 'Protector solar y repelente', order: 14 },
+    {
+      key: 'p-ropa-capas',
+      group: 'private',
+      label: 'Ropa por capas: camiseta térmica, forro polar y chaqueta cortavientos impermeable',
+      order: 12,
+    },
+    {
+      key: 'p-ropa-frio',
+      group: 'private',
+      label: 'Gorro, guantes y bufanda para las noches del Colca y Puno',
+      order: 13,
+    },
+    {
+      key: 'p-sombrero',
+      group: 'private',
+      label: 'Gorra o sombrero de ala y gafas de sol',
+      order: 14,
+    },
+    {
+      key: 'p-pantalon',
+      group: 'private',
+      label: 'Pantalón largo ligero (también protege de los mosquitos en Machu Picchu)',
+      order: 15,
+    },
+    { key: 'p-chubasquero', group: 'private', label: 'Chubasquero o poncho plegable', order: 16 },
+    {
+      key: 'p-calzado-trekking',
+      group: 'private',
+      label: 'Zapatillas de trekking o botas ya usadas y con buena suela',
+      order: 17,
+    },
+    {
+      key: 'p-calzado-ciudad',
+      group: 'private',
+      label: 'Zapatillas cómodas para la ciudad y los traslados',
+      order: 18,
+    },
+    {
+      key: 'p-calcetines',
+      group: 'private',
+      label: 'Calcetines gruesos para las noches frías',
+      order: 19,
+    },
+    {
+      key: 'p-medicacion',
+      group: 'private',
+      label: 'Medicación habitual en la mochila de mano, con receta o informe médico',
+      order: 20,
+    },
+    {
+      key: 'p-altura',
+      group: 'private',
+      label: 'Medicación para el mal de altura, según indique el médico',
+      order: 21,
+    },
+    {
+      key: 'p-rehidratacion',
+      group: 'private',
+      label: 'Sales de rehidratación oral y antidiarreico',
+      order: 22,
+    },
+    {
+      key: 'p-analgesico',
+      group: 'private',
+      label: 'Analgésico o antitérmico (paracetamol o ibuprofeno)',
+      order: 23,
+    },
+    { key: 'p-mareo', group: 'private', label: 'Pastillas para el mareo en carretera', order: 24 },
+    { key: 'p-labios', group: 'private', label: 'Protector labial con filtro solar', order: 25 },
+    { key: 'p-solar', group: 'private', label: 'Crema solar de factor 50', order: 26 },
+    { key: 'p-repelente', group: 'private', label: 'Repelente con DEET', order: 27 },
+    { key: 'p-ampollas', group: 'private', label: 'Tiritas y apósitos para ampollas', order: 28 },
   ],
   guide: [
     {
