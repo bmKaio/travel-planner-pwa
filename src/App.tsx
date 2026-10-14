@@ -37,6 +37,8 @@ const TodayPage = lazy(() => import('./trips/pages/TodayPage'))
 const ItineraryPage = lazy(() => import('./trips/pages/ItineraryPage'))
 const ChecklistPage = lazy(() => import('./trips/pages/ChecklistPage'))
 const HelpPage = lazy(() => import('./trips/pages/HelpPage'))
+const GuidePage = lazy(() => import('./trips/pages/GuidePage'))
+const GuideEntryPage = lazy(() => import('./trips/pages/GuideEntryPage'))
 
 const BASE_NAME = import.meta.env.BASE_URL.replace(/\/$/, '')
 
@@ -55,6 +57,8 @@ function App() {
               <Route path="today" element={<TodayPage />} />
               <Route path="itinerary" element={<ItineraryPage />} />
               <Route path="itinerary/:date" element={<ItineraryPage />} />
+              <Route path="guide" element={<GuidePage />} />
+              <Route path="guide/:entryKey" element={<GuideEntryPage />} />
               <Route path="checklist" element={<ChecklistPage />} />
               <Route path="help" element={<HelpPage />} />
               <Route path="*" element={<TripHomeRedirect />} />
