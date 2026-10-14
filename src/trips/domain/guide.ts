@@ -44,6 +44,63 @@ export function groupGuide(entries: GuideEntry[]): GuideSection[] {
   }).filter((section) => section.entries.length > 0)
 }
 
+export interface GuideTopic {
+  category: GuideCategory
+  label: string
+  count: number
+}
+
+/** Non-empty topics in reading order with their entry count. */
+export function guideTopics(entries: GuideEntry[]): GuideTopic[] {
+  return groupGuide(entries).map((section) => ({
+    category: section.category,
+    label: section.label,
+    count: section.entries.length,
+  }))
+}
+
+/** Type guard for the `:category` route param. */
+export function isGuideCategory(value: string | undefined): value is GuideCategory {
+  return GUIDE_SECTIONS.some((section) => section.category === value)
+}
+
+/** Entries of one topic in the same order as `groupGuide`; [] when the topic is empty. */
+export function guideTopicEntries(entries: GuideEntry[], category: GuideCategory): GuideEntry[] {
+  return groupGuide(entries).find((section) => section.category === category)?.entries ?? []
+}
+
+/** '1 lectura' / '14 lecturas'. */
+export function formatReadingCount(count: number): string {
+  return count === 1 ? '1 lectura' : `${count} lecturas`
+}
+
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
+
+/** The day an entry was opened from, carried as router state `{ fromDay }`; anything else → undefined. */
+export function readFromDay(state: unknown): string | undefined {
+  if (typeof state !== 'object' || state === null || !('fromDay' in state)) return undefined
+  const { fromDay } = state
+  return typeof fromDay === 'string' && ISO_DATE.test(fromDay) ? fromDay : undefined
+}
+
+export interface GuideBackTarget {
+  /** Relative to the trip root (`/trips/:tripId/`). */
+  path: string
+  label: string
+}
+
+/** The entry page's single back button: the day it came from if it is a trip day, else its topic. */
+export function guideBackTarget(
+  category: GuideCategory,
+  fromDay: string | undefined,
+  dayDates: string[]
+): GuideBackTarget {
+  if (fromDay !== undefined && dayDates.includes(fromDay)) {
+    return { path: `itinerary/${fromDay}`, label: 'Volver al día' }
+  }
+  return { path: `guide/topic/${category}`, label: guideCategoryLabel(category) }
+}
+
 /** Entries linked to a trip day through their `dates`, in section order. */
 export function guideForDay(entries: GuideEntry[], date: string): GuideEntry[] {
   return groupGuide(entries.filter((entry) => entry.dates?.includes(date))).flatMap(

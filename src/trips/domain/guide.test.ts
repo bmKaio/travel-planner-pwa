@@ -2,11 +2,17 @@ import { describe, expect, it } from 'vitest'
 import type { GuideCategory, GuideEntry } from '../types'
 import {
   GUIDE_SECTIONS,
+  formatReadingCount,
   groupGuide,
+  guideBackTarget,
   guideCategoryLabel,
   guideDayLinks,
   guideForDay,
   guideForHelp,
+  guideTopicEntries,
+  guideTopics,
+  isGuideCategory,
+  readFromDay,
   sourceLabel,
 } from './guide'
 
@@ -131,5 +137,108 @@ describe('sourceLabel', () => {
 
   it('falls back to the raw text when it is not a URL', () => {
     expect(sourceLabel('no es una url')).toBe('no es una url')
+  })
+})
+
+describe('guideTopics', () => {
+  it('returns non-empty topics in reading order with their entry count', () => {
+    const topics = guideTopics([
+      entry('pisco', 'drink'),
+      entry('incas', 'history'),
+      entry('chicha', 'drink'),
+    ])
+    expect(topics).toEqual([
+      { category: 'history', label: 'Historia', count: 1 },
+      { category: 'drink', label: 'Bebidas', count: 2 },
+    ])
+  })
+
+  it('returns no topics for no entries', () => {
+    expect(guideTopics([])).toEqual([])
+  })
+})
+
+describe('isGuideCategory', () => {
+  it('accepts every known category', () => {
+    for (const { category } of GUIDE_SECTIONS) expect(isGuideCategory(category)).toBe(true)
+  })
+
+  it('rejects unknown ids, other casing, prototype keys, empty and undefined', () => {
+    expect(isGuideCategory('places')).toBe(false)
+    expect(isGuideCategory('Food')).toBe(false)
+    expect(isGuideCategory('constructor')).toBe(false)
+    expect(isGuideCategory('')).toBe(false)
+    expect(isGuideCategory(undefined)).toBe(false)
+  })
+})
+
+describe('guideTopicEntries', () => {
+  it('returns only the entries of the topic, in authored order', () => {
+    const entries = [entry('lomo', 'food'), entry('pisco', 'drink'), entry('ceviche', 'food')]
+    expect(keys(guideTopicEntries(entries, 'food'))).toEqual(['lomo', 'ceviche'])
+  })
+
+  it('keeps cities in route order', () => {
+    const entries = [
+      entry('cusco', 'city', ['2026-10-23']),
+      entry('selva', 'city'),
+      entry('lima', 'city', ['2026-10-18']),
+    ]
+    expect(keys(guideTopicEntries(entries, 'city'))).toEqual(['lima', 'cusco', 'selva'])
+  })
+
+  it('returns an empty list for a topic without entries', () => {
+    expect(guideTopicEntries([entry('lomo', 'food')], 'tip')).toEqual([])
+  })
+})
+
+describe('formatReadingCount', () => {
+  it('uses the singular for one entry', () => {
+    expect(formatReadingCount(1)).toBe('1 lectura')
+  })
+
+  it('uses the plural otherwise', () => {
+    expect(formatReadingCount(14)).toBe('14 lecturas')
+    expect(formatReadingCount(0)).toBe('0 lecturas')
+  })
+})
+
+describe('readFromDay', () => {
+  it('reads an ISO date from router state', () => {
+    expect(readFromDay({ fromDay: '2026-10-22' })).toBe('2026-10-22')
+  })
+
+  it('ignores missing, malformed or non-object state', () => {
+    expect(readFromDay(undefined)).toBeUndefined()
+    expect(readFromDay(null)).toBeUndefined()
+    expect(readFromDay('2026-10-22')).toBeUndefined()
+    expect(readFromDay({})).toBeUndefined()
+    expect(readFromDay({ fromDay: 22 })).toBeUndefined()
+    expect(readFromDay({ fromDay: '22/10/2026' })).toBeUndefined()
+  })
+})
+
+describe('guideBackTarget', () => {
+  const dayDates = ['2026-10-21', '2026-10-22']
+
+  it('goes back to the day the entry was opened from', () => {
+    expect(guideBackTarget('food', '2026-10-22', dayDates)).toEqual({
+      path: 'itinerary/2026-10-22',
+      label: 'Volver al día',
+    })
+  })
+
+  it('goes back to the topic when there is no day', () => {
+    expect(guideBackTarget('food', undefined, dayDates)).toEqual({
+      path: 'guide/topic/food',
+      label: 'Gastronomía',
+    })
+  })
+
+  it('goes back to the topic when the day is not part of this trip', () => {
+    expect(guideBackTarget('city', '2030-01-01', dayDates)).toEqual({
+      path: 'guide/topic/city',
+      label: 'Ciudades',
+    })
   })
 })
