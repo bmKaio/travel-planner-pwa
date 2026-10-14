@@ -22,13 +22,16 @@ function DayCoverCard({ view }: { view: CoverView }) {
             onError={() => setFailedSrc(cover.image)}
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
-          />
         </>
       )}
-      <div className="relative flex w-full flex-col gap-1 p-5">
+      {/* The scrim belongs to the text block, so it follows the text when the place wraps. */}
+      <div className={`relative flex w-full flex-col gap-1 p-5 ${cover ? 'bg-black/60' : ''}`}>
+        {cover && (
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-full h-10 bg-gradient-to-b from-black/0 to-black/60"
+          />
+        )}
         <p className="text-[13px] font-bold uppercase tracking-wider">{view.eyebrow}</p>
         <h1 className="text-[32px] font-bold leading-tight tracking-tight">{view.place}</h1>
         <p className="text-[17px] font-medium">{view.dateLabel}</p>
@@ -37,9 +40,9 @@ function DayCoverCard({ view }: { view: CoverView }) {
             href={cover.creditUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="self-end text-xs text-white/80 underline"
+            className="-mb-3.5 -mt-3.5 self-end py-3.5 text-right text-xs text-white underline"
           >
-            Foto: {cover.credit}
+            Foto: {cover.credit} · adaptada
           </a>
         )}
       </div>

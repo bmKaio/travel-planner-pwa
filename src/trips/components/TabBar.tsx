@@ -27,7 +27,7 @@ function TabBar({ tabs, active, onChange }: TabBarProps) {
             onClick={() => onChange(tab.id)}
             className={`min-h-[44px] flex-1 rounded-xl text-base ${
               tab.id === active
-                ? `${soft} ${ink} font-semibold shadow-sm`
+                ? `${soft} ${ink} font-semibold shadow-sm ring-1 ring-inset ring-current`
                 : 'font-medium text-trip-muted'
             }`}
           >
