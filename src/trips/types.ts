@@ -22,8 +22,8 @@ export interface PlanItem {
   t: string
   title: string
   place: string
-  /** Google Maps query. */
-  q: string
+  /** Google Maps query. Omit when the item is not a place to go (free time, included transfers). */
+  q?: string
 }
 
 export interface EatItem {
@@ -39,6 +39,8 @@ export interface SeeItem {
   desc: string
   dur: string
   q: string
+  /** Not in the day's plan: an idea for free time. */
+  alternative?: boolean
 }
 
 export type LegMode = 'car' | 'cable' | 'walk' | 'plane' | 'bus' | 'train' | 'boat'

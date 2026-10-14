@@ -6,7 +6,8 @@ interface NowCardProps {
   range: string
   title: string
   place: string
-  url: string
+  /** Directions link; null when the item is not a place to go. */
+  url: string | null
 }
 
 function NowCard({ label, range, title, place, url }: NowCardProps) {
@@ -23,9 +24,11 @@ function NowCard({ label, range, title, place, url }: NowCardProps) {
         <MapPin className="h-5 w-5 shrink-0" aria-hidden="true" />
         {place}
       </p>
-      <MapsLink href={url} variant="primary" className="mt-1 w-full">
-        Cómo llegar
-      </MapsLink>
+      {url && (
+        <MapsLink href={url} variant="primary" className="mt-1 w-full">
+          Cómo llegar
+        </MapsLink>
+      )}
     </section>
   )
 }

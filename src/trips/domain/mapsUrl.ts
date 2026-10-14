@@ -18,3 +18,9 @@ export function legUrl(leg: Leg): string {
   }
   return searchUrl(leg.q ?? leg.title)
 }
+
+/** Directions to a plan item, or null when the item is not a place to go. */
+export function planItemUrl(item: { q?: string }): string | null {
+  const q = item.q?.trim()
+  return q ? directionsUrl(q) : null
+}

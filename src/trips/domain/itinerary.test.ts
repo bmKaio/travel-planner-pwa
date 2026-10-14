@@ -3,6 +3,7 @@ import {
   buildDayStrip,
   parseItineraryTab,
   resolveSelectedDate,
+  splitSeeItems,
   tabId,
   tabPanelId,
 } from './itinerary'
@@ -71,5 +72,27 @@ describe('tab ids', () => {
   it('derives distinct tab and panel ids from the tab', () => {
     expect(tabId('eat')).toBe('itinerary-tab-eat')
     expect(tabPanelId('eat')).toBe('itinerary-panel-eat')
+  })
+})
+
+describe('splitSeeItems', () => {
+  const see = (name: string, alternative?: boolean) => ({
+    name,
+    desc: '',
+    dur: '',
+    q: name,
+    ...(alternative === undefined ? {} : { alternative }),
+  })
+
+  it('separates planned visits from alternatives, keeping their order', () => {
+    const items = [see('A'), see('X', true), see('B', false), see('Y', true)]
+    expect(splitSeeItems(items)).toEqual({
+      planned: [see('A'), see('B', false)],
+      alternatives: [see('X', true), see('Y', true)],
+    })
+  })
+
+  it('returns empty groups for an empty list', () => {
+    expect(splitSeeItems([])).toEqual({ planned: [], alternatives: [] })
   })
 })

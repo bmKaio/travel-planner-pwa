@@ -1,3 +1,4 @@
+import type { SeeItem } from '../types'
 import { formatDayLabel, weekdayShort } from './dates'
 
 export type ItineraryTab = 'plan' | 'eat' | 'see'
@@ -49,4 +50,12 @@ export function resolveSelectedDate(
   if (dates.length === 0) return null
   if (requested !== undefined) return dates.includes(requested) ? requested : null
   return dates[Math.min(Math.max(fallbackIndex, 0), dates.length - 1)]
+}
+
+/** Planned visits first, then the free-time alternatives; each group keeps its order. */
+export function splitSeeItems(items: SeeItem[]): { planned: SeeItem[]; alternatives: SeeItem[] } {
+  return {
+    planned: items.filter((item) => !item.alternative),
+    alternatives: items.filter((item) => item.alternative),
+  }
 }

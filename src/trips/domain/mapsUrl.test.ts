@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { directionsUrl, legUrl, searchUrl } from './mapsUrl'
+import { directionsUrl, legUrl, planItemUrl, searchUrl } from './mapsUrl'
 
 describe('directionsUrl', () => {
   it('builds a directions link to the destination', () => {
@@ -57,5 +57,18 @@ describe('legUrl', () => {
     expect(legUrl({ mode: 'walk', title: 'Paseo por Barranco', meta: '' })).toBe(
       'https://www.google.com/maps/search/?api=1&query=Paseo%20por%20Barranco'
     )
+  })
+})
+
+describe('planItemUrl', () => {
+  it('builds directions to the item place', () => {
+    expect(planItemUrl({ q: 'Museo Larco, Lima' })).toBe(
+      'https://www.google.com/maps/dir/?api=1&destination=Museo%20Larco%2C%20Lima'
+    )
+  })
+
+  it('returns null when the item is not a place to go', () => {
+    expect(planItemUrl({})).toBeNull()
+    expect(planItemUrl({ q: '  ' })).toBeNull()
   })
 })

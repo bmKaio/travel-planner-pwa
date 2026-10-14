@@ -5,7 +5,7 @@ import { useTripDays } from '../hooks/useTripDays'
 import { useNow } from '../hooks/useNow'
 import { computeNow, formatBanner, resolveTodayView } from '../domain/today'
 import { formatDayHeading } from '../domain/dates'
-import { directionsUrl } from '../domain/mapsUrl'
+import { planItemUrl } from '../domain/mapsUrl'
 import { NO_STAY_TEXT } from '../domain/stayCopy'
 import PageHeader from '../components/PageHeader'
 import NowCard from '../components/NowCard'
@@ -57,7 +57,7 @@ function TodayPage() {
             range={current.item.range}
             title={current.item.title}
             place={current.item.place}
-            url={directionsUrl(current.item.q)}
+            url={planItemUrl(current.item)}
           />
           <section className="flex flex-col gap-2.5">
             <h2 className="text-xl font-bold">Resto del día</h2>
