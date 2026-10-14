@@ -12,9 +12,9 @@ function ChecklistGroup({ group, onToggle }: ChecklistGroupProps) {
   return (
     <section aria-labelledby={headingId} className="flex flex-col gap-2.5">
       <div className="flex flex-col gap-0.5">
-        <h2 id={headingId} className="text-xl font-bold">
+        <h3 id={headingId} className="text-xl font-bold">
           {group.title}
-        </h2>
+        </h3>
         <p className="flex items-center gap-1.5 text-[15px] text-trip-muted">
           <Icon className="h-[17px] w-[17px]" aria-hidden="true" />
           {group.done} de {group.total}

@@ -30,7 +30,7 @@ function ChecklistSection({ tripId }: { tripId: string }) {
       ref={sectionRef}
       id="checklist"
       aria-labelledby="checklist-heading"
-      className="flex scroll-mt-4 flex-col gap-[18px]"
+      className="flex scroll-mt-[calc(3.5rem+env(safe-area-inset-top)+1rem)] flex-col gap-[18px]"
     >
       <h2 id="checklist-heading" className="text-2xl font-bold">
         Checklist
