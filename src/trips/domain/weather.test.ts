@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import {
   describeWeather,
+  forecastRequests,
+  weatherAriaLabel,
   forecastUrl,
   isCacheFresh,
   meteoblueUrl,
@@ -224,5 +226,51 @@ describe('weatherCells', () => {
     expect(weatherCells(slots, forecasts)).toEqual([
       { date: '2026-10-17', label: 'Hoy', place: LIMA, forecast: day('2026-10-17', 26) },
     ])
+  })
+})
+
+describe('forecastRequests', () => {
+  it('groups the slots into one request per place with its date range', () => {
+    const slots = weatherSlots(
+      [
+        { date: '2026-10-17', cities: ['Lima'], stay: STAY },
+        { date: '2026-10-18', cities: ['Cusco'], stay: STAY },
+        { date: '2026-10-19', cities: ['Lima'], stay: STAY },
+      ],
+      '2026-10-17',
+      PLACES
+    )
+    expect(forecastRequests(slots)).toEqual([
+      { place: LIMA, dates: ['2026-10-17', '2026-10-19'] },
+      { place: CUSCO, dates: ['2026-10-18'] },
+    ])
+  })
+
+  it('returns no requests without slots', () => {
+    expect(forecastRequests([])).toEqual([])
+  })
+})
+
+describe('weatherAriaLabel', () => {
+  it('reads every cell and says where the link goes', () => {
+    const cells = [
+      {
+        date: '2026-10-17',
+        label: 'Hoy' as const,
+        place: LIMA,
+        forecast: { ...day('2026-10-17', 26), code: 3 },
+      },
+      {
+        date: '2026-10-18',
+        label: 'Mañana' as const,
+        place: CUSCO,
+        forecast: { ...day('2026-10-18', 19), code: 61 },
+      },
+    ]
+    expect(weatherAriaLabel(cells)).toBe(
+      'El tiempo. Hoy en Lima: Nublado, máxima 26°, mínima 10°. ' +
+        'Mañana en Cusco: Lluvia, máxima 19°, mínima 10°. ' +
+        'Abre la previsión de meteoblue en otra pestaña.'
+    )
   })
 })

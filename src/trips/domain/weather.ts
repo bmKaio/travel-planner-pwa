@@ -190,3 +190,30 @@ export function weatherCells(
   }
   return cells
 }
+
+export interface ForecastRequest {
+  place: WeatherPlace
+  /** Sorted dates of the slots in this place. */
+  dates: string[]
+}
+
+/** One request per place, so a day in Lima and two in Cusco cost two calls. */
+export function forecastRequests(slots: WeatherSlot[]): ForecastRequest[] {
+  const byPlace = new Map<string, ForecastRequest>()
+  for (const slot of slots) {
+    const request = byPlace.get(slot.place.name)
+    if (request) request.dates.push(slot.date)
+    else byPlace.set(slot.place.name, { place: slot.place, dates: [slot.date] })
+  }
+  return [...byPlace.values()]
+}
+
+/** Spoken text for the whole strip (the link's accessible name). */
+export function weatherAriaLabel(cells: WeatherCell[]): string {
+  const parts = cells.map(
+    ({ label, place, forecast }) =>
+      `${label} en ${place.name}: ${describeWeather(forecast.code).label}, ` +
+      `máxima ${forecast.max}°, mínima ${forecast.min}°.`
+  )
+  return ['El tiempo.', ...parts, 'Abre la previsión de meteoblue en otra pestaña.'].join(' ')
+}
