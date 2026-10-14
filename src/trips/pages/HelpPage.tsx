@@ -87,9 +87,13 @@ function HelpPage() {
         </section>
       )}
 
-      {helpInfo?.cards.map((card) => (
-        <HelpCard key={`${card.title}-${card.phone}`} card={card} />
-      ))}
+      {helpInfo && helpInfo.cards.length > 0 && (
+        <div className="flex flex-col gap-[18px] md:grid md:grid-cols-2 md:gap-3">
+          {helpInfo.cards.map((card) => (
+            <HelpCard key={`${card.title}-${card.phone}`} card={card} />
+          ))}
+        </div>
+      )}
       {helpInfo && helpInfo.contacts.length > 0 && <ContactList contacts={helpInfo.contacts} />}
       {helpInfo && helpInfo.docs.length > 0 && <DocList docs={helpInfo.docs} />}
 

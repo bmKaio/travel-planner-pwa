@@ -13,7 +13,7 @@ function TripLayout({ tripName, children }: TripLayoutProps) {
   return (
     <TripScreen>
       <header className="safe-top sticky top-0 z-20 border-b border-trip-line bg-trip-card">
-        <div className="mx-auto flex h-14 max-w-md items-center justify-between gap-3 px-5">
+        <div className="mx-auto flex h-14 max-w-md items-center justify-between gap-3 px-5 md:max-w-3xl">
           <p className="truncate text-base font-semibold">{tripName}</p>
           <Link
             to="/trips"
@@ -24,7 +24,11 @@ function TripLayout({ tripName, children }: TripLayoutProps) {
           </Link>
         </div>
       </header>
-      <main id="main-content" className="mx-auto max-w-md px-5 pb-28 pt-5" tabIndex={-1}>
+      <main
+        id="main-content"
+        className="mx-auto max-w-md px-5 pb-28 pt-5 md:max-w-3xl"
+        tabIndex={-1}
+      >
         {children}
       </main>
       <TripNav />

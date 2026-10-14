@@ -15,7 +15,7 @@ function TripNav() {
       aria-label="Secciones del viaje"
       className="safe-bottom fixed inset-x-0 bottom-0 z-20 border-t border-trip-line bg-trip-card"
     >
-      <ul className="mx-auto flex max-w-md px-2">
+      <ul className="mx-auto flex max-w-md px-2 md:max-w-3xl">
         {ITEMS.map(({ to, label, icon: Icon }) => (
           <li key={to} className="flex-1">
             <NavLink

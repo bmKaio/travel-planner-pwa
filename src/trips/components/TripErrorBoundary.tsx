@@ -37,7 +37,7 @@ class TripErrorBoundary extends Component<TripErrorBoundaryProps, TripErrorBound
       this.props
     return (
       <TripScreen>
-        <main className="mx-auto max-w-md px-5 py-8">
+        <main className="mx-auto max-w-md px-5 py-8 md:max-w-3xl">
           <TripStatusMessage
             tone="error"
             message={message}

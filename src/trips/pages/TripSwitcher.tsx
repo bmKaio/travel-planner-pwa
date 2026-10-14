@@ -11,7 +11,7 @@ function TripSwitcher() {
 
   return (
     <TripScreen>
-      <main className="mx-auto flex max-w-md flex-col gap-6 px-5 pb-10 pt-8">
+      <main className="mx-auto flex max-w-md flex-col gap-6 px-5 pb-10 pt-8 md:max-w-3xl">
         <header className="flex flex-col gap-1">
           <h1 className="text-[32px] font-bold leading-tight tracking-tight">Mis viajes</h1>
           <p className="text-[17px] font-medium text-trip-ink2">Elige un viaje para abrirlo</p>
@@ -22,9 +22,11 @@ function TripSwitcher() {
             <h2 id="trips-active" className="text-xl font-bold">
               Próximos y en curso
             </h2>
-            {active.map((trip) => (
-              <TripCard key={trip.id} trip={trip} today={today} />
-            ))}
+            <div className="flex flex-col gap-3 md:grid md:grid-cols-2">
+              {active.map((trip) => (
+                <TripCard key={trip.id} trip={trip} today={today} />
+              ))}
+            </div>
           </section>
         )}
 
@@ -33,9 +35,11 @@ function TripSwitcher() {
             <h2 id="trips-past" className="text-xl font-bold">
               Historial
             </h2>
-            {past.map((trip) => (
-              <TripCard key={trip.id} trip={trip} today={today} />
-            ))}
+            <div className="flex flex-col gap-3 md:grid md:grid-cols-2">
+              {past.map((trip) => (
+                <TripCard key={trip.id} trip={trip} today={today} />
+              ))}
+            </div>
           </section>
         )}
       </main>
