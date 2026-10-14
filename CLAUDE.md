@@ -4,7 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Offline-first PWA to plan a family trip to Vietnam & Cambodia (4–20 July 2026). **No backend** — all
+Offline-first PWA to plan family trips: the legacy Vietnam & Cambodia 2026 trip (4–20 July) plus v2
+trips (Peru 2026 onwards), see "Multi-trip". **No backend** — all
 data lives in the browser via IndexedDB (Dexie). Cross-device sync is manual JSON export/import.
 Deployed to GitHub Pages under the base path `/travel-planner-pwa/`.
 
@@ -14,18 +15,22 @@ Deployed to GitHub Pages under the base path `/travel-planner-pwa/`.
 npm run dev          # Vite dev server → http://localhost:5173/travel-planner-pwa/
 npm run build        # tsc -b (typecheck) && vite build → dist/
 npm run lint         # ESLint over the repo
+npm test             # Vitest (src/**/*.test.ts), TZ pinned to America/Lima
 npm run format       # Prettier write
 npm run format:check # Prettier check (run in CI)
 npm run preview      # Serve the production build locally
 ```
 
-There is **no test runner** configured. CI (`.github/workflows/deploy.yml`) runs `lint` +
-`format:check` + `build`, then deploys `dist/` to GitHub Pages on push to `main`/`master`.
+Tests use **Vitest** (`vitest.config.ts`; `fake-indexeddb` for Dexie) and cover the new trip engine
+in `src/trips/` (TDD). Legacy Vietnam code has no tests.
+CI (`.github/workflows/deploy.yml`) runs `lint` + `format:check` + `test` + `build`, then deploys
+`dist/` to GitHub Pages on push to `main`/`master`.
 A Husky pre-commit hook runs `lint-staged` (eslint --fix + prettier) on staged files.
 
 ## Architecture
 
-**Data layer (the core).** Everything flows through one Dexie database (`src/db/index.ts`):
+**Data layer (the core).** The legacy trip flows through one Dexie database (`TravelPlannerDB`,
+`src/db/index.ts`); v2 trips use a separate `TripsDB` (see "Multi-trip"):
 
 - `src/db/schema.ts` — table definitions and `DB_VERSION`. The exported `db` singleton (`src/db/index.ts`)
   extends `Dexie` with typed `EntityTable`s.
@@ -55,6 +60,42 @@ per-domain helpers live in `src/utils/`; shared domain types in `src/types/index
 
 **Path aliases** (configured in both `vite.config.ts` and `tsconfig.app.json` — keep them in sync):
 `@/`, `@components/`, `@pages/`, `@hooks/`, `@db/`, `@data/`, `@utils/`, `@types/`.
+
+## Multi-trip (two engines)
+
+- **Legacy (Vietnam 2026):** `TravelPlannerDB`, `src/pages`, `src/hooks`, `src/db`. Frozen: do not
+  change its schema. Home is `/trips/vietnam-2026`; its other routes (`/schedule`, `/map`, `/more`,
+  `/diary`, …) keep their paths.
+- **v2 trips (Peru 2026 onwards):** everything in `src/trips/`: static registry (`registry.ts`),
+  separate Dexie DB `TripsDB` (`db.ts`), pure logic in `domain/` (tested), hooks in `hooks/`,
+  container pages in `pages/`, presentational components in `components/`.
+- **Routes:** `/` → landing redirect (last opened trip → current → next → `/trips`); `/trips` →
+  switcher; `/trips/:tripId/{today,itinerary[/:date],guide[/topic/:category|/:entryKey],help}`
+  (`/checklist` redirects to `help#checklist`: checklist and notes live at the end of "Ayuda").
+  The guide opens as a hub of topics; an entry opened from a day or from Ayuda goes back there.
+- **Adding a trip:** add an entry to `TRIPS` and a lazy content file in `src/trips/content/`
+  (register it in `content/index.ts`). No schema change.
+- **Content updates:** bump `seedVersion` in the content file; devices resync days and checklist
+  labels keeping ticks, and replace the guide entries. Notes and imported private data are never overwritten.
+- **Private data** (hotels, agency, insurance, contacts, documents): JSON import from the Ayuda
+  screen, kept in `private/` (gitignored, never committed). Never put it in the content files or
+  in docs. Shape (`src/trips/import/privateImport.ts` validates it; import replaces
+  cards/contacts/docs, the public `emergency` entry is preserved):
+
+  ```json
+  {
+    "version": 1,
+    "type": "trip-private",
+    "tripId": "peru-2026",
+    "helpInfo": {
+      "cards": [{ "title": "", "sub": "", "cta": "", "phone": "", "mapQuery": "(optional)" }],
+      "contacts": [{ "name": "", "role": "", "phone": "(optional)" }],
+      "docs": [{ "name": "", "where": "", "who": "" }]
+    }
+  }
+  ```
+
+- **GitHub Pages deep links:** `public/404.html` + the decoder script in `index.html`.
 
 ## Conventions
 

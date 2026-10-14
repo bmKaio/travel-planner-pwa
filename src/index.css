@@ -72,3 +72,67 @@
     padding-top: env(safe-area-inset-top, 0px);
   }
 }
+
+/* v2 trip engine palette (mockup "App de viaje"); dark mode via the existing .dark class */
+@layer base {
+  .trip-app {
+    --trip-bg: #f6f6f3;
+    --trip-card: #ffffff;
+    --trip-ink: #121417;
+    --trip-ink2: #33373d;
+    --trip-muted: #5a5e66;
+    --trip-line: #dcddd8;
+    --trip-soft: #ecede8;
+    --trip-action: #1f4fd1;
+    --trip-action-ink: #ffffff;
+    --trip-action-soft: #e5ebfa;
+    --trip-done: #1b7543;
+    --trip-done-ink: #ffffff;
+    --trip-urgent: #c42525;
+    --trip-urgent-ink: #ffffff;
+    --trip-urgent-soft: #fbeaea;
+    /* Guide topic tones: strong (stripe, icon) / soft (icon circle). Contrast ≥ 3:1 vs soft and card. */
+    --trip-topic-history: #9a5b00;
+    --trip-topic-history-soft: #fbeed6;
+    --trip-topic-city: #0f766e;
+    --trip-topic-city-soft: #dcf3f0;
+    --trip-topic-food: #b3431c;
+    --trip-topic-food-soft: #fbe6dc;
+    --trip-topic-drink: #7a3fd0;
+    --trip-topic-drink-soft: #efe7fc;
+    --trip-topic-curiosity: #b8326f;
+    --trip-topic-curiosity-soft: #fbe4ee;
+    --trip-topic-tip: #3f46b8;
+    --trip-topic-tip-soft: #e6e7fa;
+  }
+
+  .dark .trip-app {
+    --trip-bg: #0e1013;
+    --trip-card: #1a1d21;
+    --trip-ink: #f2f3f5;
+    --trip-ink2: #d3d6db;
+    --trip-muted: #a6abb3;
+    --trip-line: #30343a;
+    --trip-soft: #24282d;
+    --trip-action: #86a8ff;
+    --trip-action-ink: #0e1013;
+    --trip-action-soft: #1f2a45;
+    --trip-done: #5fcb8c;
+    --trip-done-ink: #0e1013;
+    --trip-urgent: #ff7a7a;
+    --trip-urgent-ink: #1a0b0b;
+    --trip-urgent-soft: #3a1c1c;
+    --trip-topic-history: #f0b85a;
+    --trip-topic-history-soft: #3a2c14;
+    --trip-topic-city: #5fd3c4;
+    --trip-topic-city-soft: #143430;
+    --trip-topic-food: #ff9b73;
+    --trip-topic-food-soft: #3d2117;
+    --trip-topic-drink: #c4a3ff;
+    --trip-topic-drink-soft: #2c2245;
+    --trip-topic-curiosity: #ff8fbf;
+    --trip-topic-curiosity-soft: #3d1a2a;
+    --trip-topic-tip: #a3a9ff;
+    --trip-topic-tip-soft: #22254a;
+  }
+}
