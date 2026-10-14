@@ -1,3 +1,5 @@
+import { readdirSync, statSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { TRIPS } from '../registry'
 import { minutesOf } from '../domain/today'
@@ -70,6 +72,21 @@ describe('trip content', () => {
   it('Peru has a guide', async () => {
     const content = await loadTripContent('peru-2026')
     expect(content.guide?.length ?? 0).toBeGreaterThan(0)
+  })
+
+  it('Peru has a cover on every day', async () => {
+    const content = await loadTripContent('peru-2026')
+    for (const day of content.days) expect(day.cover, `${day.date} cover`).toBeDefined()
+  })
+
+  // Guard (green from the start): Task 0 already enforces it; this stops a later photo from bloating the install.
+  it('keeps every Peru cover photo within the size budget (150 KB)', () => {
+    const dir = resolve(process.cwd(), 'src/trips/content/images/peru-2026')
+    const files = readdirSync(dir).filter((file) => file.endsWith('.webp'))
+    expect(files.length).toBeGreaterThan(0)
+    for (const file of files) {
+      expect(statSync(resolve(dir, file)).size, file).toBeLessThanOrEqual(150 * 1024)
+    }
   })
 
   it('rejects unknown trips', async () => {
