@@ -9,7 +9,7 @@ import type { TripContent } from '../types'
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 9,
+  seedVersion: 10,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -144,7 +144,7 @@ const content: TripContent = {
           when: 'Cena',
           name: 'Cena libre en Miraflores',
           kind: 'Por tu cuenta',
-          tip: 'Prueba el ceviche o la causa limeña.',
+          tip: 'Algo recién hecho y servido caliente, como lomo saltado o ají de gallina.',
           q: 'restaurantes Miraflores Lima',
         },
       ],
@@ -1979,14 +1979,18 @@ const content: TripContent = {
       key: 'consejo-comer-bien',
       category: 'tip',
       title: 'Comer bien y con cabeza',
-      summary: 'Pide el picante aparte, el ceviche a mediodía y fíate de los puestos con cola.',
+      summary: 'Pregunta por el picante, deja lo crudo para otro viaje y pide comida recién hecha.',
       body: [
         'Gradúa el picante. Pregunta siempre cuánto pica el ají antes de pedir. El ají amarillo es moderado, pero el rocoto pica bastante más.',
-        'Toma el ceviche a la hora del almuerzo. Es cuando el pescado está en su punto de frescura, y muchas cevicherías cierran por la tarde.',
-        'En la comida callejera, elige puestos con mucha gente. Una buena rotación de clientes es señal de que lo que sirven es fresco.',
+        'El ceviche es el plato bandera, pero es pescado crudo curado en limón. En este viaje, y sobre todo para los mayores, mejor no pedirlo ni tampoco tiraditos o marisco crudo (ver «Comer y beber sin sustos»).',
+        'Con la comida callejera, lo mismo: solo algo cocinado delante, bien hecho y servido humeante. Nada de zumos, fruta cortada ni salsas abiertas.',
       ],
       dates: ['2026-10-18'],
-      sources: ['https://ich.unesco.org/en/RL/01952', 'https://pepperscale.com/?p=17785'],
+      sources: [
+        'https://ich.unesco.org/en/RL/01952',
+        'https://pepperscale.com/?p=17785',
+        'https://wwwnc.cdc.gov/travel/page/food-water-safety',
+      ],
     },
     {
       key: 'consejo-chifa-nikkei',
