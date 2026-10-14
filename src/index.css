@@ -88,6 +88,7 @@
     --trip-action-soft: #e5ebfa;
     --trip-done: #1b7543;
     --trip-done-ink: #ffffff;
+    --trip-done-soft: #dff3e7;
     --trip-urgent: #c42525;
     --trip-urgent-ink: #ffffff;
     --trip-urgent-soft: #fbeaea;
@@ -119,6 +120,7 @@
     --trip-action-soft: #1f2a45;
     --trip-done: #5fcb8c;
     --trip-done-ink: #0e1013;
+    --trip-done-soft: #16301f;
     --trip-urgent: #ff7a7a;
     --trip-urgent-ink: #1a0b0b;
     --trip-urgent-soft: #3a1c1c;
