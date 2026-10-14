@@ -83,6 +83,7 @@ describe('syncTripContent', () => {
     expect(await db.helpInfo.get('peru-2026')).toEqual({
       tripId: 'peru-2026',
       emergency: { label: 'Emergencias en Perú', number: '105', description: 'Policía' },
+      consular: [],
       cards: [],
       contacts: [],
       docs: [],
@@ -181,6 +182,27 @@ describe('syncTripContent', () => {
     expect(help?.contacts).toEqual([{ name: 'Ana', role: 'Organiza' }])
     expect(help?.docs).toHaveLength(1)
     expect(help?.emergency?.description).toBe('Policía. SAMU 106')
+  })
+
+  it('replaces the public consular cards and keeps the imported ones', async () => {
+    const db = getDb()
+    const embassy = {
+      title: 'Embajada de España',
+      sub: 'Lima',
+      cta: 'Llamar',
+      phone: '+5112125155',
+    }
+    await syncTripContent(db, makeContent({ consular: [embassy] }))
+    await db.helpInfo.update('peru-2026', {
+      cards: [{ title: 'Seguro', sub: '24 h', cta: 'Llamar', phone: '+34900000000' }],
+    })
+
+    const consulate = { ...embassy, title: 'Consulado en Cusco', sub: 'Cusco' }
+    await syncTripContent(db, makeContent({ seedVersion: 2, consular: [consulate] }))
+
+    const help = await db.helpInfo.get('peru-2026')
+    expect(help?.consular).toEqual([consulate])
+    expect(help?.cards.map((c) => c.title)).toEqual(['Seguro'])
   })
 
   it('rolls everything back when the content is invalid', async () => {

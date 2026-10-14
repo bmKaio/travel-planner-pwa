@@ -80,6 +80,17 @@ function HelpPage() {
         <TripStatusMessage message="No hay número de emergencias guardado en este dispositivo. Si lo necesitas, marca el número local de emergencias." />
       )}
 
+      {helpInfo?.consular && helpInfo.consular.length > 0 && (
+        <section aria-labelledby="help-consular-heading" className="flex flex-col gap-[18px]">
+          <h2 id="help-consular-heading" className="text-2xl font-bold">
+            Embajada y consulados de España
+          </h2>
+          {helpInfo.consular.map((card) => (
+            <HelpCard key={`${card.title}-${card.phone}`} card={card} />
+          ))}
+        </section>
+      )}
+
       {helpGuide.length > 0 && (
         <section aria-labelledby="help-guide-heading" className="flex flex-col gap-[18px]">
           <h2 id="help-guide-heading" className="text-2xl font-bold">

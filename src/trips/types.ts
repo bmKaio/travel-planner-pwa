@@ -125,6 +125,8 @@ export interface DocInfo {
 export interface HelpInfo {
   tripId: string
   emergency: EmergencyInfo | null
+  /** Public embassy and consulate cards from the trip content. Absent on rows synced before it existed. */
+  consular?: HelpCardInfo[]
   cards: HelpCardInfo[]
   contacts: Contact[]
   docs: DocInfo[]
@@ -175,6 +177,8 @@ export interface TripContent {
   /** Bump on every content change so devices resync. */
   seedVersion: number
   emergency: EmergencyInfo
+  /** Embassy and consulates of the travellers' country, shown in "Ayuda". Public data only. */
+  consular?: HelpCardInfo[]
   days: ContentDay[]
   checklist: ContentChecklistItem[]
   /** Reading guide; optional because not every trip has one. */

@@ -9,13 +9,45 @@ import type { TripContent } from '../types'
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 10,
+  seedVersion: 13,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
     number: '105',
     description: 'Policía: 105 · Ambulancia (SAMU): 106 · Bomberos: 116.',
   },
+  // From exteriores.gob.es (Embajada and Consulado General in Lima, honorary consulates), checked
+  // 2026-10-14. Puno has no Spanish consulate: the Lima consulate covers it.
+  consular: [
+    {
+      title: 'Embajada de España en Lima',
+      sub: 'Teléfono de emergencia consular, solo para urgencias graves (accidente, detención, robo de pasaporte). Av. Jorge Basadre 498, San Isidro. Centralita: 01 212 5155, de lunes a viernes de 9:00 a 13:00.',
+      cta: 'Emergencia consular · 995 655 898',
+      phone: '+51 995 655 898',
+      mapQuery: 'Embajada de España, Av. Jorge Basadre 498, San Isidro, Lima',
+    },
+    {
+      title: 'Consulado General de España en Lima',
+      sub: 'Pasaportes y trámites; atiende también Puno, que no tiene consulado. Calle Los Pinos 490, San Isidro. Atención al público de lunes a viernes, de 8:30 a 13:00.',
+      cta: 'Llamar al Consulado · 01 513 7930',
+      phone: '+51 1 513 7930',
+      mapQuery: 'Consulado General de España, Calle Los Pinos 490, San Isidro, Lima',
+    },
+    {
+      title: 'Consulado honorario de España en Arequipa',
+      sub: 'Av. Parra 235, Cercado. Correo: ch.arequipa@maec.es. La web oficial da dos teléfonos distintos; si no contestan en este, prueba el 991 134 515.',
+      cta: 'Llamar · 961 261 257',
+      phone: '+51 961 261 257',
+      mapQuery: 'Av. Parra 235, Cercado, Arequipa',
+    },
+    {
+      title: 'Consulado honorario de España en Cusco',
+      sub: 'Calle Belén 307. Otro teléfono: (084) 221944.',
+      cta: 'Llamar · (084) 242224',
+      phone: '+51 84 242224',
+      mapQuery: 'Calle Belén 307, Cusco',
+    },
+  ],
   days: [
     {
       date: '2026-10-17',
@@ -1259,102 +1291,141 @@ const content: TripContent = {
   ],
   checklist: [
     {
-      key: 'g-hotel-puno',
-      group: 'shared',
-      label: 'Confirmar el hotel de Puno con la agencia',
-      order: 1,
-    },
-    {
-      key: 'g-hotel-aguas',
-      group: 'shared',
-      label: 'Confirmar el hotel de Aguas Calientes',
-      order: 2,
-    },
-    {
-      key: 'g-trenes',
-      group: 'shared',
-      label: 'Confirmar horarios de tren y hora de entrada a Machu Picchu',
-      order: 3,
-    },
-    {
-      key: 'g-catedral',
-      group: 'shared',
-      label: 'Confirmar la visita a la Catedral de Lima (domingo 18)',
-      order: 4,
-    },
-    {
-      key: 'g-conexion',
-      group: 'shared',
-      label: 'Confirmar si la facturación es directa hasta Madrid el 27',
-      order: 5,
-    },
-    {
-      key: 'g-traslados',
-      group: 'shared',
-      label: 'Confirmar con la agencia la hora de los traslados del 19 y del 27 oct',
-      order: 6,
-    },
-    {
       key: 'g-checkin',
       group: 'shared',
       label: 'Check-in online de los vuelos (entre 48 h y 4 h antes)',
-      order: 7,
+      order: 1,
     },
     {
       key: 'g-adaptador',
       group: 'shared',
       label: 'Adaptador de enchufe (tipos A, B y C)',
-      order: 8,
+      order: 2,
     },
     {
       key: 'g-propinas',
       group: 'shared',
       label:
         'Dólares en efectivo para las propinas obligatorias (guías 3-4 USD y chófer 1-2 USD por persona y día)',
-      order: 9,
+      order: 3,
     },
     {
       key: 'p-pasaporte',
       group: 'private',
       label: 'Pasaporte con al menos 6 meses de validez',
-      order: 10,
+      order: 4,
     },
-    { key: 'p-paginas', group: 'private', label: 'Pasaporte con páginas en blanco', order: 11 },
+    { key: 'p-paginas', group: 'private', label: 'Pasaporte con páginas en blanco', order: 5 },
     {
       key: 'p-vacunas',
       group: 'private',
       label:
         'Libro de vacunación (certificado de fiebre amarilla solo si hay sello de un país endémico)',
-      order: 12,
+      order: 6,
     },
     {
       key: 'p-billete-salida',
       group: 'private',
       label: 'Justificante de billete de regreso por si lo piden',
-      order: 13,
+      order: 7,
     },
     {
       key: 'p-embarque',
       group: 'private',
       label: 'Las dos tarjetas de embarque para la conexión en Lima',
-      order: 14,
+      order: 8,
     },
     {
       key: 'p-tuua',
       group: 'private',
       label:
         '12 US$ en efectivo por si cobran la tasa TUUA (si no se muestran las dos tarjetas de embarque)',
-      order: 15,
+      order: 9,
+    },
+    {
+      key: 'p-esim',
+      group: 'private',
+      label: 'Activar la tarjeta e-SIM antes de llegar a Perú',
+      order: 10,
     },
     {
       key: 'p-mochila',
       group: 'private',
       label: 'Mochila de mano de máximo 5 kg para el tren',
-      order: 16,
+      order: 11,
     },
-    { key: 'p-ropa', group: 'private', label: 'Ropa de abrigo por capas e impermeable', order: 17 },
-    { key: 'p-calzado', group: 'private', label: 'Calzado de montaña', order: 18 },
-    { key: 'p-sol', group: 'private', label: 'Protector solar y repelente', order: 19 },
+    {
+      key: 'p-ropa-capas',
+      group: 'private',
+      label: 'Ropa por capas: camiseta térmica, forro polar y chaqueta cortavientos impermeable',
+      order: 12,
+    },
+    {
+      key: 'p-ropa-frio',
+      group: 'private',
+      label: 'Gorro, guantes y bufanda para las noches del Colca y Puno',
+      order: 13,
+    },
+    {
+      key: 'p-sombrero',
+      group: 'private',
+      label: 'Gorra o sombrero de ala y gafas de sol',
+      order: 14,
+    },
+    {
+      key: 'p-pantalon',
+      group: 'private',
+      label: 'Pantalón largo ligero (también protege de los mosquitos en Machu Picchu)',
+      order: 15,
+    },
+    { key: 'p-chubasquero', group: 'private', label: 'Chubasquero o poncho plegable', order: 16 },
+    {
+      key: 'p-calzado-trekking',
+      group: 'private',
+      label: 'Zapatillas de trekking o botas ya usadas y con buena suela',
+      order: 17,
+    },
+    {
+      key: 'p-calzado-ciudad',
+      group: 'private',
+      label: 'Zapatillas cómodas para la ciudad y los traslados',
+      order: 18,
+    },
+    {
+      key: 'p-calcetines',
+      group: 'private',
+      label: 'Calcetines gruesos para las noches frías',
+      order: 19,
+    },
+    {
+      key: 'p-medicacion',
+      group: 'private',
+      label: 'Medicación habitual en la mochila de mano, con receta o informe médico',
+      order: 20,
+    },
+    {
+      key: 'p-altura',
+      group: 'private',
+      label: 'Medicación para el mal de altura, según indique el médico',
+      order: 21,
+    },
+    {
+      key: 'p-rehidratacion',
+      group: 'private',
+      label: 'Sales de rehidratación oral y antidiarreico',
+      order: 22,
+    },
+    {
+      key: 'p-analgesico',
+      group: 'private',
+      label: 'Analgésico o antitérmico (paracetamol o ibuprofeno)',
+      order: 23,
+    },
+    { key: 'p-mareo', group: 'private', label: 'Pastillas para el mareo en carretera', order: 24 },
+    { key: 'p-labios', group: 'private', label: 'Protector labial con filtro solar', order: 25 },
+    { key: 'p-solar', group: 'private', label: 'Crema solar de factor 50', order: 26 },
+    { key: 'p-repelente', group: 'private', label: 'Repelente con DEET', order: 27 },
+    { key: 'p-ampollas', group: 'private', label: 'Tiritas y apósitos para ampollas', order: 28 },
   ],
   guide: [
     {

@@ -7,7 +7,7 @@ export function checklistItemId(tripId: string, key: string): string {
 
 /**
  * Applies public trip content when its seedVersion is newer than the stored one.
- * Days and guide entries are replaced; checklist items are upserted keeping `done`; notes and the
+ * Days, guide entries and consular cards are replaced; checklist items are upserted keeping `done`; notes and the
  * imported help data (cards, contacts, docs) are never touched. All in one transaction.
  */
 export async function syncTripContent(db: TripsDatabase, content: TripContent): Promise<boolean> {
@@ -51,6 +51,7 @@ export async function syncTripContent(db: TripsDatabase, content: TripContent): 
       await db.helpInfo.put({
         tripId,
         emergency: content.emergency,
+        consular: content.consular ?? [],
         cards: help?.cards ?? [],
         contacts: help?.contacts ?? [],
         docs: help?.docs ?? [],
