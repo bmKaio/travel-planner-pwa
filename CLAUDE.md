@@ -25,9 +25,6 @@ Tests use **Vitest** (`vitest.config.ts`; `fake-indexeddb` for Dexie) and cover 
 in `src/trips/` (TDD). Legacy Vietnam code has no tests.
 CI (`.github/workflows/deploy.yml`) runs `lint` + `format:check` + `test` + `build`, then deploys
 `dist/` to GitHub Pages on push to `main`/`master`.
-**Temporary:** the workflow also triggers on `feat/viaje-peru` (preview deploy). When merging to
-`main`, remove that branch from the `push` trigger and from the `github-pages` environment branch
-policy (repo Settings → Environments), otherwise deploys keep running from the feature branch.
 A Husky pre-commit hook runs `lint-staged` (eslint --fix + prettier) on staged files.
 
 ## Architecture
