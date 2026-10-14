@@ -2,12 +2,13 @@ import type { TripContent } from '../types'
 
 // Public content for the Peru trip (17–28 Oct 2026), from docs/peru/itinerario-peru.md.
 // Times: flights are exact (local time); every other time is an approximate slot because the
-// dossier gives none. Hotel names, phones and agency contacts are private (JSON import only).
+// dossier gives none. Hotel names and map queries are public by the owner's decision; phones and
+// agency contacts stay private (JSON import only).
 // Bump seedVersion on every change so installed devices resync.
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 3,
+  seedVersion: 4,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -20,14 +21,14 @@ const content: TripContent = {
       title: 'Madrid → Lima',
       cities: ['Madrid', 'Lima'],
       stay: {
-        name: 'Hotel en Lima',
+        name: 'Dazzler by Wyndham Lima Miraflores',
         meta: 'Miraflores · check-in desde 15:00',
-        q: 'Miraflores, Lima',
+        q: 'Dazzler by Wyndham Lima Miraflores, Av. José Pardo 879, Lima',
       },
       legs: [
         {
           mode: 'plane',
-          title: 'Vuelo Madrid → Lima',
+          title: 'Vuelo IB 125 Madrid → Lima',
           meta: 'Sale 13:20 · llega 18:20 (hora local)',
           q: 'Aeropuerto Internacional Jorge Chávez',
         },
@@ -36,13 +37,13 @@ const content: TripContent = {
           title: 'Traslado al hotel',
           meta: 'Incluido en el circuito',
           from: 'Aeropuerto Internacional Jorge Chávez',
-          to: 'Miraflores, Lima',
+          to: 'Dazzler by Wyndham Lima Miraflores, Av. José Pardo 879, Lima',
         },
       ],
       plan: [
         {
           t: '13:20',
-          title: 'Vuelo a Lima',
+          title: 'Vuelo IB 125 a Lima',
           place: 'Aeropuerto de Madrid-Barajas',
           q: 'Aeropuerto Adolfo Suárez Madrid-Barajas',
         },
@@ -75,7 +76,11 @@ const content: TripContent = {
       date: '2026-10-18',
       title: 'Lima: Barranco, centro histórico y Museo Larco',
       cities: ['Lima'],
-      stay: { name: 'Hotel en Lima', meta: 'Miraflores · segunda noche', q: 'Miraflores, Lima' },
+      stay: {
+        name: 'Dazzler by Wyndham Lima Miraflores',
+        meta: 'Miraflores · segunda noche',
+        q: 'Dazzler by Wyndham Lima Miraflores, Av. José Pardo 879, Lima',
+      },
       legs: [],
       plan: [
         {
@@ -168,14 +173,14 @@ const content: TripContent = {
       title: 'Lima → Arequipa, la Ciudad Blanca',
       cities: ['Lima', 'Arequipa'],
       stay: {
-        name: 'Hotel en Arequipa',
+        name: 'San Agustín Posada del Monasterio',
         meta: 'Centro histórico · check-in desde 15:00',
-        q: 'Centro histórico de Arequipa',
+        q: 'San Agustín Posada del Monasterio, Santa Catalina 300, Arequipa',
       },
       legs: [
         {
           mode: 'plane',
-          title: 'Vuelo Lima → Arequipa',
+          title: 'Vuelo LA 2109 Lima → Arequipa',
           meta: 'Sale 10:30 · llega 12:00',
           q: 'Aeropuerto Internacional Alfredo Rodríguez Ballón',
         },
@@ -184,7 +189,7 @@ const content: TripContent = {
           title: 'Traslado al hotel',
           meta: 'Llegada 12:00 · incluido en el circuito',
           from: 'Aeropuerto Internacional Alfredo Rodríguez Ballón',
-          to: 'Centro histórico de Arequipa',
+          to: 'San Agustín Posada del Monasterio, Santa Catalina 300, Arequipa',
         },
       ],
       plan: [
@@ -196,7 +201,7 @@ const content: TripContent = {
         },
         {
           t: '10:30',
-          title: 'Vuelo a Arequipa',
+          title: 'Vuelo LA 2109 a Arequipa',
           place: 'Aeropuerto Jorge Chávez',
           q: 'Aeropuerto Internacional Jorge Chávez',
         },
@@ -308,9 +313,9 @@ const content: TripContent = {
       title: 'Arequipa → Cañón del Colca',
       cities: ['Arequipa', 'Patapampa', 'Chivay', 'Yanque'],
       stay: {
-        name: 'Hotel en el valle del Colca',
+        name: 'Xima Colca',
         meta: 'Yanque · check-in desde 15:00',
-        q: 'Yanque, Caylloma',
+        q: 'Xima Colca, Anexo Yanque, Caylloma',
       },
       legs: [
         {
@@ -400,8 +405,8 @@ const content: TripContent = {
       title: 'Cañón del Colca → Puno',
       cities: ['Cruz del Cóndor', 'Maca', 'Lagunillas', 'Puno'],
       stay: {
-        name: 'Hotel en Puno',
-        meta: 'Hotel pendiente de confirmar · check-in desde 15:00',
+        name: 'Jose Antonio Puno o Lake Titicaca Hotel',
+        meta: 'Pendiente de confirmar cuál · check-in desde 15:00',
         q: 'Puno',
       },
       legs: [
@@ -510,8 +515,8 @@ const content: TripContent = {
       title: 'Lago Titicaca: Uros y Taquile',
       cities: ['Puno', 'Uros', 'Taquile'],
       stay: {
-        name: 'Hotel en Puno',
-        meta: 'Hotel pendiente de confirmar · segunda noche',
+        name: 'Jose Antonio Puno o Lake Titicaca Hotel',
+        meta: 'Pendiente de confirmar cuál · segunda noche',
         q: 'Puno',
       },
       legs: [
@@ -588,7 +593,11 @@ const content: TripContent = {
       date: '2026-10-23',
       title: 'Puno → Cusco por la Ruta del Sur',
       cities: ['Puno', 'Pucará', 'La Raya', 'Raqchi', 'Andahuaylillas', 'Cusco'],
-      stay: { name: 'Hotel en Cusco', meta: 'Centro · check-in desde 15:00', q: 'Cusco' },
+      stay: {
+        name: 'Hotel Cusco La Paccha by Meliá',
+        meta: 'Centro · check-in desde 15:00',
+        q: 'Hotel Cusco La Paccha Affiliated by Meliá, Av. El Sol 1436, Cusco',
+      },
       legs: [
         {
           mode: 'bus',
@@ -683,7 +692,11 @@ const content: TripContent = {
       date: '2026-10-24',
       title: 'Cusco',
       cities: ['Cusco'],
-      stay: { name: 'Hotel en Cusco', meta: 'Centro · segunda noche', q: 'Cusco' },
+      stay: {
+        name: 'Hotel Cusco La Paccha by Meliá',
+        meta: 'Centro · segunda noche',
+        q: 'Hotel Cusco La Paccha Affiliated by Meliá, Av. El Sol 1436, Cusco',
+      },
       legs: [],
       plan: [
         {
@@ -771,8 +784,8 @@ const content: TripContent = {
       title: 'Valle Sagrado → Aguas Calientes',
       cities: ['Cusco', 'Chinchero', 'Moray', 'Ollantaytambo', 'Aguas Calientes'],
       stay: {
-        name: 'Hotel en Aguas Calientes',
-        meta: 'Hotel pendiente de confirmar · solo equipaje de mano',
+        name: 'Inti Punku Machupicchu o El MaPi by Inkaterra',
+        meta: 'Pendiente de confirmar cuál · solo equipaje de mano',
         q: 'Aguas Calientes',
       },
       legs: [
@@ -874,9 +887,9 @@ const content: TripContent = {
       title: 'Machu Picchu → Cusco',
       cities: ['Aguas Calientes', 'Machu Picchu', 'Ollantaytambo', 'Cusco'],
       stay: {
-        name: 'Hotel en Cusco',
+        name: 'Hotel Cusco La Paccha by Meliá',
         meta: 'Centro · última noche · check-in desde 15:00',
-        q: 'Cusco',
+        q: 'Hotel Cusco La Paccha Affiliated by Meliá, Av. El Sol 1436, Cusco',
       },
       legs: [
         {
@@ -968,14 +981,14 @@ const content: TripContent = {
       legs: [
         {
           mode: 'plane',
-          title: 'Vuelo Cusco → Lima',
+          title: 'Vuelo LA 2121 Cusco → Lima',
           meta: 'Sale 18:00 · llega 19:35',
           q: 'Aeropuerto Internacional Alejandro Velasco Astete',
         },
         {
           mode: 'plane',
-          title: 'Vuelo Lima → Madrid',
-          meta: 'Sale 21:05 · noche a bordo · conexión de 1 h 30 min',
+          title: 'Vuelo IB 126 Lima → Madrid',
+          meta: 'Sale 21:05 · llega 14:20 del 28 · noche a bordo · conexión de 1 h 30 min',
           q: 'Aeropuerto Internacional Jorge Chávez',
         },
       ],
@@ -994,13 +1007,13 @@ const content: TripContent = {
         },
         {
           t: '18:00',
-          title: 'Vuelo a Lima',
+          title: 'Vuelo LA 2121 a Lima',
           place: 'Aeropuerto de Cusco',
           q: 'Aeropuerto Internacional Alejandro Velasco Astete',
         },
         {
           t: '21:05',
-          title: 'Vuelo a Madrid',
+          title: 'Vuelo IB 126 a Madrid',
           place: 'Aeropuerto Jorge Chávez',
           q: 'Aeropuerto Internacional Jorge Chávez',
         },
