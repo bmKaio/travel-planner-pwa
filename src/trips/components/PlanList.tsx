@@ -2,6 +2,9 @@ import type { PlanItem } from '../types'
 import { planItemUrl } from '../domain/mapsUrl'
 import MapsLink from './MapsLink'
 import FreeTimeIdeas, { type FreeTimeIdeasData } from './FreeTimeIdeas'
+import { SECTION_STYLE } from './sectionStyle'
+
+const { edge } = SECTION_STYLE.plan
 
 interface PlanListProps {
   items: PlanItem[]
@@ -15,7 +18,7 @@ function PlanList({ items, emptyText, ideas }: PlanListProps) {
     return emptyText ? <p className="text-base text-trip-muted">{emptyText}</p> : null
   }
   return (
-    <ul className="rounded-[20px] border border-trip-line bg-trip-card px-4">
+    <ul className={`rounded-[20px] border border-l-4 border-trip-line ${edge} bg-trip-card px-4`}>
       {items.map((item) => {
         const url = planItemUrl(item)
         return (

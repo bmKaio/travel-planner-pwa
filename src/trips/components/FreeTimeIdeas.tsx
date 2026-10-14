@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Lightbulb } from 'lucide-react'
 import { tripButtonClass } from './buttonStyles'
+import { SECTION_STYLE } from './sectionStyle'
+
+const { edge, soft } = SECTION_STYLE.see
 
 export interface FreeTimeIdeasData {
   names: string[]
@@ -12,7 +15,7 @@ export interface FreeTimeIdeasData {
 function FreeTimeIdeas({ names, to }: FreeTimeIdeasData) {
   if (names.length === 0) return null
   return (
-    <div className="mt-2 flex flex-col gap-2 rounded-2xl bg-trip-soft p-3">
+    <div className={`mt-2 flex flex-col gap-2 rounded-2xl border-l-4 ${edge} ${soft} p-3`}>
       <p className="text-sm font-bold uppercase tracking-wider text-trip-muted">Ideas</p>
       <ul className="flex flex-col gap-1 text-base text-trip-ink2">
         {names.map((name) => (
