@@ -136,3 +136,9 @@ export function tripStripe(index: number): string {
   const count = TRIP_STRIPES.length
   return TRIP_STRIPES[((index % count) + count) % count]
 }
+
+/**
+ * Cover card without a photo: turquoise surface with the page background colour as text.
+ * White would fail in dark mode (turquoise is light there); this pair is 5.05:1 light, 10.5:1 dark.
+ */
+export const COVER_FALLBACK = { surface: 'bg-trip-topic-city', text: 'text-trip-bg' } as const

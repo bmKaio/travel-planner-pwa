@@ -52,6 +52,21 @@ describe('trip content', () => {
     }
   })
 
+  it.each(v2Trips)('$id day covers are well-formed', async (trip) => {
+    const content = await loadTripContent(trip.id)
+    for (const day of content.days) {
+      const { cover } = day
+      if (!cover) continue
+      expect(cover.place.trim(), `${day.date} place`).not.toBe('')
+      expect(cover.image.trim(), `${day.date} image`).not.toBe('')
+      expect(cover.alt.trim(), `${day.date} alt`).not.toBe('')
+      expect(cover.credit, `${day.date} credit`).toMatch(/\S · \S/)
+      expect(cover.creditUrl, `${day.date} creditUrl`).toMatch(
+        /^https:\/\/commons\.wikimedia\.org\//
+      )
+    }
+  })
+
   it('Peru has a guide', async () => {
     const content = await loadTripContent('peru-2026')
     expect(content.guide?.length ?? 0).toBeGreaterThan(0)

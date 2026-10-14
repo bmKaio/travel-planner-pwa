@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   daysBetween,
   formatDateRange,
+  formatDayCount,
   formatDayHeading,
   formatDayLabel,
   toLocalIsoDate,
@@ -47,6 +48,11 @@ describe('day labels', () => {
 
   it('returns the short weekday', () => {
     expect(weekdayShort('2026-10-18')).toBe('dom')
+  })
+
+  it('formats the day count', () => {
+    expect(formatDayCount(0, 12)).toBe('Día 1 de 12')
+    expect(formatDayCount(3, 12)).toBe('Día 4 de 12')
   })
 
   it('formats the day heading', () => {

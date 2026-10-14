@@ -4,11 +4,11 @@ import { useTrip } from '../hooks/useTrip'
 import { useTripDays } from '../hooks/useTripDays'
 import { useNow } from '../hooks/useNow'
 import { computeNow, formatBanner, resolveTodayView } from '../domain/today'
-import { formatDayHeading } from '../domain/dates'
+import { buildCoverView } from '../domain/dayCover'
 import { freeTimeIdeas } from '../domain/itinerary'
 import { planItemUrl } from '../domain/mapsUrl'
 import { NO_STAY_TEXT } from '../domain/stayCopy'
-import PageHeader from '../components/PageHeader'
+import DayCoverCard from '../components/DayCoverCard'
 import NowCard from '../components/NowCard'
 import PlanList from '../components/PlanList'
 import StayCard from '../components/StayCard'
@@ -45,7 +45,9 @@ function TodayPage() {
 
   return (
     <div className="flex flex-col gap-[18px]">
-      <PageHeader title="Hoy" subtitle={formatDayHeading(view.dayIndex, days.length, day.date)} />
+      <DayCoverCard
+        view={buildCoverView(day.cover, trip.name, view.dayIndex, days.length, day.date)}
+      />
 
       {banner && (
         <p

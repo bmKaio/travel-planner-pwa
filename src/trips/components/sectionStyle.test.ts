@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { GUIDE_TOPIC_STYLE } from './guideTopicStyle'
-import { NAV_STYLE, SECTION_STYLE, tripStripe, type NavKey, type SectionKey } from './sectionStyle'
+import {
+  COVER_FALLBACK,
+  NAV_STYLE,
+  SECTION_STYLE,
+  tripStripe,
+  type NavKey,
+  type SectionKey,
+} from './sectionStyle'
 import {
   contrastRatio,
   readTripTokens,
@@ -124,5 +131,20 @@ describe('tripStripe', () => {
 
   it('never returns undefined, even for a trip missing from the registry (index -1)', () => {
     expect(tripStripe(-1)).toBe(GUIDE_TOPIC_STYLE.tip.stripe)
+  })
+})
+
+describe('COVER_FALLBACK', () => {
+  const surfaceToken = COVER_FALLBACK.surface.replace('bg-trip-', '')
+  const textToken = COVER_FALLBACK.text.replace('text-trip-', '')
+
+  it('is the turquoise section tone', () => {
+    expect(surfaceToken).toBe(SECTION_TOKEN.plan)
+  })
+
+  it.each(MODES)('%s mode: its text reaches 4.5:1 on its surface', (mode) => {
+    const colours = palette[mode]
+    expect(colours[textToken], `${mode} --trip-${textToken}`).toBeDefined()
+    expect(contrastRatio(colours[textToken], colours[surfaceToken])).toBeGreaterThanOrEqual(4.5)
   })
 })

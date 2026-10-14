@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { makeContent, makeDay } from '../testing/makeContent'
 import { setupTestTripsDb } from '../testing/testTripsDb'
-import type { ContentGuideEntry } from '../types'
+import type { ContentGuideEntry, DayCover } from '../types'
 import { checklistItemId, syncTripContent } from './seedSync'
 
 const getDb = setupTestTripsDb()
@@ -61,6 +61,22 @@ describe('syncTripContent', () => {
     expect(
       (await db.guideEntries.where('tripId').equals('peru-2026').toArray()).map((e) => e.key)
     ).toEqual(['ceviche'])
+  })
+
+  it('stores a day cover and drops it when a newer version removes it', async () => {
+    const db = getDb()
+    const cover: DayCover = {
+      place: 'Lima',
+      image: '/assets/lima.webp',
+      alt: 'Costa de Miraflores',
+      credit: 'Autor · CC BY 4.0',
+      creditUrl: 'https://commons.wikimedia.org/wiki/File:Lima.jpg',
+    }
+    await syncTripContent(db, makeContent({ days: [{ ...makeDay('2026-10-17'), cover }] }))
+    expect((await db.days.get(['peru-2026', '2026-10-17']))?.cover).toEqual(cover)
+
+    await syncTripContent(db, makeContent({ seedVersion: 2, days: [makeDay('2026-10-17')] }))
+    expect((await db.days.get(['peru-2026', '2026-10-17']))?.cover).toBeUndefined()
   })
 
   it('writes days, namespaced checklist items, emergency info and the version', async () => {
