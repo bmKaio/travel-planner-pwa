@@ -95,6 +95,11 @@ per-domain helpers live in `src/utils/`; shared domain types in `src/types/index
   }
   ```
 
+- **Weather strip (online):** the v2 header shows today/tomorrow/day after from Open-Meteo (free,
+  no key, CC BY → attribution line in Ayuda) for each day's city: `src/trips/domain/weather.ts`,
+  `hooks/useWeather.ts`, coordinates in `content/weatherPlaces.ts` (a day needs one known city;
+  not stored in TripsDB, no `seedVersion` bump). Cached in localStorage, refetched after 3 h;
+  hidden outside the trip or without data. Tapping opens meteoblue for today's city.
 - **GitHub Pages deep links:** `public/404.html` + the decoder script in `index.html`.
 
 ## Conventions

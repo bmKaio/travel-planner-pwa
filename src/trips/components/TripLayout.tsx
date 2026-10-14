@@ -6,10 +6,12 @@ import TripNav from './TripNav'
 
 interface TripLayoutProps {
   tripName: string
+  /** Optional second header row (the weather strip). */
+  headerExtra?: ReactNode
   children: ReactNode
 }
 
-function TripLayout({ tripName, children }: TripLayoutProps) {
+function TripLayout({ tripName, headerExtra, children }: TripLayoutProps) {
   return (
     <TripScreen>
       <header className="safe-top sticky top-0 z-20 border-b border-trip-line bg-trip-card">
@@ -23,6 +25,7 @@ function TripLayout({ tripName, children }: TripLayoutProps) {
             Viajes
           </Link>
         </div>
+        {headerExtra}
       </header>
       <main
         id="main-content"
