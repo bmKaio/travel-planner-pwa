@@ -217,3 +217,22 @@ export function weatherAriaLabel(cells: WeatherCell[]): string {
   )
   return ['El tiempo.', ...parts, 'Abre la previsión de meteoblue en otra pestaña.'].join(' ')
 }
+
+export type WeatherTone = 'storm' | 'rain' | 'cold' | 'hot' | 'pleasant' | 'cloudy'
+
+/** A night at or below this (°C) counts as cold: time to wrap up. */
+export const COLD_MIN_C = 5
+/** A sunny day above this max (°C) counts as hot. */
+export const HOT_MAX_C = 28
+
+/** Colour family of a forecast cell; the first matching rule wins. */
+export function weatherTone(forecast: DailyForecast): WeatherTone {
+  const { kind } = describeWeather(forecast.code)
+  if (kind === 'storm') return 'storm'
+  if (kind === 'rain' || kind === 'drizzle') return 'rain'
+  if (kind === 'snow' || forecast.min <= COLD_MIN_C) return 'cold'
+  if (kind === 'clear' || kind === 'partly') {
+    return forecast.max > HOT_MAX_C ? 'hot' : 'pleasant'
+  }
+  return 'cloudy'
+}

@@ -104,6 +104,19 @@
     --trip-topic-curiosity-soft: #fbe4ee;
     --trip-topic-tip: #3f46b8;
     --trip-topic-tip-soft: #e6e7fa;
+    /* Weather strip cells: background / text. Text contrast ≥ 7:1 on its background. */
+    --trip-weather-storm: #1e2a5a;
+    --trip-weather-storm-ink: #ffffff;
+    --trip-weather-rain: #d6e6fb;
+    --trip-weather-rain-ink: #0b3b7a;
+    --trip-weather-cold: #dbf3fa;
+    --trip-weather-cold-ink: #0b4a5e;
+    --trip-weather-hot: #fde3c8;
+    --trip-weather-hot-ink: #7a3300;
+    --trip-weather-pleasant: #d8f0df;
+    --trip-weather-pleasant-ink: #14532d;
+    --trip-weather-cloudy: #ecede8;
+    --trip-weather-cloudy-ink: #33373d;
   }
 
   .dark .trip-app {
@@ -134,5 +147,17 @@
     --trip-topic-curiosity-soft: #3d1a2a;
     --trip-topic-tip: #a3a9ff;
     --trip-topic-tip-soft: #22254a;
+    --trip-weather-storm: #1d2b5e;
+    --trip-weather-storm-ink: #e6ecff;
+    --trip-weather-rain: #17304f;
+    --trip-weather-rain-ink: #cfe2ff;
+    --trip-weather-cold: #123a45;
+    --trip-weather-cold-ink: #c9f1fb;
+    --trip-weather-hot: #4a2a12;
+    --trip-weather-hot-ink: #ffd9b8;
+    --trip-weather-pleasant: #143a24;
+    --trip-weather-pleasant-ink: #c8f0d5;
+    --trip-weather-cloudy: #24282d;
+    --trip-weather-cloudy-ink: #d3d6db;
   }
 }

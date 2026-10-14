@@ -12,6 +12,7 @@ import {
   weatherCells,
   weatherPlaceForDay,
   weatherSlots,
+  weatherTone,
   type DailyForecast,
   type WeatherPlace,
 } from './weather'
@@ -272,5 +273,33 @@ describe('weatherAriaLabel', () => {
         'Mañana en Cusco: Lluvia, máxima 19°, mínima 10°. ' +
         'Abre la previsión de meteoblue en otra pestaña.'
     )
+  })
+})
+
+describe('weatherTone', () => {
+  const at = (code: number, max: number, min: number): DailyForecast => ({
+    date: '2026-10-17',
+    code,
+    max,
+    min,
+    rainChance: null,
+  })
+
+  it.each([
+    ['storm beats everything', at(95, 30, 2), 'storm'],
+    ['rain beats cold', at(63, 10, 2), 'rain'],
+    ['drizzle is rain', at(53, 20, 12), 'rain'],
+    ['showers are rain', at(81, 20, 12), 'rain'],
+    ['a cold night is cold, even with sun', at(0, 20, 5), 'cold'],
+    ['snow is cold', at(73, 8, 6), 'cold'],
+    ['a cold cloudy day is cold', at(3, 14, 4), 'cold'],
+    ['sun above 28° is hot', at(0, 29, 18), 'hot'],
+    ['sun at 28° is pleasant', at(1, 28, 18), 'pleasant'],
+    ['partly cloudy counts as sun', at(2, 22, 12), 'pleasant'],
+    ['overcast is cloudy', at(3, 22, 12), 'cloudy'],
+    ['fog is cloudy', at(45, 22, 12), 'cloudy'],
+    ['a hot overcast day stays cloudy', at(3, 31, 20), 'cloudy'],
+  ])('%s', (_name, forecast, tone) => {
+    expect(weatherTone(forecast)).toBe(tone)
   })
 })
