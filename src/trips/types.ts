@@ -145,6 +145,8 @@ export interface ContentGuideEntry {
   dates?: string[]
   /** Source URLs, shown small at the end of the entry page. At least one. */
   sources: string[]
+  /** Also listed on the Help screen ("Ayuda"), e.g. health rules worth having at hand. */
+  inHelp?: boolean
 }
 
 export interface GuideEntry extends ContentGuideEntry {

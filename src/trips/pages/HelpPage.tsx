@@ -2,12 +2,15 @@ import { useRef, useState, type ChangeEvent } from 'react'
 import { Upload } from 'lucide-react'
 import { useTrip } from '../hooks/useTrip'
 import { useHelpInfo } from '../hooks/useHelpInfo'
+import { useGuide } from '../hooks/useGuide'
+import { guideForHelp } from '../domain/guide'
 import type { HelpInfo } from '../types'
 import PageHeader from '../components/PageHeader'
 import EmergencyCard from '../components/EmergencyCard'
 import HelpCard from '../components/HelpCard'
 import ContactList from '../components/ContactList'
 import DocList from '../components/DocList'
+import GuideCardList from '../components/GuideCardList'
 import ChecklistSection from './ChecklistSection'
 import TripStatusMessage from '../components/TripStatusMessage'
 import { tripButtonClass } from '../components/buttonStyles'
@@ -25,6 +28,7 @@ function describeImport(help: HelpInfo | null): string {
 function HelpPage() {
   const trip = useTrip()
   const { helpInfo, loading, error, importFromFile } = useHelpInfo(trip.id)
+  const { entries: guideEntries } = useGuide(trip.id)
   const [outcome, setOutcome] = useState<ImportOutcome | null>(null)
   const [importing, setImporting] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -58,6 +62,7 @@ function HelpPage() {
   // The hook also exposes a failed import as `error`; the specific reason is already shown below,
   // so this generic notice is for read failures only.
   const showHookError = !!error && outcome?.type !== 'error'
+  const helpGuide = guideForHelp(guideEntries)
 
   return (
     <div className="flex flex-col gap-[18px]">
@@ -71,6 +76,15 @@ function HelpPage() {
         <EmergencyCard emergency={helpInfo.emergency} />
       ) : (
         <TripStatusMessage message="No hay número de emergencias guardado en este dispositivo. Si lo necesitas, marca el número local de emergencias." />
+      )}
+
+      {helpGuide.length > 0 && (
+        <section aria-labelledby="help-guide-heading" className="flex flex-col gap-[18px]">
+          <h2 id="help-guide-heading" className="text-2xl font-bold">
+            Salud y precauciones
+          </h2>
+          <GuideCardList entries={helpGuide} tripId={trip.id} />
+        </section>
       )}
 
       {helpInfo?.cards.map((card) => (

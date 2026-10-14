@@ -6,6 +6,7 @@ import {
   guideCategoryLabel,
   guideDayLinks,
   guideForDay,
+  guideForHelp,
   sourceLabel,
 } from './guide'
 
@@ -88,6 +89,19 @@ describe('guideForDay', () => {
 
   it('returns nothing for a day without entries', () => {
     expect(guideForDay(all, '2026-10-28')).toEqual([])
+  })
+})
+
+describe('guideForHelp', () => {
+  it('keeps only the entries marked for Ayuda, in authored order', () => {
+    const health = { ...entry('health', 'tip'), inHelp: true }
+    const altitude = { ...entry('altitude', 'tip'), inHelp: true }
+    const entries = [entry('ceviche', 'food'), health, entry('chifa', 'tip'), altitude]
+    expect(keys(guideForHelp(entries))).toEqual(['health', 'altitude'])
+  })
+
+  it('returns nothing when no entry is marked', () => {
+    expect(guideForHelp([entry('ceviche', 'food')])).toEqual([])
   })
 })
 

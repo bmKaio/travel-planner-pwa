@@ -51,6 +51,11 @@ export function guideForDay(entries: GuideEntry[], date: string): GuideEntry[] {
   )
 }
 
+/** Entries also listed on the Help screen, in authored order. */
+export function guideForHelp(entries: GuideEntry[]): GuideEntry[] {
+  return entries.filter((entry) => entry.inHelp)
+}
+
 export interface GuideDayLink {
   date: string
   label: string

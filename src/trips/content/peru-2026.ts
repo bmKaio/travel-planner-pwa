@@ -9,7 +9,7 @@ import type { TripContent } from '../types'
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 8,
+  seedVersion: 9,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -1954,6 +1954,26 @@ const content: TripContent = {
         'https://whc.unesco.org/es/list/1459',
         'https://www.prnewswire.co.uk/news-releases/the-qhapaq-nan-andean-road-system-declared-a-unesco-world-heritage-site-264405991.html',
       ],
+    },
+    {
+      key: 'consejo-salud-comida',
+      category: 'tip',
+      title: 'Comer y beber sin sustos',
+      summary:
+        'Agua de botella sellada, comida recién hecha y caliente, y nada crudo para los mayores.',
+      body: [
+        'No hay riesgo cero ni inspecciones sanitarias públicas recientes de cada local. Elegir bien el tipo de sitio reduce el riesgo, pero no lo elimina. El CDC avisa expresamente del riesgo de comida y agua contaminadas en Perú.',
+        'Agua solo de botella sellada, también para lavarse los dientes si el alojamiento no confirma que es potable. Pregunta si el hielo se hace con agua tratada; ante la duda, sin hielo.',
+        'Pide comida recién hecha, completamente cocinada y servida caliente. Evita ceviche, tiradito, carpaccio, marisco crudo, huevos poco hechos, mayonesa casera, ensaladas, fruta ya cortada y lácteos no pasteurizados.',
+        'Pisco sour: para los mayores, pídelo sin clara de huevo cruda o elige una bebida embotellada.',
+        'En altura, cenas tempranas y ligeras, con poco alcohol, grasa y picante.',
+        'Reserva con 48–72 horas de antelación y pide planta baja o ascensor, mesa cerca de los baños, sillas con respaldo y alternativas para alergias.',
+      ],
+      sources: [
+        'https://cdc.gov/yellow-book/hcp/americas-caribbean/peru.html',
+        'https://wwwnc.cdc.gov/travel/page/food-water-safety',
+      ],
+      inHelp: true,
     },
     {
       key: 'consejo-comer-bien',
