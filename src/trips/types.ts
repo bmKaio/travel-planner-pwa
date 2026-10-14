@@ -130,6 +130,29 @@ export interface HelpInfo {
   docs: DocInfo[]
 }
 
+export type GuideCategory = 'history' | 'city' | 'food' | 'drink' | 'curiosity' | 'tip'
+
+export interface ContentGuideEntry {
+  /** Unique within the trip; URL segment of the entry page. Lowercase kebab-case. */
+  key: string
+  category: GuideCategory
+  title: string
+  /** One or two lines, shown on cards. */
+  summary: string
+  /** Short paragraphs, rendered in order. */
+  body: string[]
+  /** Trip days this entry belongs to (ISO dates present in `days`). */
+  dates?: string[]
+  /** Source URLs, shown small at the end of the entry page. At least one. */
+  sources: string[]
+}
+
+export interface GuideEntry extends ContentGuideEntry {
+  tripId: string
+  /** Index in the authored `guide` array; Dexie returns rows by primary key, not authored order. */
+  order: number
+}
+
 export interface ContentState {
   tripId: string
   seedVersion: number
@@ -152,4 +175,6 @@ export interface TripContent {
   emergency: EmergencyInfo
   days: ContentDay[]
   checklist: ContentChecklistItem[]
+  /** Reading guide; optional because not every trip has one. */
+  guide?: ContentGuideEntry[]
 }

@@ -1,11 +1,68 @@
 import { describe, expect, it } from 'vitest'
 import { makeContent, makeDay } from '../testing/makeContent'
 import { setupTestTripsDb } from '../testing/testTripsDb'
+import type { ContentGuideEntry } from '../types'
 import { checklistItemId, syncTripContent } from './seedSync'
 
 const getDb = setupTestTripsDb()
 
 describe('syncTripContent', () => {
+  const ceviche: ContentGuideEntry = {
+    key: 'ceviche',
+    category: 'food',
+    title: 'Ceviche',
+    summary: 'El plato bandera.',
+    body: ['Pescado marinado en limón.'],
+    dates: ['2026-10-18'],
+    sources: ['https://example.org/ceviche'],
+  }
+  const pisco: ContentGuideEntry = {
+    key: 'pisco-sour',
+    category: 'drink',
+    title: 'Pisco sour',
+    summary: 'El cóctel nacional.',
+    body: ['Pisco, limón, jarabe y clara de huevo.'],
+    sources: ['https://example.org/pisco'],
+  }
+
+  it('writes the guide entries with the trip id and their authored order', async () => {
+    const db = getDb()
+    await syncTripContent(db, makeContent({ guide: [pisco, ceviche] }))
+
+    const entries = await db.guideEntries.where('tripId').equals('peru-2026').sortBy('order')
+    expect(entries).toEqual([
+      { ...pisco, tripId: 'peru-2026', order: 0 },
+      { ...ceviche, tripId: 'peru-2026', order: 1 },
+    ])
+  })
+
+  it('writes no guide entries when the content has no guide', async () => {
+    const db = getDb()
+    await syncTripContent(db, makeContent())
+    expect(await db.guideEntries.count()).toBe(0)
+  })
+
+  it('replaces the guide on a version bump and leaves other trips alone', async () => {
+    const db = getDb()
+    await syncTripContent(db, makeContent({ guide: [ceviche, pisco] }))
+    await syncTripContent(db, makeContent({ tripId: 'chile-2027', guide: [ceviche] }))
+
+    await syncTripContent(db, makeContent({ seedVersion: 2, guide: [pisco] }))
+
+    const peru = await db.guideEntries.where('tripId').equals('peru-2026').toArray()
+    expect(peru.map((entry) => [entry.key, entry.order])).toEqual([['pisco-sour', 0]])
+    expect(await db.guideEntries.get(['chile-2027', 'ceviche'])).toBeDefined()
+  })
+
+  it('keeps the guide when the stored version is the same', async () => {
+    const db = getDb()
+    await syncTripContent(db, makeContent({ guide: [ceviche] }))
+    await syncTripContent(db, makeContent({ guide: [pisco] }))
+    expect(
+      (await db.guideEntries.where('tripId').equals('peru-2026').toArray()).map((e) => e.key)
+    ).toEqual(['ceviche'])
+  })
+
   it('writes days, namespaced checklist items, emergency info and the version', async () => {
     const db = getDb()
     expect(await syncTripContent(db, makeContent())).toBe(true)

@@ -7,7 +7,7 @@ export function checklistItemId(tripId: string, key: string): string {
 
 /**
  * Applies public trip content when its seedVersion is newer than the stored one.
- * Days are replaced; checklist items are upserted keeping `done`; notes and the
+ * Days and guide entries are replaced; checklist items are upserted keeping `done`; notes and the
  * imported help data (cards, contacts, docs) are never touched. All in one transaction.
  */
 export async function syncTripContent(db: TripsDatabase, content: TripContent): Promise<boolean> {
@@ -15,13 +15,18 @@ export async function syncTripContent(db: TripsDatabase, content: TripContent): 
 
   return db.transaction(
     'rw',
-    [db.days, db.checklistItems, db.helpInfo, db.contentState],
+    [db.days, db.guideEntries, db.checklistItems, db.helpInfo, db.contentState],
     async () => {
       const state = await db.contentState.get(tripId)
       if (state && state.seedVersion >= content.seedVersion) return false
 
       await db.days.where('tripId').equals(tripId).delete()
       await db.days.bulkPut(content.days.map((day) => ({ ...day, tripId })))
+
+      await db.guideEntries.where('tripId').equals(tripId).delete()
+      await db.guideEntries.bulkPut(
+        (content.guide ?? []).map((entry, order) => ({ ...entry, tripId, order }))
+      )
 
       const existing = await db.checklistItems.where('tripId').equals(tripId).toArray()
       const doneById = new Map(existing.map((item) => [item.id, item.done]))

@@ -1,5 +1,5 @@
 import Dexie, { type EntityTable, type Table } from 'dexie'
-import type { ChecklistItem, ContentState, HelpInfo, TripDay, TripNote } from './types'
+import type { ChecklistItem, ContentState, GuideEntry, HelpInfo, TripDay, TripNote } from './types'
 
 export const TRIPS_DB_NAME = 'TripsDB'
 
@@ -13,6 +13,7 @@ export class TripsDatabase extends Dexie {
   notes!: EntityTable<TripNote, 'tripId'>
   helpInfo!: EntityTable<HelpInfo, 'tripId'>
   contentState!: EntityTable<ContentState, 'tripId'>
+  guideEntries!: Table<GuideEntry, [string, string]>
 
   constructor(name: string = TRIPS_DB_NAME) {
     super(name)
@@ -22,6 +23,10 @@ export class TripsDatabase extends Dexie {
       notes: 'tripId',
       helpInfo: 'tripId',
       contentState: 'tripId',
+    })
+    // v2: guide entries. Additive; Dexie keeps every v1 table and its data.
+    this.version(2).stores({
+      guideEntries: '[tripId+key], tripId',
     })
   }
 }
