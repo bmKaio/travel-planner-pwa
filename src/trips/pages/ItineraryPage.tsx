@@ -2,8 +2,10 @@ import { useMemo } from 'react'
 import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useTrip } from '../hooks/useTrip'
 import { useTripDays } from '../hooks/useTripDays'
+import { useGuide } from '../hooks/useGuide'
 import { useNow } from '../hooks/useNow'
 import { resolveTodayView } from '../domain/today'
+import { guideForDay } from '../domain/guide'
 import { formatDayHeading, toLocalIsoDate } from '../domain/dates'
 import {
   buildDayStrip,
@@ -22,7 +24,19 @@ import PlanList from '../components/PlanList'
 import EatList from '../components/EatList'
 import SeeList from '../components/SeeList'
 import LegList from '../components/LegList'
+import GuideCardList from '../components/GuideCardList'
 import TripStatusMessage from '../components/TripStatusMessage'
+import type { GuideEntry } from '../types'
+
+function DayGuide({ entries, tripId }: { entries: GuideEntry[]; tripId: string }) {
+  if (entries.length === 0) return null
+  return (
+    <section className="flex flex-col gap-2.5">
+      <h2 className="text-xl font-bold">Para saber más</h2>
+      <GuideCardList entries={entries} tripId={tripId} />
+    </section>
+  )
+}
 
 function ItineraryPage() {
   const trip = useTrip()
@@ -30,6 +44,7 @@ function ItineraryPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const { days, loading, error } = useTripDays(trip.id)
+  const guide = useGuide(trip.id)
   const now = useNow()
   const dates = useMemo(() => days.map((d) => d.date), [days])
   const todayView = useMemo(() => resolveTodayView(dates, now), [dates, now])
@@ -91,6 +106,12 @@ function ItineraryPage() {
         {tab === 'eat' && <EatList items={day.eat} />}
         {tab === 'see' && <SeeList items={day.see} />}
       </div>
+
+      {guide.error ? (
+        <TripStatusMessage tone="error" message="No se pudo cargar la guía de este día." />
+      ) : (
+        <DayGuide entries={guideForDay(guide.entries, day.date)} tripId={trip.id} />
+      )}
 
       {day.legs.length > 0 && (
         <section className="flex flex-col gap-2.5">
