@@ -28,12 +28,20 @@ import GuideCardList from '../components/GuideCardList'
 import TripStatusMessage from '../components/TripStatusMessage'
 import type { GuideEntry } from '../types'
 
-function DayGuide({ entries, tripId }: { entries: GuideEntry[]; tripId: string }) {
+function DayGuide({
+  entries,
+  tripId,
+  date,
+}: {
+  entries: GuideEntry[]
+  tripId: string
+  date: string
+}) {
   if (entries.length === 0) return null
   return (
     <section className="flex flex-col gap-2.5">
       <h2 className="text-xl font-bold">Para saber más</h2>
-      <GuideCardList entries={entries} tripId={tripId} />
+      <GuideCardList entries={entries} tripId={tripId} fromDay={date} />
     </section>
   )
 }
@@ -110,7 +118,7 @@ function ItineraryPage() {
       {guide.error ? (
         <TripStatusMessage tone="error" message="No se pudo cargar la guía de este día." />
       ) : (
-        <DayGuide entries={guideForDay(guide.entries, day.date)} tripId={trip.id} />
+        <DayGuide entries={guideForDay(guide.entries, day.date)} tripId={trip.id} date={day.date} />
       )}
 
       {day.legs.length > 0 && (
