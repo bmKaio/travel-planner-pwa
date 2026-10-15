@@ -81,6 +81,7 @@ export default {
           'action-soft': 'var(--trip-action-soft)',
           done: 'var(--trip-done)',
           'done-ink': 'var(--trip-done-ink)',
+          'done-soft': 'var(--trip-done-soft)',
           urgent: 'var(--trip-urgent)',
           'urgent-ink': 'var(--trip-urgent-ink)',
           'urgent-soft': 'var(--trip-urgent-soft)',

@@ -12,7 +12,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       manifest: false, // Use our own manifest.json in public/
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,woff2}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,woff2,webp}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/.*\.(?:png|jpg|jpeg|svg|gif|webp)$/i,

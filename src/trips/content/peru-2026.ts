@@ -1,15 +1,123 @@
-import type { TripContent } from '../types'
+import type { DayCover, TripContent } from '../types'
+import limaMiraflores from './images/peru-2026/lima-miraflores.webp'
+import limaPlazaDeArmas from './images/peru-2026/lima-plaza-de-armas.webp'
+import arequipaMisti from './images/peru-2026/arequipa-misti.webp'
+import colcaTerrazas from './images/peru-2026/colca-terrazas.webp'
+import punoTiticaca from './images/peru-2026/puno-titicaca.webp'
+import urosIslas from './images/peru-2026/uros-islas.webp'
+import cuscoPlazaDeArmas from './images/peru-2026/cusco-plaza-de-armas.webp'
+import cuscoSanBlas from './images/peru-2026/cusco-san-blas.webp'
+import ollantaytambo from './images/peru-2026/ollantaytambo.webp'
+import machuPicchu from './images/peru-2026/machu-picchu.webp'
+import madrid from './images/peru-2026/madrid.webp'
 
 // Public content for the Peru trip (17–28 Oct 2026), from docs/peru/itinerario-peru.md.
 // Times: flights are exact (local time); every other time is an approximate slot because the
 // dossier gives none. Hotel names and map queries are public by the owner's decision; phones and
 // agency contacts stay private (JSON import only).
 // Guide: docs/peru/guia-borrador.md (reviewed by the owner).
+// Covers: photos from Wikimedia Commons under free licences; author, licence and file page are in the
+// COVER_* constants below. Changing an image file changes its hashed URL, so bump seedVersion too.
 // Bump seedVersion on every change so installed devices resync.
+
+const COVER_LIMA_MIRAFLORES: DayCover = {
+  place: 'Lima',
+  image: limaMiraflores,
+  alt: 'Costa de Miraflores en Lima, con los acantilados verdes, los edificios y el océano Pacífico',
+  credit: 'Alec Gamoff · CC BY 2.0',
+  creditUrl: 'https://commons.wikimedia.org/wiki/File:Malec%C3%B3n_de_Miraflores,_Lima.jpg',
+}
+
+const COVER_LIMA_PLAZA_DE_ARMAS: DayCover = {
+  place: 'Lima',
+  image: limaPlazaDeArmas,
+  alt: 'Fuente de bronce en la Plaza de Armas de Lima, con palmeras y edificios amarillos con balcones',
+  credit: 'PA · CC BY-SA 4.0',
+  creditUrl: 'https://commons.wikimedia.org/wiki/File:Lima_-_Plaza_Mayor_-_Fontaine.jpg',
+}
+
+const COVER_AREQUIPA: DayCover = {
+  place: 'Arequipa',
+  image: arequipaMisti,
+  alt: 'Catedral de Arequipa con sus dos campanarios y el volcán Misti nevado al fondo',
+  credit: 'FotosATP-Pe · CC BY-SA 4.0',
+  creditUrl:
+    'https://commons.wikimedia.org/wiki/File:Catedral_de_Arequipa_-_Arequipa_-_(ARE_%E2%80%93_031)_-_03082009.jpg',
+}
+
+const COVER_COLCA: DayCover = {
+  place: 'Valle del Colca',
+  image: colcaTerrazas,
+  alt: 'Terrazas agrícolas escalonadas en el valle del Colca, cerca de Cabanaconde',
+  credit: 'Josep M. Gracia · CC BY-SA 4.0',
+  creditUrl:
+    'https://commons.wikimedia.org/wiki/File:CBC_-_Agricultural_terraces_near_Cabanaconde,_Peru,_2013.jpg',
+}
+
+const COVER_PUNO: DayCover = {
+  place: 'Puno',
+  image: punoTiticaca,
+  alt: 'Vista de la ciudad de Puno y de la bahía del lago Titicaca desde un mirador',
+  credit: 'Diego Delso · CC BY-SA 4.0',
+  creditUrl:
+    'https://commons.wikimedia.org/wiki/File:Vista_de_Puno_y_el_Titicaca,_Per%C3%BA,_2015-08-01,_DD_63.JPG',
+}
+
+const COVER_UROS: DayCover = {
+  place: 'Lago Titicaca',
+  image: urosIslas,
+  alt: 'Isla flotante de totora con cabañas y botes en las islas de los Uros, en el lago Titicaca',
+  credit: 'Diego Delso · CC BY-SA 4.0',
+  creditUrl:
+    'https://commons.wikimedia.org/wiki/File:Islas_flotantes_de_los_Uros,_Lago_Titicaca,_Per%C3%BA,_2015-08-01,_DD_27.JPG',
+}
+
+const COVER_CUSCO_PLAZA: DayCover = {
+  place: 'Cusco',
+  image: cuscoPlazaDeArmas,
+  alt: 'Plaza de Armas de Cusco con la Catedral, la iglesia de la Compañía de Jesús y los cerros detrás',
+  credit: 'Bernard Brönn · CC BY-SA 4.0',
+  creditUrl:
+    'https://commons.wikimedia.org/wiki/File:Cusco_se_Plaza_de_Armas,_met_Katedraal_en_La_Compa%C3%B1%C3%ADa_de_Jes%C3%BAs,_a.jpg',
+}
+
+const COVER_CUSCO_SAN_BLAS: DayCover = {
+  place: 'Cusco',
+  image: cuscoSanBlas,
+  alt: 'Calle empedrada del barrio de San Blas en Cusco, con un muro inca de piedra y casas blancas',
+  credit: 'Chalisimo5 · CC BY-SA 4.0',
+  creditUrl: 'https://commons.wikimedia.org/wiki/File:Calle_Tandapata.jpg',
+}
+
+const COVER_OLLANTAYTAMBO: DayCover = {
+  place: 'Valle Sagrado',
+  image: ollantaytambo,
+  alt: 'Andenes de piedra de la fortaleza inca de Ollantaytambo, en el Valle Sagrado',
+  credit: 'Steve FUNG · CC BY-SA 4.0',
+  creditUrl: 'https://commons.wikimedia.org/wiki/File:Ollantaytambo,_Temple_Hill_(Fortress).jpg',
+}
+
+const COVER_MACHU_PICCHU: DayCover = {
+  place: 'Machu Picchu',
+  image: machuPicchu,
+  alt: 'Vista de Machu Picchu con las ruinas incas, el Huayna Picchu y las montañas rodeadas de nubes',
+  credit: 'Diego Delso · CC BY-SA 4.0',
+  creditUrl:
+    'https://commons.wikimedia.org/wiki/File:Machu_Picchu,_Per%C3%BA,_2015-07-30,_DD_37.jpg',
+}
+
+const COVER_MADRID: DayCover = {
+  place: 'Madrid',
+  image: madrid,
+  alt: 'Horizonte de Madrid con el Palacio Real, la catedral de la Almudena y los rascacielos al fondo',
+  credit: 'Asqueladd · CC BY-SA 3.0',
+  creditUrl:
+    'https://commons.wikimedia.org/wiki/File:Panorama_de_Madrid_desde_el_parque_de_San_Isidro.JPG',
+}
 
 const content: TripContent = {
   tripId: 'peru-2026',
-  seedVersion: 13,
+  seedVersion: 14,
   // Verify these numbers before travelling.
   emergency: {
     label: 'Emergencias en Perú',
@@ -53,6 +161,7 @@ const content: TripContent = {
       date: '2026-10-17',
       title: 'Madrid → Lima',
       cities: ['Madrid', 'Lima'],
+      cover: COVER_LIMA_MIRAFLORES,
       stay: {
         name: 'Dazzler by Wyndham Lima Miraflores',
         meta: 'Miraflores · check-in desde 15:00',
@@ -115,6 +224,7 @@ const content: TripContent = {
       date: '2026-10-18',
       title: 'Lima: Barranco, centro histórico y Museo Larco',
       cities: ['Lima'],
+      cover: COVER_LIMA_PLAZA_DE_ARMAS,
       stay: {
         name: 'Dazzler by Wyndham Lima Miraflores',
         meta: 'Miraflores · segunda noche',
@@ -246,6 +356,7 @@ const content: TripContent = {
       date: '2026-10-19',
       title: 'Lima → Arequipa, la Ciudad Blanca',
       cities: ['Lima', 'Arequipa'],
+      cover: COVER_AREQUIPA,
       stay: {
         name: 'San Agustín Posada del Monasterio',
         meta: 'Centro histórico · check-in desde 15:00',
@@ -409,6 +520,7 @@ const content: TripContent = {
       date: '2026-10-20',
       title: 'Arequipa → Cañón del Colca',
       cities: ['Arequipa', 'Patapampa', 'Chivay', 'Yanque'],
+      cover: COVER_COLCA,
       stay: {
         name: 'Xima Colca',
         meta: 'Yanque · check-in desde 15:00',
@@ -523,6 +635,7 @@ const content: TripContent = {
       date: '2026-10-21',
       title: 'Cañón del Colca → Puno',
       cities: ['Cruz del Cóndor', 'Maca', 'Lagunillas', 'Puno'],
+      cover: COVER_PUNO,
       stay: {
         name: 'Jose Antonio Puno o Lake Titicaca Hotel',
         meta: 'Pendiente de confirmar cuál · check-in desde 15:00',
@@ -633,6 +746,7 @@ const content: TripContent = {
       date: '2026-10-22',
       title: 'Lago Titicaca: Uros y Taquile',
       cities: ['Puno', 'Uros', 'Taquile'],
+      cover: COVER_UROS,
       stay: {
         name: 'Jose Antonio Puno o Lake Titicaca Hotel',
         meta: 'Pendiente de confirmar cuál · segunda noche',
@@ -733,6 +847,7 @@ const content: TripContent = {
       date: '2026-10-23',
       title: 'Puno → Cusco por la Ruta del Sur',
       cities: ['Puno', 'Pucará', 'La Raya', 'Raqchi', 'Andahuaylillas', 'Cusco'],
+      cover: COVER_CUSCO_PLAZA,
       stay: {
         name: 'Hotel Cusco La Paccha by Meliá',
         meta: 'Centro · check-in desde 15:00',
@@ -832,6 +947,7 @@ const content: TripContent = {
       date: '2026-10-24',
       title: 'Cusco',
       cities: ['Cusco'],
+      cover: COVER_CUSCO_SAN_BLAS,
       stay: {
         name: 'Hotel Cusco La Paccha by Meliá',
         meta: 'Centro · segunda noche',
@@ -972,6 +1088,7 @@ const content: TripContent = {
       date: '2026-10-25',
       title: 'Valle Sagrado → Aguas Calientes',
       cities: ['Cusco', 'Chinchero', 'Moray', 'Ollantaytambo', 'Aguas Calientes'],
+      cover: COVER_OLLANTAYTAMBO,
       stay: {
         name: 'Inti Punku Machupicchu o El MaPi by Inkaterra',
         meta: 'Pendiente de confirmar cuál · solo equipaje de mano',
@@ -1093,6 +1210,7 @@ const content: TripContent = {
       date: '2026-10-26',
       title: 'Machu Picchu → Cusco',
       cities: ['Aguas Calientes', 'Machu Picchu', 'Ollantaytambo', 'Cusco'],
+      cover: COVER_MACHU_PICCHU,
       stay: {
         name: 'Hotel Cusco La Paccha by Meliá',
         meta: 'Centro · última noche · check-in desde 15:00',
@@ -1186,6 +1304,7 @@ const content: TripContent = {
       date: '2026-10-27',
       title: 'Cusco → Lima → Madrid',
       cities: ['Cusco', 'Lima', 'Madrid'],
+      cover: COVER_CUSCO_PLAZA,
       stay: null,
       legs: [
         {
@@ -1282,6 +1401,7 @@ const content: TripContent = {
       date: '2026-10-28',
       title: 'Llegada a Madrid',
       cities: ['Madrid'],
+      cover: COVER_MADRID,
       stay: null,
       legs: [],
       plan: [{ t: '14:20', title: 'Llegada a Madrid', place: 'Aeropuerto de Madrid-Barajas' }],

@@ -66,6 +66,19 @@ export interface Stay {
   phone?: string
 }
 
+export interface DayCover {
+  /** Place shown on the card, e.g. "Valle del Colca". */
+  place: string
+  /** Bundled image URL (Vite asset import from the content file). */
+  image: string
+  /** Describes the photo for screen readers. */
+  alt: string
+  /** "Autor · CC BY-SA 4.0" */
+  credit: string
+  /** Wikimedia Commons file page (https). */
+  creditUrl: string
+}
+
 export interface TripDay {
   tripId: string
   date: string
@@ -76,6 +89,7 @@ export interface TripDay {
   plan: PlanItem[]
   eat: EatItem[]
   see: SeeItem[]
+  cover?: DayCover
 }
 
 export type ChecklistGroupId = 'shared' | 'private'

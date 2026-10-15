@@ -47,9 +47,14 @@ export function formatDayLabel(iso: string): string {
   return `${WEEKDAYS[date.getDay()]} ${date.getDate()} ${MONTHS[date.getMonth()]}`
 }
 
+/** 'Día 1 de 12' (index is zero-based) */
+export function formatDayCount(index: number, total: number): string {
+  return `Día ${index + 1} de ${total}`
+}
+
 /** 'Día 1 de 12 · sáb 17 oct' (index is zero-based) */
 export function formatDayHeading(index: number, total: number, iso: string): string {
-  return `Día ${index + 1} de ${total} · ${formatDayLabel(iso)}`
+  return `${formatDayCount(index, total)} · ${formatDayLabel(iso)}`
 }
 
 /** '17–28 oct 2026' · '28 nov – 3 dic 2026' · '28 dic 2026 – 3 ene 2027' */

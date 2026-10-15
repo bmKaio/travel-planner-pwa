@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Lock } from 'lucide-react'
+import SectionIcon from './SectionIcon'
+import { SECTION_STYLE } from './sectionStyle'
+
+const { edge } = SECTION_STYLE.notes
 
 interface NotesEditorProps {
   initialText: string
@@ -70,9 +74,12 @@ function NotesEditor({ initialText, onSave }: NotesEditorProps) {
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor="trip-notes" className="text-xl font-bold">
-        Mis notas
-      </label>
+      <div className="flex items-center gap-2.5">
+        <SectionIcon section="notes" />
+        <label htmlFor="trip-notes" className="text-xl font-bold">
+          Mis notas
+        </label>
+      </div>
       <p className="-mt-1 flex items-center gap-1.5 text-[15px] text-trip-muted">
         <Lock className="h-[17px] w-[17px]" aria-hidden="true" />
         Solo las ves tú
@@ -84,7 +91,7 @@ function NotesEditor({ initialText, onSave }: NotesEditorProps) {
         onChange={(event) => handleChange(event.target.value)}
         onBlur={flushWithStatus}
         placeholder="Escribe aquí lo que no quieras olvidar"
-        className="resize-y rounded-2xl border-[1.5px] border-trip-line bg-trip-card p-3.5 text-base text-trip-ink"
+        className={`resize-y rounded-2xl border-[1.5px] border-l-4 border-trip-line ${edge} bg-trip-card p-3.5 text-base text-trip-ink`}
       />
       <p aria-live="polite" className="text-sm text-trip-muted">
         {status === 'saved' && 'Notas guardadas en este dispositivo.'}

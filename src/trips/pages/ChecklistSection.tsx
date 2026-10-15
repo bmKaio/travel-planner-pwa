@@ -5,6 +5,7 @@ import { useNotes } from '../hooks/useNotes'
 import { summarizeChecklist } from '../domain/checklist'
 import ChecklistGroup from '../components/ChecklistGroup'
 import NotesEditor from '../components/NotesEditor'
+import SectionHeading from '../components/SectionHeading'
 import TripStatusMessage from '../components/TripStatusMessage'
 
 /** Checklist and notes of a trip, rendered at the end of the "Ayuda" page. */
@@ -32,9 +33,9 @@ function ChecklistSection({ tripId }: { tripId: string }) {
       aria-labelledby="checklist-heading"
       className="flex scroll-mt-[calc(3.5rem+env(safe-area-inset-top)+1rem)] flex-col gap-[18px]"
     >
-      <h2 id="checklist-heading" className="text-2xl font-bold">
+      <SectionHeading section="checklist" id="checklist-heading" size="lg">
         Checklist
-      </h2>
+      </SectionHeading>
 
       {loading ? (
         <TripStatusMessage message="Cargando el viaje…" />

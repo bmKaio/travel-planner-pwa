@@ -2,10 +2,13 @@ import type { SeeItem } from '../types'
 import { directionsUrl } from '../domain/mapsUrl'
 import { splitSeeItems } from '../domain/itinerary'
 import MapsLink from './MapsLink'
+import { SECTION_STYLE } from './sectionStyle'
+
+const { edge } = SECTION_STYLE.see
 
 function SeeGroup({ items }: { items: SeeItem[] }) {
   return (
-    <ul className="rounded-[20px] border border-trip-line bg-trip-card px-4">
+    <ul className={`rounded-[20px] border border-l-4 border-trip-line ${edge} bg-trip-card px-4`}>
       {items.map((item) => (
         <li
           key={item.name}
