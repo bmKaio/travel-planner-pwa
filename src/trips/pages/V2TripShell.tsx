@@ -4,16 +4,19 @@ import type { TripMeta } from '../types'
 import type { TripOutletContext } from '../hooks/useTrip'
 import { useTripContent } from '../hooks/useTripContent'
 import { useRecordLastTrip } from '../hooks/useRecordLastTrip'
+import { useWeather } from '../hooks/useWeather'
 import TripLayout from '../components/TripLayout'
 import TripStatusMessage from '../components/TripStatusMessage'
+import WeatherStrip from '../components/WeatherStrip'
 
 function V2TripShell({ trip }: { trip: TripMeta }) {
   useRecordLastTrip(trip.id)
   const { ready, error, retry } = useTripContent(trip.id)
+  const weather = useWeather(trip.id)
   const context: TripOutletContext = { trip }
 
   return (
-    <TripLayout tripName={trip.name}>
+    <TripLayout tripName={trip.name} headerExtra={<WeatherStrip cells={weather} />}>
       {error ? (
         <TripStatusMessage
           tone="error"

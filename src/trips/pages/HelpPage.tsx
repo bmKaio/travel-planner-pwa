@@ -148,6 +148,15 @@ function HelpPage() {
       </div>
 
       <ChecklistSection tripId={trip.id} />
+
+      {/* Open-Meteo data is CC BY 4.0: the header forecast needs this attribution. */}
+      <p className="text-sm text-trip-muted">
+        Datos del tiempo:{' '}
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">
+          Open-Meteo.com
+        </a>{' '}
+        (CC BY 4.0)
+      </p>
     </div>
   )
 }
